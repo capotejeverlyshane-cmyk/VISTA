@@ -1,6 +1,9 @@
 import json
 import os
+import csv
+from io import StringIO
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import Response
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
 from typing import List, Optional
@@ -184,6 +187,49 @@ def get_chat_logs():
         if "predicted_intent" in d:
             d["intent"] = d["predicted_intent"]
     return data
+
+@router.get("/chat_logs/csv", dependencies=[Depends(verify_admin_token)])
+def download_chat_logs_csv():
+    """Export every chat log as a CSV attachment."""
+    try:
+        page_size = 1000
+        offset = 0
+        chat_logs = []
+
+        # Supabase returns rows in pages, so keep requesting until every log is read.
+        while True:
+            res = (
+                supabase.table("chat_logs")
+                .select("*")
+                .order("timestamp", desc=True)
+                .range(offset, offset + page_size - 1)
+                .execute()
+            )
+            page = res.data or []
+            chat_logs.extend(page)
+
+            if len(page) < page_size:
+                break
+            offset += page_size
+
+        fieldnames = sorted({key for log in chat_logs for key in log})
+        csv_buffer = StringIO(newline="")
+        writer = csv.DictWriter(csv_buffer, fieldnames=fieldnames, extrasaction="ignore")
+        writer.writeheader()
+
+        for log in chat_logs:
+            writer.writerow({
+                key: json.dumps(value) if isinstance(value, (dict, list)) else value
+                for key, value in log.items()
+            })
+
+        return Response(
+            content=csv_buffer.getvalue(),
+            media_type="text/csv",
+            headers={"Content-Disposition": 'attachment; filename="chat_logs.csv"'},
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unable to export chat logs: {str(e)}")
 
 @router.post("/chat_logs/clear", dependencies=[Depends(verify_admin_token)])
 def clear_chat_logs():

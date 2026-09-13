@@ -126,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("autoTranslateAllBtn")?.addEventListener("click", handleAutoTranslate);
   document.getElementById("exportDataBtn").addEventListener("click", handleExportData);
   document.getElementById("confirmDeleteBtn").addEventListener("click", confirmDelete);
+  document.getElementById("downloadChatLogsCsvBtn")?.addEventListener("click", downloadChatLogsCsv);
   document.getElementById("changePasswordForm")?.addEventListener("click", (e) => {
     // Only bind on submit if the form actually submitted properly via button type submit
   });
@@ -667,6 +668,37 @@ async function handleClearChatLogs() {
     }
   } catch (err) {
     showToast("❌ Error connecting to server.");
+  }
+}
+
+async function downloadChatLogsCsv() {
+  const button = document.getElementById("downloadChatLogsCsvBtn");
+  const originalText = button.textContent;
+  button.disabled = true;
+  button.textContent = "Preparing CSV...";
+
+  try {
+    const res = await adminFetch(`${API_URL}/api/admin/chat_logs/csv`);
+    if (!res.ok) {
+      throw new Error(`Export failed with status ${res.status}`);
+    }
+
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "chat_logs.csv";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    showToast("📥 Chat logs downloaded.");
+  } catch (err) {
+    console.error("Failed to download chat logs CSV", err);
+    showToast("❌ Unable to download chat logs.");
+  } finally {
+    button.disabled = false;
+    button.textContent = originalText;
   }
 }
 
