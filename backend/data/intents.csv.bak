@@ -1,0 +1,2824 @@
+id,department,intent,language,question,answer,source,tags
+1,General,greetings,en,hi,Hello! Welcome to VISTA. How can I help you with Panabo City services today?,System,"hello,hi,greetings"
+2,General,greetings,en,hello,Hello! Welcome to VISTA. How can I help you with Panabo City services today?,System,"hello,hi,greetings"
+3,General,greetings,en,hey there,Hello! Welcome to VISTA. How can I help you with Panabo City services today?,System,"hello,hi,greetings"
+4,General,greetings,en,good morning,Hello! Welcome to VISTA. How can I help you with Panabo City services today?,System,"hello,hi,greetings"
+5,General,greetings,en,good afternoon,Hello! Welcome to VISTA. How can I help you with Panabo City services today?,System,"hello,hi,greetings"
+6,General,greetings,en,good evening,Hello! Welcome to VISTA. How can I help you with Panabo City services today?,System,"hello,hi,greetings"
+7,General,greetings,en,hey,Hello! Welcome to VISTA. How can I help you with Panabo City services today?,System,"hello,hi,greetings"
+8,General,greetings,en,whats up,Hello! Welcome to VISTA. How can I help you with Panabo City services today?,System,"hello,hi,greetings"
+9,General,greetings,en,howdy,Hello! Welcome to VISTA. How can I help you with Panabo City services today?,System,"hello,hi,greetings"
+10,General,greetings,en,greetings,Hello! Welcome to VISTA. How can I help you with Panabo City services today?,System,"hello,hi,greetings"
+11,General,greetings,tl,kumusta,Kumusta! Maligayang pagdating sa VISTA. Paano ko kayo matutulungan ngayon?,System,"hello,hi,greetings"
+12,General,greetings,tl,magandang umaga,Kumusta! Maligayang pagdating sa VISTA. Paano ko kayo matutulungan ngayon?,System,"hello,hi,greetings"
+13,General,greetings,tl,magandang hapon,Kumusta! Maligayang pagdating sa VISTA. Paano ko kayo matutulungan ngayon?,System,"hello,hi,greetings"
+14,General,greetings,tl,magandang gabi,Kumusta! Maligayang pagdating sa VISTA. Paano ko kayo matutulungan ngayon?,System,"hello,hi,greetings"
+15,General,greetings,tl,hello po,Kumusta! Maligayang pagdating sa VISTA. Paano ko kayo matutulungan ngayon?,System,"hello,hi,greetings"
+16,General,greetings,tl,hi po,Kumusta! Maligayang pagdating sa VISTA. Paano ko kayo matutulungan ngayon?,System,"hello,hi,greetings"
+17,General,greetings,bis,maayong adlaw,Maayong adlaw! Welcome sa VISTA. Unsa may akong ikatabang kanimo karon?,System,"hello,hi,greetings"
+18,General,greetings,bis,maayong buntag,Maayong adlaw! Welcome sa VISTA. Unsa may akong ikatabang kanimo karon?,System,"hello,hi,greetings"
+19,General,greetings,bis,maayong hapon,Maayong adlaw! Welcome sa VISTA. Unsa may akong ikatabang kanimo karon?,System,"hello,hi,greetings"
+20,General,greetings,bis,maayong gabii,Maayong adlaw! Welcome sa VISTA. Unsa may akong ikatabang kanimo karon?,System,"hello,hi,greetings"
+21,General,greetings,bis,kumusta ka,Maayong adlaw! Welcome sa VISTA. Unsa may akong ikatabang kanimo karon?,System,"hello,hi,greetings"
+22,General,greetings,bis,hey vista,Maayong adlaw! Welcome sa VISTA. Unsa may akong ikatabang kanimo karon?,System,"hello,hi,greetings"
+23,Civil Registrar,birth_certificate_process,en,How do I get a birth certificate?,"To request a birth certificate, visit the Civil Registrar's Office, fill out the request form, submit a valid ID, and pay the required fee.",Citizen Charter,"birth,certificate,process"
+24,Civil Registrar,birth_certificate_process,en,What is the process for getting a birth certificate?,"To request a birth certificate, visit the Civil Registrar's Office, fill out the request form, submit a valid ID, and pay the required fee.",Citizen Charter,"birth,certificate,process"
+25,Civil Registrar,birth_certificate_process,en,Where do I go to request a birth certificate?,"To request a birth certificate, visit the Civil Registrar's Office, fill out the request form, submit a valid ID, and pay the required fee.",Citizen Charter,"birth,certificate,process"
+26,Civil Registrar,birth_certificate_process,en,I need a birth certificate,"To request a birth certificate, visit the Civil Registrar's Office, fill out the request form, submit a valid ID, and pay the required fee.",Citizen Charter,"birth,certificate,process"
+27,Civil Registrar,birth_certificate_process,en,How can I request a copy of my birth certificate?,"To request a birth certificate, visit the Civil Registrar's Office, fill out the request form, submit a valid ID, and pay the required fee.",Citizen Charter,"birth,certificate,process"
+28,Civil Registrar,birth_certificate_process,en,How to get birth cert?,"To request a birth certificate, visit the Civil Registrar's Office, fill out the request form, submit a valid ID, and pay the required fee.",Citizen Charter,"birth,certificate,process"
+29,Civil Registrar,birth_certificate_process,en,Can you help me get a birth certificate?,"To request a birth certificate, visit the Civil Registrar's Office, fill out the request form, submit a valid ID, and pay the required fee.",Citizen Charter,"birth,certificate,process"
+30,Civil Registrar,birth_certificate_process,en,Steps to obtain a birth certificate,"To request a birth certificate, visit the Civil Registrar's Office, fill out the request form, submit a valid ID, and pay the required fee.",Citizen Charter,"birth,certificate,process"
+31,Civil Registrar,birth_certificate_process,tl,Paano kumuha ng birth certificate?,"Para kumuha ng birth certificate, pumunta sa Civil Registrar's Office, sagutan ang request form, magsumite ng valid ID, at bayaran ang required fee.",Citizen Charter,"birth,certificate,process"
+32,Civil Registrar,birth_certificate_process,tl,Saan pupunta para kumuha ng birth certificate?,"Para kumuha ng birth certificate, pumunta sa Civil Registrar's Office, sagutan ang request form, magsumite ng valid ID, at bayaran ang required fee.",Citizen Charter,"birth,certificate,process"
+33,Civil Registrar,birth_certificate_process,tl,Gusto ko kumuha ng birth certificate,"Para kumuha ng birth certificate, pumunta sa Civil Registrar's Office, sagutan ang request form, magsumite ng valid ID, at bayaran ang required fee.",Citizen Charter,"birth,certificate,process"
+34,Civil Registrar,birth_certificate_process,tl,Paano po makakuha ng birth certificate?,"Para kumuha ng birth certificate, pumunta sa Civil Registrar's Office, sagutan ang request form, magsumite ng valid ID, at bayaran ang required fee.",Citizen Charter,"birth,certificate,process"
+35,Civil Registrar,birth_certificate_process,tl,Ano ang proseso para makakuha ng birth certificate?,"Para kumuha ng birth certificate, pumunta sa Civil Registrar's Office, sagutan ang request form, magsumite ng valid ID, at bayaran ang required fee.",Citizen Charter,"birth,certificate,process"
+36,Civil Registrar,birth_certificate_process,tl,Kailangan ko ng birth certificate paano?,"Para kumuha ng birth certificate, pumunta sa Civil Registrar's Office, sagutan ang request form, magsumite ng valid ID, at bayaran ang required fee.",Citizen Charter,"birth,certificate,process"
+37,Civil Registrar,birth_certificate_process,bis,Unsaon pagkuha og birth certificate?,"Aron makakuha og birth certificate, adto sa Civil Registrar's Office, pun-a ang request form, isumite ang valid ID, ug bayri ang required fee.",Citizen Charter,"birth,certificate,process"
+38,Civil Registrar,birth_certificate_process,bis,Asa ko moadto para makakuha og birth certificate?,"Aron makakuha og birth certificate, adto sa Civil Registrar's Office, pun-a ang request form, isumite ang valid ID, ug bayri ang required fee.",Citizen Charter,"birth,certificate,process"
+39,Civil Registrar,birth_certificate_process,bis,Kabalo ka unsaon pag kuha ug birth certificate?,"Aron makakuha og birth certificate, adto sa Civil Registrar's Office, pun-a ang request form, isumite ang valid ID, ug bayri ang required fee.",Citizen Charter,"birth,certificate,process"
+40,Civil Registrar,birth_certificate_process,bis,Gusto ko makakuha og birth certificate,"Aron makakuha og birth certificate, adto sa Civil Registrar's Office, pun-a ang request form, isumite ang valid ID, ug bayri ang required fee.",Citizen Charter,"birth,certificate,process"
+41,Civil Registrar,birth_certificate_process,bis,Unsa ang proseso sa pagkuha og birth certificate?,"Aron makakuha og birth certificate, adto sa Civil Registrar's Office, pun-a ang request form, isumite ang valid ID, ug bayri ang required fee.",Citizen Charter,"birth,certificate,process"
+42,Civil Registrar,birth_certificate_process,bis,Pag kuha og birth cert unsaon?,"Aron makakuha og birth certificate, adto sa Civil Registrar's Office, pun-a ang request form, isumite ang valid ID, ug bayri ang required fee.",Citizen Charter,"birth,certificate,process"
+43,Civil Registrar,birth_certificate_process,bis,Mangayo ko og birth certificate,"Aron makakuha og birth certificate, adto sa Civil Registrar's Office, pun-a ang request form, isumite ang valid ID, ug bayri ang required fee.",Citizen Charter,"birth,certificate,process"
+44,Civil Registrar,birth_certificate_process,bis,Kinahanglan nako og birth certificate,"Aron makakuha og birth certificate, adto sa Civil Registrar's Office, pun-a ang request form, isumite ang valid ID, ug bayri ang required fee.",Citizen Charter,"birth,certificate,process"
+45,Civil Registrar,birth_certificate_requirements,en,What are the requirements for a birth certificate?,"The usual requirements are a valid ID, completed request form, and authorization letter if filed by a representative.",Citizen Charter,"birth,requirements"
+46,Civil Registrar,birth_certificate_requirements,en,What documents do I need for a birth certificate request?,"The usual requirements are a valid ID, completed request form, and authorization letter if filed by a representative.",Citizen Charter,"birth,requirements"
+47,Civil Registrar,birth_certificate_requirements,en,What do I need to bring for a birth certificate?,"The usual requirements are a valid ID, completed request form, and authorization letter if filed by a representative.",Citizen Charter,"birth,requirements"
+48,Civil Registrar,birth_certificate_requirements,en,Requirements for birth certificate?,"The usual requirements are a valid ID, completed request form, and authorization letter if filed by a representative.",Citizen Charter,"birth,requirements"
+49,Civil Registrar,birth_certificate_requirements,en,What should I prepare for birth certificate request?,"The usual requirements are a valid ID, completed request form, and authorization letter if filed by a representative.",Citizen Charter,"birth,requirements"
+50,Civil Registrar,birth_certificate_requirements,en,Birth certificate requirements list,"The usual requirements are a valid ID, completed request form, and authorization letter if filed by a representative.",Citizen Charter,"birth,requirements"
+51,Civil Registrar,birth_certificate_requirements,tl,Ano ang requirements para sa birth certificate?,"Karaniwang requirements ang valid ID, completed request form, at authorization letter kung representative ang kukuha.",Citizen Charter,"birth,requirements"
+52,Civil Registrar,birth_certificate_requirements,tl,Anong mga dokumento ang kailangan para sa birth certificate?,"Karaniwang requirements ang valid ID, completed request form, at authorization letter kung representative ang kukuha.",Citizen Charter,"birth,requirements"
+53,Civil Registrar,birth_certificate_requirements,tl,Ano po ang kailangan dalhin para sa birth certificate?,"Karaniwang requirements ang valid ID, completed request form, at authorization letter kung representative ang kukuha.",Citizen Charter,"birth,requirements"
+54,Civil Registrar,birth_certificate_requirements,tl,Ano ang mga requirements sa birth cert?,"Karaniwang requirements ang valid ID, completed request form, at authorization letter kung representative ang kukuha.",Citizen Charter,"birth,requirements"
+55,Civil Registrar,birth_certificate_requirements,bis,Unsa ang requirements sa birth certificate?,"Kasagaran nga requirements mao ang valid ID, completed request form, ug authorization letter kung representative ang mokuha.",Citizen Charter,"birth,requirements"
+56,Civil Registrar,birth_certificate_requirements,bis,Unsa nga mga dokumento ang kinahanglan para sa birth certificate?,"Kasagaran nga requirements mao ang valid ID, completed request form, ug authorization letter kung representative ang mokuha.",Citizen Charter,"birth,requirements"
+57,Civil Registrar,birth_certificate_requirements,bis,Unsa ang dad-on para sa birth certificate?,"Kasagaran nga requirements mao ang valid ID, completed request form, ug authorization letter kung representative ang mokuha.",Citizen Charter,"birth,requirements"
+58,Civil Registrar,birth_certificate_requirements,bis,Unsa ang requirements sa pag request og birth cert?,"Kasagaran nga requirements mao ang valid ID, completed request form, ug authorization letter kung representative ang mokuha.",Citizen Charter,"birth,requirements"
+75,BPLO,business_permit_fee,en,How much is the business permit fee?,"Business permit fees depend on the type of business, capitalization, and applicable local ordinances. Please check the BPLO assessment for the exact amount.",Citizen Charter,"business,permit,fee"
+76,BPLO,business_permit_fee,en,What is the cost of a business permit?,"Business permit fees depend on the type of business, capitalization, and applicable local ordinances. Please check the BPLO assessment for the exact amount.",Citizen Charter,"business,permit,fee"
+77,BPLO,business_permit_fee,en,How much do I pay for a business permit?,"Business permit fees depend on the type of business, capitalization, and applicable local ordinances. Please check the BPLO assessment for the exact amount.",Citizen Charter,"business,permit,fee"
+78,BPLO,business_permit_fee,en,What are the fees for business permit?,"Business permit fees depend on the type of business, capitalization, and applicable local ordinances. Please check the BPLO assessment for the exact amount.",Citizen Charter,"business,permit,fee"
+79,BPLO,business_permit_fee,en,Business permit fee amount?,"Business permit fees depend on the type of business, capitalization, and applicable local ordinances. Please check the BPLO assessment for the exact amount.",Citizen Charter,"business,permit,fee"
+80,BPLO,business_permit_fee,tl,Magkano ang bayad sa business permit?,"Ang bayad sa business permit ay depende sa uri ng negosyo, capitalization, at local ordinances. Tingnan ang BPLO assessment para sa eksaktong halaga.",Citizen Charter,"business,permit,fee"
+81,BPLO,business_permit_fee,tl,Ano ang halaga ng business permit?,"Ang bayad sa business permit ay depende sa uri ng negosyo, capitalization, at local ordinances. Tingnan ang BPLO assessment para sa eksaktong halaga.",Citizen Charter,"business,permit,fee"
+82,BPLO,business_permit_fee,tl,Magkano po ang business permit?,"Ang bayad sa business permit ay depende sa uri ng negosyo, capitalization, at local ordinances. Tingnan ang BPLO assessment para sa eksaktong halaga.",Citizen Charter,"business,permit,fee"
+83,BPLO,business_permit_fee,tl,Anong fee ng business permit?,"Ang bayad sa business permit ay depende sa uri ng negosyo, capitalization, at local ordinances. Tingnan ang BPLO assessment para sa eksaktong halaga.",Citizen Charter,"business,permit,fee"
+84,BPLO,business_permit_fee,bis,Pila ang bayad sa business permit?,"Ang bayad sa business permit magdepende sa klase sa negosyo, capitalization, ug local ordinances. Tan-awa ang BPLO assessment para sa eksaktong kantidad.",Citizen Charter,"business,permit,fee"
+85,BPLO,business_permit_fee,bis,Pila ang total bayad sa business permit?,"Ang bayad sa business permit magdepende sa klase sa negosyo, capitalization, ug local ordinances. Tan-awa ang BPLO assessment para sa eksaktong kantidad.",Citizen Charter,"business,permit,fee"
+86,BPLO,business_permit_fee,bis,Tagpila ang business permit?,"Ang bayad sa business permit magdepende sa klase sa negosyo, capitalization, ug local ordinances. Tan-awa ang BPLO assessment para sa eksaktong kantidad.",Citizen Charter,"business,permit,fee"
+87,BPLO,business_permit_fee,bis,Pila ang fee sa business permit?,"Ang bayad sa business permit magdepende sa klase sa negosyo, capitalization, ug local ordinances. Tan-awa ang BPLO assessment para sa eksaktong kantidad.",Citizen Charter,"business,permit,fee"
+88,Treasurer,real_property_tax_payment,en,How do I pay real property tax?,"To pay real property tax, visit the Treasurer's Office, present your tax declaration or tax bill, and pay the assessed amount at the cashier.",Citizen Charter,"real property tax,payment"
+89,Treasurer,real_property_tax_payment,en,Where do I pay real property tax?,"To pay real property tax, visit the Treasurer's Office, present your tax declaration or tax bill, and pay the assessed amount at the cashier.",Citizen Charter,"real property tax,payment"
+90,Treasurer,real_property_tax_payment,en,What is the process for paying real property tax?,"To pay real property tax, visit the Treasurer's Office, present your tax declaration or tax bill, and pay the assessed amount at the cashier.",Citizen Charter,"real property tax,payment"
+91,Treasurer,real_property_tax_payment,en,I want to pay my property tax,"To pay real property tax, visit the Treasurer's Office, present your tax declaration or tax bill, and pay the assessed amount at the cashier.",Citizen Charter,"real property tax,payment"
+92,Treasurer,real_property_tax_payment,en,How to settle real property tax?,"To pay real property tax, visit the Treasurer's Office, present your tax declaration or tax bill, and pay the assessed amount at the cashier.",Citizen Charter,"real property tax,payment"
+93,Treasurer,real_property_tax_payment,en,Property tax payment process?,"To pay real property tax, visit the Treasurer's Office, present your tax declaration or tax bill, and pay the assessed amount at the cashier.",Citizen Charter,"real property tax,payment"
+94,Treasurer,real_property_tax_payment,tl,Paano magbayad ng real property tax?,"Para magbayad ng real property tax, pumunta sa Treasurer's Office, ipakita ang tax declaration o tax bill, at bayaran ang assessed amount sa cashier.",Citizen Charter,"real property tax,payment"
+95,Treasurer,real_property_tax_payment,tl,Saan magbabayad ng real property tax?,"Para magbayad ng real property tax, pumunta sa Treasurer's Office, ipakita ang tax declaration o tax bill, at bayaran ang assessed amount sa cashier.",Citizen Charter,"real property tax,payment"
+96,Treasurer,real_property_tax_payment,tl,Gusto ko magbayad ng property tax,"Para magbayad ng real property tax, pumunta sa Treasurer's Office, ipakita ang tax declaration o tax bill, at bayaran ang assessed amount sa cashier.",Citizen Charter,"real property tax,payment"
+97,Treasurer,real_property_tax_payment,tl,Paano po ang pagbabayad ng amilyar?,"Para magbayad ng real property tax, pumunta sa Treasurer's Office, ipakita ang tax declaration o tax bill, at bayaran ang assessed amount sa cashier.",Citizen Charter,"real property tax,payment"
+98,Treasurer,real_property_tax_payment,bis,Unsaon pagbayad sa real property tax?,"Aron mobayad sa real property tax, adto sa Treasurer's Office, ipakita ang tax declaration o tax bill, ug bayri ang assessed amount sa cashier.",Citizen Charter,"real property tax,payment"
+99,Treasurer,real_property_tax_payment,bis,Asa magbayad sa real property tax?,"Aron mobayad sa real property tax, adto sa Treasurer's Office, ipakita ang tax declaration o tax bill, ug bayri ang assessed amount sa cashier.",Citizen Charter,"real property tax,payment"
+100,Treasurer,real_property_tax_payment,bis,Gusto ko mobayad sa property tax,"Aron mobayad sa real property tax, adto sa Treasurer's Office, ipakita ang tax declaration o tax bill, ug bayri ang assessed amount sa cashier.",Citizen Charter,"real property tax,payment"
+101,Treasurer,real_property_tax_payment,bis,Unsaon pag bayad sa amilyar?,"Aron mobayad sa real property tax, adto sa Treasurer's Office, ipakita ang tax declaration o tax bill, ug bayri ang assessed amount sa cashier.",Citizen Charter,"real property tax,payment"
+102,Treasurer,real_property_tax_due_date,en,When is the due date for real property tax?,The due date for real property tax depends on local ordinances and payment schedules. Please check with the Treasurer's Office for the official deadline.,Citizen Charter,"real property tax,due date"
+103,Treasurer,real_property_tax_due_date,en,What is the deadline for real property tax payment?,The due date for real property tax depends on local ordinances and payment schedules. Please check with the Treasurer's Office for the official deadline.,Citizen Charter,"real property tax,due date"
+104,Treasurer,real_property_tax_due_date,en,When should I pay my real property tax?,The due date for real property tax depends on local ordinances and payment schedules. Please check with the Treasurer's Office for the official deadline.,Citizen Charter,"real property tax,due date"
+105,Treasurer,real_property_tax_due_date,en,Deadline for property tax?,The due date for real property tax depends on local ordinances and payment schedules. Please check with the Treasurer's Office for the official deadline.,Citizen Charter,"real property tax,due date"
+106,Treasurer,real_property_tax_due_date,en,When is property tax due?,The due date for real property tax depends on local ordinances and payment schedules. Please check with the Treasurer's Office for the official deadline.,Citizen Charter,"real property tax,due date"
+107,Treasurer,real_property_tax_due_date,tl,Kailan ang due date ng real property tax?,Ang due date ng real property tax ay depende sa local ordinances at payment schedule. Makipag-ugnayan sa Treasurer's Office para sa opisyal na deadline.,Citizen Charter,"real property tax,due date"
+108,Treasurer,real_property_tax_due_date,tl,Ano ang deadline ng pagbabayad ng real property tax?,Ang due date ng real property tax ay depende sa local ordinances at payment schedule. Makipag-ugnayan sa Treasurer's Office para sa opisyal na deadline.,Citizen Charter,"real property tax,due date"
+109,Treasurer,real_property_tax_due_date,tl,Kailan dapat magbayad ng amilyar?,Ang due date ng real property tax ay depende sa local ordinances at payment schedule. Makipag-ugnayan sa Treasurer's Office para sa opisyal na deadline.,Citizen Charter,"real property tax,due date"
+110,Treasurer,real_property_tax_due_date,tl,Kailan po ang deadline ng property tax?,Ang due date ng real property tax ay depende sa local ordinances at payment schedule. Makipag-ugnayan sa Treasurer's Office para sa opisyal na deadline.,Citizen Charter,"real property tax,due date"
+111,Treasurer,real_property_tax_due_date,bis,Kanus-a ang due date sa real property tax?,Ang due date sa real property tax magdepende sa local ordinances ug payment schedule. Pakig-ugnay sa Treasurer's Office para sa opisyal nga deadline.,Citizen Charter,"real property tax,due date"
+112,Treasurer,real_property_tax_due_date,bis,Unsa ang deadline sa pagbayad sa real property tax?,Ang due date sa real property tax magdepende sa local ordinances ug payment schedule. Pakig-ugnay sa Treasurer's Office para sa opisyal nga deadline.,Citizen Charter,"real property tax,due date"
+113,Treasurer,real_property_tax_due_date,bis,Kanus-a dapat mobayad sa amilyar?,Ang due date sa real property tax magdepende sa local ordinances ug payment schedule. Pakig-ugnay sa Treasurer's Office para sa opisyal nga deadline.,Citizen Charter,"real property tax,due date"
+114,Treasurer,real_property_tax_due_date,bis,Kanus-a ang deadline sa property tax?,Ang due date sa real property tax magdepende sa local ordinances ug payment schedule. Pakig-ugnay sa Treasurer's Office para sa opisyal nga deadline.,Citizen Charter,"real property tax,due date"
+115,City Mayor's Office - BPLS / Barangay Level,inquiry_barangay_clearance_fee,en,How much is the barangay clearance for a business permit?,"The Barangay Clearance fee for a business permit varies depending on the specific ordinance of the barangay where your business is located and your gross sales or capitalization. For example, some barangays like A.O. Floirendo charge a flat rate of Php 75.00, while others like Cagangohan or Gredu charge between Php 50.00 to Php 500.00 depending on whether it is a small store or a large corporation. 
+
+Please specify your barangay and business type for a more accurate estimate.",Admin Dashboard,"barangay, clearance, fee, cost, business, magkano, pila"
+116,City Mayor's Office - BPLS / Barangay Level,inquiry_barangay_clearance_fee,tl,Magkano ang bayad sa barangay clearance para sa business permit?,"Ang bayad sa Barangay Clearance ay nag-iiba depende sa ordinansa ng barangay kung saan nakatayo ang iyong negosyo at sa iyong gross sales o kapital. Halimbawa, ang A.O. Floirendo ay may flat rate na Php 75.00, habang ang mga barangay tulad ng Cagangohan at Gredu ay naniningil ng Php 50.00 hanggang Php 500.00 depende sa laki ng negosyo. 
+
+Maaari mong ibigay ang iyong barangay at uri ng negosyo upang malaman ang eksaktong halaga.",Admin Dashboard,"barangay, clearance, fee, cost, business, magkano, pila"
+117,City Mayor's Office - BPLS / Barangay Level,inquiry_barangay_clearance_fee,bis,Pila ang bayad sa barangay clearance para sa business permit?,"Ang bayad sa Barangay Clearance magdepende sa ordinansa sa barangay kung asa nahimutang ang imong negosyo ug sa imong gross sales o kapital. Pananglitan, ang A.O. Floirendo nagapangayo og flat rate nga Php 75.00, samtang ang Cagangohan ug Gredu nagapangayo og Php 50.00 hantod Php 500.00 depende sa klase ug dako sa negosyo. 
+
+Palihug isulti ang imong barangay ug klase sa negosyo para mahatag namo ang saktong kantidad.",Admin Dashboard,"barangay, clearance, fee, cost, business, magkano, pila"
+126,City Mayor's Office - BPLS,cmo_renew_business_permit,en,How to renew my business permit?,"To **Renew your Business Permit** (done every January), follow these steps:
+
+---
+### 🏢 Renewal Process
+
+**Steps:**
+1. Submit documentary requirements (Previous Mayor's Permit, Declaration of Gross Sales, Barangay Clearance).
+2. Get assessed and secure the Order of Payment.
+3. Pay at the City Treasurer's Office and get the Official Receipt.
+4. Claim your renewed Business Permit and Clearances.
+
+💰 **Cost:** Based on gross sales declaration and local tax code.
+⏱️ **Processing Time:** Around 2-3 hours.",Citizen Charter,"renew, business, permit"
+127,City Mayor's Office - BPLS,cmo_renew_business_permit,en,What are the requirements for business permit renewal?,"To **Renew your Business Permit** (done every January), follow these steps:
+
+---
+### 🏢 Renewal Process
+
+**Steps:**
+1. Submit documentary requirements (Previous Mayor's Permit, Declaration of Gross Sales, Barangay Clearance).
+2. Get assessed and secure the Order of Payment.
+3. Pay at the City Treasurer's Office and get the Official Receipt.
+4. Claim your renewed Business Permit and Clearances.
+
+💰 **Cost:** Based on gross sales declaration and local tax code.
+⏱️ **Processing Time:** Around 2-3 hours.",Citizen Charter,"renew, business, permit"
+128,City Mayor's Office - BPLS,cmo_renew_business_permit,en,Business permit renewal process,"To **Renew your Business Permit** (done every January), follow these steps:
+
+---
+### 🏢 Renewal Process
+
+**Steps:**
+1. Submit documentary requirements (Previous Mayor's Permit, Declaration of Gross Sales, Barangay Clearance).
+2. Get assessed and secure the Order of Payment.
+3. Pay at the City Treasurer's Office and get the Official Receipt.
+4. Claim your renewed Business Permit and Clearances.
+
+💰 **Cost:** Based on gross sales declaration and local tax code.
+⏱️ **Processing Time:** Around 2-3 hours.",Citizen Charter,"renew, business, permit"
+129,City Mayor's Office - BPLS,cmo_renew_business_permit,tl,Paano mag-renew ng business permit?,"Para i-**Renew ang inyong Business Permit** (ginagawa tuwing Enero), sundin ang mga sumusunod:
+
+---
+### 🏢 Renewal Process
+
+**Steps:**
+1. Isumite ang requirements (Nakaraang Mayor's Permit, Declaration of Gross Sales, Barangay Clearance).
+2. Magpa-assess at kunin ang Order of Payment.
+3. Magbayad sa City Treasurer's Office at kunin ang Official Receipt.
+4. Kunin ang inyong na-renew na Business Permit.
+
+💰 **Bayad:** Depende sa gross sales declaration.
+⏱️ **Processing Time:** Tinatayang 2-3 oras.",Citizen Charter,"renew, business, permit"
+130,City Mayor's Office - BPLS,cmo_renew_business_permit,tl,Ano kailangan para i-renew ang permit?,"Para i-**Renew ang inyong Business Permit** (ginagawa tuwing Enero), sundin ang mga sumusunod:
+
+---
+### 🏢 Renewal Process
+
+**Steps:**
+1. Isumite ang requirements (Nakaraang Mayor's Permit, Declaration of Gross Sales, Barangay Clearance).
+2. Magpa-assess at kunin ang Order of Payment.
+3. Magbayad sa City Treasurer's Office at kunin ang Official Receipt.
+4. Kunin ang inyong na-renew na Business Permit.
+
+💰 **Bayad:** Depende sa gross sales declaration.
+⏱️ **Processing Time:** Tinatayang 2-3 oras.",Citizen Charter,"renew, business, permit"
+131,City Mayor's Office - BPLS,cmo_renew_business_permit,bis,Unsaon pag renew sa business permit?,"Para mag-**Renew sa inyong Business Permit** (buhaton kada Enero), sunda kining mga steps:
+
+---
+### 🏢 Renewal Process
+
+**Steps:**
+1. Isumite ang requirements (Nakaagi nga Mayor's Permit, Declaration of Gross Sales, Barangay Clearance).
+2. Magpa-assess ug kuhaa ang Order of Payment.
+3. Pagbayad sa City Treasurer's Office ug kuhaa ang Official Receipt.
+4. Kuhaa ang inyong na-renew nga Business Permit.
+
+💰 **Bayad:** Depende sa gross sales declaration.
+⏱️ **Processing Time:** Mga 2-3 ka oras.",Citizen Charter,"renew, business, permit"
+132,City Mayor's Office - BPLS,cmo_renew_business_permit,bis,Unsa ang requirements para mag renew og permit?,"Para mag-**Renew sa inyong Business Permit** (buhaton kada Enero), sunda kining mga steps:
+
+---
+### 🏢 Renewal Process
+
+**Steps:**
+1. Isumite ang requirements (Nakaagi nga Mayor's Permit, Declaration of Gross Sales, Barangay Clearance).
+2. Magpa-assess ug kuhaa ang Order of Payment.
+3. Pagbayad sa City Treasurer's Office ug kuhaa ang Official Receipt.
+4. Kuhaa ang inyong na-renew nga Business Permit.
+
+💰 **Bayad:** Depende sa gross sales declaration.
+⏱️ **Processing Time:** Mga 2-3 ka oras.",Citizen Charter,"renew, business, permit"
+133,City Mayor's Office - BPLS,cmo_renew_business_permit,bis,Pag renew sa negosyo permit,"Para mag-**Renew sa inyong Business Permit** (buhaton kada Enero), sunda kining mga steps:
+
+---
+### 🏢 Renewal Process
+
+**Steps:**
+1. Isumite ang requirements (Nakaagi nga Mayor's Permit, Declaration of Gross Sales, Barangay Clearance).
+2. Magpa-assess ug kuhaa ang Order of Payment.
+3. Pagbayad sa City Treasurer's Office ug kuhaa ang Official Receipt.
+4. Kuhaa ang inyong na-renew nga Business Permit.
+
+💰 **Bayad:** Depende sa gross sales declaration.
+⏱️ **Processing Time:** Mga 2-3 ka oras.",Citizen Charter,"renew, business, permit"
+134,City Mayor's Office - BPLS,cmo_retire_business_permit,en,How to close my business?,"If you are closing your business, you need to apply for **Retirement of Business Permit** to avoid accumulating penalties.
+
+---
+### 📋 Process
+
+**Steps:**
+1. Submit a letter of intent to retire the business, along with the Original Mayor's Permit, Business Plate, and BIR Clearance.
+2. BPLS will process the retirement and CTO will assess any remaining tax liabilities.
+3. Pay any outstanding fees at the City Treasurer's Office.
+4. Receive the Certificate of Business Retirement.",Citizen Charter,"retire, business, permit"
+135,City Mayor's Office - BPLS,cmo_retire_business_permit,en,Retirement of business permit process,"If you are closing your business, you need to apply for **Retirement of Business Permit** to avoid accumulating penalties.
+
+---
+### 📋 Process
+
+**Steps:**
+1. Submit a letter of intent to retire the business, along with the Original Mayor's Permit, Business Plate, and BIR Clearance.
+2. BPLS will process the retirement and CTO will assess any remaining tax liabilities.
+3. Pay any outstanding fees at the City Treasurer's Office.
+4. Receive the Certificate of Business Retirement.",Citizen Charter,"retire, business, permit"
+136,City Mayor's Office - BPLS,cmo_retire_business_permit,en,What to do if I stop my business?,"If you are closing your business, you need to apply for **Retirement of Business Permit** to avoid accumulating penalties.
+
+---
+### 📋 Process
+
+**Steps:**
+1. Submit a letter of intent to retire the business, along with the Original Mayor's Permit, Business Plate, and BIR Clearance.
+2. BPLS will process the retirement and CTO will assess any remaining tax liabilities.
+3. Pay any outstanding fees at the City Treasurer's Office.
+4. Receive the Certificate of Business Retirement.",Citizen Charter,"retire, business, permit"
+137,City Mayor's Office - BPLS,cmo_retire_business_permit,tl,Paano magpasara ng negosyo?,"Kung magsasara na ang iyong negosyo, kailangan mong mag-apply ng **Retirement of Business Permit** upang hindi maipon ang penalties.
+
+---
+### 📋 Proseso
+
+**Steps:**
+1. Isumite ang letter of intent para ipasara ang negosyo, kasama ang Original Mayor's Permit, Business Plate, at BIR Clearance.
+2. I-poproseso ng BPLS ang retirement at i-aassess ng CTO kung may natitirang tax liabilities.
+3. Bayaran ang mga natitirang obligasyon sa City Treasurer's Office.
+4. Kunin ang Certificate of Business Retirement.",Citizen Charter,"retire, business, permit"
+138,City Mayor's Office - BPLS,cmo_retire_business_permit,tl,Retirement ng business permit paano?,"Kung magsasara na ang iyong negosyo, kailangan mong mag-apply ng **Retirement of Business Permit** upang hindi maipon ang penalties.
+
+---
+### 📋 Proseso
+
+**Steps:**
+1. Isumite ang letter of intent para ipasara ang negosyo, kasama ang Original Mayor's Permit, Business Plate, at BIR Clearance.
+2. I-poproseso ng BPLS ang retirement at i-aassess ng CTO kung may natitirang tax liabilities.
+3. Bayaran ang mga natitirang obligasyon sa City Treasurer's Office.
+4. Kunin ang Certificate of Business Retirement.",Citizen Charter,"retire, business, permit"
+139,City Mayor's Office - BPLS,cmo_retire_business_permit,bis,Unsaon pagpasira sa negosyo?,"Kung manira na ang imong negosyo, kinahanglan ka mag-apply og **Retirement of Business Permit** para dili magpatong-patong ang penalties.
+
+---
+### 📋 Proseso
+
+**Steps:**
+1. Isumite ang letter of intent nga magpasira sa negosyo, uban ang Original Mayor's Permit, Business Plate, ug BIR Clearance.
+2. I-process sa BPLS ang retirement ug i-assess sa CTO kung naa pay utang nga taxes.
+3. Bayri ang mga nabilin nga obligasyon sa City Treasurer's Office.
+4. Kuhaa ang Certificate of Business Retirement.",Citizen Charter,"retire, business, permit"
+140,City Mayor's Office - BPLS,cmo_retire_business_permit,bis,Unsaon pag apply og retirement sa business?,"Kung manira na ang imong negosyo, kinahanglan ka mag-apply og **Retirement of Business Permit** para dili magpatong-patong ang penalties.
+
+---
+### 📋 Proseso
+
+**Steps:**
+1. Isumite ang letter of intent nga magpasira sa negosyo, uban ang Original Mayor's Permit, Business Plate, ug BIR Clearance.
+2. I-process sa BPLS ang retirement ug i-assess sa CTO kung naa pay utang nga taxes.
+3. Bayri ang mga nabilin nga obligasyon sa City Treasurer's Office.
+4. Kuhaa ang Certificate of Business Retirement.",Citizen Charter,"retire, business, permit"
+141,City Mayor's Office - BPLS,cmo_retire_business_permit,bis,Manira nako sa ako negosyo,"Kung manira na ang imong negosyo, kinahanglan ka mag-apply og **Retirement of Business Permit** para dili magpatong-patong ang penalties.
+
+---
+### 📋 Proseso
+
+**Steps:**
+1. Isumite ang letter of intent nga magpasira sa negosyo, uban ang Original Mayor's Permit, Business Plate, ug BIR Clearance.
+2. I-process sa BPLS ang retirement ug i-assess sa CTO kung naa pay utang nga taxes.
+3. Bayri ang mga nabilin nga obligasyon sa City Treasurer's Office.
+4. Kuhaa ang Certificate of Business Retirement.",Citizen Charter,"retire, business, permit"
+142,City Mayor's Office - BPLS,cmo_mtop_franchise,en,How to get a tricycle franchise?,"To apply for a **Motorized Tricycle Operators Permit (MTOP) / Franchise**, follow these steps:
+
+---
+### 🛺 MTOP Process
+
+**Steps:**
+1. Submit requirements to BPLS (LTO CR/OR, Driver's License, Barangay Clearance, Traffic Clearance, Tricycle Unit).
+2. Wait for validation and secure Order of Payment.
+3. Pay fees at the City Treasurer's Office.
+4. Receive your MTOP Mayor's Permit.
+
+💰 **Cost:** Mayor's Permit Fee ~₱100.00, Traffic Clearance ~₱50.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Around 4 hours.",Citizen Charter,"mtop, franchise"
+143,City Mayor's Office - BPLS,cmo_mtop_franchise,en,Requirements for MTOP application,"To apply for a **Motorized Tricycle Operators Permit (MTOP) / Franchise**, follow these steps:
+
+---
+### 🛺 MTOP Process
+
+**Steps:**
+1. Submit requirements to BPLS (LTO CR/OR, Driver's License, Barangay Clearance, Traffic Clearance, Tricycle Unit).
+2. Wait for validation and secure Order of Payment.
+3. Pay fees at the City Treasurer's Office.
+4. Receive your MTOP Mayor's Permit.
+
+💰 **Cost:** Mayor's Permit Fee ~₱100.00, Traffic Clearance ~₱50.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Around 4 hours.",Citizen Charter,"mtop, franchise"
+144,City Mayor's Office - BPLS,cmo_mtop_franchise,en,Motorized Tricycle Operators Permit process,"To apply for a **Motorized Tricycle Operators Permit (MTOP) / Franchise**, follow these steps:
+
+---
+### 🛺 MTOP Process
+
+**Steps:**
+1. Submit requirements to BPLS (LTO CR/OR, Driver's License, Barangay Clearance, Traffic Clearance, Tricycle Unit).
+2. Wait for validation and secure Order of Payment.
+3. Pay fees at the City Treasurer's Office.
+4. Receive your MTOP Mayor's Permit.
+
+💰 **Cost:** Mayor's Permit Fee ~₱100.00, Traffic Clearance ~₱50.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Around 4 hours.",Citizen Charter,"mtop, franchise"
+145,City Mayor's Office - BPLS,cmo_mtop_franchise,tl,Paano kumuha ng prangkisa sa tricycle?,"Para mag-apply ng **Motorized Tricycle Operators Permit (MTOP) o Prangkisa**, sundin ito:
+
+---
+### 🛺 Proseso ng MTOP
+
+**Steps:**
+1. Isumite ang requirements sa BPLS (LTO CR/OR, Driver's License, Barangay Clearance, Traffic Clearance, Tricycle Unit).
+2. Hintayin ang validation at kunin ang Order of Payment.
+3. Magbayad ng fees sa City Treasurer's Office.
+4. Kunin ang inyong MTOP Mayor's Permit.
+
+💰 **Bayad:** Mayor's Permit Fee ~₱100.00, Traffic Clearance ~₱50.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Tinatayang 4 oras.",Citizen Charter,"mtop, franchise"
+146,City Mayor's Office - BPLS,cmo_mtop_franchise,tl,Ano ang mga kailangan para sa MTOP?,"Para mag-apply ng **Motorized Tricycle Operators Permit (MTOP) o Prangkisa**, sundin ito:
+
+---
+### 🛺 Proseso ng MTOP
+
+**Steps:**
+1. Isumite ang requirements sa BPLS (LTO CR/OR, Driver's License, Barangay Clearance, Traffic Clearance, Tricycle Unit).
+2. Hintayin ang validation at kunin ang Order of Payment.
+3. Magbayad ng fees sa City Treasurer's Office.
+4. Kunin ang inyong MTOP Mayor's Permit.
+
+💰 **Bayad:** Mayor's Permit Fee ~₱100.00, Traffic Clearance ~₱50.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Tinatayang 4 oras.",Citizen Charter,"mtop, franchise"
+147,City Mayor's Office - BPLS,cmo_mtop_franchise,bis,Unsaon pagkuha og prangkisa sa tricycle?,"Para mag-apply og **Motorized Tricycle Operators Permit (MTOP) o Prangkisa**, sunda kini:
+
+---
+### 🛺 Proseso sa MTOP
+
+**Steps:**
+1. Isumite ang requirements sa BPLS (LTO CR/OR, Driver's License, Barangay Clearance, Traffic Clearance, Tricycle Unit).
+2. Hulata ang validation ug kuhaa ang Order of Payment.
+3. Pagbayad og fees sa City Treasurer's Office.
+4. Kuhaa ang imong MTOP Mayor's Permit.
+
+💰 **Bayad:** Mayor's Permit Fee ~₱100.00, Traffic Clearance ~₱50.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Mga 4 ka oras.",Citizen Charter,"mtop, franchise"
+148,City Mayor's Office - BPLS,cmo_mtop_franchise,bis,Unsa ang requirements sa MTOP?,"Para mag-apply og **Motorized Tricycle Operators Permit (MTOP) o Prangkisa**, sunda kini:
+
+---
+### 🛺 Proseso sa MTOP
+
+**Steps:**
+1. Isumite ang requirements sa BPLS (LTO CR/OR, Driver's License, Barangay Clearance, Traffic Clearance, Tricycle Unit).
+2. Hulata ang validation ug kuhaa ang Order of Payment.
+3. Pagbayad og fees sa City Treasurer's Office.
+4. Kuhaa ang imong MTOP Mayor's Permit.
+
+💰 **Bayad:** Mayor's Permit Fee ~₱100.00, Traffic Clearance ~₱50.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Mga 4 ka oras.",Citizen Charter,"mtop, franchise"
+149,City Mayor's Office - BPLS,cmo_mtop_franchise,bis,Mag apply og prangkisa para sa tricycle,"Para mag-apply og **Motorized Tricycle Operators Permit (MTOP) o Prangkisa**, sunda kini:
+
+---
+### 🛺 Proseso sa MTOP
+
+**Steps:**
+1. Isumite ang requirements sa BPLS (LTO CR/OR, Driver's License, Barangay Clearance, Traffic Clearance, Tricycle Unit).
+2. Hulata ang validation ug kuhaa ang Order of Payment.
+3. Pagbayad og fees sa City Treasurer's Office.
+4. Kuhaa ang imong MTOP Mayor's Permit.
+
+💰 **Bayad:** Mayor's Permit Fee ~₱100.00, Traffic Clearance ~₱50.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Mga 4 ka oras.",Citizen Charter,"mtop, franchise"
+150,City Mayor's Office - TMDS,cmo_release_impounded_vehicle,en,How to claim my impounded motorcycle?,"If your vehicle was impounded, here is how you can **Release an Impounded Vehicle**:
+
+---
+### 🏍️ Releasing Process
+
+**Steps:**
+1. Submit the Citation Ticket/Impounding Receipt, Driver's License OR, and Vehicle CR/OR to TMDS.
+2. Attend the scheduled **Traffic Seminar** (usually Tuesdays/Thursdays).
+3. After the seminar, sign the logbook and claim your impounded vehicle.
+
+⏱️ **Processing Time:** Around 1 hour and 20 minutes (including seminar).",Citizen Charter,"release, impounded, vehicle"
+151,City Mayor's Office - TMDS,cmo_release_impounded_vehicle,en,Process for releasing an impounded vehicle,"If your vehicle was impounded, here is how you can **Release an Impounded Vehicle**:
+
+---
+### 🏍️ Releasing Process
+
+**Steps:**
+1. Submit the Citation Ticket/Impounding Receipt, Driver's License OR, and Vehicle CR/OR to TMDS.
+2. Attend the scheduled **Traffic Seminar** (usually Tuesdays/Thursdays).
+3. After the seminar, sign the logbook and claim your impounded vehicle.
+
+⏱️ **Processing Time:** Around 1 hour and 20 minutes (including seminar).",Citizen Charter,"release, impounded, vehicle"
+152,City Mayor's Office - TMDS,cmo_release_impounded_vehicle,en,I need to get my impounded car back,"If your vehicle was impounded, here is how you can **Release an Impounded Vehicle**:
+
+---
+### 🏍️ Releasing Process
+
+**Steps:**
+1. Submit the Citation Ticket/Impounding Receipt, Driver's License OR, and Vehicle CR/OR to TMDS.
+2. Attend the scheduled **Traffic Seminar** (usually Tuesdays/Thursdays).
+3. After the seminar, sign the logbook and claim your impounded vehicle.
+
+⏱️ **Processing Time:** Around 1 hour and 20 minutes (including seminar).",Citizen Charter,"release, impounded, vehicle"
+153,City Mayor's Office - TMDS,cmo_release_impounded_vehicle,tl,Paano kukunin ang na-impound na motor?,"Kung na-impound ang iyong sasakyan, narito kung paano ito makuha (**Releasing of Impounded Vehicle**):
+
+---
+### 🏍️ Proseso
+
+**Steps:**
+1. Isumite ang Citation Ticket/Impounding Receipt, Driver's License OR, at Vehicle CR/OR sa TMDS.
+2. Umattend sa naka-schedule na **Traffic Seminar** (kadalasan ay Martes/Huwebes).
+3. Pagkatapos ng seminar, pumirma sa logbook at kunin ang na-impound na sasakyan.
+
+⏱️ **Processing Time:** Tinatayang 1 oras at 20 minuto (kasama ang seminar).",Citizen Charter,"release, impounded, vehicle"
+154,City Mayor's Office - TMDS,cmo_release_impounded_vehicle,tl,Ano ang proseso para makuha ang impounded na sasakyan?,"Kung na-impound ang iyong sasakyan, narito kung paano ito makuha (**Releasing of Impounded Vehicle**):
+
+---
+### 🏍️ Proseso
+
+**Steps:**
+1. Isumite ang Citation Ticket/Impounding Receipt, Driver's License OR, at Vehicle CR/OR sa TMDS.
+2. Umattend sa naka-schedule na **Traffic Seminar** (kadalasan ay Martes/Huwebes).
+3. Pagkatapos ng seminar, pumirma sa logbook at kunin ang na-impound na sasakyan.
+
+⏱️ **Processing Time:** Tinatayang 1 oras at 20 minuto (kasama ang seminar).",Citizen Charter,"release, impounded, vehicle"
+155,City Mayor's Office - TMDS,cmo_release_impounded_vehicle,bis,Unsaon pagkuha sa na impound nga motor?,"Kung na-impound ang imong sakyanan o motor, mao ni ang proseso sa pagkuha (**Releasing of Impounded Vehicle**):
+
+---
+### 🏍️ Proseso
+
+**Steps:**
+1. Isumite ang Citation Ticket/Impounding Receipt, Driver's License OR, ug Vehicle CR/OR sa TMDS.
+2. Mu-attend sa naka-schedule nga **Traffic Seminar** (kasagaran Martes o Huwebes).
+3. Human sa seminar, pirma sa logbook ug kuhaa ang na-impound nga sakyanan.
+
+⏱️ **Processing Time:** Mga 1 ka oras ug 20 minutos (apil ang seminar).",Citizen Charter,"release, impounded, vehicle"
+156,City Mayor's Office - TMDS,cmo_release_impounded_vehicle,bis,Asa mokuha sa na impound nga sakyanan?,"Kung na-impound ang imong sakyanan o motor, mao ni ang proseso sa pagkuha (**Releasing of Impounded Vehicle**):
+
+---
+### 🏍️ Proseso
+
+**Steps:**
+1. Isumite ang Citation Ticket/Impounding Receipt, Driver's License OR, ug Vehicle CR/OR sa TMDS.
+2. Mu-attend sa naka-schedule nga **Traffic Seminar** (kasagaran Martes o Huwebes).
+3. Human sa seminar, pirma sa logbook ug kuhaa ang na-impound nga sakyanan.
+
+⏱️ **Processing Time:** Mga 1 ka oras ug 20 minutos (apil ang seminar).",Citizen Charter,"release, impounded, vehicle"
+157,City Mayor's Office - TMDS,cmo_release_impounded_vehicle,bis,Proseso para makuha ang impounded unit,"Kung na-impound ang imong sakyanan o motor, mao ni ang proseso sa pagkuha (**Releasing of Impounded Vehicle**):
+
+---
+### 🏍️ Proseso
+
+**Steps:**
+1. Isumite ang Citation Ticket/Impounding Receipt, Driver's License OR, ug Vehicle CR/OR sa TMDS.
+2. Mu-attend sa naka-schedule nga **Traffic Seminar** (kasagaran Martes o Huwebes).
+3. Human sa seminar, pirma sa logbook ug kuhaa ang na-impound nga sakyanan.
+
+⏱️ **Processing Time:** Mga 1 ka oras ug 20 minutos (apil ang seminar).",Citizen Charter,"release, impounded, vehicle"
+158,City Mayor's Office - Building Official,cmo_building_permit,en,How to apply for a building permit?,"To construct or modify a structure, you need to apply for a **Building Permit**.
+
+---
+### 🏗️ Building Permit Process
+
+**Steps:**
+1. Submit required structural plans and documents to the Office of the Building Official (OBO).
+2. Proceed to the City Treasurer's Office to pay the filing fee.
+3. Secure clearances from BFP (Fire Safety), CPDO (Locational), and other relevant offices.
+4. OBO evaluates the plans. Once approved, pay the final building permit fees.
+5. Receive the approved Building Permit.
+
+⏱️ **Processing Time:** Takes several days depending on the completeness of documents.",Citizen Charter,"building, permit"
+159,City Mayor's Office - Building Official,cmo_building_permit,en,What are the requirements for building a house?,"To construct or modify a structure, you need to apply for a **Building Permit**.
+
+---
+### 🏗️ Building Permit Process
+
+**Steps:**
+1. Submit required structural plans and documents to the Office of the Building Official (OBO).
+2. Proceed to the City Treasurer's Office to pay the filing fee.
+3. Secure clearances from BFP (Fire Safety), CPDO (Locational), and other relevant offices.
+4. OBO evaluates the plans. Once approved, pay the final building permit fees.
+5. Receive the approved Building Permit.
+
+⏱️ **Processing Time:** Takes several days depending on the completeness of documents.",Citizen Charter,"building, permit"
+160,City Mayor's Office - Building Official,cmo_building_permit,en,Process for building permit application,"To construct or modify a structure, you need to apply for a **Building Permit**.
+
+---
+### 🏗️ Building Permit Process
+
+**Steps:**
+1. Submit required structural plans and documents to the Office of the Building Official (OBO).
+2. Proceed to the City Treasurer's Office to pay the filing fee.
+3. Secure clearances from BFP (Fire Safety), CPDO (Locational), and other relevant offices.
+4. OBO evaluates the plans. Once approved, pay the final building permit fees.
+5. Receive the approved Building Permit.
+
+⏱️ **Processing Time:** Takes several days depending on the completeness of documents.",Citizen Charter,"building, permit"
+161,City Mayor's Office - Building Official,cmo_building_permit,tl,Paano kumuha ng building permit?,"Para magtayo o mag-modify ng istraktura, kailangan mong mag-apply ng **Building Permit**.
+
+---
+### 🏗️ Proseso ng Building Permit
+
+**Steps:**
+1. Isumite ang mga structural plans at dokumento sa Office of the Building Official (OBO).
+2. Magbayad ng filing fee sa City Treasurer's Office.
+3. Kumuha ng clearances mula sa BFP (Fire Safety), CPDO (Locational), at iba pang opisina.
+4. I-eevaluate ng OBO ang plano. Kapag naaprubahan, bayaran ang final building permit fees.
+5. Kunin ang approved na Building Permit.
+
+⏱️ **Processing Time:** Aabutin ng ilang araw depende sa pagiging kumpleto ng requirements.",Citizen Charter,"building, permit"
+162,City Mayor's Office - Building Official,cmo_building_permit,tl,Ano ang mga kailangan para sa building permit?,"Para magtayo o mag-modify ng istraktura, kailangan mong mag-apply ng **Building Permit**.
+
+---
+### 🏗️ Proseso ng Building Permit
+
+**Steps:**
+1. Isumite ang mga structural plans at dokumento sa Office of the Building Official (OBO).
+2. Magbayad ng filing fee sa City Treasurer's Office.
+3. Kumuha ng clearances mula sa BFP (Fire Safety), CPDO (Locational), at iba pang opisina.
+4. I-eevaluate ng OBO ang plano. Kapag naaprubahan, bayaran ang final building permit fees.
+5. Kunin ang approved na Building Permit.
+
+⏱️ **Processing Time:** Aabutin ng ilang araw depende sa pagiging kumpleto ng requirements.",Citizen Charter,"building, permit"
+163,City Mayor's Office - Building Official,cmo_building_permit,bis,Unsaon pagkuha og building permit?,"Para magtukod o mag-modify og building, kinahanglan nimo mag-apply og **Building Permit**.
+
+---
+### 🏗️ Proseso sa Building Permit
+
+**Steps:**
+1. Isumite ang mga structural plans ug dokumento sa Office of the Building Official (OBO).
+2. Pagbayad og filing fee sa City Treasurer's Office.
+3. Pagkuha og clearances gikan sa BFP (Fire Safety), CPDO (Locational), ug uban pang opisina.
+4. I-evaluate sa OBO ang plano. Kung ma-aprubahan, bayri ang final building permit fees.
+5. Kuhaa ang na-aprubahan nga Building Permit.
+
+⏱️ **Processing Time:** Muabot og pipila ka adlaw depende kung kumpleto ba ang requirements.",Citizen Charter,"building, permit"
+164,City Mayor's Office - Building Official,cmo_building_permit,bis,Unsa ang mga requirements sa building permit?,"Para magtukod o mag-modify og building, kinahanglan nimo mag-apply og **Building Permit**.
+
+---
+### 🏗️ Proseso sa Building Permit
+
+**Steps:**
+1. Isumite ang mga structural plans ug dokumento sa Office of the Building Official (OBO).
+2. Pagbayad og filing fee sa City Treasurer's Office.
+3. Pagkuha og clearances gikan sa BFP (Fire Safety), CPDO (Locational), ug uban pang opisina.
+4. I-evaluate sa OBO ang plano. Kung ma-aprubahan, bayri ang final building permit fees.
+5. Kuhaa ang na-aprubahan nga Building Permit.
+
+⏱️ **Processing Time:** Muabot og pipila ka adlaw depende kung kumpleto ba ang requirements.",Citizen Charter,"building, permit"
+165,City Mayor's Office - Building Official,cmo_building_permit,bis,Magtukod ko ug balay unsay kailangan,"Para magtukod o mag-modify og building, kinahanglan nimo mag-apply og **Building Permit**.
+
+---
+### 🏗️ Proseso sa Building Permit
+
+**Steps:**
+1. Isumite ang mga structural plans ug dokumento sa Office of the Building Official (OBO).
+2. Pagbayad og filing fee sa City Treasurer's Office.
+3. Pagkuha og clearances gikan sa BFP (Fire Safety), CPDO (Locational), ug uban pang opisina.
+4. I-evaluate sa OBO ang plano. Kung ma-aprubahan, bayri ang final building permit fees.
+5. Kuhaa ang na-aprubahan nga Building Permit.
+
+⏱️ **Processing Time:** Muabot og pipila ka adlaw depende kung kumpleto ba ang requirements.",Citizen Charter,"building, permit"
+166,City Mayor's Office,cmo_mayors_clearance,en,How to get a Mayor's clearance?,"To secure a **Mayor's Clearance** (for employment, firearm license, etc.), follow these steps:
+
+---
+### 📄 Mayor's Clearance Process
+
+**Steps:**
+1. Present your requirements (Barangay Clearance, Police Clearance) at the CMO Receiving Section.
+2. Get the Order of Payment and pay at the City Treasurer's Office.
+3. Return to the CMO with the Official Receipt to claim your Mayor's Clearance.
+
+💰 **Cost:** ~₱50.00 to ₱100.00 (varies by purpose).
+⏱️ **Processing Time:** Around 15-30 minutes.",Citizen Charter (Part 2),"mayors, clearance"
+167,City Mayor's Office,cmo_mayors_clearance,en,Requirements for mayor clearance,"To secure a **Mayor's Clearance** (for employment, firearm license, etc.), follow these steps:
+
+---
+### 📄 Mayor's Clearance Process
+
+**Steps:**
+1. Present your requirements (Barangay Clearance, Police Clearance) at the CMO Receiving Section.
+2. Get the Order of Payment and pay at the City Treasurer's Office.
+3. Return to the CMO with the Official Receipt to claim your Mayor's Clearance.
+
+💰 **Cost:** ~₱50.00 to ₱100.00 (varies by purpose).
+⏱️ **Processing Time:** Around 15-30 minutes.",Citizen Charter (Part 2),"mayors, clearance"
+168,City Mayor's Office,cmo_mayors_clearance,en,Where do I get a clearance from the Mayor?,"To secure a **Mayor's Clearance** (for employment, firearm license, etc.), follow these steps:
+
+---
+### 📄 Mayor's Clearance Process
+
+**Steps:**
+1. Present your requirements (Barangay Clearance, Police Clearance) at the CMO Receiving Section.
+2. Get the Order of Payment and pay at the City Treasurer's Office.
+3. Return to the CMO with the Official Receipt to claim your Mayor's Clearance.
+
+💰 **Cost:** ~₱50.00 to ₱100.00 (varies by purpose).
+⏱️ **Processing Time:** Around 15-30 minutes.",Citizen Charter (Part 2),"mayors, clearance"
+169,City Mayor's Office,cmo_mayors_clearance,tl,Paano kumuha ng Mayor's clearance?,"Para kumuha ng **Mayor's Clearance** (para sa trabaho, lisensya ng baril, atbp.), sundin ito:
+
+---
+### 📄 Proseso
+
+**Steps:**
+1. Ipakita ang requirements (Barangay Clearance, Police Clearance) sa CMO Receiving Section.
+2. Kunin ang Order of Payment at magbayad sa City Treasurer's Office.
+3. Bumalik sa CMO dala ang Official Receipt para makuha ang Mayor's Clearance.
+
+💰 **Bayad:** ~₱50.00 hanggang ₱100.00 (depende sa layunin).
+⏱️ **Processing Time:** Tinatayang 15-30 minuto.",Citizen Charter (Part 2),"mayors, clearance"
+170,City Mayor's Office,cmo_mayors_clearance,tl,Ano kailangan sa mayor's clearance?,"Para kumuha ng **Mayor's Clearance** (para sa trabaho, lisensya ng baril, atbp.), sundin ito:
+
+---
+### 📄 Proseso
+
+**Steps:**
+1. Ipakita ang requirements (Barangay Clearance, Police Clearance) sa CMO Receiving Section.
+2. Kunin ang Order of Payment at magbayad sa City Treasurer's Office.
+3. Bumalik sa CMO dala ang Official Receipt para makuha ang Mayor's Clearance.
+
+💰 **Bayad:** ~₱50.00 hanggang ₱100.00 (depende sa layunin).
+⏱️ **Processing Time:** Tinatayang 15-30 minuto.",Citizen Charter (Part 2),"mayors, clearance"
+171,City Mayor's Office,cmo_mayors_clearance,bis,Unsaon pagkuha og mayor's clearance?,"Para mokuha og **Mayor's Clearance** (para sa trabaho, lisensya sa pusil, ug uban pa), sunda kini:
+
+---
+### 📄 Proseso
+
+**Steps:**
+1. Ipakita ang imong requirements (Barangay Clearance, Police Clearance) sa CMO Receiving Section.
+2. Kuhaa ang Order of Payment ug pagbayad sa City Treasurer's Office.
+3. Balik sa CMO dala ang Official Receipt aron makuha ang Mayor's Clearance.
+
+💰 **Bayad:** ~₱50.00 hantod ₱100.00 (depende sa gamit).
+⏱️ **Processing Time:** Mga 15-30 minutos.",Citizen Charter (Part 2),"mayors, clearance"
+172,City Mayor's Office,cmo_mayors_clearance,bis,Unsa ang requirements sa mayor's clearance?,"Para mokuha og **Mayor's Clearance** (para sa trabaho, lisensya sa pusil, ug uban pa), sunda kini:
+
+---
+### 📄 Proseso
+
+**Steps:**
+1. Ipakita ang imong requirements (Barangay Clearance, Police Clearance) sa CMO Receiving Section.
+2. Kuhaa ang Order of Payment ug pagbayad sa City Treasurer's Office.
+3. Balik sa CMO dala ang Official Receipt aron makuha ang Mayor's Clearance.
+
+💰 **Bayad:** ~₱50.00 hantod ₱100.00 (depende sa gamit).
+⏱️ **Processing Time:** Mga 15-30 minutos.",Citizen Charter (Part 2),"mayors, clearance"
+173,City Mayor's Office,cmo_mayors_clearance,bis,Kailangan nako mayor clearance para sa trabaho,"Para mokuha og **Mayor's Clearance** (para sa trabaho, lisensya sa pusil, ug uban pa), sunda kini:
+
+---
+### 📄 Proseso
+
+**Steps:**
+1. Ipakita ang imong requirements (Barangay Clearance, Police Clearance) sa CMO Receiving Section.
+2. Kuhaa ang Order of Payment ug pagbayad sa City Treasurer's Office.
+3. Balik sa CMO dala ang Official Receipt aron makuha ang Mayor's Clearance.
+
+💰 **Bayad:** ~₱50.00 hantod ₱100.00 (depende sa gamit).
+⏱️ **Processing Time:** Mga 15-30 minutos.",Citizen Charter (Part 2),"mayors, clearance"
+174,City Mayor's Office - BPLS,cmo_occupational_permit,en,How to apply for an occupational permit?,"All employees working in the city must secure an **Occupational Permit** or Mayor's Working Permit.
+
+---
+### 👨‍💼 Occupational Permit Process
+
+**Steps:**
+1. Submit requirements (Health Certificate from CHO, Police Clearance, and receipt of Police Clearance).
+2. Present documents to the BPLS for assessment.
+3. Pay the Occupational Permit fee at the City Treasurer's Office.
+4. Present the Official Receipt and claim the printed ID/Permit.
+
+💰 **Cost:** ~₱150.00 (varies by position).
+⏱️ **Processing Time:** Around 20-30 minutes.",Citizen Charter (Part 2),"occupational, permit"
+175,City Mayor's Office - BPLS,cmo_occupational_permit,en,What are the requirements for Mayor's working permit?,"All employees working in the city must secure an **Occupational Permit** or Mayor's Working Permit.
+
+---
+### 👨‍💼 Occupational Permit Process
+
+**Steps:**
+1. Submit requirements (Health Certificate from CHO, Police Clearance, and receipt of Police Clearance).
+2. Present documents to the BPLS for assessment.
+3. Pay the Occupational Permit fee at the City Treasurer's Office.
+4. Present the Official Receipt and claim the printed ID/Permit.
+
+💰 **Cost:** ~₱150.00 (varies by position).
+⏱️ **Processing Time:** Around 20-30 minutes.",Citizen Charter (Part 2),"occupational, permit"
+176,City Mayor's Office - BPLS,cmo_occupational_permit,en,Process of getting occupational permit,"All employees working in the city must secure an **Occupational Permit** or Mayor's Working Permit.
+
+---
+### 👨‍💼 Occupational Permit Process
+
+**Steps:**
+1. Submit requirements (Health Certificate from CHO, Police Clearance, and receipt of Police Clearance).
+2. Present documents to the BPLS for assessment.
+3. Pay the Occupational Permit fee at the City Treasurer's Office.
+4. Present the Official Receipt and claim the printed ID/Permit.
+
+💰 **Cost:** ~₱150.00 (varies by position).
+⏱️ **Processing Time:** Around 20-30 minutes.",Citizen Charter (Part 2),"occupational, permit"
+177,City Mayor's Office - BPLS,cmo_occupational_permit,tl,Paano kumuha ng occupational permit?,"Lahat ng empleyado sa lungsod ay kailangang kumuha ng **Occupational Permit** o Mayor's Working Permit.
+
+---
+### 👨‍💼 Proseso
+
+**Steps:**
+1. Isumite ang requirements (Health Certificate mula CHO, Police Clearance).
+2. Ipakita ang mga dokumento sa BPLS para sa assessment.
+3. Magbayad ng fee sa City Treasurer's Office.
+4. Ipakita ang Official Receipt at kunin ang Occupational Permit.
+
+💰 **Bayad:** ~₱150.00 (depende sa posisyon).
+⏱️ **Processing Time:** Tinatayang 20-30 minuto.",Citizen Charter (Part 2),"occupational, permit"
+178,City Mayor's Office - BPLS,cmo_occupational_permit,tl,Working permit requirements,"Lahat ng empleyado sa lungsod ay kailangang kumuha ng **Occupational Permit** o Mayor's Working Permit.
+
+---
+### 👨‍💼 Proseso
+
+**Steps:**
+1. Isumite ang requirements (Health Certificate mula CHO, Police Clearance).
+2. Ipakita ang mga dokumento sa BPLS para sa assessment.
+3. Magbayad ng fee sa City Treasurer's Office.
+4. Ipakita ang Official Receipt at kunin ang Occupational Permit.
+
+💰 **Bayad:** ~₱150.00 (depende sa posisyon).
+⏱️ **Processing Time:** Tinatayang 20-30 minuto.",Citizen Charter (Part 2),"occupational, permit"
+179,City Mayor's Office - BPLS,cmo_occupational_permit,bis,Unsaon pagkuha og occupational permit?,"Tanan empleyado sa syudad kinahanglan mokuha og **Occupational Permit** o Mayor's Working Permit.
+
+---
+### 👨‍💼 Proseso
+
+**Steps:**
+1. Isumite ang requirements (Health Certificate gikan sa CHO, Police Clearance).
+2. Ipakita ang mga dokumento sa BPLS para ma-assess.
+3. Bayri ang permit fee sa City Treasurer's Office.
+4. Ipakita ang Official Receipt ug kuhaa ang Occupational Permit.
+
+💰 **Bayad:** ~₱150.00 (depende sa posisyon).
+⏱️ **Processing Time:** Mga 20-30 minutos.",Citizen Charter (Part 2),"occupational, permit"
+180,City Mayor's Office - BPLS,cmo_occupational_permit,bis,Unsay requirements sa working permit sa mayor?,"Tanan empleyado sa syudad kinahanglan mokuha og **Occupational Permit** o Mayor's Working Permit.
+
+---
+### 👨‍💼 Proseso
+
+**Steps:**
+1. Isumite ang requirements (Health Certificate gikan sa CHO, Police Clearance).
+2. Ipakita ang mga dokumento sa BPLS para ma-assess.
+3. Bayri ang permit fee sa City Treasurer's Office.
+4. Ipakita ang Official Receipt ug kuhaa ang Occupational Permit.
+
+💰 **Bayad:** ~₱150.00 (depende sa posisyon).
+⏱️ **Processing Time:** Mga 20-30 minutos.",Citizen Charter (Part 2),"occupational, permit"
+181,City Mayor's Office - BPLS,cmo_occupational_permit,bis,Mokuha ko og permit kay manarbaho ko,"Tanan empleyado sa syudad kinahanglan mokuha og **Occupational Permit** o Mayor's Working Permit.
+
+---
+### 👨‍💼 Proseso
+
+**Steps:**
+1. Isumite ang requirements (Health Certificate gikan sa CHO, Police Clearance).
+2. Ipakita ang mga dokumento sa BPLS para ma-assess.
+3. Bayri ang permit fee sa City Treasurer's Office.
+4. Ipakita ang Official Receipt ug kuhaa ang Occupational Permit.
+
+💰 **Bayad:** ~₱150.00 (depende sa posisyon).
+⏱️ **Processing Time:** Mga 20-30 minutos.",Citizen Charter (Part 2),"occupational, permit"
+182,City Mayor's Office - BPLS,cmo_mtop_transfer,en,How to transfer tricycle franchise ownership?,"If you bought or sold a tricycle, you need to apply for an **MTOP Transfer of Ownership**.
+
+---
+### 🔄 Transfer Process
+
+**Steps:**
+1. Submit the Deed of Sale, Original MTOP Franchise, LTO CR/OR, and Barangay Clearance to BPLS.
+2. Secure the Order of Payment.
+3. Pay the Transfer Fee and other dues at the City Treasurer's Office.
+4. Present the receipt and claim the updated MTOP under the new owner's name.
+
+💰 **Cost:** Transfer Fee is around ~₱200.00.
+⏱️ **Processing Time:** Around 2-3 hours.",Citizen Charter (Part 2),"mtop, transfer"
+183,City Mayor's Office - BPLS,cmo_mtop_transfer,en,MTOP transfer of ownership process,"If you bought or sold a tricycle, you need to apply for an **MTOP Transfer of Ownership**.
+
+---
+### 🔄 Transfer Process
+
+**Steps:**
+1. Submit the Deed of Sale, Original MTOP Franchise, LTO CR/OR, and Barangay Clearance to BPLS.
+2. Secure the Order of Payment.
+3. Pay the Transfer Fee and other dues at the City Treasurer's Office.
+4. Present the receipt and claim the updated MTOP under the new owner's name.
+
+💰 **Cost:** Transfer Fee is around ~₱200.00.
+⏱️ **Processing Time:** Around 2-3 hours.",Citizen Charter (Part 2),"mtop, transfer"
+184,City Mayor's Office - BPLS,cmo_mtop_transfer,en,"I bought a tricycle, how to transfer MTOP?","If you bought or sold a tricycle, you need to apply for an **MTOP Transfer of Ownership**.
+
+---
+### 🔄 Transfer Process
+
+**Steps:**
+1. Submit the Deed of Sale, Original MTOP Franchise, LTO CR/OR, and Barangay Clearance to BPLS.
+2. Secure the Order of Payment.
+3. Pay the Transfer Fee and other dues at the City Treasurer's Office.
+4. Present the receipt and claim the updated MTOP under the new owner's name.
+
+💰 **Cost:** Transfer Fee is around ~₱200.00.
+⏱️ **Processing Time:** Around 2-3 hours.",Citizen Charter (Part 2),"mtop, transfer"
+185,City Mayor's Office - BPLS,cmo_mtop_transfer,tl,Paano ilipat ang pangalan ng prangkisa ng tricycle?,"Kung ikaw ay bumili o nagbenta ng tricycle, kailangan mong mag-apply para sa **MTOP Transfer of Ownership**.
+
+---
+### 🔄 Proseso ng Transfer
+
+**Steps:**
+1. Isumite ang Deed of Sale, Original MTOP, LTO CR/OR, at Barangay Clearance sa BPLS.
+2. Kunin ang Order of Payment.
+3. Bayaran ang Transfer Fee sa City Treasurer's Office.
+4. Kunin ang bagong MTOP franchise na nakapangalan na sa bagong may-ari.
+
+💰 **Bayad:** Ang Transfer Fee ay nasa ~₱200.00.
+⏱️ **Processing Time:** Tinatayang 2-3 oras.",Citizen Charter (Part 2),"mtop, transfer"
+186,City Mayor's Office - BPLS,cmo_mtop_transfer,tl,Requirements para sa transfer ng MTOP,"Kung ikaw ay bumili o nagbenta ng tricycle, kailangan mong mag-apply para sa **MTOP Transfer of Ownership**.
+
+---
+### 🔄 Proseso ng Transfer
+
+**Steps:**
+1. Isumite ang Deed of Sale, Original MTOP, LTO CR/OR, at Barangay Clearance sa BPLS.
+2. Kunin ang Order of Payment.
+3. Bayaran ang Transfer Fee sa City Treasurer's Office.
+4. Kunin ang bagong MTOP franchise na nakapangalan na sa bagong may-ari.
+
+💰 **Bayad:** Ang Transfer Fee ay nasa ~₱200.00.
+⏱️ **Processing Time:** Tinatayang 2-3 oras.",Citizen Charter (Part 2),"mtop, transfer"
+187,City Mayor's Office - BPLS,cmo_mtop_transfer,bis,Unsaon pag transfer sa pangalan sa prangkisa?,"Kung nipalit o nagbaligya ka og tricycle, kinahanglan ka mag-apply para sa **MTOP Transfer of Ownership**.
+
+---
+### 🔄 Proseso sa Transfer
+
+**Steps:**
+1. Isumite ang Deed of Sale, Original MTOP, LTO CR/OR, ug Barangay Clearance sa BPLS.
+2. Kuhaa ang Order of Payment.
+3. Bayri ang Transfer Fee sa City Treasurer's Office.
+4. Kuhaa ang bag-ong MTOP franchise nga nakapangalan na sa bag-ong tag-iya.
+
+💰 **Bayad:** Ang Transfer Fee kay mga ~₱200.00.
+⏱️ **Processing Time:** Mga 2-3 ka oras.",Citizen Charter (Part 2),"mtop, transfer"
+188,City Mayor's Office - BPLS,cmo_mtop_transfer,bis,Nipalit ko og tricycle unsaon pagbalhin sa mtop?,"Kung nipalit o nagbaligya ka og tricycle, kinahanglan ka mag-apply para sa **MTOP Transfer of Ownership**.
+
+---
+### 🔄 Proseso sa Transfer
+
+**Steps:**
+1. Isumite ang Deed of Sale, Original MTOP, LTO CR/OR, ug Barangay Clearance sa BPLS.
+2. Kuhaa ang Order of Payment.
+3. Bayri ang Transfer Fee sa City Treasurer's Office.
+4. Kuhaa ang bag-ong MTOP franchise nga nakapangalan na sa bag-ong tag-iya.
+
+💰 **Bayad:** Ang Transfer Fee kay mga ~₱200.00.
+⏱️ **Processing Time:** Mga 2-3 ka oras.",Citizen Charter (Part 2),"mtop, transfer"
+189,City Mayor's Office - BPLS,cmo_mtop_transfer,bis,Transfer of ownership sa tricycle,"Kung nipalit o nagbaligya ka og tricycle, kinahanglan ka mag-apply para sa **MTOP Transfer of Ownership**.
+
+---
+### 🔄 Proseso sa Transfer
+
+**Steps:**
+1. Isumite ang Deed of Sale, Original MTOP, LTO CR/OR, ug Barangay Clearance sa BPLS.
+2. Kuhaa ang Order of Payment.
+3. Bayri ang Transfer Fee sa City Treasurer's Office.
+4. Kuhaa ang bag-ong MTOP franchise nga nakapangalan na sa bag-ong tag-iya.
+
+💰 **Bayad:** Ang Transfer Fee kay mga ~₱200.00.
+⏱️ **Processing Time:** Mga 2-3 ka oras.",Citizen Charter (Part 2),"mtop, transfer"
+190,City Mayor's Office - BPLS,cmo_driver_id,en,How to get a tricycle driver's ID?,"Tricycle and Trisikad drivers must secure a **Driver's Identification Card** from the CMO.
+
+---
+### 🪪 Driver's ID Process
+
+**Steps:**
+1. Present your Professional Driver's License, Police Clearance, and MTOP Franchise to the BPLS.
+2. Get assessed and secure an Order of Payment.
+3. Pay the ID fee at the City Treasurer's Office.
+4. Proceed to ID picture capturing and claim your printed ID.
+
+💰 **Cost:** ~₱50.00 - ₱100.00.
+⏱️ **Processing Time:** Around 30-45 minutes.",Citizen Charter (Part 2),"driver, id"
+191,City Mayor's Office - BPLS,cmo_driver_id,en,Requirements for MTOP driver ID,"Tricycle and Trisikad drivers must secure a **Driver's Identification Card** from the CMO.
+
+---
+### 🪪 Driver's ID Process
+
+**Steps:**
+1. Present your Professional Driver's License, Police Clearance, and MTOP Franchise to the BPLS.
+2. Get assessed and secure an Order of Payment.
+3. Pay the ID fee at the City Treasurer's Office.
+4. Proceed to ID picture capturing and claim your printed ID.
+
+💰 **Cost:** ~₱50.00 - ₱100.00.
+⏱️ **Processing Time:** Around 30-45 minutes.",Citizen Charter (Part 2),"driver, id"
+192,City Mayor's Office - BPLS,cmo_driver_id,en,I need a driver's ID for my tricycle,"Tricycle and Trisikad drivers must secure a **Driver's Identification Card** from the CMO.
+
+---
+### 🪪 Driver's ID Process
+
+**Steps:**
+1. Present your Professional Driver's License, Police Clearance, and MTOP Franchise to the BPLS.
+2. Get assessed and secure an Order of Payment.
+3. Pay the ID fee at the City Treasurer's Office.
+4. Proceed to ID picture capturing and claim your printed ID.
+
+💰 **Cost:** ~₱50.00 - ₱100.00.
+⏱️ **Processing Time:** Around 30-45 minutes.",Citizen Charter (Part 2),"driver, id"
+193,City Mayor's Office - BPLS,cmo_driver_id,tl,Paano kumuha ng ID ng driver ng tricycle?,"Ang mga driver ng tricycle at trisikad ay kailangang kumuha ng **Driver's Identification Card** mula sa CMO.
+
+---
+### 🪪 Proseso ng Driver's ID
+
+**Steps:**
+1. Ipakita ang Professional Driver's License, Police Clearance, at MTOP Franchise sa BPLS.
+2. Kumuha ng Order of Payment.
+3. Magbayad ng ID fee sa City Treasurer's Office.
+4. Magpa-picture at kunin ang printed na ID.
+
+💰 **Bayad:** ~₱50.00 - ₱100.00.
+⏱️ **Processing Time:** Tinatayang 30-45 minuto.",Citizen Charter (Part 2),"driver, id"
+194,City Mayor's Office - BPLS,cmo_driver_id,tl,Ano kailangan para sa driver's ID?,"Ang mga driver ng tricycle at trisikad ay kailangang kumuha ng **Driver's Identification Card** mula sa CMO.
+
+---
+### 🪪 Proseso ng Driver's ID
+
+**Steps:**
+1. Ipakita ang Professional Driver's License, Police Clearance, at MTOP Franchise sa BPLS.
+2. Kumuha ng Order of Payment.
+3. Magbayad ng ID fee sa City Treasurer's Office.
+4. Magpa-picture at kunin ang printed na ID.
+
+💰 **Bayad:** ~₱50.00 - ₱100.00.
+⏱️ **Processing Time:** Tinatayang 30-45 minuto.",Citizen Charter (Part 2),"driver, id"
+195,City Mayor's Office - BPLS,cmo_driver_id,bis,Unsaon pagkuha og ID sa drayber sa tricycle?,"Ang mga drayber sa tricycle ug trisikad kinahanglan mokuha og **Driver's Identification Card** gikan sa CMO.
+
+---
+### 🪪 Proseso sa Driver's ID
+
+**Steps:**
+1. Ipakita ang Professional Driver's License, Police Clearance, ug MTOP Franchise sa BPLS.
+2. Kuhaa ang Order of Payment.
+3. Pagbayad sa ID fee sa City Treasurer's Office.
+4. Pagpa-picture ug kuhaa ang imong printed nga ID.
+
+💰 **Bayad:** ~₱50.00 - ₱100.00.
+⏱️ **Processing Time:** Mga 30-45 minutos.",Citizen Charter (Part 2),"driver, id"
+196,City Mayor's Office - BPLS,cmo_driver_id,bis,Asa makakuha og driver's id para sa trisikad?,"Ang mga drayber sa tricycle ug trisikad kinahanglan mokuha og **Driver's Identification Card** gikan sa CMO.
+
+---
+### 🪪 Proseso sa Driver's ID
+
+**Steps:**
+1. Ipakita ang Professional Driver's License, Police Clearance, ug MTOP Franchise sa BPLS.
+2. Kuhaa ang Order of Payment.
+3. Pagbayad sa ID fee sa City Treasurer's Office.
+4. Pagpa-picture ug kuhaa ang imong printed nga ID.
+
+💰 **Bayad:** ~₱50.00 - ₱100.00.
+⏱️ **Processing Time:** Mga 30-45 minutos.",Citizen Charter (Part 2),"driver, id"
+197,City Mayor's Office - BPLS,cmo_driver_id,bis,Requirements sa tricycle driver ID,"Ang mga drayber sa tricycle ug trisikad kinahanglan mokuha og **Driver's Identification Card** gikan sa CMO.
+
+---
+### 🪪 Proseso sa Driver's ID
+
+**Steps:**
+1. Ipakita ang Professional Driver's License, Police Clearance, ug MTOP Franchise sa BPLS.
+2. Kuhaa ang Order of Payment.
+3. Pagbayad sa ID fee sa City Treasurer's Office.
+4. Pagpa-picture ug kuhaa ang imong printed nga ID.
+
+💰 **Bayad:** ~₱50.00 - ₱100.00.
+⏱️ **Processing Time:** Mga 30-45 minutos.",Citizen Charter (Part 2),"driver, id"
+198,City Mayor's Office,cmo_special_permit,en,How to get a permit for a motorcade?,"For events, motorcades, recuridas, or promotional activities, you need a **Mayor's Special Permit**.
+
+---
+### 🎉 Special Permit Process
+
+**Steps:**
+1. Submit a formal Request Letter addressed to the City Mayor, indicating the details of the event/activity.
+2. Once approved and signed by the Mayor or City Administrator, proceed to the BPLS for assessment.
+3. Pay the Special Permit fee at the City Treasurer's Office.
+4. Claim the printed Special Permit.
+
+💰 **Cost:** Depends on the nature of the activity.
+⏱️ **Processing Time:** 1 to 2 working days (depending on approval).",Citizen Charter (Part 2),"special, permit"
+199,City Mayor's Office,cmo_special_permit,en,Special permit for events,"For events, motorcades, recuridas, or promotional activities, you need a **Mayor's Special Permit**.
+
+---
+### 🎉 Special Permit Process
+
+**Steps:**
+1. Submit a formal Request Letter addressed to the City Mayor, indicating the details of the event/activity.
+2. Once approved and signed by the Mayor or City Administrator, proceed to the BPLS for assessment.
+3. Pay the Special Permit fee at the City Treasurer's Office.
+4. Claim the printed Special Permit.
+
+💰 **Cost:** Depends on the nature of the activity.
+⏱️ **Processing Time:** 1 to 2 working days (depending on approval).",Citizen Charter (Part 2),"special, permit"
+200,City Mayor's Office,cmo_special_permit,en,How to apply for Mayor's special permit?,"For events, motorcades, recuridas, or promotional activities, you need a **Mayor's Special Permit**.
+
+---
+### 🎉 Special Permit Process
+
+**Steps:**
+1. Submit a formal Request Letter addressed to the City Mayor, indicating the details of the event/activity.
+2. Once approved and signed by the Mayor or City Administrator, proceed to the BPLS for assessment.
+3. Pay the Special Permit fee at the City Treasurer's Office.
+4. Claim the printed Special Permit.
+
+💰 **Cost:** Depends on the nature of the activity.
+⏱️ **Processing Time:** 1 to 2 working days (depending on approval).",Citizen Charter (Part 2),"special, permit"
+201,City Mayor's Office,cmo_special_permit,tl,Paano kumuha ng permit para sa event?,"Para sa mga events, motorcade, recurida, o promotional activities, kailangan mo ng **Mayor's Special Permit**.
+
+---
+### 🎉 Proseso
+
+**Steps:**
+1. Isumite ang pormal na Request Letter sa City Mayor na naglalaman ng detalye ng aktibidad.
+2. Kapag naaprubahan, pumunta sa BPLS para sa assessment.
+3. Magbayad ng Special Permit fee sa City Treasurer's Office.
+4. Kunin ang inyong Special Permit.
+
+💰 **Bayad:** Depende sa klase ng aktibidad.
+⏱️ **Processing Time:** 1 hanggang 2 araw (depende sa pag-apruba).",Citizen Charter (Part 2),"special, permit"
+202,City Mayor's Office,cmo_special_permit,tl,Permit para sa motorcade o recurida,"Para sa mga events, motorcade, recurida, o promotional activities, kailangan mo ng **Mayor's Special Permit**.
+
+---
+### 🎉 Proseso
+
+**Steps:**
+1. Isumite ang pormal na Request Letter sa City Mayor na naglalaman ng detalye ng aktibidad.
+2. Kapag naaprubahan, pumunta sa BPLS para sa assessment.
+3. Magbayad ng Special Permit fee sa City Treasurer's Office.
+4. Kunin ang inyong Special Permit.
+
+💰 **Bayad:** Depende sa klase ng aktibidad.
+⏱️ **Processing Time:** 1 hanggang 2 araw (depende sa pag-apruba).",Citizen Charter (Part 2),"special, permit"
+203,City Mayor's Office,cmo_special_permit,bis,Unsaon pagkuha og permit para mag motorcade?,"Para sa mga events, motorcade, recurida, o promotional activities, kinahanglan nimo og **Mayor's Special Permit**.
+
+---
+### 🎉 Proseso
+
+**Steps:**
+1. Pagpasa og Request Letter para sa City Mayor nga naay detalye sa inyong aktibidad.
+2. Kung ma-aprubahan na, adto sa BPLS para ma-assess.
+3. Pagbayad sa Special Permit fee didto sa City Treasurer's Office.
+4. Kuhaa ang inyong Special Permit.
+
+💰 **Bayad:** Magdepende sa klase sa aktibidad.
+⏱️ **Processing Time:** 1 ngadto sa 2 ka adlaw (depende sa approval).",Citizen Charter (Part 2),"special, permit"
+204,City Mayor's Office,cmo_special_permit,bis,Permit para mag pa event,"Para sa mga events, motorcade, recurida, o promotional activities, kinahanglan nimo og **Mayor's Special Permit**.
+
+---
+### 🎉 Proseso
+
+**Steps:**
+1. Pagpasa og Request Letter para sa City Mayor nga naay detalye sa inyong aktibidad.
+2. Kung ma-aprubahan na, adto sa BPLS para ma-assess.
+3. Pagbayad sa Special Permit fee didto sa City Treasurer's Office.
+4. Kuhaa ang inyong Special Permit.
+
+💰 **Bayad:** Magdepende sa klase sa aktibidad.
+⏱️ **Processing Time:** 1 ngadto sa 2 ka adlaw (depende sa approval).",Citizen Charter (Part 2),"special, permit"
+205,City Mayor's Office,cmo_special_permit,bis,Unsay requirements sa special permit?,"Para sa mga events, motorcade, recurida, o promotional activities, kinahanglan nimo og **Mayor's Special Permit**.
+
+---
+### 🎉 Proseso
+
+**Steps:**
+1. Pagpasa og Request Letter para sa City Mayor nga naay detalye sa inyong aktibidad.
+2. Kung ma-aprubahan na, adto sa BPLS para ma-assess.
+3. Pagbayad sa Special Permit fee didto sa City Treasurer's Office.
+4. Kuhaa ang inyong Special Permit.
+
+💰 **Bayad:** Magdepende sa klase sa aktibidad.
+⏱️ **Processing Time:** 1 ngadto sa 2 ka adlaw (depende sa approval).",Citizen Charter (Part 2),"special, permit"
+206,City Mayor's Office,cmo_marriage_solemnization,en,How to get married by the Mayor?,"Couples can request the City Mayor to officiate their wedding through **Marriage Solemnization**.
+
+---
+### 💍 Solemnization Process
+
+**Steps:**
+1. Secure a Marriage License from the Local Civil Registrar (LCR).
+2. Submit the Marriage License and request letter to the CMO at least two (2) weeks before the desired date.
+3. Pay the Solemnization Fee at the City Treasurer's Office.
+4. Attend the scheduled wedding at the Mayor's Office.
+
+💰 **Cost:** Solemnization Fee ~₱300.00.
+⏱️ **Processing Time:** Scheduling takes 10-15 mins; subject to the Mayor's availability.",Citizen Charter (Part 2),"marriage, solemnization"
+207,City Mayor's Office,cmo_marriage_solemnization,en,Process for civil wedding at the Mayor's office,"Couples can request the City Mayor to officiate their wedding through **Marriage Solemnization**.
+
+---
+### 💍 Solemnization Process
+
+**Steps:**
+1. Secure a Marriage License from the Local Civil Registrar (LCR).
+2. Submit the Marriage License and request letter to the CMO at least two (2) weeks before the desired date.
+3. Pay the Solemnization Fee at the City Treasurer's Office.
+4. Attend the scheduled wedding at the Mayor's Office.
+
+💰 **Cost:** Solemnization Fee ~₱300.00.
+⏱️ **Processing Time:** Scheduling takes 10-15 mins; subject to the Mayor's availability.",Citizen Charter (Part 2),"marriage, solemnization"
+208,City Mayor's Office,cmo_marriage_solemnization,en,Requirements for marriage solemnization,"Couples can request the City Mayor to officiate their wedding through **Marriage Solemnization**.
+
+---
+### 💍 Solemnization Process
+
+**Steps:**
+1. Secure a Marriage License from the Local Civil Registrar (LCR).
+2. Submit the Marriage License and request letter to the CMO at least two (2) weeks before the desired date.
+3. Pay the Solemnization Fee at the City Treasurer's Office.
+4. Attend the scheduled wedding at the Mayor's Office.
+
+💰 **Cost:** Solemnization Fee ~₱300.00.
+⏱️ **Processing Time:** Scheduling takes 10-15 mins; subject to the Mayor's availability.",Citizen Charter (Part 2),"marriage, solemnization"
+209,City Mayor's Office,cmo_marriage_solemnization,tl,Paano magpakasal sa Mayor?,"Maaaring hilingin sa City Mayor na magkasal sa inyo sa pamamagitan ng **Marriage Solemnization**.
+
+---
+### 💍 Proseso ng Kasal sa Mayor
+
+**Steps:**
+1. Kumuha ng Marriage License sa Local Civil Registrar (LCR).
+2. Isumite ang Marriage License at request letter sa CMO, dalawang (2) linggo bago ang kasal.
+3. Magbayad ng Solemnization Fee sa City Treasurer's Office.
+4. Pumunta sa araw ng kasal sa opisina ng Mayor.
+
+💰 **Bayad:** Solemnization Fee ~₱300.00.
+⏱️ **Processing Time:** 10-15 mins para sa scheduling; depende sa schedule ng Mayor.",Citizen Charter (Part 2),"marriage, solemnization"
+210,City Mayor's Office,cmo_marriage_solemnization,tl,Ano kailangan sa civil wedding sa city hall?,"Maaaring hilingin sa City Mayor na magkasal sa inyo sa pamamagitan ng **Marriage Solemnization**.
+
+---
+### 💍 Proseso ng Kasal sa Mayor
+
+**Steps:**
+1. Kumuha ng Marriage License sa Local Civil Registrar (LCR).
+2. Isumite ang Marriage License at request letter sa CMO, dalawang (2) linggo bago ang kasal.
+3. Magbayad ng Solemnization Fee sa City Treasurer's Office.
+4. Pumunta sa araw ng kasal sa opisina ng Mayor.
+
+💰 **Bayad:** Solemnization Fee ~₱300.00.
+⏱️ **Processing Time:** 10-15 mins para sa scheduling; depende sa schedule ng Mayor.",Citizen Charter (Part 2),"marriage, solemnization"
+211,City Mayor's Office,cmo_marriage_solemnization,bis,Unsaon pagpakasal sa Mayor?,"Pwede mo magpakasal sa City Mayor pinaagi sa **Marriage Solemnization**.
+
+---
+### 💍 Proseso sa Pagpakasal
+
+**Steps:**
+1. Pagkuha daan og Marriage License sa Local Civil Registrar (LCR).
+2. Isumite ang Marriage License ug request letter sa CMO, duha (2) ka semana sa dili pa ang petsa.
+3. Pagbayad sa Solemnization Fee sa City Treasurer's Office.
+4. Tunga sa naka-schedule nga adlaw sa kasal sa opisina sa Mayor.
+
+💰 **Bayad:** Solemnization Fee ~₱300.00.
+⏱️ **Processing Time:** 10-15 mins ang pag-schedule; depende kung libre ang Mayor.",Citizen Charter (Part 2),"marriage, solemnization"
+212,City Mayor's Office,cmo_marriage_solemnization,bis,Gusto mi magpa civil wedding unsay requirements?,"Pwede mo magpakasal sa City Mayor pinaagi sa **Marriage Solemnization**.
+
+---
+### 💍 Proseso sa Pagpakasal
+
+**Steps:**
+1. Pagkuha daan og Marriage License sa Local Civil Registrar (LCR).
+2. Isumite ang Marriage License ug request letter sa CMO, duha (2) ka semana sa dili pa ang petsa.
+3. Pagbayad sa Solemnization Fee sa City Treasurer's Office.
+4. Tunga sa naka-schedule nga adlaw sa kasal sa opisina sa Mayor.
+
+💰 **Bayad:** Solemnization Fee ~₱300.00.
+⏱️ **Processing Time:** 10-15 mins ang pag-schedule; depende kung libre ang Mayor.",Citizen Charter (Part 2),"marriage, solemnization"
+213,City Mayor's Office,cmo_marriage_solemnization,bis,Kasal sa mayor proseso,"Pwede mo magpakasal sa City Mayor pinaagi sa **Marriage Solemnization**.
+
+---
+### 💍 Proseso sa Pagpakasal
+
+**Steps:**
+1. Pagkuha daan og Marriage License sa Local Civil Registrar (LCR).
+2. Isumite ang Marriage License ug request letter sa CMO, duha (2) ka semana sa dili pa ang petsa.
+3. Pagbayad sa Solemnization Fee sa City Treasurer's Office.
+4. Tunga sa naka-schedule nga adlaw sa kasal sa opisina sa Mayor.
+
+💰 **Bayad:** Solemnization Fee ~₱300.00.
+⏱️ **Processing Time:** 10-15 mins ang pag-schedule; depende kung libre ang Mayor.",Citizen Charter (Part 2),"marriage, solemnization"
+214,City Mayor's Office - PESO,cmo_job_recommendation,en,How to get a job recommendation from the Mayor?,"Job seekers can request an **Endorsement / Recommendation Letter** for local or overseas employment from the CMO/PESO.
+
+---
+### 💼 Recommendation Process
+
+**Steps:**
+1. Prepare your Resume/Bio-data and a cover letter indicating the company you are applying to.
+2. Submit the documents to the Public Employment Service Office (PESO) or the Mayor's Office receiving clerk.
+3. The office will prepare the endorsement letter signed by the Mayor.
+4. Claim the sealed recommendation letter.
+
+💰 **Cost:** Free of charge.
+⏱️ **Processing Time:** Around 15 to 30 minutes.",Citizen Charter (Part 2),"job, recommendation"
+215,City Mayor's Office - PESO,cmo_job_recommendation,en,Mayor's endorsement for employment,"Job seekers can request an **Endorsement / Recommendation Letter** for local or overseas employment from the CMO/PESO.
+
+---
+### 💼 Recommendation Process
+
+**Steps:**
+1. Prepare your Resume/Bio-data and a cover letter indicating the company you are applying to.
+2. Submit the documents to the Public Employment Service Office (PESO) or the Mayor's Office receiving clerk.
+3. The office will prepare the endorsement letter signed by the Mayor.
+4. Claim the sealed recommendation letter.
+
+💰 **Cost:** Free of charge.
+⏱️ **Processing Time:** Around 15 to 30 minutes.",Citizen Charter (Part 2),"job, recommendation"
+216,City Mayor's Office - PESO,cmo_job_recommendation,en,Can I ask for a recommendation letter for work?,"Job seekers can request an **Endorsement / Recommendation Letter** for local or overseas employment from the CMO/PESO.
+
+---
+### 💼 Recommendation Process
+
+**Steps:**
+1. Prepare your Resume/Bio-data and a cover letter indicating the company you are applying to.
+2. Submit the documents to the Public Employment Service Office (PESO) or the Mayor's Office receiving clerk.
+3. The office will prepare the endorsement letter signed by the Mayor.
+4. Claim the sealed recommendation letter.
+
+💰 **Cost:** Free of charge.
+⏱️ **Processing Time:** Around 15 to 30 minutes.",Citizen Charter (Part 2),"job, recommendation"
+217,City Mayor's Office - PESO,cmo_job_recommendation,tl,Paano makakuha ng recommendation letter sa Mayor para sa trabaho?,"Maaaring humingi ng **Recommendation / Endorsement Letter** para sa trabaho mula sa CMO o PESO.
+
+---
+### 💼 Proseso
+
+**Steps:**
+1. Ihanda ang Resume/Bio-data at cover letter kung saan nais mag-apply.
+2. Isumite ito sa Public Employment Service Office (PESO) o sa CMO.
+3. Ipoproseso ng opisina ang endorsement letter na pirmado ng Mayor.
+4. Kunin ang rekomendasyon na nakaselyo.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Tinatayang 15 hanggang 30 minuto.",Citizen Charter (Part 2),"job, recommendation"
+218,City Mayor's Office - PESO,cmo_job_recommendation,tl,Endorsement sa trabaho galing sa mayor,"Maaaring humingi ng **Recommendation / Endorsement Letter** para sa trabaho mula sa CMO o PESO.
+
+---
+### 💼 Proseso
+
+**Steps:**
+1. Ihanda ang Resume/Bio-data at cover letter kung saan nais mag-apply.
+2. Isumite ito sa Public Employment Service Office (PESO) o sa CMO.
+3. Ipoproseso ng opisina ang endorsement letter na pirmado ng Mayor.
+4. Kunin ang rekomendasyon na nakaselyo.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Tinatayang 15 hanggang 30 minuto.",Citizen Charter (Part 2),"job, recommendation"
+219,City Mayor's Office - PESO,cmo_job_recommendation,bis,Unsaon pagkuha og recommendation sa Mayor para sa trabaho?,"Ang mga nangita og trabaho pwede mangayo og **Recommendation / Endorsement Letter** gikan sa CMO o PESO.
+
+---
+### 💼 Proseso
+
+**Steps:**
+1. Iandam ang imong Resume/Bio-data ug cover letter para sa kumpanya nga imong aplayan.
+2. Isumite ni sa Public Employment Service Office (PESO) o sa CMO.
+3. Buhaton sa opisina ang endorsement letter nga pinirmahan sa Mayor.
+4. Kuhaa ang imong recommendation letter.
+
+💰 **Bayad:** Libre / Walay bayad.
+⏱️ **Processing Time:** Mga 15 hantod 30 minutos.",Citizen Charter (Part 2),"job, recommendation"
+220,City Mayor's Office - PESO,cmo_job_recommendation,bis,Mangayo ko endorsement para sa applayan nako,"Ang mga nangita og trabaho pwede mangayo og **Recommendation / Endorsement Letter** gikan sa CMO o PESO.
+
+---
+### 💼 Proseso
+
+**Steps:**
+1. Iandam ang imong Resume/Bio-data ug cover letter para sa kumpanya nga imong aplayan.
+2. Isumite ni sa Public Employment Service Office (PESO) o sa CMO.
+3. Buhaton sa opisina ang endorsement letter nga pinirmahan sa Mayor.
+4. Kuhaa ang imong recommendation letter.
+
+💰 **Bayad:** Libre / Walay bayad.
+⏱️ **Processing Time:** Mga 15 hantod 30 minutos.",Citizen Charter (Part 2),"job, recommendation"
+221,City Mayor's Office - PESO,cmo_job_recommendation,bis,Recommendation letter proseso,"Ang mga nangita og trabaho pwede mangayo og **Recommendation / Endorsement Letter** gikan sa CMO o PESO.
+
+---
+### 💼 Proseso
+
+**Steps:**
+1. Iandam ang imong Resume/Bio-data ug cover letter para sa kumpanya nga imong aplayan.
+2. Isumite ni sa Public Employment Service Office (PESO) o sa CMO.
+3. Buhaton sa opisina ang endorsement letter nga pinirmahan sa Mayor.
+4. Kuhaa ang imong recommendation letter.
+
+💰 **Bayad:** Libre / Walay bayad.
+⏱️ **Processing Time:** Mga 15 hantod 30 minutos.",Citizen Charter (Part 2),"job, recommendation"
+222,City Mayor's Office,cmo_financial_assistance,en,How to ask for medical assistance from the Mayor?,"Citizens in crisis can apply for **Medical or Financial Assistance (AICS)** from the City Mayor's Office.
+
+---
+### ❤️ Assistance Process
+
+**Steps:**
+1. Prepare the requirements (e.g., Medical Abstract, Hospital Bill, Barangay Certificate of Indigency, Valid ID).
+2. Submit documents to the CMO Assistance Desk or City Social Welfare and Development Office (CSWDO) for evaluation.
+3. Wait for the social worker's interview and assessment.
+4. Once approved, the releasing of funds or Guarantee Letter will be scheduled.
+
+💰 **Cost:** Free.
+⏱️ **Processing Time:** Evaluation takes 1-2 hours; release of funds varies.",Citizen Charter (Part 2),"financial, assistance"
+223,City Mayor's Office,cmo_financial_assistance,en,Financial assistance requirements,"Citizens in crisis can apply for **Medical or Financial Assistance (AICS)** from the City Mayor's Office.
+
+---
+### ❤️ Assistance Process
+
+**Steps:**
+1. Prepare the requirements (e.g., Medical Abstract, Hospital Bill, Barangay Certificate of Indigency, Valid ID).
+2. Submit documents to the CMO Assistance Desk or City Social Welfare and Development Office (CSWDO) for evaluation.
+3. Wait for the social worker's interview and assessment.
+4. Once approved, the releasing of funds or Guarantee Letter will be scheduled.
+
+💰 **Cost:** Free.
+⏱️ **Processing Time:** Evaluation takes 1-2 hours; release of funds varies.",Citizen Charter (Part 2),"financial, assistance"
+224,City Mayor's Office,cmo_financial_assistance,en,Process for hospital bill assistance,"Citizens in crisis can apply for **Medical or Financial Assistance (AICS)** from the City Mayor's Office.
+
+---
+### ❤️ Assistance Process
+
+**Steps:**
+1. Prepare the requirements (e.g., Medical Abstract, Hospital Bill, Barangay Certificate of Indigency, Valid ID).
+2. Submit documents to the CMO Assistance Desk or City Social Welfare and Development Office (CSWDO) for evaluation.
+3. Wait for the social worker's interview and assessment.
+4. Once approved, the releasing of funds or Guarantee Letter will be scheduled.
+
+💰 **Cost:** Free.
+⏱️ **Processing Time:** Evaluation takes 1-2 hours; release of funds varies.",Citizen Charter (Part 2),"financial, assistance"
+225,City Mayor's Office,cmo_financial_assistance,tl,Paano humingi ng tulong pinansyal sa Mayor?,"Ang mga nangangailangan ay maaaring humingi ng **Medical o Financial Assistance** mula sa opisina ng Mayor.
+
+---
+### ❤️ Proseso ng Tulong Pinansyal
+
+**Steps:**
+1. Ihanda ang requirements (Medical Abstract, Reseta, Hospital Bill, Barangay Certificate of Indigency, Valid ID).
+2. Isumite ito sa CMO Assistance Desk o CSWDO para sa evaluation.
+3. Hintayin ang interview ng social worker.
+4. Kapag naaprubahan, bibigyan ka ng Guarantee Letter o i-schedule ang pag-release ng pera.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Evaluation ay 1-2 oras; ang pag-release ay nakadepende.",Citizen Charter (Part 2),"financial, assistance"
+226,City Mayor's Office,cmo_financial_assistance,tl,Requirements para sa medical assistance,"Ang mga nangangailangan ay maaaring humingi ng **Medical o Financial Assistance** mula sa opisina ng Mayor.
+
+---
+### ❤️ Proseso ng Tulong Pinansyal
+
+**Steps:**
+1. Ihanda ang requirements (Medical Abstract, Reseta, Hospital Bill, Barangay Certificate of Indigency, Valid ID).
+2. Isumite ito sa CMO Assistance Desk o CSWDO para sa evaluation.
+3. Hintayin ang interview ng social worker.
+4. Kapag naaprubahan, bibigyan ka ng Guarantee Letter o i-schedule ang pag-release ng pera.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Evaluation ay 1-2 oras; ang pag-release ay nakadepende.",Citizen Charter (Part 2),"financial, assistance"
+227,City Mayor's Office,cmo_financial_assistance,bis,Unsaon pagpangayo og tabang pinansyal sa Mayor?,"Ang mga nanginahanglan pwede mangayo og **Medical o Financial Assistance** gikan sa opisina sa Mayor.
+
+---
+### ❤️ Proseso sa Pagkuha og Tabang
+
+**Steps:**
+1. Iandam ang requirements (Medical Abstract, Reseta, Hospital Bill, Barangay Certificate of Indigency, Valid ID).
+2. Isumite ni sa CMO Assistance Desk o CSWDO aron ma-evaluate.
+3. Hulata ang interview sa social worker.
+4. Kung ma-aprubahan, hatagan ka og Guarantee Letter o i-schedule ang paghatag sa kwarta.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** 1-2 ka oras ang evaluation; ang pag-release kay magdepende.",Citizen Charter (Part 2),"financial, assistance"
+228,City Mayor's Office,cmo_financial_assistance,bis,Unsay requirements sa medical assistance?,"Ang mga nanginahanglan pwede mangayo og **Medical o Financial Assistance** gikan sa opisina sa Mayor.
+
+---
+### ❤️ Proseso sa Pagkuha og Tabang
+
+**Steps:**
+1. Iandam ang requirements (Medical Abstract, Reseta, Hospital Bill, Barangay Certificate of Indigency, Valid ID).
+2. Isumite ni sa CMO Assistance Desk o CSWDO aron ma-evaluate.
+3. Hulata ang interview sa social worker.
+4. Kung ma-aprubahan, hatagan ka og Guarantee Letter o i-schedule ang paghatag sa kwarta.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** 1-2 ka oras ang evaluation; ang pag-release kay magdepende.",Citizen Charter (Part 2),"financial, assistance"
+229,City Mayor's Office,cmo_financial_assistance,bis,Tabang para sa bayranan sa ospital,"Ang mga nanginahanglan pwede mangayo og **Medical o Financial Assistance** gikan sa opisina sa Mayor.
+
+---
+### ❤️ Proseso sa Pagkuha og Tabang
+
+**Steps:**
+1. Iandam ang requirements (Medical Abstract, Reseta, Hospital Bill, Barangay Certificate of Indigency, Valid ID).
+2. Isumite ni sa CMO Assistance Desk o CSWDO aron ma-evaluate.
+3. Hulata ang interview sa social worker.
+4. Kung ma-aprubahan, hatagan ka og Guarantee Letter o i-schedule ang paghatag sa kwarta.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** 1-2 ka oras ang evaluation; ang pag-release kay magdepende.",Citizen Charter (Part 2),"financial, assistance"
+230,City Mayor's Office,cmo_scholarship,en,How to apply for Mayor's scholarship?,"Students can apply for the **City Educational Scholarship Program**.
+
+---
+### 🎓 Scholarship Process
+
+**Steps:**
+1. Secure an application form from the CMO Scholarship Coordinator.
+2. Submit the completed form along with requirements (Report Card / True Copy of Grades, Certificate of Indigency, Voter's ID of parents, 2x2 ID picture).
+3. Attend the scheduled screening and interview.
+4. Wait for the posting of qualified scholars.
+
+💰 **Cost:** Free.
+⏱️ **Processing Time:** Applications are processed within the specific submission period (usually before the semester starts).",Citizen Charter (Part 2),scholarship
+231,City Mayor's Office,cmo_scholarship,en,Requirements for educational assistance,"Students can apply for the **City Educational Scholarship Program**.
+
+---
+### 🎓 Scholarship Process
+
+**Steps:**
+1. Secure an application form from the CMO Scholarship Coordinator.
+2. Submit the completed form along with requirements (Report Card / True Copy of Grades, Certificate of Indigency, Voter's ID of parents, 2x2 ID picture).
+3. Attend the scheduled screening and interview.
+4. Wait for the posting of qualified scholars.
+
+💰 **Cost:** Free.
+⏱️ **Processing Time:** Applications are processed within the specific submission period (usually before the semester starts).",Citizen Charter (Part 2),scholarship
+232,City Mayor's Office,cmo_scholarship,en,City scholarship application process,"Students can apply for the **City Educational Scholarship Program**.
+
+---
+### 🎓 Scholarship Process
+
+**Steps:**
+1. Secure an application form from the CMO Scholarship Coordinator.
+2. Submit the completed form along with requirements (Report Card / True Copy of Grades, Certificate of Indigency, Voter's ID of parents, 2x2 ID picture).
+3. Attend the scheduled screening and interview.
+4. Wait for the posting of qualified scholars.
+
+💰 **Cost:** Free.
+⏱️ **Processing Time:** Applications are processed within the specific submission period (usually before the semester starts).",Citizen Charter (Part 2),scholarship
+233,City Mayor's Office,cmo_scholarship,tl,Paano mag-apply ng scholarship sa Mayor?,"Maaaring mag-apply ang mga estudyante para sa **City Educational Scholarship Program**.
+
+---
+### 🎓 Proseso ng Scholarship
+
+**Steps:**
+1. Kumuha ng application form sa CMO Scholarship Coordinator.
+2. Isumite ito kasama ang requirements (Report Card / Grades, Certificate of Indigency, Voter's ID ng magulang, 2x2 picture).
+3. Umattend sa naka-schedule na screening at interview.
+4. Hintayin ang anunsyo ng mga nakapasang scholars.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Pinoproseso ito bago magsimula ang semestre.",Citizen Charter (Part 2),scholarship
+234,City Mayor's Office,cmo_scholarship,tl,Ano kailangan para sa educational assistance?,"Maaaring mag-apply ang mga estudyante para sa **City Educational Scholarship Program**.
+
+---
+### 🎓 Proseso ng Scholarship
+
+**Steps:**
+1. Kumuha ng application form sa CMO Scholarship Coordinator.
+2. Isumite ito kasama ang requirements (Report Card / Grades, Certificate of Indigency, Voter's ID ng magulang, 2x2 picture).
+3. Umattend sa naka-schedule na screening at interview.
+4. Hintayin ang anunsyo ng mga nakapasang scholars.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Pinoproseso ito bago magsimula ang semestre.",Citizen Charter (Part 2),scholarship
+235,City Mayor's Office,cmo_scholarship,bis,Unsaon pag apply og scholarship sa Mayor?,"Pwede mag-apply ang mga estudyante para sa **City Educational Scholarship Program**.
+
+---
+### 🎓 Proseso sa Scholarship
+
+**Steps:**
+1. Pagkuha og application form sa CMO Scholarship Coordinator.
+2. Isumite ni uban ang requirements (Report Card / Grades, Certificate of Indigency, Voter's ID sa ginikanan, 2x2 picture).
+3. Mu-attend sa screening ug interview.
+4. Hulata ang anunsyo sa mga nakapasar nga scholars.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Ginaproseso ni sa wala pa mag-start ang semester.",Citizen Charter (Part 2),scholarship
+236,City Mayor's Office,cmo_scholarship,bis,Unsay requirements sa scholarship?,"Pwede mag-apply ang mga estudyante para sa **City Educational Scholarship Program**.
+
+---
+### 🎓 Proseso sa Scholarship
+
+**Steps:**
+1. Pagkuha og application form sa CMO Scholarship Coordinator.
+2. Isumite ni uban ang requirements (Report Card / Grades, Certificate of Indigency, Voter's ID sa ginikanan, 2x2 picture).
+3. Mu-attend sa screening ug interview.
+4. Hulata ang anunsyo sa mga nakapasar nga scholars.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Ginaproseso ni sa wala pa mag-start ang semester.",Citizen Charter (Part 2),scholarship
+237,City Mayor's Office,cmo_scholarship,bis,Gusto ko mo apply sa educational assistance,"Pwede mag-apply ang mga estudyante para sa **City Educational Scholarship Program**.
+
+---
+### 🎓 Proseso sa Scholarship
+
+**Steps:**
+1. Pagkuha og application form sa CMO Scholarship Coordinator.
+2. Isumite ni uban ang requirements (Report Card / Grades, Certificate of Indigency, Voter's ID sa ginikanan, 2x2 picture).
+3. Mu-attend sa screening ug interview.
+4. Hulata ang anunsyo sa mga nakapasar nga scholars.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Ginaproseso ni sa wala pa mag-start ang semester.",Citizen Charter (Part 2),scholarship
+238,City Mayor's Office - BPLS,cmo_tricycle_dropping,en,How to drop tricycle franchise?,"If a tricycle unit is no longer operational, the owner must apply for **Dropping of Franchise**.
+
+---
+### 📉 Dropping Process
+
+**Steps:**
+1. Surrender the Original MTOP Franchise, Tricycle Plate, and submit an Affidavit of Dropping to the BPLS.
+2. Secure the Order of Payment.
+3. Pay the Dropping Fee at the City Treasurer's Office.
+4. Claim the Certification of Dropped Franchise.
+
+💰 **Cost:** Dropping Fee is around ~₱150.00.
+⏱️ **Processing Time:** Around 1-2 hours.",Citizen Charter (Part 2),"tricycle, dropping"
+239,City Mayor's Office - BPLS,cmo_tricycle_dropping,en,Process for dropping of MTOP,"If a tricycle unit is no longer operational, the owner must apply for **Dropping of Franchise**.
+
+---
+### 📉 Dropping Process
+
+**Steps:**
+1. Surrender the Original MTOP Franchise, Tricycle Plate, and submit an Affidavit of Dropping to the BPLS.
+2. Secure the Order of Payment.
+3. Pay the Dropping Fee at the City Treasurer's Office.
+4. Claim the Certification of Dropped Franchise.
+
+💰 **Cost:** Dropping Fee is around ~₱150.00.
+⏱️ **Processing Time:** Around 1-2 hours.",Citizen Charter (Part 2),"tricycle, dropping"
+240,City Mayor's Office - BPLS,cmo_tricycle_dropping,en,I want to cancel my tricycle franchise,"If a tricycle unit is no longer operational, the owner must apply for **Dropping of Franchise**.
+
+---
+### 📉 Dropping Process
+
+**Steps:**
+1. Surrender the Original MTOP Franchise, Tricycle Plate, and submit an Affidavit of Dropping to the BPLS.
+2. Secure the Order of Payment.
+3. Pay the Dropping Fee at the City Treasurer's Office.
+4. Claim the Certification of Dropped Franchise.
+
+💰 **Cost:** Dropping Fee is around ~₱150.00.
+⏱️ **Processing Time:** Around 1-2 hours.",Citizen Charter (Part 2),"tricycle, dropping"
+241,City Mayor's Office - BPLS,cmo_tricycle_dropping,tl,Paano i-drop ang prangkisa ng tricycle?,"Kung hindi na gagamitin ang tricycle, kailangang mag-apply ng **Dropping of Franchise**.
+
+---
+### 📉 Proseso ng Dropping
+
+**Steps:**
+1. I-surrender ang Original MTOP, Tricycle Plate, at isumite ang Affidavit of Dropping sa BPLS.
+2. Kunin ang Order of Payment.
+3. Magbayad ng Dropping Fee sa City Treasurer's Office.
+4. Kunin ang Certification of Dropped Franchise.
+
+💰 **Bayad:** Dropping Fee ay ~₱150.00.
+⏱️ **Processing Time:** Tinatayang 1-2 oras.",Citizen Charter (Part 2),"tricycle, dropping"
+242,City Mayor's Office - BPLS,cmo_tricycle_dropping,tl,Requirements para ipasara ang MTOP,"Kung hindi na gagamitin ang tricycle, kailangang mag-apply ng **Dropping of Franchise**.
+
+---
+### 📉 Proseso ng Dropping
+
+**Steps:**
+1. I-surrender ang Original MTOP, Tricycle Plate, at isumite ang Affidavit of Dropping sa BPLS.
+2. Kunin ang Order of Payment.
+3. Magbayad ng Dropping Fee sa City Treasurer's Office.
+4. Kunin ang Certification of Dropped Franchise.
+
+💰 **Bayad:** Dropping Fee ay ~₱150.00.
+⏱️ **Processing Time:** Tinatayang 1-2 oras.",Citizen Charter (Part 2),"tricycle, dropping"
+243,City Mayor's Office - BPLS,cmo_tricycle_dropping,bis,Unsaon pag drop sa prangkisa sa tricycle?,"Kung dili na gamiton ang tricycle, kinahanglan mag-apply og **Dropping of Franchise**.
+
+---
+### 📉 Proseso sa Dropping
+
+**Steps:**
+1. I-surrender ang Original MTOP, Tricycle Plate, ug isumite ang Affidavit of Dropping sa BPLS.
+2. Kuhaa ang Order of Payment.
+3. Pagbayad sa Dropping Fee sa City Treasurer's Office.
+4. Kuhaa ang Certification of Dropped Franchise.
+
+💰 **Bayad:** Dropping Fee kay mga ~₱150.00.
+⏱️ **Processing Time:** Mga 1-2 ka oras.",Citizen Charter (Part 2),"tricycle, dropping"
+244,City Mayor's Office - BPLS,cmo_tricycle_dropping,bis,Ipasira nako akong franchise sa tricycle,"Kung dili na gamiton ang tricycle, kinahanglan mag-apply og **Dropping of Franchise**.
+
+---
+### 📉 Proseso sa Dropping
+
+**Steps:**
+1. I-surrender ang Original MTOP, Tricycle Plate, ug isumite ang Affidavit of Dropping sa BPLS.
+2. Kuhaa ang Order of Payment.
+3. Pagbayad sa Dropping Fee sa City Treasurer's Office.
+4. Kuhaa ang Certification of Dropped Franchise.
+
+💰 **Bayad:** Dropping Fee kay mga ~₱150.00.
+⏱️ **Processing Time:** Mga 1-2 ka oras.",Citizen Charter (Part 2),"tricycle, dropping"
+245,City Mayor's Office - BPLS,cmo_tricycle_dropping,bis,Dropping of MTOP proseso,"Kung dili na gamiton ang tricycle, kinahanglan mag-apply og **Dropping of Franchise**.
+
+---
+### 📉 Proseso sa Dropping
+
+**Steps:**
+1. I-surrender ang Original MTOP, Tricycle Plate, ug isumite ang Affidavit of Dropping sa BPLS.
+2. Kuhaa ang Order of Payment.
+3. Pagbayad sa Dropping Fee sa City Treasurer's Office.
+4. Kuhaa ang Certification of Dropped Franchise.
+
+💰 **Bayad:** Dropping Fee kay mga ~₱150.00.
+⏱️ **Processing Time:** Mga 1-2 ka oras.",Citizen Charter (Part 2),"tricycle, dropping"
+246,City Mayor's Office - BPLS,cmo_franchise_renewal,en,How to renew tricycle franchise?,"Tricycle operators must process their **MTOP / Franchise Renewal** annually.
+
+---
+### 🔄 Franchise Renewal
+
+**Steps:**
+1. Present your Previous MTOP, updated LTO CR/OR, and Barangay Clearance to the BPLS.
+2. Have the unit inspected for a Traffic Clearance.
+3. Get the Order of Payment and pay the Renewal Fee at the City Treasurer's Office.
+4. Present the receipt and claim your renewed MTOP Franchise and Sticker.
+
+💰 **Cost:** Mayor's Permit ~₱100.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Around 2-3 hours.",Citizen Charter (Part 2),"franchise, renewal"
+247,City Mayor's Office - BPLS,cmo_franchise_renewal,en,MTOP renewal requirements,"Tricycle operators must process their **MTOP / Franchise Renewal** annually.
+
+---
+### 🔄 Franchise Renewal
+
+**Steps:**
+1. Present your Previous MTOP, updated LTO CR/OR, and Barangay Clearance to the BPLS.
+2. Have the unit inspected for a Traffic Clearance.
+3. Get the Order of Payment and pay the Renewal Fee at the City Treasurer's Office.
+4. Present the receipt and claim your renewed MTOP Franchise and Sticker.
+
+💰 **Cost:** Mayor's Permit ~₱100.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Around 2-3 hours.",Citizen Charter (Part 2),"franchise, renewal"
+248,City Mayor's Office - BPLS,cmo_franchise_renewal,en,Process for renewing my tricycle MTOP,"Tricycle operators must process their **MTOP / Franchise Renewal** annually.
+
+---
+### 🔄 Franchise Renewal
+
+**Steps:**
+1. Present your Previous MTOP, updated LTO CR/OR, and Barangay Clearance to the BPLS.
+2. Have the unit inspected for a Traffic Clearance.
+3. Get the Order of Payment and pay the Renewal Fee at the City Treasurer's Office.
+4. Present the receipt and claim your renewed MTOP Franchise and Sticker.
+
+💰 **Cost:** Mayor's Permit ~₱100.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Around 2-3 hours.",Citizen Charter (Part 2),"franchise, renewal"
+249,City Mayor's Office - BPLS,cmo_franchise_renewal,tl,Paano i-renew ang prangkisa ng tricycle?,"Kailangang i-renew ng mga operators ang kanilang **MTOP / Franchise** taon-taon.
+
+---
+### 🔄 Proseso ng Renewal
+
+**Steps:**
+1. Ipakita ang Nakaraang MTOP, updated LTO CR/OR, at Barangay Clearance sa BPLS.
+2. Ipainspeksyon ang tricycle para sa Traffic Clearance.
+3. Kunin ang Order of Payment at magbayad ng Renewal Fee sa City Treasurer's Office.
+4. Ipakita ang resibo at kunin ang na-renew na MTOP at Sticker.
+
+💰 **Bayad:** Mayor's Permit ~₱100.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Tinatayang 2-3 oras.",Citizen Charter (Part 2),"franchise, renewal"
+250,City Mayor's Office - BPLS,cmo_franchise_renewal,tl,Requirements sa renewal ng MTOP,"Kailangang i-renew ng mga operators ang kanilang **MTOP / Franchise** taon-taon.
+
+---
+### 🔄 Proseso ng Renewal
+
+**Steps:**
+1. Ipakita ang Nakaraang MTOP, updated LTO CR/OR, at Barangay Clearance sa BPLS.
+2. Ipainspeksyon ang tricycle para sa Traffic Clearance.
+3. Kunin ang Order of Payment at magbayad ng Renewal Fee sa City Treasurer's Office.
+4. Ipakita ang resibo at kunin ang na-renew na MTOP at Sticker.
+
+💰 **Bayad:** Mayor's Permit ~₱100.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Tinatayang 2-3 oras.",Citizen Charter (Part 2),"franchise, renewal"
+251,City Mayor's Office - BPLS,cmo_franchise_renewal,bis,Unsaon pag renew sa prangkisa sa tricycle?,"Kinahanglan i-renew sa mga operator ang ilahang **MTOP / Franchise** kada tuig.
+
+---
+### 🔄 Proseso sa Renewal
+
+**Steps:**
+1. Ipakita ang Nakaagi nga MTOP, updated LTO CR/OR, ug Barangay Clearance sa BPLS.
+2. Ipa-inspeksyon ang tricycle para sa Traffic Clearance.
+3. Kuhaa ang Order of Payment ug pagbayad sa Renewal Fee sa City Treasurer's Office.
+4. Ipakita ang resibo ug kuhaa ang na-renew nga MTOP ug Sticker.
+
+💰 **Bayad:** Mayor's Permit ~₱100.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Mga 2-3 ka oras.",Citizen Charter (Part 2),"franchise, renewal"
+252,City Mayor's Office - BPLS,cmo_franchise_renewal,bis,Unsay kailangan sa pag renew sa MTOP?,"Kinahanglan i-renew sa mga operator ang ilahang **MTOP / Franchise** kada tuig.
+
+---
+### 🔄 Proseso sa Renewal
+
+**Steps:**
+1. Ipakita ang Nakaagi nga MTOP, updated LTO CR/OR, ug Barangay Clearance sa BPLS.
+2. Ipa-inspeksyon ang tricycle para sa Traffic Clearance.
+3. Kuhaa ang Order of Payment ug pagbayad sa Renewal Fee sa City Treasurer's Office.
+4. Ipakita ang resibo ug kuhaa ang na-renew nga MTOP ug Sticker.
+
+💰 **Bayad:** Mayor's Permit ~₱100.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Mga 2-3 ka oras.",Citizen Charter (Part 2),"franchise, renewal"
+253,City Mayor's Office - BPLS,cmo_franchise_renewal,bis,Mag renew ko sa akong tricycle,"Kinahanglan i-renew sa mga operator ang ilahang **MTOP / Franchise** kada tuig.
+
+---
+### 🔄 Proseso sa Renewal
+
+**Steps:**
+1. Ipakita ang Nakaagi nga MTOP, updated LTO CR/OR, ug Barangay Clearance sa BPLS.
+2. Ipa-inspeksyon ang tricycle para sa Traffic Clearance.
+3. Kuhaa ang Order of Payment ug pagbayad sa Renewal Fee sa City Treasurer's Office.
+4. Ipakita ang resibo ug kuhaa ang na-renew nga MTOP ug Sticker.
+
+💰 **Bayad:** Mayor's Permit ~₱100.00, Sticker ~₱75.00.
+⏱️ **Processing Time:** Mga 2-3 ka oras.",Citizen Charter (Part 2),"franchise, renewal"
+254,City Mayor's Office - BPLS,cmo_special_business_permit,en,How to get a permit for a trade fair?,"Temporary businesses (like carnivals, trade fairs, peryahan, or seasonal stalls) require a **Special Business Permit**.
+
+---
+### 🎪 Special Permit Process
+
+**Steps:**
+1. Submit a letter of intent to the Mayor specifying the duration and type of business.
+2. Secure Barangay Clearance for the specific activity.
+3. BPLS will assess the application and issue an Order of Payment.
+4. Pay the corresponding fees at the City Treasurer's Office.
+5. Claim the Special Business Permit.
+
+💰 **Cost:** Computed per day/week based on the local tax code.
+⏱️ **Processing Time:** 1 to 2 days.",Citizen Charter (Part 2),"special, business, permit"
+255,City Mayor's Office - BPLS,cmo_special_business_permit,en,Special business permit for peryahan,"Temporary businesses (like carnivals, trade fairs, peryahan, or seasonal stalls) require a **Special Business Permit**.
+
+---
+### 🎪 Special Permit Process
+
+**Steps:**
+1. Submit a letter of intent to the Mayor specifying the duration and type of business.
+2. Secure Barangay Clearance for the specific activity.
+3. BPLS will assess the application and issue an Order of Payment.
+4. Pay the corresponding fees at the City Treasurer's Office.
+5. Claim the Special Business Permit.
+
+💰 **Cost:** Computed per day/week based on the local tax code.
+⏱️ **Processing Time:** 1 to 2 days.",Citizen Charter (Part 2),"special, business, permit"
+256,City Mayor's Office - BPLS,cmo_special_business_permit,en,Permit for temporary stalls,"Temporary businesses (like carnivals, trade fairs, peryahan, or seasonal stalls) require a **Special Business Permit**.
+
+---
+### 🎪 Special Permit Process
+
+**Steps:**
+1. Submit a letter of intent to the Mayor specifying the duration and type of business.
+2. Secure Barangay Clearance for the specific activity.
+3. BPLS will assess the application and issue an Order of Payment.
+4. Pay the corresponding fees at the City Treasurer's Office.
+5. Claim the Special Business Permit.
+
+💰 **Cost:** Computed per day/week based on the local tax code.
+⏱️ **Processing Time:** 1 to 2 days.",Citizen Charter (Part 2),"special, business, permit"
+257,City Mayor's Office - BPLS,cmo_special_business_permit,tl,Paano kumuha ng permit para sa peryahan?,"Ang mga panandaliang negosyo (tulad ng peryahan, trade fair, o seasonal stalls) ay nangangailangan ng **Special Business Permit**.
+
+---
+### 🎪 Proseso
+
+**Steps:**
+1. Isumite ang letter of intent sa Mayor na nagsasaad kung gaano katagal at anong klase ng negosyo.
+2. Kumuha ng Barangay Clearance para sa aktibidad.
+3. I-aassess ng BPLS at bibigyan ka ng Order of Payment.
+4. Magbayad ng fee sa City Treasurer's Office.
+5. Kunin ang Special Business Permit.
+
+💰 **Bayad:** Kinukwenta kada araw/linggo base sa tax code.
+⏱️ **Processing Time:** 1 hanggang 2 araw.",Citizen Charter (Part 2),"special, business, permit"
+258,City Mayor's Office - BPLS,cmo_special_business_permit,tl,Special permit para sa trade fair,"Ang mga panandaliang negosyo (tulad ng peryahan, trade fair, o seasonal stalls) ay nangangailangan ng **Special Business Permit**.
+
+---
+### 🎪 Proseso
+
+**Steps:**
+1. Isumite ang letter of intent sa Mayor na nagsasaad kung gaano katagal at anong klase ng negosyo.
+2. Kumuha ng Barangay Clearance para sa aktibidad.
+3. I-aassess ng BPLS at bibigyan ka ng Order of Payment.
+4. Magbayad ng fee sa City Treasurer's Office.
+5. Kunin ang Special Business Permit.
+
+💰 **Bayad:** Kinukwenta kada araw/linggo base sa tax code.
+⏱️ **Processing Time:** 1 hanggang 2 araw.",Citizen Charter (Part 2),"special, business, permit"
+259,City Mayor's Office - BPLS,cmo_special_business_permit,bis,Unsaon pagkuha og permit para sa peryahan?,"Ang mga temporaryo nga negosyo (pareha sa peryahan, trade fair, o seasonal stalls) kay nanginahanglan og **Special Business Permit**.
+
+---
+### 🎪 Proseso
+
+**Steps:**
+1. Isumite ang letter of intent sa Mayor kung unsa kadugay ug unsa nga klase sa negosyo.
+2. Pagkuha og Barangay Clearance para sa maong aktibidad.
+3. I-assess sa BPLS ug hatagan ka og Order of Payment.
+4. Pagbayad sa fee didto sa City Treasurer's Office.
+5. Kuhaa ang Special Business Permit.
+
+💰 **Bayad:** Kwentahon kada adlaw/semana base sa tax code.
+⏱️ **Processing Time:** 1 hantod 2 ka adlaw.",Citizen Charter (Part 2),"special, business, permit"
+260,City Mayor's Office - BPLS,cmo_special_business_permit,bis,Permit para sa seasonal stalls,"Ang mga temporaryo nga negosyo (pareha sa peryahan, trade fair, o seasonal stalls) kay nanginahanglan og **Special Business Permit**.
+
+---
+### 🎪 Proseso
+
+**Steps:**
+1. Isumite ang letter of intent sa Mayor kung unsa kadugay ug unsa nga klase sa negosyo.
+2. Pagkuha og Barangay Clearance para sa maong aktibidad.
+3. I-assess sa BPLS ug hatagan ka og Order of Payment.
+4. Pagbayad sa fee didto sa City Treasurer's Office.
+5. Kuhaa ang Special Business Permit.
+
+💰 **Bayad:** Kwentahon kada adlaw/semana base sa tax code.
+⏱️ **Processing Time:** 1 hantod 2 ka adlaw.",Citizen Charter (Part 2),"special, business, permit"
+261,City Mayor's Office - BPLS,cmo_special_business_permit,bis,Magbutang mi og temporary stall unsay permit,"Ang mga temporaryo nga negosyo (pareha sa peryahan, trade fair, o seasonal stalls) kay nanginahanglan og **Special Business Permit**.
+
+---
+### 🎪 Proseso
+
+**Steps:**
+1. Isumite ang letter of intent sa Mayor kung unsa kadugay ug unsa nga klase sa negosyo.
+2. Pagkuha og Barangay Clearance para sa maong aktibidad.
+3. I-assess sa BPLS ug hatagan ka og Order of Payment.
+4. Pagbayad sa fee didto sa City Treasurer's Office.
+5. Kuhaa ang Special Business Permit.
+
+💰 **Bayad:** Kwentahon kada adlaw/semana base sa tax code.
+⏱️ **Processing Time:** 1 hantod 2 ka adlaw.",Citizen Charter (Part 2),"special, business, permit"
+262,City Mayor's Office,cmo_use_of_facility,en,How to rent the city gym?,"To request the **Use of Government Facilities** (like the City Gym or Plazas) for events:
+
+---
+### 🏢 Facility Reservation
+
+**Steps:**
+1. Submit a formal request letter to the City Mayor at least one (1) week before the event.
+2. Once approved, coordinate with the General Services Office (GSO) for logistics.
+3. Pay the corresponding rental fees (if applicable) at the City Treasurer's Office.
+4. Secure the approved permit from the Mayor's Office.
+
+💰 **Cost:** Depends on the facility and duration.
+⏱️ **Processing Time:** 1-2 days for approval.",Citizen Charter (Part 3),"use, of, facility"
+263,City Mayor's Office,cmo_use_of_facility,en,Process for using government facilities,"To request the **Use of Government Facilities** (like the City Gym or Plazas) for events:
+
+---
+### 🏢 Facility Reservation
+
+**Steps:**
+1. Submit a formal request letter to the City Mayor at least one (1) week before the event.
+2. Once approved, coordinate with the General Services Office (GSO) for logistics.
+3. Pay the corresponding rental fees (if applicable) at the City Treasurer's Office.
+4. Secure the approved permit from the Mayor's Office.
+
+💰 **Cost:** Depends on the facility and duration.
+⏱️ **Processing Time:** 1-2 days for approval.",Citizen Charter (Part 3),"use, of, facility"
+264,City Mayor's Office,cmo_use_of_facility,en,Can I borrow the plaza for an event?,"To request the **Use of Government Facilities** (like the City Gym or Plazas) for events:
+
+---
+### 🏢 Facility Reservation
+
+**Steps:**
+1. Submit a formal request letter to the City Mayor at least one (1) week before the event.
+2. Once approved, coordinate with the General Services Office (GSO) for logistics.
+3. Pay the corresponding rental fees (if applicable) at the City Treasurer's Office.
+4. Secure the approved permit from the Mayor's Office.
+
+💰 **Cost:** Depends on the facility and duration.
+⏱️ **Processing Time:** 1-2 days for approval.",Citizen Charter (Part 3),"use, of, facility"
+265,City Mayor's Office,cmo_use_of_facility,tl,Paano manghiram ng gym sa city hall?,"Para humiram ng **Government Facilities** (tulad ng City Gym o Plaza) para sa inyong event:
+
+---
+### 🏢 Pag-reserve ng Pasilidad
+
+**Steps:**
+1. Isumite ang request letter sa City Mayor, isang (1) linggo bago ang event.
+2. Kapag naaprubahan, makipag-ugnayan sa General Services Office (GSO) para sa logistics.
+3. Magbayad ng rental fee (kung mayroon) sa City Treasurer's Office.
+4. Kunin ang approved na permit sa opisina ng Mayor.
+
+💰 **Bayad:** Depende sa pasilidad at oras ng gamit.
+⏱️ **Processing Time:** 1-2 araw para sa pag-apruba.",Citizen Charter (Part 3),"use, of, facility"
+266,City Mayor's Office,cmo_use_of_facility,tl,Permit para gamitin ang plaza,"Para humiram ng **Government Facilities** (tulad ng City Gym o Plaza) para sa inyong event:
+
+---
+### 🏢 Pag-reserve ng Pasilidad
+
+**Steps:**
+1. Isumite ang request letter sa City Mayor, isang (1) linggo bago ang event.
+2. Kapag naaprubahan, makipag-ugnayan sa General Services Office (GSO) para sa logistics.
+3. Magbayad ng rental fee (kung mayroon) sa City Treasurer's Office.
+4. Kunin ang approved na permit sa opisina ng Mayor.
+
+💰 **Bayad:** Depende sa pasilidad at oras ng gamit.
+⏱️ **Processing Time:** 1-2 araw para sa pag-apruba.",Citizen Charter (Part 3),"use, of, facility"
+267,City Mayor's Office,cmo_use_of_facility,bis,Unsaon paghulam sa city gym?,"Para makagamit sa **Government Facilities** (parehas sa City Gym o Plaza) para sa inyong event:
+
+---
+### 🏢 Pag-reserve sa Pasilidad
+
+**Steps:**
+1. Isumite ang request letter sa City Mayor, usa (1) ka semana usa ang event.
+2. Kung ma-aprubahan na, pag-coordinate sa General Services Office (GSO).
+3. Pagbayad sa rental fee (kung naa) sa City Treasurer's Office.
+4. Kuhaa ang approved nga permit sa opisina sa Mayor.
+
+💰 **Bayad:** Depende sa pasilidad ug unsa kadugay gamiton.
+⏱️ **Processing Time:** 1-2 ka adlaw para ma-aprubahan.",Citizen Charter (Part 3),"use, of, facility"
+268,City Mayor's Office,cmo_use_of_facility,bis,Mag pa event mi sa plaza kinsa duolon,"Para makagamit sa **Government Facilities** (parehas sa City Gym o Plaza) para sa inyong event:
+
+---
+### 🏢 Pag-reserve sa Pasilidad
+
+**Steps:**
+1. Isumite ang request letter sa City Mayor, usa (1) ka semana usa ang event.
+2. Kung ma-aprubahan na, pag-coordinate sa General Services Office (GSO).
+3. Pagbayad sa rental fee (kung naa) sa City Treasurer's Office.
+4. Kuhaa ang approved nga permit sa opisina sa Mayor.
+
+💰 **Bayad:** Depende sa pasilidad ug unsa kadugay gamiton.
+⏱️ **Processing Time:** 1-2 ka adlaw para ma-aprubahan.",Citizen Charter (Part 3),"use, of, facility"
+269,City Mayor's Office,cmo_use_of_facility,bis,Reservation of government facility,"Para makagamit sa **Government Facilities** (parehas sa City Gym o Plaza) para sa inyong event:
+
+---
+### 🏢 Pag-reserve sa Pasilidad
+
+**Steps:**
+1. Isumite ang request letter sa City Mayor, usa (1) ka semana usa ang event.
+2. Kung ma-aprubahan na, pag-coordinate sa General Services Office (GSO).
+3. Pagbayad sa rental fee (kung naa) sa City Treasurer's Office.
+4. Kuhaa ang approved nga permit sa opisina sa Mayor.
+
+💰 **Bayad:** Depende sa pasilidad ug unsa kadugay gamiton.
+⏱️ **Processing Time:** 1-2 ka adlaw para ma-aprubahan.",Citizen Charter (Part 3),"use, of, facility"
+270,City Mayor's Office,cmo_use_of_vehicle,en,How to request an ambulance?,"To request the **Use of Government Vehicles** (Ambulance, Rescue, or Service Vehicles):
+
+---
+### 🚑 Vehicle Request
+
+**Steps:**
+1. Submit a letter of request specifying the date, destination, and purpose.
+2. For emergency dispatch (Ambulance/Rescue), contact the City Disaster Risk Reduction Management Office (CDRRMO) directly.
+3. For non-emergencies, wait for the Mayor's approval and Trip Ticket issuance.
+
+💰 **Cost:** Free for emergencies.
+⏱️ **Processing Time:** Immediate for emergencies; 1 day for non-emergency.",Citizen Charter (Part 3),"use, of, vehicle"
+271,City Mayor's Office,cmo_use_of_vehicle,en,Can we borrow the city service vehicle?,"To request the **Use of Government Vehicles** (Ambulance, Rescue, or Service Vehicles):
+
+---
+### 🚑 Vehicle Request
+
+**Steps:**
+1. Submit a letter of request specifying the date, destination, and purpose.
+2. For emergency dispatch (Ambulance/Rescue), contact the City Disaster Risk Reduction Management Office (CDRRMO) directly.
+3. For non-emergencies, wait for the Mayor's approval and Trip Ticket issuance.
+
+💰 **Cost:** Free for emergencies.
+⏱️ **Processing Time:** Immediate for emergencies; 1 day for non-emergency.",Citizen Charter (Part 3),"use, of, vehicle"
+272,City Mayor's Office,cmo_use_of_vehicle,en,Process for requesting government vehicle,"To request the **Use of Government Vehicles** (Ambulance, Rescue, or Service Vehicles):
+
+---
+### 🚑 Vehicle Request
+
+**Steps:**
+1. Submit a letter of request specifying the date, destination, and purpose.
+2. For emergency dispatch (Ambulance/Rescue), contact the City Disaster Risk Reduction Management Office (CDRRMO) directly.
+3. For non-emergencies, wait for the Mayor's approval and Trip Ticket issuance.
+
+💰 **Cost:** Free for emergencies.
+⏱️ **Processing Time:** Immediate for emergencies; 1 day for non-emergency.",Citizen Charter (Part 3),"use, of, vehicle"
+273,City Mayor's Office,cmo_use_of_vehicle,tl,Paano humiram ng sasakyan ng munisipyo?,"Para humiling ng paggamit ng **Government Vehicles** (Ambulansya, Rescue, o Service):
+
+---
+### 🚑 Proseso ng Pag-request
+
+**Steps:**
+1. Isumite ang request letter na nagsasaad ng petsa, destinasyon, at layunin.
+2. Para sa emergencies (Ambulansya), tumawag direkta sa CDRRMO.
+3. Para sa non-emergencies, hintayin ang apruba ng Mayor at ang Trip Ticket.
+
+💰 **Bayad:** Libre para sa emergencies.
+⏱️ **Processing Time:** Agad-agad para sa emergency; 1 araw para sa iba.",Citizen Charter (Part 3),"use, of, vehicle"
+274,City Mayor's Office,cmo_use_of_vehicle,tl,Request ng ambulansya paano?,"Para humiling ng paggamit ng **Government Vehicles** (Ambulansya, Rescue, o Service):
+
+---
+### 🚑 Proseso ng Pag-request
+
+**Steps:**
+1. Isumite ang request letter na nagsasaad ng petsa, destinasyon, at layunin.
+2. Para sa emergencies (Ambulansya), tumawag direkta sa CDRRMO.
+3. Para sa non-emergencies, hintayin ang apruba ng Mayor at ang Trip Ticket.
+
+💰 **Bayad:** Libre para sa emergencies.
+⏱️ **Processing Time:** Agad-agad para sa emergency; 1 araw para sa iba.",Citizen Charter (Part 3),"use, of, vehicle"
+275,City Mayor's Office,cmo_use_of_vehicle,bis,Unsaon paghulam sa service sa munisipyo?,"Para manghulam o mugamit og **Government Vehicles** (Ambulansya, Rescue, o Service):
+
+---
+### 🚑 Proseso sa Pag-request
+
+**Steps:**
+1. Isumite ang request letter nga naay petsa, adtoan, ug rason.
+2. Para sa mga emergency (Ambulansya), tawag diretso sa CDRRMO.
+3. Para sa dili emergency, hulata ang approval sa Mayor ug ang Trip Ticket.
+
+💰 **Bayad:** Libre para sa mga emergency.
+⏱️ **Processing Time:** Diretso kung emergency; 1 ka adlaw kung dili.",Citizen Charter (Part 3),"use, of, vehicle"
+276,City Mayor's Office,cmo_use_of_vehicle,bis,Gusto mi mu request og ambulansya,"Para manghulam o mugamit og **Government Vehicles** (Ambulansya, Rescue, o Service):
+
+---
+### 🚑 Proseso sa Pag-request
+
+**Steps:**
+1. Isumite ang request letter nga naay petsa, adtoan, ug rason.
+2. Para sa mga emergency (Ambulansya), tawag diretso sa CDRRMO.
+3. Para sa dili emergency, hulata ang approval sa Mayor ug ang Trip Ticket.
+
+💰 **Bayad:** Libre para sa mga emergency.
+⏱️ **Processing Time:** Diretso kung emergency; 1 ka adlaw kung dili.",Citizen Charter (Part 3),"use, of, vehicle"
+277,City Mayor's Office,cmo_use_of_vehicle,bis,Borrow government vehicle for event,"Para manghulam o mugamit og **Government Vehicles** (Ambulansya, Rescue, o Service):
+
+---
+### 🚑 Proseso sa Pag-request
+
+**Steps:**
+1. Isumite ang request letter nga naay petsa, adtoan, ug rason.
+2. Para sa mga emergency (Ambulansya), tawag diretso sa CDRRMO.
+3. Para sa dili emergency, hulata ang approval sa Mayor ug ang Trip Ticket.
+
+💰 **Bayad:** Libre para sa mga emergency.
+⏱️ **Processing Time:** Diretso kung emergency; 1 ka adlaw kung dili.",Citizen Charter (Part 3),"use, of, vehicle"
+278,City Mayor's Office - BPLS,cmo_firecracker_permit,en,How to get a permit to sell firecrackers?,"To sell firecrackers and pyrotechnics during the holidays, you must secure a **Special Permit to Sell Firecrackers**.
+
+---
+### 🎆 Firecracker Permit Process
+
+**Steps:**
+1. Secure clearance from the Philippine National Police (PNP) and Bureau of Fire Protection (BFP).
+2. Submit clearances and application to the BPLS.
+3. Pay the required fees at the City Treasurer's Office.
+4. Claim your permit and set up only at the designated Firecracker Zone.
+
+💰 **Cost:** Varies per space/stall.
+⏱️ **Processing Time:** 1 to 2 days.",Citizen Charter (Part 3),"firecracker, permit"
+279,City Mayor's Office - BPLS,cmo_firecracker_permit,en,Permit for selling fireworks,"To sell firecrackers and pyrotechnics during the holidays, you must secure a **Special Permit to Sell Firecrackers**.
+
+---
+### 🎆 Firecracker Permit Process
+
+**Steps:**
+1. Secure clearance from the Philippine National Police (PNP) and Bureau of Fire Protection (BFP).
+2. Submit clearances and application to the BPLS.
+3. Pay the required fees at the City Treasurer's Office.
+4. Claim your permit and set up only at the designated Firecracker Zone.
+
+💰 **Cost:** Varies per space/stall.
+⏱️ **Processing Time:** 1 to 2 days.",Citizen Charter (Part 3),"firecracker, permit"
+280,City Mayor's Office - BPLS,cmo_firecracker_permit,en,Where to apply for firecracker stall?,"To sell firecrackers and pyrotechnics during the holidays, you must secure a **Special Permit to Sell Firecrackers**.
+
+---
+### 🎆 Firecracker Permit Process
+
+**Steps:**
+1. Secure clearance from the Philippine National Police (PNP) and Bureau of Fire Protection (BFP).
+2. Submit clearances and application to the BPLS.
+3. Pay the required fees at the City Treasurer's Office.
+4. Claim your permit and set up only at the designated Firecracker Zone.
+
+💰 **Cost:** Varies per space/stall.
+⏱️ **Processing Time:** 1 to 2 days.",Citizen Charter (Part 3),"firecracker, permit"
+281,City Mayor's Office - BPLS,cmo_firecracker_permit,tl,Paano kumuha ng permit para magbenta ng paputok?,"Upang magbenta ng paputok tuwing holidays, kailangang kumuha ng **Special Permit to Sell Firecrackers**.
+
+---
+### 🎆 Proseso ng Permit
+
+**Steps:**
+1. Kumuha ng clearance mula sa PNP at BFP.
+2. Isumite ang clearances at application sa BPLS.
+3. Magbayad ng fee sa City Treasurer's Office.
+4. Kunin ang permit at magtayo lamang ng pwesto sa designated Firecracker Zone.
+
+💰 **Bayad:** Nakadepende sa pwesto.
+⏱️ **Processing Time:** 1 hanggang 2 araw.",Citizen Charter (Part 3),"firecracker, permit"
+282,City Mayor's Office - BPLS,cmo_firecracker_permit,tl,Permit para sa tindahan ng paputok,"Upang magbenta ng paputok tuwing holidays, kailangang kumuha ng **Special Permit to Sell Firecrackers**.
+
+---
+### 🎆 Proseso ng Permit
+
+**Steps:**
+1. Kumuha ng clearance mula sa PNP at BFP.
+2. Isumite ang clearances at application sa BPLS.
+3. Magbayad ng fee sa City Treasurer's Office.
+4. Kunin ang permit at magtayo lamang ng pwesto sa designated Firecracker Zone.
+
+💰 **Bayad:** Nakadepende sa pwesto.
+⏱️ **Processing Time:** 1 hanggang 2 araw.",Citizen Charter (Part 3),"firecracker, permit"
+283,City Mayor's Office - BPLS,cmo_firecracker_permit,bis,Unsaon pagkuha og permit para mamaligya og pabuto?,"Para makabaligya og pabuto inig holidays, kinahanglan mokuha og **Special Permit to Sell Firecrackers**.
+
+---
+### 🎆 Proseso sa Permit
+
+**Steps:**
+1. Pagkuha daan og clearance gikan sa PNP ug BFP.
+2. Isumite ang clearances ug application didto sa BPLS.
+3. Pagbayad sa fee sa City Treasurer's Office.
+4. Kuhaa ang permit ug pagpwesto lang sa gi-assign nga Firecracker Zone.
+
+💰 **Bayad:** Magdepende sa pwesto.
+⏱️ **Processing Time:** 1 hantod 2 ka adlaw.",Citizen Charter (Part 3),"firecracker, permit"
+284,City Mayor's Office - BPLS,cmo_firecracker_permit,bis,Asa maka apply og pwesto sa pabuto?,"Para makabaligya og pabuto inig holidays, kinahanglan mokuha og **Special Permit to Sell Firecrackers**.
+
+---
+### 🎆 Proseso sa Permit
+
+**Steps:**
+1. Pagkuha daan og clearance gikan sa PNP ug BFP.
+2. Isumite ang clearances ug application didto sa BPLS.
+3. Pagbayad sa fee sa City Treasurer's Office.
+4. Kuhaa ang permit ug pagpwesto lang sa gi-assign nga Firecracker Zone.
+
+💰 **Bayad:** Magdepende sa pwesto.
+⏱️ **Processing Time:** 1 hantod 2 ka adlaw.",Citizen Charter (Part 3),"firecracker, permit"
+285,City Mayor's Office - BPLS,cmo_firecracker_permit,bis,Requirements sa pagbaligya og firecrackers,"Para makabaligya og pabuto inig holidays, kinahanglan mokuha og **Special Permit to Sell Firecrackers**.
+
+---
+### 🎆 Proseso sa Permit
+
+**Steps:**
+1. Pagkuha daan og clearance gikan sa PNP ug BFP.
+2. Isumite ang clearances ug application didto sa BPLS.
+3. Pagbayad sa fee sa City Treasurer's Office.
+4. Kuhaa ang permit ug pagpwesto lang sa gi-assign nga Firecracker Zone.
+
+💰 **Bayad:** Magdepende sa pwesto.
+⏱️ **Processing Time:** 1 hantod 2 ka adlaw.",Citizen Charter (Part 3),"firecracker, permit"
+286,City Economic Enterprise,cmo_market_stall,en,How to rent a market stall?,"To rent a space or stall at the public market, you need to apply for a **Market Stall Lease**.
+
+---
+### 🏪 Market Stall Application
+
+**Steps:**
+1. Inquire at the City Economic Enterprise Management and Development Office (CEEMDO) for vacant stalls.
+2. Submit a letter of intent to the Mayor.
+3. Once approved, secure a Market Clearance.
+4. Pay the initial deposit and rental fees at the City Treasurer's Office.
+5. Sign the Lease Contract and proceed with the Business Permit application.
+
+💰 **Cost:** Depends on the stall location and size.
+⏱️ **Processing Time:** Varies based on availability.",Citizen Charter (Part 3),"market, stall"
+287,City Economic Enterprise,cmo_market_stall,en,Application for public market space,"To rent a space or stall at the public market, you need to apply for a **Market Stall Lease**.
+
+---
+### 🏪 Market Stall Application
+
+**Steps:**
+1. Inquire at the City Economic Enterprise Management and Development Office (CEEMDO) for vacant stalls.
+2. Submit a letter of intent to the Mayor.
+3. Once approved, secure a Market Clearance.
+4. Pay the initial deposit and rental fees at the City Treasurer's Office.
+5. Sign the Lease Contract and proceed with the Business Permit application.
+
+💰 **Cost:** Depends on the stall location and size.
+⏱️ **Processing Time:** Varies based on availability.",Citizen Charter (Part 3),"market, stall"
+288,City Economic Enterprise,cmo_market_stall,en,Process for leasing a stall in the public market,"To rent a space or stall at the public market, you need to apply for a **Market Stall Lease**.
+
+---
+### 🏪 Market Stall Application
+
+**Steps:**
+1. Inquire at the City Economic Enterprise Management and Development Office (CEEMDO) for vacant stalls.
+2. Submit a letter of intent to the Mayor.
+3. Once approved, secure a Market Clearance.
+4. Pay the initial deposit and rental fees at the City Treasurer's Office.
+5. Sign the Lease Contract and proceed with the Business Permit application.
+
+💰 **Cost:** Depends on the stall location and size.
+⏱️ **Processing Time:** Varies based on availability.",Citizen Charter (Part 3),"market, stall"
+289,City Economic Enterprise,cmo_market_stall,tl,Paano umupa ng pwesto sa palengke?,"Para umupa ng pwesto sa palengke, kailangan mong mag-apply ng **Market Stall Lease**.
+
+---
+### 🏪 Proseso
+
+**Steps:**
+1. Magtanong sa CEEMDO kung may bakanteng pwesto.
+2. Isumite ang letter of intent sa Mayor.
+3. Kapag naaprubahan, kumuha ng Market Clearance.
+4. Magbayad ng deposit at upa sa City Treasurer's Office.
+5. Pumirma sa Lease Contract at mag-apply na ng Business Permit.
+
+💰 **Bayad:** Depende sa laki at lokasyon ng pwesto.
+⏱️ **Processing Time:** Depende sa availability ng pwesto.",Citizen Charter (Part 3),"market, stall"
+290,City Economic Enterprise,cmo_market_stall,tl,Requirements para kumuha ng pwesto sa palengke,"Para umupa ng pwesto sa palengke, kailangan mong mag-apply ng **Market Stall Lease**.
+
+---
+### 🏪 Proseso
+
+**Steps:**
+1. Magtanong sa CEEMDO kung may bakanteng pwesto.
+2. Isumite ang letter of intent sa Mayor.
+3. Kapag naaprubahan, kumuha ng Market Clearance.
+4. Magbayad ng deposit at upa sa City Treasurer's Office.
+5. Pumirma sa Lease Contract at mag-apply na ng Business Permit.
+
+💰 **Bayad:** Depende sa laki at lokasyon ng pwesto.
+⏱️ **Processing Time:** Depende sa availability ng pwesto.",Citizen Charter (Part 3),"market, stall"
+291,City Economic Enterprise,cmo_market_stall,bis,Unsaon pag arkila og pwesto sa palengke?,"Para maka-arkila og pwesto sa palengke, kinahanglan mag-apply og **Market Stall Lease**.
+
+---
+### 🏪 Proseso
+
+**Steps:**
+1. Pag-inquire sa CEEMDO kung naay bakante nga pwesto.
+2. Isumite ang letter of intent ngadto sa Mayor.
+3. Kung ma-aprubahan na, pagkuha og Market Clearance.
+4. Pagbayad sa deposit ug abang didto sa City Treasurer's Office.
+5. Pirma sa Lease Contract ug pag-apply na og Business Permit.
+
+💰 **Bayad:** Magdepende sa kadako ug lokasyon sa pwesto.
+⏱️ **Processing Time:** Magdepende kung naay bakante.",Citizen Charter (Part 3),"market, stall"
+292,City Economic Enterprise,cmo_market_stall,bis,Asa maka apply og pwesto sa public market?,"Para maka-arkila og pwesto sa palengke, kinahanglan mag-apply og **Market Stall Lease**.
+
+---
+### 🏪 Proseso
+
+**Steps:**
+1. Pag-inquire sa CEEMDO kung naay bakante nga pwesto.
+2. Isumite ang letter of intent ngadto sa Mayor.
+3. Kung ma-aprubahan na, pagkuha og Market Clearance.
+4. Pagbayad sa deposit ug abang didto sa City Treasurer's Office.
+5. Pirma sa Lease Contract ug pag-apply na og Business Permit.
+
+💰 **Bayad:** Magdepende sa kadako ug lokasyon sa pwesto.
+⏱️ **Processing Time:** Magdepende kung naay bakante.",Citizen Charter (Part 3),"market, stall"
+293,City Economic Enterprise,cmo_market_stall,bis,Gusto nako mamaligya sa palengke,"Para maka-arkila og pwesto sa palengke, kinahanglan mag-apply og **Market Stall Lease**.
+
+---
+### 🏪 Proseso
+
+**Steps:**
+1. Pag-inquire sa CEEMDO kung naay bakante nga pwesto.
+2. Isumite ang letter of intent ngadto sa Mayor.
+3. Kung ma-aprubahan na, pagkuha og Market Clearance.
+4. Pagbayad sa deposit ug abang didto sa City Treasurer's Office.
+5. Pirma sa Lease Contract ug pag-apply na og Business Permit.
+
+💰 **Bayad:** Magdepende sa kadako ug lokasyon sa pwesto.
+⏱️ **Processing Time:** Magdepende kung naay bakante.",Citizen Charter (Part 3),"market, stall"
+294,City Mayor's Office,cmo_cert_of_appearance,en,How to get a certificate of appearance?,"Official guests, auditors, or government employees visiting the city can secure a **Certificate of Appearance**.
+
+---
+### 📜 Certificate of Appearance
+
+**Steps:**
+1. Present your Travel Order or official ID to the CMO Receiving Clerk or HRMO.
+2. Log in to the visitor's logbook.
+3. Wait for the drafting and signing of the certificate by the authorized official.
+4. Claim the signed Certificate of Appearance.
+
+💰 **Cost:** Free.
+⏱️ **Processing Time:** 5 to 10 minutes.",Citizen Charter (Part 3),"cert, of, appearance"
+295,City Mayor's Office,cmo_cert_of_appearance,en,Where to sign for certificate of appearance?,"Official guests, auditors, or government employees visiting the city can secure a **Certificate of Appearance**.
+
+---
+### 📜 Certificate of Appearance
+
+**Steps:**
+1. Present your Travel Order or official ID to the CMO Receiving Clerk or HRMO.
+2. Log in to the visitor's logbook.
+3. Wait for the drafting and signing of the certificate by the authorized official.
+4. Claim the signed Certificate of Appearance.
+
+💰 **Cost:** Free.
+⏱️ **Processing Time:** 5 to 10 minutes.",Citizen Charter (Part 3),"cert, of, appearance"
+296,City Mayor's Office,cmo_cert_of_appearance,en,I need a cert of appearance for my travel order,"Official guests, auditors, or government employees visiting the city can secure a **Certificate of Appearance**.
+
+---
+### 📜 Certificate of Appearance
+
+**Steps:**
+1. Present your Travel Order or official ID to the CMO Receiving Clerk or HRMO.
+2. Log in to the visitor's logbook.
+3. Wait for the drafting and signing of the certificate by the authorized official.
+4. Claim the signed Certificate of Appearance.
+
+💰 **Cost:** Free.
+⏱️ **Processing Time:** 5 to 10 minutes.",Citizen Charter (Part 3),"cert, of, appearance"
+297,City Mayor's Office,cmo_cert_of_appearance,tl,Paano kumuha ng certificate of appearance?,"Ang mga opisyal na bisita o empleyado ng gobyerno na bumisita sa lungsod ay maaaring kumuha ng **Certificate of Appearance**.
+
+---
+### 📜 Proseso
+
+**Steps:**
+1. Ipakita ang Travel Order o official ID sa CMO Receiving Clerk o HRMO.
+2. Pumirma sa visitor's logbook.
+3. Hintayin ang paggawa at pagpirma ng authorized official sa certificate.
+4. Kunin ang pirmadong Certificate of Appearance.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** 5 hanggang 10 minuto.",Citizen Charter (Part 3),"cert, of, appearance"
+298,City Mayor's Office,cmo_cert_of_appearance,tl,Saan pwede magpa-certificate of appearance?,"Ang mga opisyal na bisita o empleyado ng gobyerno na bumisita sa lungsod ay maaaring kumuha ng **Certificate of Appearance**.
+
+---
+### 📜 Proseso
+
+**Steps:**
+1. Ipakita ang Travel Order o official ID sa CMO Receiving Clerk o HRMO.
+2. Pumirma sa visitor's logbook.
+3. Hintayin ang paggawa at pagpirma ng authorized official sa certificate.
+4. Kunin ang pirmadong Certificate of Appearance.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** 5 hanggang 10 minuto.",Citizen Charter (Part 3),"cert, of, appearance"
+299,City Mayor's Office,cmo_cert_of_appearance,bis,Unsaon pagkuha og certificate of appearance?,"Ang mga opisyal nga bisita o empleyado sa gobyerno nga nibisita sa syudad pwede mokuha og **Certificate of Appearance**.
+
+---
+### 📜 Proseso
+
+**Steps:**
+1. Ipakita ang inyong Travel Order o official ID sa CMO Receiving Clerk o HRMO.
+2. Pirma sa visitor's logbook.
+3. Hulata nga himuon ug pirmahan sa authorized official ang certificate.
+4. Kuhaa ang pinirmahan nga Certificate of Appearance.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** 5 hantod 10 minutos.",Citizen Charter (Part 3),"cert, of, appearance"
+300,City Mayor's Office,cmo_cert_of_appearance,bis,Asa pwede maka pirma para cert of appearance?,"Ang mga opisyal nga bisita o empleyado sa gobyerno nga nibisita sa syudad pwede mokuha og **Certificate of Appearance**.
+
+---
+### 📜 Proseso
+
+**Steps:**
+1. Ipakita ang inyong Travel Order o official ID sa CMO Receiving Clerk o HRMO.
+2. Pirma sa visitor's logbook.
+3. Hulata nga himuon ug pirmahan sa authorized official ang certificate.
+4. Kuhaa ang pinirmahan nga Certificate of Appearance.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** 5 hantod 10 minutos.",Citizen Charter (Part 3),"cert, of, appearance"
+301,City Mayor's Office,cmo_cert_of_appearance,bis,Certificate of appearance para sa travel,"Ang mga opisyal nga bisita o empleyado sa gobyerno nga nibisita sa syudad pwede mokuha og **Certificate of Appearance**.
+
+---
+### 📜 Proseso
+
+**Steps:**
+1. Ipakita ang inyong Travel Order o official ID sa CMO Receiving Clerk o HRMO.
+2. Pirma sa visitor's logbook.
+3. Hulata nga himuon ug pirmahan sa authorized official ang certificate.
+4. Kuhaa ang pinirmahan nga Certificate of Appearance.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** 5 hantod 10 minutos.",Citizen Charter (Part 3),"cert, of, appearance"
+302,City Mayor's Office - CENRO,cmo_tree_cutting,en,How to get a permit to cut a tree?,"To cut down trees, especially those posing hazards or for construction, you need a **Mayor's Endorsement for Tree Cutting**.
+
+---
+### 🌳 Tree Cutting Permit
+
+**Steps:**
+1. Secure a Barangay Clearance / No Objection Certificate for tree cutting.
+2. Submit a request letter to the City Environment and Natural Resources Office (CENRO) with pictures of the tree.
+3. CENRO will inspect the tree and endorse the request to the Mayor and DENR.
+4. Secure the final Tree Cutting Permit from the DENR.
+
+💰 **Cost:** Inspection is usually free; DENR fees may apply.
+⏱️ **Processing Time:** 3 to 5 days (includes inspection).",Citizen Charter (Part 3),"tree, cutting"
+303,City Mayor's Office - CENRO,cmo_tree_cutting,en,Process for tree cutting permit,"To cut down trees, especially those posing hazards or for construction, you need a **Mayor's Endorsement for Tree Cutting**.
+
+---
+### 🌳 Tree Cutting Permit
+
+**Steps:**
+1. Secure a Barangay Clearance / No Objection Certificate for tree cutting.
+2. Submit a request letter to the City Environment and Natural Resources Office (CENRO) with pictures of the tree.
+3. CENRO will inspect the tree and endorse the request to the Mayor and DENR.
+4. Secure the final Tree Cutting Permit from the DENR.
+
+💰 **Cost:** Inspection is usually free; DENR fees may apply.
+⏱️ **Processing Time:** 3 to 5 days (includes inspection).",Citizen Charter (Part 3),"tree, cutting"
+304,City Mayor's Office - CENRO,cmo_tree_cutting,en,"The tree is dangerous, how to request cutting?","To cut down trees, especially those posing hazards or for construction, you need a **Mayor's Endorsement for Tree Cutting**.
+
+---
+### 🌳 Tree Cutting Permit
+
+**Steps:**
+1. Secure a Barangay Clearance / No Objection Certificate for tree cutting.
+2. Submit a request letter to the City Environment and Natural Resources Office (CENRO) with pictures of the tree.
+3. CENRO will inspect the tree and endorse the request to the Mayor and DENR.
+4. Secure the final Tree Cutting Permit from the DENR.
+
+💰 **Cost:** Inspection is usually free; DENR fees may apply.
+⏱️ **Processing Time:** 3 to 5 days (includes inspection).",Citizen Charter (Part 3),"tree, cutting"
+305,City Mayor's Office - CENRO,cmo_tree_cutting,tl,Paano kumuha ng permit magputol ng puno?,"Para magputol ng puno, lalo na kung ito ay delikado o para sa konstruksyon, kailangan ng **Mayor's Endorsement for Tree Cutting**.
+
+---
+### 🌳 Proseso ng Permit
+
+**Steps:**
+1. Kumuha ng Barangay Clearance / No Objection Certificate.
+2. Isumite ang request letter sa CENRO kasama ang litrato ng puno.
+3. I-inspeksyon ng CENRO ang puno at i-eendorso sa Mayor at DENR.
+4. Kunin ang pinal na Tree Cutting Permit sa DENR.
+
+💰 **Bayad:** Kadalasan libre ang inspection; maaaring may bayad sa DENR.
+⏱️ **Processing Time:** 3 hanggang 5 araw (kasama ang inspeksyon).",Citizen Charter (Part 3),"tree, cutting"
+306,City Mayor's Office - CENRO,cmo_tree_cutting,tl,Permit para pumutol ng kahoy,"Para magputol ng puno, lalo na kung ito ay delikado o para sa konstruksyon, kailangan ng **Mayor's Endorsement for Tree Cutting**.
+
+---
+### 🌳 Proseso ng Permit
+
+**Steps:**
+1. Kumuha ng Barangay Clearance / No Objection Certificate.
+2. Isumite ang request letter sa CENRO kasama ang litrato ng puno.
+3. I-inspeksyon ng CENRO ang puno at i-eendorso sa Mayor at DENR.
+4. Kunin ang pinal na Tree Cutting Permit sa DENR.
+
+💰 **Bayad:** Kadalasan libre ang inspection; maaaring may bayad sa DENR.
+⏱️ **Processing Time:** 3 hanggang 5 araw (kasama ang inspeksyon).",Citizen Charter (Part 3),"tree, cutting"
+307,City Mayor's Office - CENRO,cmo_tree_cutting,bis,Unsaon pagkuha og permit para mamutol og kahoy?,"Para mamutol og kahoy, labi na kung delikado o tungod sa construction, kinahanglan og **Mayor's Endorsement for Tree Cutting**.
+
+---
+### 🌳 Proseso sa Permit
+
+**Steps:**
+1. Pagkuha og Barangay Clearance / No Objection Certificate.
+2. Isumite ang request letter sa CENRO uban ang litrato sa kahoy.
+3. I-inspeksyon sa CENRO ang kahoy ug i-endorse sa Mayor ug DENR.
+4. Kuhaa ang final nga Tree Cutting Permit sa DENR.
+
+💰 **Bayad:** Kasagaran libre ang inspection; naa poy bayad sa DENR.
+⏱️ **Processing Time:** 3 ngadto sa 5 ka adlaw (apil ang inspection).",Citizen Charter (Part 3),"tree, cutting"
+308,City Mayor's Office - CENRO,cmo_tree_cutting,bis,Delikado na ang kahoy unsaon pag pa putol?,"Para mamutol og kahoy, labi na kung delikado o tungod sa construction, kinahanglan og **Mayor's Endorsement for Tree Cutting**.
+
+---
+### 🌳 Proseso sa Permit
+
+**Steps:**
+1. Pagkuha og Barangay Clearance / No Objection Certificate.
+2. Isumite ang request letter sa CENRO uban ang litrato sa kahoy.
+3. I-inspeksyon sa CENRO ang kahoy ug i-endorse sa Mayor ug DENR.
+4. Kuhaa ang final nga Tree Cutting Permit sa DENR.
+
+💰 **Bayad:** Kasagaran libre ang inspection; naa poy bayad sa DENR.
+⏱️ **Processing Time:** 3 ngadto sa 5 ka adlaw (apil ang inspection).",Citizen Charter (Part 3),"tree, cutting"
+309,City Mayor's Office - CENRO,cmo_tree_cutting,bis,Tree cutting permit process,"Para mamutol og kahoy, labi na kung delikado o tungod sa construction, kinahanglan og **Mayor's Endorsement for Tree Cutting**.
+
+---
+### 🌳 Proseso sa Permit
+
+**Steps:**
+1. Pagkuha og Barangay Clearance / No Objection Certificate.
+2. Isumite ang request letter sa CENRO uban ang litrato sa kahoy.
+3. I-inspeksyon sa CENRO ang kahoy ug i-endorse sa Mayor ug DENR.
+4. Kuhaa ang final nga Tree Cutting Permit sa DENR.
+
+💰 **Bayad:** Kasagaran libre ang inspection; naa poy bayad sa DENR.
+⏱️ **Processing Time:** 3 ngadto sa 5 ka adlaw (apil ang inspection).",Citizen Charter (Part 3),"tree, cutting"
+310,City Mayor's Office - Engineering,cmo_excavation_permit,en,How to get an excavation permit?,"For road diggings or installation of pipes/cables, an **Excavation Permit** must be secured.
+
+---
+### 🚧 Excavation Permit
+
+**Steps:**
+1. Submit your project plans and a request letter to the City Engineering Office (CEO).
+2. Secure clearances from traffic management and the affected barangay.
+3. Pay the excavation fees and deposit/bond at the City Treasurer's Office.
+4. Present the receipt and receive the approved Excavation Permit.
+
+💰 **Cost:** Depends on the area/length of excavation.
+⏱️ **Processing Time:** 2 to 3 days.",Citizen Charter (Part 3),"excavation, permit"
+311,City Mayor's Office - Engineering,cmo_excavation_permit,en,Permit for digging the road,"For road diggings or installation of pipes/cables, an **Excavation Permit** must be secured.
+
+---
+### 🚧 Excavation Permit
+
+**Steps:**
+1. Submit your project plans and a request letter to the City Engineering Office (CEO).
+2. Secure clearances from traffic management and the affected barangay.
+3. Pay the excavation fees and deposit/bond at the City Treasurer's Office.
+4. Present the receipt and receive the approved Excavation Permit.
+
+💰 **Cost:** Depends on the area/length of excavation.
+⏱️ **Processing Time:** 2 to 3 days.",Citizen Charter (Part 3),"excavation, permit"
+312,City Mayor's Office - Engineering,cmo_excavation_permit,en,"We need to install pipes, what permit do we need?","For road diggings or installation of pipes/cables, an **Excavation Permit** must be secured.
+
+---
+### 🚧 Excavation Permit
+
+**Steps:**
+1. Submit your project plans and a request letter to the City Engineering Office (CEO).
+2. Secure clearances from traffic management and the affected barangay.
+3. Pay the excavation fees and deposit/bond at the City Treasurer's Office.
+4. Present the receipt and receive the approved Excavation Permit.
+
+💰 **Cost:** Depends on the area/length of excavation.
+⏱️ **Processing Time:** 2 to 3 days.",Citizen Charter (Part 3),"excavation, permit"
+313,City Mayor's Office - Engineering,cmo_excavation_permit,tl,Paano kumuha ng excavation permit?,"Para sa paghuhukay sa kalsada (pagkabit ng tubo/kable), kailangan ng **Excavation Permit**.
+
+---
+### 🚧 Proseso ng Permit
+
+**Steps:**
+1. Isumite ang plano ng proyekto at request letter sa City Engineering Office (CEO).
+2. Kumuha ng clearances mula sa traffic management at barangay.
+3. Magbayad ng excavation fee at bond sa City Treasurer's Office.
+4. Ipakita ang resibo para makuha ang Excavation Permit.
+
+💰 **Bayad:** Depende sa haba/laki ng huhukayin.
+⏱️ **Processing Time:** 2 hanggang 3 araw.",Citizen Charter (Part 3),"excavation, permit"
+314,City Mayor's Office - Engineering,cmo_excavation_permit,tl,Permit para maghukay sa kalsada,"Para sa paghuhukay sa kalsada (pagkabit ng tubo/kable), kailangan ng **Excavation Permit**.
+
+---
+### 🚧 Proseso ng Permit
+
+**Steps:**
+1. Isumite ang plano ng proyekto at request letter sa City Engineering Office (CEO).
+2. Kumuha ng clearances mula sa traffic management at barangay.
+3. Magbayad ng excavation fee at bond sa City Treasurer's Office.
+4. Ipakita ang resibo para makuha ang Excavation Permit.
+
+💰 **Bayad:** Depende sa haba/laki ng huhukayin.
+⏱️ **Processing Time:** 2 hanggang 3 araw.",Citizen Charter (Part 3),"excavation, permit"
+315,City Mayor's Office - Engineering,cmo_excavation_permit,bis,Unsaon pagkuha og excavation permit?,"Para sa pagpangubkob sa kalsada (pagtaod og tubo o kable), kinahanglan og **Excavation Permit**.
+
+---
+### 🚧 Proseso sa Permit
+
+**Steps:**
+1. Isumite ang plano sa proyekto ug request letter sa City Engineering Office (CEO).
+2. Pagkuha og clearance gikan sa traffic management ug barangay.
+3. Pagbayad sa excavation fee ug bond sa City Treasurer's Office.
+4. Ipakita ang resibo aron makuha ang Excavation Permit.
+
+💰 **Bayad:** Magdepende sa gidak-on sa kubkubon.
+⏱️ **Processing Time:** 2 hantod 3 ka adlaw.",Citizen Charter (Part 3),"excavation, permit"
+316,City Mayor's Office - Engineering,cmo_excavation_permit,bis,Permit para makakubkob sa kalsada,"Para sa pagpangubkob sa kalsada (pagtaod og tubo o kable), kinahanglan og **Excavation Permit**.
+
+---
+### 🚧 Proseso sa Permit
+
+**Steps:**
+1. Isumite ang plano sa proyekto ug request letter sa City Engineering Office (CEO).
+2. Pagkuha og clearance gikan sa traffic management ug barangay.
+3. Pagbayad sa excavation fee ug bond sa City Treasurer's Office.
+4. Ipakita ang resibo aron makuha ang Excavation Permit.
+
+💰 **Bayad:** Magdepende sa gidak-on sa kubkubon.
+⏱️ **Processing Time:** 2 hantod 3 ka adlaw.",Citizen Charter (Part 3),"excavation, permit"
+317,City Mayor's Office - Engineering,cmo_excavation_permit,bis,Magtaod mi og tubo sa dalan unsay permit,"Para sa pagpangubkob sa kalsada (pagtaod og tubo o kable), kinahanglan og **Excavation Permit**.
+
+---
+### 🚧 Proseso sa Permit
+
+**Steps:**
+1. Isumite ang plano sa proyekto ug request letter sa City Engineering Office (CEO).
+2. Pagkuha og clearance gikan sa traffic management ug barangay.
+3. Pagbayad sa excavation fee ug bond sa City Treasurer's Office.
+4. Ipakita ang resibo aron makuha ang Excavation Permit.
+
+💰 **Bayad:** Magdepende sa gidak-on sa kubkubon.
+⏱️ **Processing Time:** 2 hantod 3 ka adlaw.",Citizen Charter (Part 3),"excavation, permit"
+318,City Mayor's Office - PESO,cmo_pesos_job_fair,en,When is the next job fair?,"To participate in or inquire about a **Job Fair**, the Public Employment Service Office (PESO) is the main contact.
+
+---
+### 👔 Job Fair Participation
+
+**Steps:**
+1. Visit the PESO office or check the official City Government Facebook page for upcoming Job Fair announcements.
+2. Prepare multiple copies of your Resume/Bio-data with recent 2x2 ID pictures.
+3. Pre-register online or walk-in during the Job Fair day at the venue (usually the City Gym).
+4. Proceed to the interview booths of your target companies.
+
+💰 **Cost:** Completely Free.
+⏱️ **Processing Time:** Same day interview.",Citizen Charter (Part 3),"pesos, job, fair"
+319,City Mayor's Office - PESO,cmo_pesos_job_fair,en,How to join the city job fair?,"To participate in or inquire about a **Job Fair**, the Public Employment Service Office (PESO) is the main contact.
+
+---
+### 👔 Job Fair Participation
+
+**Steps:**
+1. Visit the PESO office or check the official City Government Facebook page for upcoming Job Fair announcements.
+2. Prepare multiple copies of your Resume/Bio-data with recent 2x2 ID pictures.
+3. Pre-register online or walk-in during the Job Fair day at the venue (usually the City Gym).
+4. Proceed to the interview booths of your target companies.
+
+💰 **Cost:** Completely Free.
+⏱️ **Processing Time:** Same day interview.",Citizen Charter (Part 3),"pesos, job, fair"
+320,City Mayor's Office - PESO,cmo_pesos_job_fair,en,Requirements for job fair application,"To participate in or inquire about a **Job Fair**, the Public Employment Service Office (PESO) is the main contact.
+
+---
+### 👔 Job Fair Participation
+
+**Steps:**
+1. Visit the PESO office or check the official City Government Facebook page for upcoming Job Fair announcements.
+2. Prepare multiple copies of your Resume/Bio-data with recent 2x2 ID pictures.
+3. Pre-register online or walk-in during the Job Fair day at the venue (usually the City Gym).
+4. Proceed to the interview booths of your target companies.
+
+💰 **Cost:** Completely Free.
+⏱️ **Processing Time:** Same day interview.",Citizen Charter (Part 3),"pesos, job, fair"
+321,City Mayor's Office - PESO,cmo_pesos_job_fair,tl,Kailan ang susunod na job fair?,"Para sumali o mag-inquire tungkol sa **Job Fair**, ang PESO ang inyong lalapitan.
+
+---
+### 👔 Pagsali sa Job Fair
+
+**Steps:**
+1. Pumunta sa PESO o tignan ang official Facebook page ng City Government para sa mga anunsyo ng Job Fair.
+2. Maghanda ng maraming kopya ng Resume/Bio-data at 2x2 pictures.
+3. Mag-register online o mag-walk-in sa mismong araw ng Job Fair.
+4. Pumunta sa mga interview booth ng mga kumpanya.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Interview sa mismong araw.",Citizen Charter (Part 3),"pesos, job, fair"
+322,City Mayor's Office - PESO,cmo_pesos_job_fair,tl,Paano sumali sa job fair ng munisipyo?,"Para sumali o mag-inquire tungkol sa **Job Fair**, ang PESO ang inyong lalapitan.
+
+---
+### 👔 Pagsali sa Job Fair
+
+**Steps:**
+1. Pumunta sa PESO o tignan ang official Facebook page ng City Government para sa mga anunsyo ng Job Fair.
+2. Maghanda ng maraming kopya ng Resume/Bio-data at 2x2 pictures.
+3. Mag-register online o mag-walk-in sa mismong araw ng Job Fair.
+4. Pumunta sa mga interview booth ng mga kumpanya.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Interview sa mismong araw.",Citizen Charter (Part 3),"pesos, job, fair"
+323,City Mayor's Office - PESO,cmo_pesos_job_fair,bis,Kanus a ang sunod nga job fair?,"Para moapil o mag-inquire bahin sa **Job Fair**, ang PESO ang inyong adtoan.
+
+---
+### 👔 Pag-apil sa Job Fair
+
+**Steps:**
+1. Adto sa PESO o i-check ang official Facebook page sa City Government para sa announcements sa Job Fair.
+2. Pag-andam og daghang kopya sa imong Resume/Bio-data ug 2x2 pictures.
+3. Pag-register daan online o walk-in inig adlaw mismo sa Job Fair.
+4. Adto sa interview booth sa mga kumpanya nga imong apply-an.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Interview sa maong adlaw.",Citizen Charter (Part 3),"pesos, job, fair"
+324,City Mayor's Office - PESO,cmo_pesos_job_fair,bis,Unsaon pag apil sa job fair sa city hall?,"Para moapil o mag-inquire bahin sa **Job Fair**, ang PESO ang inyong adtoan.
+
+---
+### 👔 Pag-apil sa Job Fair
+
+**Steps:**
+1. Adto sa PESO o i-check ang official Facebook page sa City Government para sa announcements sa Job Fair.
+2. Pag-andam og daghang kopya sa imong Resume/Bio-data ug 2x2 pictures.
+3. Pag-register daan online o walk-in inig adlaw mismo sa Job Fair.
+4. Adto sa interview booth sa mga kumpanya nga imong apply-an.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Interview sa maong adlaw.",Citizen Charter (Part 3),"pesos, job, fair"
+325,City Mayor's Office - PESO,cmo_pesos_job_fair,bis,Gusto ko mangapply sa job fair,"Para moapil o mag-inquire bahin sa **Job Fair**, ang PESO ang inyong adtoan.
+
+---
+### 👔 Pag-apil sa Job Fair
+
+**Steps:**
+1. Adto sa PESO o i-check ang official Facebook page sa City Government para sa announcements sa Job Fair.
+2. Pag-andam og daghang kopya sa imong Resume/Bio-data ug 2x2 pictures.
+3. Pag-register daan online o walk-in inig adlaw mismo sa Job Fair.
+4. Adto sa interview booth sa mga kumpanya nga imong apply-an.
+
+💰 **Bayad:** Libre.
+⏱️ **Processing Time:** Interview sa maong adlaw.",Citizen Charter (Part 3),"pesos, job, fair"
+326,City Mayor's Office,cmo_mayors_clearance,bis,"gusto ko mukuha og mayor's clearance, unsaon?",,User Feedback,"mayors, clearance"
+327,City Mayor's Office,cmo_use_of_facility,tl,"may laro kami gusto namin manghiram ng gym sa city hall, paano?",,User Feedback,"use, of, facility"
+328,City Mayor's Office,cmo_scholarship,bis,Gusto ko mo apply sa educational assista,,User Feedback,scholarship
+329,City Mayor's Office - BPLS,cmo_new_business_permit_requirements,en,What are the requirements for a new business permit?,"Based on the Citizen's Charter, here are the **Requirements** for a New Business Permit:
+
+1. **DTI / SEC / CDA Registration**
+2. **Location plan or sketch**
+3. **Proof of right to use location** (Title, Lease Contract, etc.)
+4. **Barangay Clearance for Business**
+
+Please ensure all documents are complete before submitting them to the BPLS.",Citizen Charter,"new, business, permit, requirements"
+330,City Mayor's Office - BPLS,cmo_new_business_permit_requirements,en,What documents do I need to bring for a new business permit?,"Based on the Citizen's Charter, here are the **Requirements** for a New Business Permit:
+
+1. **DTI / SEC / CDA Registration**
+2. **Location plan or sketch**
+3. **Proof of right to use location** (Title, Lease Contract, etc.)
+4. **Barangay Clearance for Business**
+
+Please ensure all documents are complete before submitting them to the BPLS.",Citizen Charter,"new, business, permit, requirements"
+331,City Mayor's Office - BPLS,cmo_new_business_permit_requirements,tl,Ano ang mga kailangan para sa bagong business permit?,"Ayon sa Citizen's Charter, narito ang mga **Kailangan** para sa Bagong Business Permit:
+
+1. **DTI / SEC / CDA Registration**
+2. **Location plan o sketch**
+3. **Katibayan ng pagmamay-ari o Lease Contract** ng pwesto
+4. **Barangay Clearance**
+
+Siguraduhing kumpleto ang mga dokumento bago pumunta sa BPLS.",Citizen Charter,"new, business, permit, requirements"
+332,City Mayor's Office - BPLS,cmo_new_business_permit_requirements,tl,Anong dokumento ang kailangan dalhin sa BPLS para sa bagong negosyo?,"Ayon sa Citizen's Charter, narito ang mga **Kailangan** para sa Bagong Business Permit:
+
+1. **DTI / SEC / CDA Registration**
+2. **Location plan o sketch**
+3. **Katibayan ng pagmamay-ari o Lease Contract** ng pwesto
+4. **Barangay Clearance**
+
+Siguraduhing kumpleto ang mga dokumento bago pumunta sa BPLS.",Citizen Charter,"new, business, permit, requirements"
+333,City Mayor's Office - BPLS,cmo_new_business_permit_requirements,bis,Unsa ang requirements sa pagkuha og bag-ong business permit?,"Base sa Citizen's Charter, mao ni ang mga **Kinahanglanon** para sa Bag-ong Business Permit:
+
+1. **DTI / SEC / CDA Registration**
+2. **Location plan o sketch**
+3. **Katibayan sa pagpanag-iya o Lease Contract** sa pwesto
+4. **Barangay Clearance**
+
+Siguraduha nga kumpleto ang mga dokumento usa moadto sa BPLS.",Citizen Charter,"new, business, permit, requirements"
+334,City Mayor's Office - BPLS,cmo_new_business_permit_requirements,bis,Unsa nga mga papeles ang dad-on para sa new business permit?,"Base sa Citizen's Charter, mao ni ang mga **Kinahanglanon** para sa Bag-ong Business Permit:
+
+1. **DTI / SEC / CDA Registration**
+2. **Location plan o sketch**
+3. **Katibayan sa pagpanag-iya o Lease Contract** sa pwesto
+4. **Barangay Clearance**
+
+Siguraduha nga kumpleto ang mga dokumento usa moadto sa BPLS.",Citizen Charter,"new, business, permit, requirements"
+335,City Mayor's Office - BPLS,cmo_new_business_permit_process,en,How to apply for a new business permit?,"Based on the Citizen's Charter, here is the **Step-by-Step Process** for a New Business Permit:
+
+1. **Submit** complete documentary requirements to the BPLS.
+2. **Wait** for assessment and secure the Order of Payment.
+3. **Pay** the assigned fees at the City Treasurer's Office and get the Official Receipt.
+4. **Present O.R. and claim** your Business Permit, Plate, and Clearances.
+
+⏱️ *Processing Time: Around 2 hours if requirements are complete.*",Citizen Charter,"new, business, permit, process"
+336,City Mayor's Office - BPLS,cmo_new_business_permit_process,en,What is the process of getting a new business permit?,"Based on the Citizen's Charter, here is the **Step-by-Step Process** for a New Business Permit:
+
+1. **Submit** complete documentary requirements to the BPLS.
+2. **Wait** for assessment and secure the Order of Payment.
+3. **Pay** the assigned fees at the City Treasurer's Office and get the Official Receipt.
+4. **Present O.R. and claim** your Business Permit, Plate, and Clearances.
+
+⏱️ *Processing Time: Around 2 hours if requirements are complete.*",Citizen Charter,"new, business, permit, process"
+337,City Mayor's Office - BPLS,cmo_new_business_permit_process,en,Steps for new business permit application,"Based on the Citizen's Charter, here is the **Step-by-Step Process** for a New Business Permit:
+
+1. **Submit** complete documentary requirements to the BPLS.
+2. **Wait** for assessment and secure the Order of Payment.
+3. **Pay** the assigned fees at the City Treasurer's Office and get the Official Receipt.
+4. **Present O.R. and claim** your Business Permit, Plate, and Clearances.
+
+⏱️ *Processing Time: Around 2 hours if requirements are complete.*",Citizen Charter,"new, business, permit, process"
+338,City Mayor's Office - BPLS,cmo_new_business_permit_process,tl,Paano kumuha ng bagong business permit?,"Ayon sa Citizen's Charter, narito ang **Proseso** para sa Bagong Business Permit:
+
+1. **Isumite** ang kumpletong requirements sa BPLS.
+2. **Hintayin** ang assessment at kunin ang Order of Payment.
+3. **Magbayad** sa City Treasurer's Office at kunin ang Official Receipt.
+4. **Ipakita ang O.R.** at kunin ang inyong Business Permit, Plate, at Clearances.
+
+⏱️ *Processing Time: Tinatayang 2 oras kung kumpleto ang requirements.*",Citizen Charter,"new, business, permit, process"
+339,City Mayor's Office - BPLS,cmo_new_business_permit_process,tl,Ano ang proseso ng pagkuha ng business permit?,"Ayon sa Citizen's Charter, narito ang **Proseso** para sa Bagong Business Permit:
+
+1. **Isumite** ang kumpletong requirements sa BPLS.
+2. **Hintayin** ang assessment at kunin ang Order of Payment.
+3. **Magbayad** sa City Treasurer's Office at kunin ang Official Receipt.
+4. **Ipakita ang O.R.** at kunin ang inyong Business Permit, Plate, at Clearances.
+
+⏱️ *Processing Time: Tinatayang 2 oras kung kumpleto ang requirements.*",Citizen Charter,"new, business, permit, process"
+340,City Mayor's Office - BPLS,cmo_new_business_permit_process,bis,Unsaon pag apply og bag-ong business permit?,"Base sa Citizen's Charter, mao ni ang **Proseso** para sa Bag-ong Business Permit:
+
+1. **Isumite** ang kumpletong requirements sa BPLS.
+2. **Hulata** ang assessment ug kuhaa ang Order of Payment.
+3. **Pagbayad** sa City Treasurer's Office ug kuhaa ang Official Receipt.
+4. **Ipakita ang O.R.** ug kuhaa ang imong Business Permit, Plate, ug Clearances.
+
+⏱️ *Processing Time: Mga 2 ka oras kung kumpleto ang requirements.*",Citizen Charter,"new, business, permit, process"
+341,City Mayor's Office - BPLS,cmo_new_business_permit_process,bis,Unsay proseso pagkuha og business permit?,"Base sa Citizen's Charter, mao ni ang **Proseso** para sa Bag-ong Business Permit:
+
+1. **Isumite** ang kumpletong requirements sa BPLS.
+2. **Hulata** ang assessment ug kuhaa ang Order of Payment.
+3. **Pagbayad** sa City Treasurer's Office ug kuhaa ang Official Receipt.
+4. **Ipakita ang O.R.** ug kuhaa ang imong Business Permit, Plate, ug Clearances.
+
+⏱️ *Processing Time: Mga 2 ka oras kung kumpleto ang requirements.*",Citizen Charter,"new, business, permit, process"
+342,City Mayor's Office - BPLS,cmo_new_business_permit_fee,en,How much is a new business permit?,"Based on the Citizen's Charter, the **Cost or Fee** for a New Business Permit depends on the capitalization and classification of your business. 
+
+Please proceed to the BPLS for an official assessment and secure the Order of Payment.",Citizen Charter,"new, business, permit, fee"
+343,City Mayor's Office - BPLS,cmo_new_business_permit_fee,en,What is the fee for a new business permit?,"Based on the Citizen's Charter, the **Cost or Fee** for a New Business Permit depends on the capitalization and classification of your business. 
+
+Please proceed to the BPLS for an official assessment and secure the Order of Payment.",Citizen Charter,"new, business, permit, fee"
+344,City Mayor's Office - BPLS,cmo_new_business_permit_fee,en,Cost of new business permit,"Based on the Citizen's Charter, the **Cost or Fee** for a New Business Permit depends on the capitalization and classification of your business. 
+
+Please proceed to the BPLS for an official assessment and secure the Order of Payment.",Citizen Charter,"new, business, permit, fee"
+345,City Mayor's Office - BPLS,cmo_new_business_permit_fee,tl,Magkano ang bagong business permit?,"Ayon sa Citizen's Charter, ang **Bayad** para sa Bagong Business Permit ay depende sa kapital at klase ng inyong negosyo. 
+
+Pumunta sa BPLS upang ipa-assess ito at makakuha ng Order of Payment.",Citizen Charter,"new, business, permit, fee"
+346,City Mayor's Office - BPLS,cmo_new_business_permit_fee,tl,Magkano babayaran sa pagkuha ng business permit?,"Ayon sa Citizen's Charter, ang **Bayad** para sa Bagong Business Permit ay depende sa kapital at klase ng inyong negosyo. 
+
+Pumunta sa BPLS upang ipa-assess ito at makakuha ng Order of Payment.",Citizen Charter,"new, business, permit, fee"
+347,City Mayor's Office - BPLS,cmo_new_business_permit_fee,bis,Pila ang bayad sa bag-ong business permit?,"Base sa Citizen's Charter, ang **Bayad** para sa Bag-ong Business Permit kay magdepende sa kapital ug klase sa inyong negosyo. 
+
+Adto sa BPLS para mapa-assess kini ug makakuha og Order of Payment.",Citizen Charter,"new, business, permit, fee"
+348,City Mayor's Office - BPLS,cmo_new_business_permit_fee,bis,Pila ang magasto para sa business permit?,"Base sa Citizen's Charter, ang **Bayad** para sa Bag-ong Business Permit kay magdepende sa kapital ug klase sa inyong negosyo. 
+
+Adto sa BPLS para mapa-assess kini ug makakuha og Order of Payment.",Citizen Charter,"new, business, permit, fee"
+349,City Mayor's Office - BPLS,cmo_new_business_permit_location,en,Where do I apply for a new business permit?,"Based on the Citizen's Charter, to apply and pay for a New Business Permit, you need to go to two offices:
+
+1. **BPLS (Business Permit and Licensing Section)** - For submission of documents and assessment.
+2. **City Treasurer's Office** - For payment of assessed fees.",Citizen Charter,"new, business, permit, location"
+350,City Mayor's Office - BPLS,cmo_new_business_permit_location,en,Where is the office for new business permit payment?,"Based on the Citizen's Charter, to apply and pay for a New Business Permit, you need to go to two offices:
+
+1. **BPLS (Business Permit and Licensing Section)** - For submission of documents and assessment.
+2. **City Treasurer's Office** - For payment of assessed fees.",Citizen Charter,"new, business, permit, location"
+351,City Mayor's Office - BPLS,cmo_new_business_permit_location,en,Which office issues the business permit?,"Based on the Citizen's Charter, to apply and pay for a New Business Permit, you need to go to two offices:
+
+1. **BPLS (Business Permit and Licensing Section)** - For submission of documents and assessment.
+2. **City Treasurer's Office** - For payment of assessed fees.",Citizen Charter,"new, business, permit, location"
+352,City Mayor's Office - BPLS,cmo_new_business_permit_location,tl,Saan kukuha ng bagong business permit?,"Ayon sa Citizen's Charter, para sa Bagong Business Permit, kailangan mong pumunta sa dalawang opisina:
+
+1. **BPLS (Business Permit and Licensing Section)** - Para sa pagpasa ng requirements at assessment.
+2. **City Treasurer's Office** - Para sa pagbabayad ng fees.",Citizen Charter,"new, business, permit, location"
+353,City Mayor's Office - BPLS,cmo_new_business_permit_location,tl,Saang opisina magbabayad ng business permit?,"Ayon sa Citizen's Charter, para sa Bagong Business Permit, kailangan mong pumunta sa dalawang opisina:
+
+1. **BPLS (Business Permit and Licensing Section)** - Para sa pagpasa ng requirements at assessment.
+2. **City Treasurer's Office** - Para sa pagbabayad ng fees.",Citizen Charter,"new, business, permit, location"
+354,City Mayor's Office - BPLS,cmo_new_business_permit_location,bis,Asa mokuha og bag-ong business permit?,"Base sa Citizen's Charter, para sa Bag-ong Business Permit, kinahanglan ka moadto sa duha ka opisina:
+
+1. **BPLS (Business Permit and Licensing Section)** - Para sa pagpasa sa requirements ug assessment.
+2. **City Treasurer's Office** - Para sa pagbayad sa fees.",Citizen Charter,"new, business, permit, location"
+355,City Mayor's Office - BPLS,cmo_new_business_permit_location,bis,Asa nga opisina magbayad para sa business permit?,"Base sa Citizen's Charter, para sa Bag-ong Business Permit, kinahanglan ka moadto sa duha ka opisina:
+
+1. **BPLS (Business Permit and Licensing Section)** - Para sa pagpasa sa requirements ug assessment.
+2. **City Treasurer's Office** - Para sa pagbayad sa fees.",Citizen Charter,"new, business, permit, location"

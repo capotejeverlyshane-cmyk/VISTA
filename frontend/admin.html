@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VISTA Admin Dashboard — Manage knowledge base, review unmatched queries, monitor feedback, and retrain the VISTA AI model.">
+  <title>VISTA Admin Dashboard</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%232563eb'/><text x='50' y='72' font-size='60' font-weight='800' fill='white' text-anchor='middle' font-family='system-ui'>V</text></svg>" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css?v=2">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Admin Login Gate -->
+  <div class="admin-login-gate" id="adminLoginGate" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#f0f4f8;">
+    <div class="admin-login-card">
+      <div class="admin-login-logo">V</div>
+      <h2>VISTA Admin</h2>
+      <p>Enter the administrator password to continue.</p>
+      <div class="admin-login-field">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <input type="password" id="adminPassword" placeholder="Administrator password" autocomplete="current-password">
+      </div>
+      <div class="admin-login-error" id="adminLoginError" style="display:none;">Incorrect password. Please try again.</div>
+      <button class="admin-login-submit" id="adminLoginSubmit">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Sign In
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Topbar -->
+  <div class="mobile-topbar" id="mobileTopbar">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="mobile-brand">
+      <div class="brand-icon-sm">V</div>
+      <span>VISTA Admin</span>
+    </div>
+    <button class="theme-toggle-btn" id="mobileThemeBtn" aria-label="Toggle theme">🌙</button>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-icon">V</div>
+        <div class="brand-text">
+          <h2>VISTA</h2>
+          <span class="brand-sub">Admin Panel</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-target="overview">
+          <span class="nav-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </span>
+          <span class="nav-label">Overview</span>
+        </a>
+        <a href="#" class="nav-item" data-target="unmatched">
+          <span class="nav-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </span>
+          <span class="nav-label">Unmatched Queries</span>
+        </a>
+        <a href="#" class="nav-item" data-target="knowledge">
+          <span class="nav-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </span>
+          <span class="nav-label">Knowledge Base</span>
+        </a>
+        <a href="#" class="nav-item" data-target="interactionlogs">
+          <span class="nav-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </span>
+          <span class="nav-label">Interaction Logs</span>
+        </a>
+        <a href="#" class="nav-item" data-target="directory">
+          <span class="nav-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+          </span>
+          <span class="nav-label">Manage Directory</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="retrainBtn" class="retrain-btn">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+          <span>Retrain Model</span>
+        </button>
+        <div class="sidebar-links">
+          <a href="index.html" class="sidebar-link" target="_blank">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Open Chatbot
+          </a>
+          <button class="sidebar-link" id="logoutBtn" style="border:none; background:transparent; width:100%; text-align:left; cursor:pointer; color:var(--danger)">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Sign Out
+          </button>
+        </div>
+        <button class="theme-toggle-btn desktop-theme" id="desktopThemeBtn" aria-label="Toggle theme">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <span id="themeLabel">Dark Mode</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 id="pageTitle">Overview</h1>
+          <p class="topbar-subtitle" id="pageSubtitle">Monitor your VISTA system at a glance</p>
+        </div>
+        <div class="topbar-right">
+          <div class="status-pill" id="serverStatus">
+            <span class="status-dot online"></span>
+            <span>System Online</span>
+          </div>
+          <div class="user-profile" style="cursor:pointer;" onclick="openProfileModal()">
+            <span class="avatar">AD</span>
+            <span class="user-name">Admin</span>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+      </header>
+
+      <div class="content-area">
+        <!-- Overview Section -->
+        <section id="overview" class="view-section active">
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <div class="stat-card stat-purple">
+              <div class="stat-icon-wrap purple">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              </div>
+              <div class="stat-info">
+                <h3>Total Queries</h3>
+                <p class="stat-value" id="stat-total">0</p>
+              </div>
+            </div>
+            <div class="stat-card stat-amber">
+              <div class="stat-icon-wrap amber">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="stat-info">
+                <h3>Unresolved</h3>
+                <p class="stat-value" id="stat-unresolved">0</p>
+              </div>
+            </div>
+            <div class="stat-card stat-green">
+              <div class="stat-icon-wrap green">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/><path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>
+              </div>
+              <div class="stat-info">
+                <h3>Feedback Entries</h3>
+                <p class="stat-value" id="stat-feedback">0</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="overview-grid">
+            <!-- Analytics Chart -->
+            <div class="system-health-card chart-card">
+              <div class="health-header">
+                <h2>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                  System Analytics
+                </h2>
+                <span class="health-badge online" id="analyticsBadge">Descriptive Analytics</span>
+              </div>
+              <div style="padding: 0 24px;">
+                <p id="analyticsDesc" style="color:var(--text-muted); font-size:14px; margin-top:1.5rem;"></p>
+              </div>
+              <div class="chart-container-wrapper">
+                <div style="position:relative; width:100%; height:100%;">
+                  <canvas id="analyticsChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="overview-sidebar">
+              <!-- System Health -->
+              <div class="system-health-card health-card">
+            <div class="health-header">
+              <h2>
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                System Health
+              </h2>
+            </div>
+            <div class="health-grid">
+              <div class="health-item">
+                <div class="health-label">API Status</div>
+                <div class="health-value">
+                  <span class="health-badge online" id="healthApi">Operational</span>
+                </div>
+              </div>
+              <div class="health-item">
+                <div class="health-label">NLP Model</div>
+                <div class="health-value">
+                  <span class="health-badge online" id="healthModel">Loaded</span>
+                </div>
+              </div>
+              <div class="health-item">
+                <div class="health-label">AI Accuracy</div>
+                <div class="health-value">
+                  <span class="health-badge online" id="healthAccuracy">—</span>
+                </div>
+              </div>
+              <div class="health-item">
+                <div class="health-label">Active Knowledge</div>
+                <div class="health-value" id="healthIntentCount">— Intents Loaded</div>
+              </div>
+              <div class="health-item">
+                <div class="health-label">Languages</div>
+                <div class="health-value">English · Tagalog · Bisaya</div>
+              </div>
+              <div class="health-item">
+                <div class="health-label">Last Updated</div>
+                <div class="health-value" id="healthLastTrained">—</div>
+              </div>
+              <div class="health-item">
+                <div class="health-label">Version</div>
+                <div class="health-value">v1.1.0</div>
+              </div>
+            </div>
+          </div>
+
+              <!-- Quick Actions -->
+              <div class="quick-actions-row">
+                <h2>Quick Actions</h2>
+                <div class="quick-actions-grid">
+                  <a href="index.html" target="_blank" class="quick-action-card">
+                    <div class="qa-icon blue">
+                      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </div>
+                    <span>Open Chatbot</span>
+                  </a>
+                  <button class="quick-action-card" id="exportDataBtn">
+                    <div class="qa-icon green">
+                      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    </div>
+                    <span>Export Data</span>
+                  </button>
+                  <button class="quick-action-card" onclick="document.getElementById('retrainBtn').click()">
+                    <div class="qa-icon purple">
+                      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+                    </div>
+                    <span>Retrain Model</span>
+                  </button>
+                </div>
+              </div>
+            </div> <!-- End overview-sidebar -->
+          </div> <!-- End overview-grid -->
+        </section>
+
+        <!-- Unmatched Queries Section -->
+        <section id="unmatched" class="view-section">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title-row">
+                <div>
+                  <h2>Unmatched Queries</h2>
+                  <p>Review queries that VISTA couldn't answer confidently.</p>
+                </div>
+                <div class="table-search">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <input type="text" id="unmatchedSearch" placeholder="Search queries..." autocomplete="off">
+                </div>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table" id="unmatchedTable">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Question</th>
+                    <th>Confidence</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="unmatched-tbody">
+                  <!-- Rows generated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Knowledge Base Section -->
+        <section id="knowledge" class="view-section">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title-row">
+                <div>
+                  <h2>Knowledge Base</h2>
+                  <p>Manage intents, questions, and answers.</p>
+                </div>
+                <div style="display:flex;gap:1rem;align-items:center;">
+                  <div class="table-search">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="knowledgeSearch" placeholder="Search intents..." autocomplete="off">
+                  </div>
+                  <button class="btn primary small" onclick="openAddModal()">+ Add Intent</button>
+                </div>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table" id="knowledgeTable">
+                <thead>
+                  <tr>
+                    <th>Intent ID</th>
+                    <th>Department</th>
+                    <th>English Question</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="knowledge-tbody">
+                  <!-- Rows generated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Interaction Logs Section -->
+        <section id="interactionlogs" class="view-section">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title-row">
+                <div>
+                  <h2>Interaction Logs</h2>
+                  <p>View all citizen-chatbot interactions and user feedback.</p>
+                </div>
+                <div style="display:flex;gap:1rem;align-items:center;">
+                  <div class="history-tabs" style="margin-bottom:0; display:flex; gap:0.5rem; border-bottom: none; border-radius: 8px; background: var(--gray-100); padding: 4px;">
+                    <button class="htab active" id="tab-btn-chatlogs" onclick="switchInteractionTab('chatlogs')" style="padding: 6px 12px; font-size: 13px; border-radius: 6px;">Chat Logs</button>
+                    <button class="htab" id="tab-btn-feedback" onclick="switchInteractionTab('feedback')" style="padding: 6px 12px; font-size: 13px; border-radius: 6px;">Feedback Logs</button>
+                  </div>
+                  <div class="table-search">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="interactionSearch" placeholder="Search logs..." autocomplete="off">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div id="interactionTabChatlogs" style="display:flex; flex-direction:column; flex:1; min-height:0;">
+              <div class="table-container">
+                <table class="data-table" id="chatlogsTable">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Question</th>
+                      <th>Intent</th>
+                      <th>Confidence</th>
+                      <th>Language</th>
+                    </tr>
+                  </thead>
+                  <tbody id="chatlogs-tbody">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="interactionTabFeedback" style="display:none; flex-direction:column; flex:1; min-height:0;">
+              <div class="table-container">
+                <table class="data-table" id="feedbackTable">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Question</th>
+                      <th>Helpful</th>
+                      <th>Comment</th>
+                      <th>Intent</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="feedback-tbody">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Directory Management Section -->
+        <section id="directory" class="view-section">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title-row">
+                <div>
+                  <h2>Office Directory</h2>
+                  <p>Manage the dynamic office list shown to citizens.</p>
+                </div>
+                <div style="display:flex;gap:1rem;align-items:center;">
+                  <button class="btn primary" onclick="openAddOfficeModal()">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    Add Office
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table" id="directoryTable">
+                <thead>
+                  <tr>
+                    <th>Department</th>
+                    <th>Location / Head</th>
+                    <th>Contact</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="directory-tbody">
+                  <!-- JS dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Office Modal -->
+  <div id="officeModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="officeModalTitle">Edit Office</h2>
+        <button class="close-btn" type="button" onclick="closeOfficeModal()">&times;</button>
+      </div>
+      <form id="officeForm">
+        <input type="hidden" id="officeIndex" value="-1">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Office / Department Name</label>
+            <input type="text" id="officeName" required placeholder="e.g. BPLO">
+          </div>
+          <div class="form-group">
+            <label>Department Head</label>
+            <input type="text" id="officeHead" placeholder="e.g. Juan Dela Cruz">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" id="officeLocation" required placeholder="e.g. 1st Floor, City Hall">
+          </div>
+          <div class="form-group">
+            <label>Operating Hours</label>
+            <input type="text" id="officeHours" required placeholder="e.g. Mon-Fri, 8AM-5PM">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Contact Email</label>
+            <input type="email" id="officeEmail" placeholder="e.g. bplo@city.gov.ph">
+          </div>
+          <div class="form-group">
+            <label>Contact Phone</label>
+            <input type="text" id="officePhone" placeholder="e.g. (082) 222-1234">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label>Status</label>
+          <select id="officeStatus" style="width:100%; padding:10px; border-radius:6px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);">
+            <option value="open">Open</option>
+            <option value="closed">Closed</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn secondary" onclick="closeOfficeModal()">Cancel</button>
+          <button type="submit" class="btn primary">Save Office</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Resolve Action Modal -->
+  <div id="resolveModal" class="modal-overlay">
+    <div class="modal-content" style="max-width:500px;">
+      <div class="modal-header">
+        <h2>Resolve Query</h2>
+        <button class="close-btn" onclick="closeResolveModal()">&times;</button>
+      </div>
+      <div style="padding: 24px;">
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">How would you like to handle this failed query?</p>
+        <div class="form-group">
+          <label>Failed Query:</label>
+          <input type="text" id="resolveQueryText" readonly style="background: var(--gray-100); color: var(--gray-800);">
+        </div>
+        
+        <div style="display:flex; flex-direction:column; gap:16px; margin-top:24px;">
+          <!-- Option 1: Link -->
+          <div style="border: 1px solid var(--border-color); padding: 16px; border-radius: 8px;">
+            <h3 style="font-size:16px; margin-bottom:8px;">1. Link to Existing Topic</h3>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">The AI will learn that this exact phrase belongs to an existing topic. No translations needed!</p>
+            <div class="form-group" style="margin-bottom:12px;">
+              <select id="resolveExistingIntentSelect" style="width:100%; padding:10px; border-radius:6px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);">
+                <option value="">-- Select an Intent --</option>
+              </select>
+            </div>
+            <button class="btn primary" style="width:100%; justify-content:center;" onclick="handleLinkIntent()">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+              Link to Topic
+            </button>
+          </div>
+          
+          <div style="text-align:center; color:var(--text-muted); font-size:14px; font-weight:600;">OR</div>
+          
+          <!-- Option 2: New -->
+          <div style="border: 1px solid var(--border-color); padding: 16px; border-radius: 8px;">
+            <h3 style="font-size:16px; margin-bottom:8px;">2. Create New Topic</h3>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Create a brand new answer. You will need to provide translations and department details.</p>
+            <button class="btn secondary" style="width:100%; justify-content:center;" onclick="handleCreateNewFromResolve()">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Create New
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Intent Modal -->
+  <div id="addIntentModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="intentModalTitle">Add to Knowledge Base</h2>
+        <button class="close-btn" id="closeModalBtn">&times;</button>
+      </div>
+      <form id="addIntentForm">
+        <input type="hidden" id="modalMode" value="add">
+        <input type="hidden" id="editIntentId" value="">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Query (English)</label>
+            <input type="text" id="add-en-question" required>
+          </div>
+          <div class="form-group">
+            <label>Intent ID (e.g. tax_payment)</label>
+            <input type="text" id="add-intent" required placeholder="e.g. birth_certificate" list="intent-list">
+            <datalist id="intent-list"></datalist>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Department</label>
+            <input type="text" id="add-department" required placeholder="e.g. Civil Registrar" list="department-list">
+            <datalist id="department-list"></datalist>
+          </div>
+          <div class="form-group">
+            <label>Tags (comma separated)</label>
+            <input type="text" id="add-tags" required placeholder="e.g. certificate, civil" list="tags-list">
+            <datalist id="tags-list"></datalist>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 24px; padding: 16px; background: linear-gradient(135deg, rgba(99,102,241,0.05) 0%, rgba(139,92,246,0.05) 100%); border: 1px solid rgba(139,92,246,0.2); border-radius: 12px; text-align: center;">
+          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px; font-weight: 500;">Save time by automatically generating local language translations.</div>
+          <button type="button" class="btn" id="autoTranslateAllBtn" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(139,92,246,0.3);">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4.5 1 6-6-3-6 3 1-6L2 9l6-1 3-6z"/></svg>
+            ✨ Auto-Translate to Tagalog & Bisaya
+          </button>
+        </div>
+        
+        <div class="form-section-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Question Translations
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tagalog Question</label>
+            <input type="text" id="add-tl-question" required placeholder="Tagalog translation...">
+          </div>
+          <div class="form-group">
+            <label>Bisaya Question</label>
+            <input type="text" id="add-bis-question" required placeholder="Bisaya translation...">
+          </div>
+        </div>
+
+        <div class="form-section-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Answer Translations
+        </div>
+        <div class="form-group">
+          <label>English Answer</label>
+          <textarea id="add-en-answer" rows="2" required placeholder="English answer..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Tagalog Answer</label>
+          <textarea id="add-tl-answer" rows="2" required placeholder="Tagalog answer..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Bisaya Answer</label>
+          <textarea id="add-bis-answer" rows="2" required placeholder="Bisaya answer..."></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn secondary" id="cancelBtn">Cancel</button>
+          <button type="submit" class="btn primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Save Intent
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="modal-overlay">
+    <div class="modal-content" style="max-width:400px; text-align:center;">
+      <h3 style="margin-bottom:1rem;color:var(--danger)">Delete Intent?</h3>
+      <p style="margin-bottom:1.5rem;color:var(--text-muted)">Are you sure you want to delete this intent? This action cannot be undone.</p>
+      <div class="modal-footer" style="justify-content:center;">
+        <button class="btn secondary" onclick="closeDeleteModal()">Cancel</button>
+        <button class="btn primary" style="background:var(--danger)" id="confirmDeleteBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Settings Modal -->
+  <div id="profileModal" class="modal-overlay">
+    <div class="modal-content" style="max-width:500px;">
+      <div class="modal-header">
+        <h2>Profile Settings</h2>
+        <button class="close-btn" onclick="closeProfileModal()">&times;</button>
+      </div>
+      <div style="padding: 24px;">
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
+          <div class="avatar" style="width:64px; height:64px; font-size:24px;">AD</div>
+          <div>
+            <h3 style="font-size:18px; font-weight:700;">System Administrator</h3>
+            <p style="color:var(--text-muted); font-size:14px;">admin@vistapanabo.gov.ph</p>
+          </div>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label>Display Name</label>
+          <input type="text" value="Admin" readonly>
+        </div>
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label>Role</label>
+          <input type="text" value="Super Admin (Full Access)" readonly>
+        </div>
+
+        <div class="form-section-title" style="margin-bottom:16px;">Security</div>
+        <button class="btn secondary" style="width:100%; justify-content:center;" onclick="openChangePasswordModal()">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Change Administrator Password
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Change Password Modal -->
+  <div id="changePasswordModal" class="modal-overlay">
+    <div class="modal-content" style="max-width:400px;">
+      <div class="modal-header">
+        <h2>Change Password</h2>
+        <button class="close-btn" onclick="closeChangePasswordModal()">&times;</button>
+      </div>
+      <form id="changePasswordForm">
+        <div style="padding: 24px;">
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label>Current Password</label>
+            <input type="password" id="cpOldPassword" required placeholder="Enter current password">
+          </div>
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label>New Password</label>
+            <input type="password" id="cpNewPassword" required placeholder="Enter new password">
+          </div>
+          <div class="form-group" style="margin-bottom: 24px;">
+            <label>Confirm New Password</label>
+            <input type="password" id="cpConfirmPassword" required placeholder="Confirm new password">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn secondary" onclick="closeChangePasswordModal()">Cancel</button>
+            <button type="submit" class="btn primary" id="cpSubmitBtn">Update Password</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

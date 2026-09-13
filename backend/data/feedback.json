@@ -1,0 +1,18 @@
+[
+  {
+    "question": "How do I apply for a new business permit?",
+    "answer": "To apply for a new business permit, go to the BPLO, submit the required documents, undergo assessment, and pay the corresponding fees.",
+    "intent": "new_business_permit_process",
+    "helpful": true,
+    "language": "en",
+    "created_at": "2026-04-03T16:19:27.527260"
+  },
+  {
+    "question": "unsaon pag kuha ug birth",
+    "answer": "Aron makakuha og birth certificate, adto sa Civil Registrar's Office, pun-a ang request form, isumite ang valid ID, ug bayri ang required fee.",
+    "intent": "birth_certificate_process",
+    "helpful": true,
+    "language": "bis",
+    "created_at": "2026-04-25T20:32:22.768700"
+  }
+]

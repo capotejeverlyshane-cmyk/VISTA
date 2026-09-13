@@ -1,0 +1,679 @@
+CAPSTONE
+INSTITUTE OF COMPUTING
+PROJECTDavao del Norte State College
+A Capstone Project Guidelines for Bachelor of Science in
+Information Technology students' manuscript. This will serve
+as a reference for drafting the project's Introduction to
+Methodologies manuscript.GUIDELINESBachelor of Science in Information Technology
+JOMARIE DAVE JAVA - Faculty
+LAARNI C. IBAÑEZ - Faculty
+JONILYN T. DABALOS, MIT -  BSIT Program Chairperson
+MARK VAN M. BULADACO, MIT - IC Dean Revised 2023THIS CAPSTONE GUIDELINES IS INTENDED ONLY FOR THE
+STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR
+DISTRIBUTION OUTSIDE ITS INTENDED USE
+Course
+Learning
+Outcome01020304050607080910111213Assessment
+ToolsTime Frame
+CLO 1 DDDD EEDD DDD
+CLO 2 D D
+CLO 3 DDDD EDDDD DDDOutline DefenseFinal term
+CAPSTONE 
+PROJECT 03
+Guidelines
+Major Course Output: As evidence of attaining the mentioned course learning
+outcomes, studen ts are required to do and submit the following during the indicated
+the term. The rubrics for these outputs are provided.
+Program Outcomes
+Title Defense Midterm
+The Capstone project is a three-semester undertaking required to complete the BSIT
+program.
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+CAPSTONE 
+PROJECT 02
+G uidelines
+Course Learni ng Outcomes:  Upon
+completion of this course, the students are
+expected to:
+CLO1:  Apply the appropriate Systems
+Analysis and Design tools, methods, models
+/techniques in analyzing business processes
+to identify problems that can be solved
+using IT solutions by conceptualizing
+capstone project proposals.
+CLO2:  Present and defend the
+conceptualized capstone project proposals
+to various audiences.
+CLO3.  Develop the accepted capstone
+project proposal by prototyping the initial
+system user interface design.IT 323 Capstone Project 1 is a 3-unit course
+in the 3rd year 2nd semester of the BSIT
+curriculum based  on CMO 25 series of 2015.
+The pre-requisite  to enroll in this course is
+3rd year standing.
+Course Descriptio n: This course focuses on
+the infrastructure, application and
+processes involved in implementing a
+computing solution to a problem.INTRODUCTION
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+CAPSTONE 
+PROJECT 04
+G uidelines
+The Capstone Project team comprises of three (3) to four (4) memb ers regardless of the
+number of BSIT 3rd-year enrollees. The following are the roles that the
+proponents/researchers should play:
+Project Manager - The person with the authority to manage a Capstone Project. This
+includes leading the planning and the development of all Capstone Project
+deliverables. The project manager is responsible for the budget, work plan, and all
+Project Management Procedures. He is responsible for the success of the entire
+activity.1.
+Systems Analyst and Technical Writer – The person who checks that all parts of the
+system are coord inated. A person who finalizes the Research / Capstone Project study
+document, both the system and the Research / Capstone Project manuscript.2.
+System Designer – The person who makes sure that the database design is complete
+and robu st. The person who masters the system’s network design and prepares the
+User-Interface design (Forms/ Screenshots/ Storyboard).3.
+System   Developers - These peoples are the ones who design, write, and test
+computer programs.  4.PROJECT TEAM
+COMPOSITION
+THIS CAPSTONE GUIDELINES IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+CAPSTONE 
+PROJECT 05
+G uidelines
+The proponents will be able to choose their adviser and panel committee members.
+However, if the Dean of the Institute approves, the Capstone project instructor/s may
+designate a predetermined set of panel committee members to ensure they are fit for the
+respective projec ts assigned. The Project Advisory Committee is composed of the
+following:
+ONE (1) PROJECT ADVISER
+ He or She must be a faculty of the Institute of Computing.1.
+Ensures that the study proposed by the students conforms to the standard of the
+College and has an immediate or potential impact on the research thrust of the College2.
+Guides the team in writing the technical paper and system develop ment in the Title
+proposal stage, outline stage, pre-deployment stage, and deployment stage.3.
+Meets the team regularly (at least  twice a month, NOTE: the team must seek proper
+appointment) to answer questions and help resolve impasses and conflicts.4.
+Recommends the team for Title Defense, Outline Defense, Pre-Deployment Defense,
+and Final Defense.5.CAPSTONE PROJECT  
+ADVISORY COMMITTEE
+THIS CAPSTONE GUIDELINES IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+CAPSTONE 
+PROJECT 06
+G uidelines
+ONE (1) PANEL CHAIRMAN
+He or She must be a faculty of the Institute of Computing.1.
+Brief the team about the Title Defense, Outline Defense, Pre-Deployment
+Defense, and Final Defense.2.
+Issue the verdict. The verdict is a unanimous decision among the three members
+of the panel. Once issued, it is final and irrevocable.3.
+TWO (2) PANEL MEMBERS
+ He or She must be a faculty of the Institute of Computing.1.
+ Evaluate the technical paper and the system development.2.
+ Recommend a verdict.3.
+ Listen and consider the request of the project adviser and the team members.4.
+THIS CAPSTONE GUIDELINES IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+CAPSTONE 
+PROJECT 07
+G uidelines
+Capstones are more concerned about system development. The proponents must identify
+what a specific organization or agency requires and then determine  what product would
+meet that demand. A capstone project could be the answer for a particular workplace.
+ 
+Project Themes are chosen to guarantee that each group's proje cts are complex and
+innovative. According to the CMO 25 series 2015, the BSIT Capstone should include the
+following:
+Software Development
+Software Customization
+Information Systems Development for an actual client (with pilot testing)
+Web Applications Development (with at least alpha testing on live servers)
+Mobile Computing SystemsPROJECT 
+THEME
+THIS CAPSTONE GUIDELINES IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+CAPSTONE 
+PROJECT 08
+G uidelines
+Multimedia Systems
+Game Development
+e-Learning Systems
+Interactive Systems
+Information Kiosks
+Network Design and Implementation and Server Farm Configuration and
+Management
+IT Management
+IT Strategic Plan for sufficiently complex enterprises
+IT Security Analysis, Planning and Implementation
+Nevertheless, to set the level of difficulty of the Capstone projects, the Capstone
+Project Instructors will prepare and propose themes and present them to the faculty
+body for approva l. However, in exceptional cases, the approval of the themes may be
+set to the Program Chairperson and Institute Dean only.
+Furthermore, proponents should develop a unique system diffe rent from past
+Capstone Project s. In some instances, the Institute may assign a pre-determined
+topic to students,  especially if partner government agencies request it, as long as the
+nature of the study remains anchored to the themes.
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+CAPSTONE 
+PROJECT 09
+G uidelines
+Capstone Project 1 includes the title and outline defenses. The Activ ity Diagram on the
+following pages depicts the proce sses that will transpire before, during, and after the
+defense.PROCESS
+FLOW
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+10CAPSTONE 
+PROJECT
+G uidelines
+Title Defense Activity Diagram
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+11CAPSTONE 
+PROJECT
+G uidelines
+Outline Defense Activity Diagram
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+CAPSTONE 
+PROJECT 12
+G uidelines
+The title is an essential component in every research proposal since it hints to readers
+whether they will read your paper or not. It should present read ers with a clear and
+concise description of the entire project. The following are some pointers of how to
+construct a good title (Nair, 2014):
+Contain as few words as possible: many journals limit tags to 12 words
+Be easy to understand
+Describe the contents of the paper accurately and specifically
+Avoid abbreviations, formulas, and jargon
+Not include any verbDOCUMENT 
+CONTENT
+Title
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+13CAPSTONE 
+PROJECT
+G uidelines
+Not contain low-impact words such as "Some notes on …," "Observations
+on …," "Investigations on …," "Study of …," and "Effect of …"
+Not be flashy as in newspapers (e.g., avoid statements like "Agroforestry can stop
+deforestation")
+Report the subject of the research rather than the results
+Most of the approved titles in DNSC answer the following questions: What, Where, and
+How. WHAT presents the description of the proposed system; WHERE details the busine ss
+profile of the selected organizatio n/business firm that will serve as the project's primary
+stakeholder; HOW (optional) presen ts to readers the technology/technologies used to
+develop the system. The following are sample titles of implemented capstone projects in
+the previous years:
+Management Information System for the Planning Office of the Davao del Norte State
+College (answers what and where)
+Davao Metro Shuttle Operators Online Bus Dispatching System and Mobile Application:
+MetroPoint (answers what and where)
+Human Resource Information System (HRIS) for the Davao del Norte State College
+(answers what and where)
+Requisition and Tracking System for the Supply office of Davao del Norte State College
+with Prod uct Disposal Forecasting  using Linear Regression (answers what, where and
+how)
+IEC Mate rials for Office of the Stud ents Services of Davao del Norte State College Using
+QR codes (answers what, where, and how)
+The Intro duction will set the reader about the general context of the project. It also
+explains the project's importance,  significance, and viability. This chapter also discusses
+the proje ct's "gap " or problem and how this project addresses that gap. The following
+sections will further explain the contents and parts needed for this chapter.Chapter 1 - Introduction
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+14CAPSTONE 
+PROJECT
+G uidelines
+The back ground of the project presents a literary review of the project. Specifically, the
+background of the project defines the nature and extent of the problems studied, relates
+the research to previous work (usually by a brief review of the literature relevant to the
+problem), explains the objectives of the investigation, and defines any specialized terms or
+abbreviations to be used in what follows (Nair, 2014).
+Remember that the project's background logically leads to, and clearly states the
+hypothesis or principal theme of the paper.
+The follo wing are the recommended contents of the background of the project section
+(note: you may not follow this recommendation, it’s up to you how you will organize your
+contents as long as you present a detailed literature review of the project/system):
+Introductory statement
+Include context and rationale of the underlying study  
+It should describe the worldwide, national, and local issues the proponents aim to
+resolve.
+Discuss the SDG and DNSC RDE alignment of the study
+Locale of the study and problems proponents are trying to address
+Overview of the capstone project
+Note : Diagrams, graphs, tabular, and other graphical representations are not allowed
+since this section is narrative in nature.Background of the Project
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+15CAPSTONE 
+PROJECT
+G uidelines
+The stud y's objectives state what the proponents expect to achieve in general terms and
+outline the exact details of the project. Each objective should answer all the business
+problems as cited in the introducti on. An objective should start with an action verb and be
+constructed in SMART format (Specific, Measurable, Attainable/Achievable,
+Realistic/Relevant, and Time-Oriented). Arrange the specific objectives in an IPO (Input-
+Process-Output) manner.
+Sample (Please be creative and construct your objective):
+This study aims to develop an android application called AMP, an Ampa laya disease identifier
+that provides a treatment and control management guide.
+Specifically, the study aims to accomplish the following objectives:
+   1. Identify diseases of Ampalaya that are visibly manifesting in the follow ing plant parts using
+image processing techniques, particularly image classification that uses the k – nearest
+neighbors (KNN) algorithm:  
+         1.1. leaves, and
+         1.2. fruitsObjectives of the Study
+This section lists all of the project's beneficiaries/stakeholders and discusses how
+important the system will enhance their business processes/transactions. Stakeholders
+should be ranked based on system impact, from most to least benefited.Significance of the Study
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+16CAPSTONE 
+PROJECT
+G uidelines
+The scope of the study discusses the study's inclusions and coverage, which include, but
+are not limited to, (1) the possible location of deployment, (2) potential users of the
+system, and (3) an overview of the processes involved. The discussion of the scope should
+be limited to one paragraph.
+The limitations are exclusions from the study that were beyond the developers' control,
+which include but are not limited to (1) processes involving or related to the system that is
+excluded in the development, (2) technology limitation (i.e., data mining or machine
+learning features  limitation, GIS functionality limitation, game design constraints), (3)
+platform to be used (web-based, windows-based, online or offline), (4) type of data to be
+used in the study , and (5) non-functional requirements. Non-functio nal requirements are
+descriptions of the system's opera tion capabilities and limits that improve its functionality.
+These can include things like speed, security, and dependability.  Scope and Limitation
+In the review of related literature  and works section, you can expect to find a critical
+analysis of the existing literature related to your research question . The section typically
+includes a summary and synthesis  of the relevant literature, emphasizing identifying key
+themes, gaps, and areas of agreement or disagreement. This section includes the
+discussion of the following:
+Introduction of Related Literature / Works: This section typically starts with a brief
+introduction that outlines the litera ture review's purpose and scope and highlights the
+research question's importance.
+Overview of existing literature: This section provides a broad overvie w of the literature
+related to your problem statement. It may include a historical context, a summary of
+significant theories or approaches, or a review of key studies or findings.Review of Related Literature and Works
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+17CAPSTONE 
+PROJECT
+G uidelines
+Synthesis of key themes: In this section, the review will synthesize the existing
+literature/ works by identifying key themes or patterns that emerge across multiple
+sources. This may involve summ arizing common findings (i.e., the result of the
+algorithm/s and the parameters used).
+Identification of gaps: The review will also identify gaps in the current literature/work
+and areas where there is a lack of research or conflicting findings. This helps justify the
+current study's need and sets the stage for the research question . Research gap is
+usually found under recommendation.
+Conclusion: In the conclusion, sum marize the key findings you have taken from the
+literature and emphasize their significance.
+Note : Separate the discussion of the Related Literature and Related works. Related
+literature refers to a critical analysis of the existing literature related to the study's
+objectives. It is an overview of the relevant literature, identifies key themes, and identifies
+gaps or areas where further research is needed. In contrast, the related works refer to
+other systems similar in the proposed system's style, genre, or subject matter.  
+Provide a tabular comparison of the related works highlighting  the similarities and
+differences of the system function alities, algorithm, parameters used, and performance
+metrics. Remember to include your citation. Use IEEE in-line citation.
+All operational words used in the project are listed in the Definition of Terms section.
+Terms relevant to the document and technical jargon should be put here, and the
+definition should  explain how the developer utilized the terminologies in the system. All
+terms must be arranged alphabetically.Definition of Terms
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+18CAPSTONE 
+PROJECT
+G uidelines
+This chapter must describe how you planned and carried out your project. It would be best
+to be very comp rehensive and specific for this chapter since it will also show how you
+arrive at your results.
+After the introductory statement for this chapter, you also need to discuss your chosen
+SDLC model that best fits your project. Aside from the model description, you also need to
+provide a graph that captures that model's respective phases and processes. Each phase
+or process of the model should also be adequately explained.
+This chapter also follows the PADIM or Planning, Analysis, Design, Implementation, and
+Maintenance structure. To better understand this, the following are the corresponding
+contents and sections needed for this chapter.Chapter 2 - Methodology
+This section must thoroughly discuss how the team came up with the project and the
+description of the planning phase of the system development. The following are also
+needed for this section:
+Project Team Organization
+The organization al chart should based from the Project Team com position (See
+page 4)
+Work Breakdown Structure (WBS)
+The WBS  should be phased-based  and define all activities involved in each system
+development design phase, preferably following the PADIM stages.
+Gantt chart
+The Gant t chart depicts the project  schedule for the task listed in the WBS. The date
+format can be month and year.System Planning
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+19CAPSTONE 
+PROJECT
+G uidelines
+This section includes the description of the analysis phase of the systems development of
+the project and must depict the following:
+System Architecture
+A system architecture explains the process of the system, users, and other system
+components interacting using the application.   It is a conceptual framework that
+describes the structure and behavior of the proposed system. Moreover, this
+section describes the system components, including hardware, software, and data
+components. It includes diagrams or other visual representations to help illustrate
+the architecture.
+Functional and non-functional requirements
+This section should discuss the system's expected system functionalities (functional
+requirements) and expected quality attributes (non-functional requirements).
+Provide a brief discussion and numbered list form of the two requirements.
+Use Case Diagram
+A Use Case Diagram highlights the details of system users' (also known as actors)
+and interactions with the proposed system.  
+Context Flow Diagram (Level 0 Data Flow Diagram)
+The Context Flow Diagram in the current system depicts the flow of business
+actions (logical). It specifies the business events and the data each event requires
+and produces. It also shows how the system interacts with external entities
+(system, organiza tion groups, external data stores, etc.). However, the physical data
+flow will be utilized if the theme falls under game development.
+Level 1 Data Flow Diagram  
+The first explosio n of the Level 0 DFD is Level 1. It shows the Level 1 DFD in greater
+detail and depicts the system's basic modules and data flow. The system is broken
+down into sub-pr ocesses in this diagram. Note that the entities and data coming in
+and out from the entity in the Level 0 DFD should retain in Level 1 DFD.
+Note : For logical diagrams, Level 0 and Level 1 DFD, use the Gane and Sarson method.  System Analysis
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+20CAPSTONE 
+PROJECT
+G uidelines
+This section must  depict the descr iption and details of the project's systems development
+design phase. The following are the other corresponding contents for this section:
+Entity Relationship Diagram (ERD)
+An ERD depicts the relationships between database entity sets. An object, or a data
+component, is an entity in this context. A physical data model should depict a
+relational database's actual architecture plan.
+JSON Schema Diagram
+JSON Schema is a vocabulary to annotate and validate JSON documents. It defines
+how a JSON should be structured, making it easy to ensure that a JSON is formatted
+correctly, and it is useful for automated testing and validating.
+Data Dictionary
+The data dictionary of the system should be displayed in this section. Table <table   
+#> shows the list of all tables, and Table <table #>.1, Table <table #>.2, and so on,
+should be used for the succeeding tables.  
+Technologies, Concepts, and Theories
+This section deep ly discusses the model/ algorithm/ emerging techn ologies shown
+in the system architecture. It includes the discussion of the follow ing but is not
+limited to, depen ding on the stud y's objectives and the process involved in the
+model.
+Data collection
+Data pre-processing
+Feature extraction
+Classification  
+This part should also include a list of the technologies required to develop the
+system. A definition of the technology, a snapshot of the Interface as the
+proponents used  it, and a discussion of how the technology was utilized should all
+be included in the manuscript.
+Note : For a system with SQL based database, the JSON Schema Diagram shall be omitted;
+however, systems with NoSQL, ERD shall be excluded.System Design
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+21CAPSTONE 
+PROJECT
+G uidelines
+This section includes the description of the maintenance phase of the systems
+development of the project.   It must also have  the Systems Security  Plan  and Systems
+Maintenance Plan .
+Note: Because the project has still not reached the System Implementation and System
+Maintenance stages, these   parts should be written in the future tense.System MaintenanceSystem Development and Testing
+This section includes a detailed description of the tests performed to ensure the system
+functions correctl y and meets the requirements specified in the syste m design phase. The
+system testing phase typically includes the following components:
+Result of the testing the model including the performance metrics
+Summary of the findings (provide tabular representation)
+This section also includes the description of the deployment and implementation phase of
+the systems development of the project.   It must also have the Systems Test Plan  and
+Systems Implem entation Plan . A System Test Plan lays out the entire process of
+validating the testing process. At the same time, a System Implementation Plan describes
+all the activities associated with implementing and evaluating an information system.
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.The last page of the manuscript is the References page, which shou ld be written in IEEE
+style. It contain s a list of all the sources you've used in your manuscript, making it easy for
+readers to locate what you've cited. The IEEE format should be used  for in-line citations in
+the manuscript. You may use visit this link for reference -  
+https://ieeeauthorcenter.ieee.org/wp-content/uploads/IEEE-Reference-Guide.pdf.  
+The numerical arrangement should also be based on the chronological appearance of the
+respective reference.References
+21CAPSTONE 
+PROJECT
+G uidelines
+This section includes the description of the maintenance phase of the systems
+development of the project.   It must also have  the Systems Security  Plan  and Systems
+Maintenance Plan .
+Note: Because the project has still not reached the System Implementation and System
+Maintenance stages, these   parts should be written in the future tense.System MaintenanceSystem Testing and Implementation
+This section includes a detailed description of the tests performed to ensure the system
+functions correctl y and meets the requirements specified in the syste m design phase. The
+system testing phase typically includes the following components:
+Result of the testing the model including the performance metrics
+Summary of the findings (provide tabular representation)
+This section also includes the description of the deployment and implementation phase of
+the systems development of the project.   It must also have the Systems Test Plan  and
+Systems Implem entation Plan . A System Test Plan lays out the entire process of
+validating the testing process. At the same time, a System Implementation Plan describes
+all the activities associated with implementing and evaluating an information system.
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.The last page of the manuscript is the References page, which shou ld be written in IEEE
+style. It contain s a list of all the sources you've used in your manuscript, making it easy for
+readers to locate what you've cited. The IEEE format should be used  for in-line citations in
+the manuscript. You may use visit this link for reference -  
+https://ieeeauthorcenter.ieee.org/wp-content/uploads/IEEE-Reference-Guide.pdf.  
+The numerical arrangement should also be based on the chronological appearance of the
+respective reference.References
+CAPSTONE 
+PROJECT 22
+G uidelines
+HEADING
+         Alignment: Centered; Font-weight: Bold; Font-case: Uppercase
+SUB-HEADING
+         Alignment: Left-align; Font-weight: Bold
+FONT
+         Font style: Arial; Font size: 12; Line spacing: 1.5
+CONTENT / TEXT
+         Alignment: Justified; Indention: 0.5 (first line)
+MARGINS
+         Left: 1.5 Inches"; Top: 1 Inch"; Right: 1 Inch"; Bottom: 1 Inch"
+REFERENCES
+        Alignment: Left-align; Indention: Hanging 0.5DOCUMENT 
+FORMAT
+Styling Format
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+CAPSTONE 
+PROJECT 23
+G uidelines
+This portion shows the manuscript's document template.DOCUMENT 
+TEMPLATE
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+24CAPSTONE 
+PROJECT
+G uidelines
+Cover Page
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+25CAPSTONE 
+PROJECT
+G uidelines
+Sample Content Arrangement
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+26CAPSTONE 
+PROJECT
+G uidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+27CAPSTONE 
+PROJECT
+G uidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+28CAPSTONE 
+PROJECT
+G uidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+29CAPSTONE 
+PROJECT
+G uidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+30CAPSTONE 
+PROJECT
+G uidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+31CAPSTONE 
+PROJECT
+G uidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+32CAPSTONE 
+PROJECT
+G uidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+33CAPSTONE 
+PROJECT
+G uidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+34CAPSTONE 
+PROJECT
+G uidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+CAPSTONE 
+PROJECT 35
+G uidelines
+This section discusses the requirements for both Title and Outline Defense.DEFENSE
+REQUIREMENTS
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+36CAPSTONE 
+PROJECT
+G uidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.Title Defense Requirements
+The Capstone Project Instructor must receive the enumerated prerequisites before the
+proponents can be scheduled for Title Defense.
+Copy of Approved Recommendation Letter signed by the Adviser
+Soft Copy of Concept Paper of the three (3) proposed projects (see the format in
+Concept Paper under Document Template)
+Environmental Scanning Documents/ Letters duly received by the person or
+representative address in the letter
+Proof of Payment
+Outline Defense Requirements
+The Capstone Project Instructor must receive the enumerated prerequisites before the
+proponents can be scheduled for Outline Defense.
+Copy of Approved Recommendation Letter signed by the Adviser
+Soft Copy of Manuscript (Chapter 1 and 2)
+System with 100% User Interface and 30% Functionalities
+30% System functionalities is defined during the BSIT Faculty meeting levelling
+Copy of Acceptance and Rejection Letters  duly received by the person  or
+representative address in the letter
+Proof of Payment
+Note : For both title and outline defense, failure to submit either one of the requirements
+before the deadline means no schedule for the defense.
+CAPSTONE 
+PROJECT 37
+G uidelines
+This section discusses the expected students' presentation for Title and Outline Defense.PRESENTATION
+CONTENT AND 
+FORMAT
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+38CAPSTONE 
+PROJECT
+Guidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.Title Defense
+During the title defense, the students are expected to present their proposed Capstone
+Project study's three (3) concept papers to the panelists. The following is the outline of the
+presentation during the title defense:
+Outline Description
+Introduction The proponents must be able to introduce their names to the panelists.
+Concept of the three (3)
+Capstone Project studyThe concept of the Capstone Project study includes the following:
+Project Title
+Rationale and brief background of the problem statement, locale
+and overview of the project. The presentation should be based from
+the Problem Tree Analysis, Solution Tree Analysis and MCUA Matrix
+Objectives of the Study
+Scope and Limitation
+Comparative Table with existing system and proposed system (if
+possible)
+Question and AnswerThe proponents are expected to answer the question thrown by the
+panelists relevant to the proposed Capstone Project. The panelists will
+ask the proponents on the overview of the study (including the current
+process flow of the organization relative to the study), novelty or main
+contribution of the proponents , objectives of the study and possible
+methodologies.
+39CAPSTONE 
+PROJECT
+Guidelines
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.Outline Defense
+During the outline defense, the students are expected to present their approved Capstone
+Project Title and System prototype  . The following is the outline of the presentation during
+the outline defense:
+Outline Description
+Introduction The proponents must be able to introduce their names to the panelists.
+Executive SummaryThe executive summary is a brief background of the capstone project.
+This details the following:
+Project Title
+Rationale and brief background of the problem statement
+Objectives of the Study
+Comparative presentation of the Capstone project and existing
+system
+Brief discussion of the methodologies (Functional and non-
+functional requirements, Conceptual framework, use case diagram,
+CFD and Level 1 DFD, ERD/ JSON Schema Diagram, Technologies
+used)
+System prototype walkthrough
+and Simulation presentationThe proponents will walkthrough the panelists to their system
+prototype based on the functional requirements of the system.
+Simulation of the model/ sensors will follow.
+Question and AnswerThe proponents are expected to answer the question thrown by the
+panelists relevant to the system prototype and model simulation. The
+panelists will ask the proponents about the system's flow, the
+algorithm used in the model (including parameters) or sensors used,
+and other pertinent questions relative to the title. 
+CAPSTONE 
+PROJECT 40
+G uidelines
+This portion shows the template of the minutes for both Title and Outline Defense.MINUTES
+TEMPLATE
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+41CAPSTONE 
+PROJECT
+G uidelines
+Note: The header and footer may change depending on the ISO update.
+Download the .docx file here .
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR DISTRIBUTION OUTSIDE ITS INTENDED USE.
+End of Capstone Guideline
+THANK
+YOU
+THIS CAPSTONE GUIDELINE IS INTENDED ONLY FOR THE
+STUDENTS USE WHO ARE OFFICIALLY ENROLLED IN THE IT 323
+CAPSTONE PROJECT 1 COURSE (AY 2022 - 2023). NOT FOR
+DISTRIBUTION OUTSIDE ITS INTENDED USE.
+INSTITUTE OF COMPUTINGDavao del Norte State College
+Bachelor of Science in Information Technology

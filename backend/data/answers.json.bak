@@ -1,0 +1,290 @@
+{
+  "greetings": {
+    "department": "General",
+    "answers": {
+      "en": "Hello! Welcome to VISTA. How can I help you with Panabo City services today?",
+      "tl": "Kumusta! Maligayang pagdating sa VISTA. Paano ko kayo matutulungan ngayon?",
+      "bis": "Maayong adlaw! Welcome sa VISTA. Unsa may akong ikatabang kanimo karon?"
+    }
+  },
+  "birth_certificate_process": {
+    "department": "Civil Registrar",
+    "answers": {
+      "en": "If you are asking **how to get a birth certificate** from the PSA, here is the easiest guide:\n\n---\n### 🏢 1. Walk-in at a PSA Office\n\n**Steps:**\n1. Go to the nearest **PSA (Philippine Statistics Authority)** office or LGU Civil Registrar.\n2. Get an **application form (Birth Certificate)**.\n3. Fill out the form with complete details (Name, Birthday, Birthplace, Parents' names).\n4. Pay at the cashier.\n5. Wait for the release.\n\n💰 **Cost:** ~₱155 per copy\n⏱️ **Release:** Same day or within a few hours\n\n---\n### 🌐 2. Online Request (PSA Serbilis)\n\nYou can also order online via official services (PSA Serbilis or PSAHelpline).\n\n**Steps:**\n1. Fill up the online form.\n2. Pay via GCash, card, or payment centers.\n3. Wait for delivery to your home.\n\n💰 **Cost:** ~₱330–₱365 (with delivery)\n⏱️ **Delivery:** 3–8 days\n\n---\n**Requirements (Walk-in)**\n- Valid ID (requester)\n- Authorization letter (if you are not the owner)\n- Photocopy of owner's ID (if authorized)",
+      "tl": "Kung nagtatanong ka kung **paano kumuha ng birth certificate** sa PSA, narito ang pinakamadaling guide:\n\n---\n### 🏢 1. Pumunta sa PSA Office (walk-in)\n\n**Steps:**\n1. Pumunta sa pinakamalapit na **PSA (Philippine Statistics Authority)** office.\n2. Kumuha ng **application form (Birth Certificate)**.\n3. Fill-up ang form (Buong pangalan, Birthday, Lugar ng kapanganakan, Pangalan ng magulang).\n4. Magbayad sa cashier.\n5. Hintayin ang release.\n\n💰 **Bayad:** ~₱155 per copy\n⏱️ **Release:** Same day or within a few hours\n\n---\n### 🌐 2. Online (PSA Serbilis / PSAHelpline)\n\nPwede ka ring mag-order online.\n\n**Steps:**\n1. Fill up ang online form.\n2. Magbayad via GCash, card, o payment centers.\n3. Hintayin ang delivery sa inyong bahay.\n\n💰 **Bayad:** ~₱330–₱365 (with delivery)\n⏱️ **Delivery:** 3–8 days\n\n---\n**Mga kailangang dalhin (walk-in)**\n- Valid ID (ikaw o requester)\n- Authorization letter (kung hindi ikaw ang may-ari)\n- ID ng owner (photocopy kung authorized ka)",
+      "bis": "Kung nangutana ka **unsaon pagkuha ug birth certificate** sa Pilipinas (PSA), mao ni ang pinakasayon nga guide:\n\n---\n### 🏢 1. Adto sa PSA Office (walk-in)\n\n**Steps:**\n1. Adto sa pinakaduol nga **PSA (Philippine Statistics Authority)** office.\n2. Kuha ug **application form (Birth Certificate)**.\n3. Fill-up:\n   - Buong pangalan\n   - Birthday\n   - Lugar sa kapanganakan\n   - Pangalan sa parents\n4. Bayad sa cashier.\n5. Hulata ang release.\n\n💰 **Bayad:** ~₱155 per copy\n⏱️ **Release:** Same day or within a few hours\n\n---\n### 🌐 2. Online (PSA Serbilis / PSAHelpline)\n\nPwede pud ka mag-order online:\n- Philippine Statistics Authority official services (PSA Serbilis o PSAHelpline)\n\n**Steps:**\n1. Fill up online form.\n2. Bayad via GCash, card, or payment centers.\n3. Hulata ang delivery sa inyong balay.\n\n💰 **Bayad:** ~₱330–₱365 (with delivery)\n⏱️ **Delivery:** 3–8 days (depende sa lugar)\n\n---\n**Mga kinahanglan dalhon (walk-in)**\n- Valid ID (ikaw o requester)\n- Authorization letter (kung dili ikaw ang tag-iya sa birth certificate)\n- ID sa owner (photocopy kung authorized ka)"
+    }
+  },
+  "birth_certificate_requirements": {
+    "department": "Civil Registrar",
+    "answers": {
+      "en": "The usual requirements are a valid ID, completed request form, and authorization letter if filed by a representative.",
+      "tl": "Karaniwang requirements ang valid ID, completed request form, at authorization letter kung representative ang kukuha.",
+      "bis": "Kasagaran nga requirements mao ang valid ID, completed request form, ug authorization letter kung representative ang mokuha."
+    }
+  },
+  "business_permit_fee": {
+    "department": "BPLO",
+    "answers": {
+      "en": "Business permit fees depend on the type of business, capitalization, and local ordinances. Please check the BPLO assessment for the exact amount.",
+      "tl": "Ang bayad sa business permit ay depende sa uri ng negosyo, capitalization, at local ordinances. Tingnan ang BPLO assessment para sa eksaktong halaga.",
+      "bis": "Ang bayad sa business permit magdepende sa klase sa negosyo, capitalization, ug local ordinances. Tan-awa ang BPLO assessment para sa eksaktong kantidad."
+    }
+  },
+  "real_property_tax_payment": {
+    "department": "Treasurer",
+    "answers": {
+      "en": "To pay real property tax, visit the Treasurer's Office, present your tax declaration or tax bill, and pay the assessed amount at the cashier.",
+      "tl": "Para magbayad ng real property tax, pumunta sa Treasurer's Office, ipakita ang tax declaration o tax bill, at bayaran ang assessed amount sa cashier.",
+      "bis": "Aron mobayad sa real property tax, adto sa Treasurer's Office, ipakita ang tax declaration o tax bill, ug bayri ang assessed amount sa cashier."
+    }
+  },
+  "real_property_tax_due_date": {
+    "department": "Treasurer",
+    "answers": {
+      "en": "The due date for real property tax depends on local ordinances and payment schedules. Please check with the Treasurer's Office for the official deadline.",
+      "tl": "Ang due date ng real property tax ay depende sa local ordinances at payment schedule. Makipag-ugnayan sa Treasurer's Office para sa opisyal na deadline.",
+      "bis": "Ang due date sa real property tax magdepende sa local ordinances ug payment schedule. Pakig-ugnay sa Treasurer's Office para sa opisyal nga deadline."
+    }
+  },
+  "inquiry_barangay_clearance_fee": {
+    "department": "City Mayor's Office - BPLS / Barangay Level",
+    "answers": {
+      "en": "The Barangay Clearance fee for a business permit varies depending on the specific ordinance of the barangay where your business is located and your gross sales or capitalization. For example, some barangays like A.O. Floirendo charge a flat rate of Php 75.00, while others like Cagangohan or Gredu charge between Php 50.00 to Php 500.00 depending on whether it is a small store or a large corporation. \n\nPlease specify your barangay and business type for a more accurate estimate.",
+      "tl": "Ang bayad sa Barangay Clearance ay nag-iiba depende sa ordinansa ng barangay kung saan nakatayo ang iyong negosyo at sa iyong gross sales o kapital. Halimbawa, ang A.O. Floirendo ay may flat rate na Php 75.00, habang ang mga barangay tulad ng Cagangohan at Gredu ay naniningil ng Php 50.00 hanggang Php 500.00 depende sa laki ng negosyo. \n\nMaaari mong ibigay ang iyong barangay at uri ng negosyo upang malaman ang eksaktong halaga.",
+      "bis": "Ang bayad sa Barangay Clearance magdepende sa ordinansa sa barangay kung asa nahimutang ang imong negosyo ug sa imong gross sales o kapital. Pananglitan, ang A.O. Floirendo nagapangayo og flat rate nga Php 75.00, samtang ang Cagangohan ug Gredu nagapangayo og Php 50.00 hantod Php 500.00 depende sa klase ug dako sa negosyo. \n\nPalihug isulti ang imong barangay ug klase sa negosyo para mahatag namo ang saktong kantidad."
+    }
+  },
+  "cmo_renew_business_permit": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "To **Renew your Business Permit** (done every January), follow these steps:\n\n---\n### 🏢 Renewal Process\n\n**Steps:**\n1. Submit documentary requirements (Previous Mayor's Permit, Declaration of Gross Sales, Barangay Clearance).\n2. Get assessed and secure the Order of Payment.\n3. Pay at the City Treasurer's Office and get the Official Receipt.\n4. Claim your renewed Business Permit and Clearances.\n\n💰 **Cost:** Based on gross sales declaration and local tax code.\n⏱️ **Processing Time:** Around 2-3 hours.",
+      "tl": "Para i-**Renew ang inyong Business Permit** (ginagawa tuwing Enero), sundin ang mga sumusunod:\n\n---\n### 🏢 Renewal Process\n\n**Steps:**\n1. Isumite ang requirements (Nakaraang Mayor's Permit, Declaration of Gross Sales, Barangay Clearance).\n2. Magpa-assess at kunin ang Order of Payment.\n3. Magbayad sa City Treasurer's Office at kunin ang Official Receipt.\n4. Kunin ang inyong na-renew na Business Permit.\n\n💰 **Bayad:** Depende sa gross sales declaration.\n⏱️ **Processing Time:** Tinatayang 2-3 oras.",
+      "bis": "Para mag-**Renew sa inyong Business Permit** (buhaton kada Enero), sunda kining mga steps:\n\n---\n### 🏢 Renewal Process\n\n**Steps:**\n1. Isumite ang requirements (Nakaagi nga Mayor's Permit, Declaration of Gross Sales, Barangay Clearance).\n2. Magpa-assess ug kuhaa ang Order of Payment.\n3. Pagbayad sa City Treasurer's Office ug kuhaa ang Official Receipt.\n4. Kuhaa ang inyong na-renew nga Business Permit.\n\n💰 **Bayad:** Depende sa gross sales declaration.\n⏱️ **Processing Time:** Mga 2-3 ka oras."
+    }
+  },
+  "cmo_retire_business_permit": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "If you are closing your business, you need to apply for **Retirement of Business Permit** to avoid accumulating penalties.\n\n---\n### 📋 Process\n\n**Steps:**\n1. Submit a letter of intent to retire the business, along with the Original Mayor's Permit, Business Plate, and BIR Clearance.\n2. BPLS will process the retirement and CTO will assess any remaining tax liabilities.\n3. Pay any outstanding fees at the City Treasurer's Office.\n4. Receive the Certificate of Business Retirement.",
+      "tl": "Kung magsasara na ang iyong negosyo, kailangan mong mag-apply ng **Retirement of Business Permit** upang hindi maipon ang penalties.\n\n---\n### 📋 Proseso\n\n**Steps:**\n1. Isumite ang letter of intent para ipasara ang negosyo, kasama ang Original Mayor's Permit, Business Plate, at BIR Clearance.\n2. I-poproseso ng BPLS ang retirement at i-aassess ng CTO kung may natitirang tax liabilities.\n3. Bayaran ang mga natitirang obligasyon sa City Treasurer's Office.\n4. Kunin ang Certificate of Business Retirement.",
+      "bis": "Kung manira na ang imong negosyo, kinahanglan ka mag-apply og **Retirement of Business Permit** para dili magpatong-patong ang penalties.\n\n---\n### 📋 Proseso\n\n**Steps:**\n1. Isumite ang letter of intent nga magpasira sa negosyo, uban ang Original Mayor's Permit, Business Plate, ug BIR Clearance.\n2. I-process sa BPLS ang retirement ug i-assess sa CTO kung naa pay utang nga taxes.\n3. Bayri ang mga nabilin nga obligasyon sa City Treasurer's Office.\n4. Kuhaa ang Certificate of Business Retirement."
+    }
+  },
+  "cmo_mtop_franchise": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "To apply for a **Motorized Tricycle Operators Permit (MTOP) / Franchise**, follow these steps:\n\n---\n### 🛺 MTOP Process\n\n**Steps:**\n1. Submit requirements to BPLS (LTO CR/OR, Driver's License, Barangay Clearance, Traffic Clearance, Tricycle Unit).\n2. Wait for validation and secure Order of Payment.\n3. Pay fees at the City Treasurer's Office.\n4. Receive your MTOP Mayor's Permit.\n\n💰 **Cost:** Mayor's Permit Fee ~₱100.00, Traffic Clearance ~₱50.00, Sticker ~₱75.00.\n⏱️ **Processing Time:** Around 4 hours.",
+      "tl": "Para mag-apply ng **Motorized Tricycle Operators Permit (MTOP) o Prangkisa**, sundin ito:\n\n---\n### 🛺 Proseso ng MTOP\n\n**Steps:**\n1. Isumite ang requirements sa BPLS (LTO CR/OR, Driver's License, Barangay Clearance, Traffic Clearance, Tricycle Unit).\n2. Hintayin ang validation at kunin ang Order of Payment.\n3. Magbayad ng fees sa City Treasurer's Office.\n4. Kunin ang inyong MTOP Mayor's Permit.\n\n💰 **Bayad:** Mayor's Permit Fee ~₱100.00, Traffic Clearance ~₱50.00, Sticker ~₱75.00.\n⏱️ **Processing Time:** Tinatayang 4 oras.",
+      "bis": "Para mag-apply og **Motorized Tricycle Operators Permit (MTOP) o Prangkisa**, sunda kini:\n\n---\n### 🛺 Proseso sa MTOP\n\n**Steps:**\n1. Isumite ang requirements sa BPLS (LTO CR/OR, Driver's License, Barangay Clearance, Traffic Clearance, Tricycle Unit).\n2. Hulata ang validation ug kuhaa ang Order of Payment.\n3. Pagbayad og fees sa City Treasurer's Office.\n4. Kuhaa ang imong MTOP Mayor's Permit.\n\n💰 **Bayad:** Mayor's Permit Fee ~₱100.00, Traffic Clearance ~₱50.00, Sticker ~₱75.00.\n⏱️ **Processing Time:** Mga 4 ka oras."
+    }
+  },
+  "cmo_release_impounded_vehicle": {
+    "department": "City Mayor's Office - TMDS",
+    "answers": {
+      "en": "If your vehicle was impounded, here is how you can **Release an Impounded Vehicle**:\n\n---\n### 🏍️ Releasing Process\n\n**Steps:**\n1. Submit the Citation Ticket/Impounding Receipt, Driver's License OR, and Vehicle CR/OR to TMDS.\n2. Attend the scheduled **Traffic Seminar** (usually Tuesdays/Thursdays).\n3. After the seminar, sign the logbook and claim your impounded vehicle.\n\n⏱️ **Processing Time:** Around 1 hour and 20 minutes (including seminar).",
+      "tl": "Kung na-impound ang iyong sasakyan, narito kung paano ito makuha (**Releasing of Impounded Vehicle**):\n\n---\n### 🏍️ Proseso\n\n**Steps:**\n1. Isumite ang Citation Ticket/Impounding Receipt, Driver's License OR, at Vehicle CR/OR sa TMDS.\n2. Umattend sa naka-schedule na **Traffic Seminar** (kadalasan ay Martes/Huwebes).\n3. Pagkatapos ng seminar, pumirma sa logbook at kunin ang na-impound na sasakyan.\n\n⏱️ **Processing Time:** Tinatayang 1 oras at 20 minuto (kasama ang seminar).",
+      "bis": "Kung na-impound ang imong sakyanan o motor, mao ni ang proseso sa pagkuha (**Releasing of Impounded Vehicle**):\n\n---\n### 🏍️ Proseso\n\n**Steps:**\n1. Isumite ang Citation Ticket/Impounding Receipt, Driver's License OR, ug Vehicle CR/OR sa TMDS.\n2. Mu-attend sa naka-schedule nga **Traffic Seminar** (kasagaran Martes o Huwebes).\n3. Human sa seminar, pirma sa logbook ug kuhaa ang na-impound nga sakyanan.\n\n⏱️ **Processing Time:** Mga 1 ka oras ug 20 minutos (apil ang seminar)."
+    }
+  },
+  "cmo_building_permit": {
+    "department": "City Mayor's Office - Building Official",
+    "answers": {
+      "en": "To construct or modify a structure, you need to apply for a **Building Permit**.\n\n---\n### 🏗️ Building Permit Process\n\n**Steps:**\n1. Submit required structural plans and documents to the Office of the Building Official (OBO).\n2. Proceed to the City Treasurer's Office to pay the filing fee.\n3. Secure clearances from BFP (Fire Safety), CPDO (Locational), and other relevant offices.\n4. OBO evaluates the plans. Once approved, pay the final building permit fees.\n5. Receive the approved Building Permit.\n\n⏱️ **Processing Time:** Takes several days depending on the completeness of documents.",
+      "tl": "Para magtayo o mag-modify ng istraktura, kailangan mong mag-apply ng **Building Permit**.\n\n---\n### 🏗️ Proseso ng Building Permit\n\n**Steps:**\n1. Isumite ang mga structural plans at dokumento sa Office of the Building Official (OBO).\n2. Magbayad ng filing fee sa City Treasurer's Office.\n3. Kumuha ng clearances mula sa BFP (Fire Safety), CPDO (Locational), at iba pang opisina.\n4. I-eevaluate ng OBO ang plano. Kapag naaprubahan, bayaran ang final building permit fees.\n5. Kunin ang approved na Building Permit.\n\n⏱️ **Processing Time:** Aabutin ng ilang araw depende sa pagiging kumpleto ng requirements.",
+      "bis": "Para magtukod o mag-modify og building, kinahanglan nimo mag-apply og **Building Permit**.\n\n---\n### 🏗️ Proseso sa Building Permit\n\n**Steps:**\n1. Isumite ang mga structural plans ug dokumento sa Office of the Building Official (OBO).\n2. Pagbayad og filing fee sa City Treasurer's Office.\n3. Pagkuha og clearances gikan sa BFP (Fire Safety), CPDO (Locational), ug uban pang opisina.\n4. I-evaluate sa OBO ang plano. Kung ma-aprubahan, bayri ang final building permit fees.\n5. Kuhaa ang na-aprubahan nga Building Permit.\n\n⏱️ **Processing Time:** Muabot og pipila ka adlaw depende kung kumpleto ba ang requirements."
+    }
+  },
+  "cmo_mayors_clearance": {
+    "department": "City Mayor's Office",
+    "answers": {
+      "en": "To secure a **Mayor's Clearance** (for employment, firearm license, etc.), follow these steps:\n\n---\n### 📄 Mayor's Clearance Process\n\n**Steps:**\n1. Present your requirements (Barangay Clearance, Police Clearance) at the CMO Receiving Section.\n2. Get the Order of Payment and pay at the City Treasurer's Office.\n3. Return to the CMO with the Official Receipt to claim your Mayor's Clearance.\n\n💰 **Cost:** ~₱50.00 to ₱100.00 (varies by purpose).\n⏱️ **Processing Time:** Around 15-30 minutes.",
+      "tl": "Para kumuha ng **Mayor's Clearance** (para sa trabaho, lisensya ng baril, atbp.), sundin ito:\n\n---\n### 📄 Proseso\n\n**Steps:**\n1. Ipakita ang requirements (Barangay Clearance, Police Clearance) sa CMO Receiving Section.\n2. Kunin ang Order of Payment at magbayad sa City Treasurer's Office.\n3. Bumalik sa CMO dala ang Official Receipt para makuha ang Mayor's Clearance.\n\n💰 **Bayad:** ~₱50.00 hanggang ₱100.00 (depende sa layunin).\n⏱️ **Processing Time:** Tinatayang 15-30 minuto.",
+      "bis": "Para mokuha og **Mayor's Clearance** (para sa trabaho, lisensya sa pusil, ug uban pa), sunda kini:\n\n---\n### 📄 Proseso\n\n**Steps:**\n1. Ipakita ang imong requirements (Barangay Clearance, Police Clearance) sa CMO Receiving Section.\n2. Kuhaa ang Order of Payment ug pagbayad sa City Treasurer's Office.\n3. Balik sa CMO dala ang Official Receipt aron makuha ang Mayor's Clearance.\n\n💰 **Bayad:** ~₱50.00 hantod ₱100.00 (depende sa gamit).\n⏱️ **Processing Time:** Mga 15-30 minutos."
+    }
+  },
+  "cmo_occupational_permit": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "All employees working in the city must secure an **Occupational Permit** or Mayor's Working Permit.\n\n---\n### 👨‍💼 Occupational Permit Process\n\n**Steps:**\n1. Submit requirements (Health Certificate from CHO, Police Clearance, and receipt of Police Clearance).\n2. Present documents to the BPLS for assessment.\n3. Pay the Occupational Permit fee at the City Treasurer's Office.\n4. Present the Official Receipt and claim the printed ID/Permit.\n\n💰 **Cost:** ~₱150.00 (varies by position).\n⏱️ **Processing Time:** Around 20-30 minutes.",
+      "tl": "Lahat ng empleyado sa lungsod ay kailangang kumuha ng **Occupational Permit** o Mayor's Working Permit.\n\n---\n### 👨‍💼 Proseso\n\n**Steps:**\n1. Isumite ang requirements (Health Certificate mula CHO, Police Clearance).\n2. Ipakita ang mga dokumento sa BPLS para sa assessment.\n3. Magbayad ng fee sa City Treasurer's Office.\n4. Ipakita ang Official Receipt at kunin ang Occupational Permit.\n\n💰 **Bayad:** ~₱150.00 (depende sa posisyon).\n⏱️ **Processing Time:** Tinatayang 20-30 minuto.",
+      "bis": "Tanan empleyado sa syudad kinahanglan mokuha og **Occupational Permit** o Mayor's Working Permit.\n\n---\n### 👨‍💼 Proseso\n\n**Steps:**\n1. Isumite ang requirements (Health Certificate gikan sa CHO, Police Clearance).\n2. Ipakita ang mga dokumento sa BPLS para ma-assess.\n3. Bayri ang permit fee sa City Treasurer's Office.\n4. Ipakita ang Official Receipt ug kuhaa ang Occupational Permit.\n\n💰 **Bayad:** ~₱150.00 (depende sa posisyon).\n⏱️ **Processing Time:** Mga 20-30 minutos."
+    }
+  },
+  "cmo_mtop_transfer": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "If you bought or sold a tricycle, you need to apply for an **MTOP Transfer of Ownership**.\n\n---\n### 🔄 Transfer Process\n\n**Steps:**\n1. Submit the Deed of Sale, Original MTOP Franchise, LTO CR/OR, and Barangay Clearance to BPLS.\n2. Secure the Order of Payment.\n3. Pay the Transfer Fee and other dues at the City Treasurer's Office.\n4. Present the receipt and claim the updated MTOP under the new owner's name.\n\n💰 **Cost:** Transfer Fee is around ~₱200.00.\n⏱️ **Processing Time:** Around 2-3 hours.",
+      "tl": "Kung ikaw ay bumili o nagbenta ng tricycle, kailangan mong mag-apply para sa **MTOP Transfer of Ownership**.\n\n---\n### 🔄 Proseso ng Transfer\n\n**Steps:**\n1. Isumite ang Deed of Sale, Original MTOP, LTO CR/OR, at Barangay Clearance sa BPLS.\n2. Kunin ang Order of Payment.\n3. Bayaran ang Transfer Fee sa City Treasurer's Office.\n4. Kunin ang bagong MTOP franchise na nakapangalan na sa bagong may-ari.\n\n💰 **Bayad:** Ang Transfer Fee ay nasa ~₱200.00.\n⏱️ **Processing Time:** Tinatayang 2-3 oras.",
+      "bis": "Kung nipalit o nagbaligya ka og tricycle, kinahanglan ka mag-apply para sa **MTOP Transfer of Ownership**.\n\n---\n### 🔄 Proseso sa Transfer\n\n**Steps:**\n1. Isumite ang Deed of Sale, Original MTOP, LTO CR/OR, ug Barangay Clearance sa BPLS.\n2. Kuhaa ang Order of Payment.\n3. Bayri ang Transfer Fee sa City Treasurer's Office.\n4. Kuhaa ang bag-ong MTOP franchise nga nakapangalan na sa bag-ong tag-iya.\n\n💰 **Bayad:** Ang Transfer Fee kay mga ~₱200.00.\n⏱️ **Processing Time:** Mga 2-3 ka oras."
+    }
+  },
+  "cmo_driver_id": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "Tricycle and Trisikad drivers must secure a **Driver's Identification Card** from the CMO.\n\n---\n### 🪪 Driver's ID Process\n\n**Steps:**\n1. Present your Professional Driver's License, Police Clearance, and MTOP Franchise to the BPLS.\n2. Get assessed and secure an Order of Payment.\n3. Pay the ID fee at the City Treasurer's Office.\n4. Proceed to ID picture capturing and claim your printed ID.\n\n💰 **Cost:** ~₱50.00 - ₱100.00.\n⏱️ **Processing Time:** Around 30-45 minutes.",
+      "tl": "Ang mga driver ng tricycle at trisikad ay kailangang kumuha ng **Driver's Identification Card** mula sa CMO.\n\n---\n### 🪪 Proseso ng Driver's ID\n\n**Steps:**\n1. Ipakita ang Professional Driver's License, Police Clearance, at MTOP Franchise sa BPLS.\n2. Kumuha ng Order of Payment.\n3. Magbayad ng ID fee sa City Treasurer's Office.\n4. Magpa-picture at kunin ang printed na ID.\n\n💰 **Bayad:** ~₱50.00 - ₱100.00.\n⏱️ **Processing Time:** Tinatayang 30-45 minuto.",
+      "bis": "Ang mga drayber sa tricycle ug trisikad kinahanglan mokuha og **Driver's Identification Card** gikan sa CMO.\n\n---\n### 🪪 Proseso sa Driver's ID\n\n**Steps:**\n1. Ipakita ang Professional Driver's License, Police Clearance, ug MTOP Franchise sa BPLS.\n2. Kuhaa ang Order of Payment.\n3. Pagbayad sa ID fee sa City Treasurer's Office.\n4. Pagpa-picture ug kuhaa ang imong printed nga ID.\n\n💰 **Bayad:** ~₱50.00 - ₱100.00.\n⏱️ **Processing Time:** Mga 30-45 minutos."
+    }
+  },
+  "cmo_special_permit": {
+    "department": "City Mayor's Office",
+    "answers": {
+      "en": "For events, motorcades, recuridas, or promotional activities, you need a **Mayor's Special Permit**.\n\n---\n### 🎉 Special Permit Process\n\n**Steps:**\n1. Submit a formal Request Letter addressed to the City Mayor, indicating the details of the event/activity.\n2. Once approved and signed by the Mayor or City Administrator, proceed to the BPLS for assessment.\n3. Pay the Special Permit fee at the City Treasurer's Office.\n4. Claim the printed Special Permit.\n\n💰 **Cost:** Depends on the nature of the activity.\n⏱️ **Processing Time:** 1 to 2 working days (depending on approval).",
+      "tl": "Para sa mga events, motorcade, recurida, o promotional activities, kailangan mo ng **Mayor's Special Permit**.\n\n---\n### 🎉 Proseso\n\n**Steps:**\n1. Isumite ang pormal na Request Letter sa City Mayor na naglalaman ng detalye ng aktibidad.\n2. Kapag naaprubahan, pumunta sa BPLS para sa assessment.\n3. Magbayad ng Special Permit fee sa City Treasurer's Office.\n4. Kunin ang inyong Special Permit.\n\n💰 **Bayad:** Depende sa klase ng aktibidad.\n⏱️ **Processing Time:** 1 hanggang 2 araw (depende sa pag-apruba).",
+      "bis": "Para sa mga events, motorcade, recurida, o promotional activities, kinahanglan nimo og **Mayor's Special Permit**.\n\n---\n### 🎉 Proseso\n\n**Steps:**\n1. Pagpasa og Request Letter para sa City Mayor nga naay detalye sa inyong aktibidad.\n2. Kung ma-aprubahan na, adto sa BPLS para ma-assess.\n3. Pagbayad sa Special Permit fee didto sa City Treasurer's Office.\n4. Kuhaa ang inyong Special Permit.\n\n💰 **Bayad:** Magdepende sa klase sa aktibidad.\n⏱️ **Processing Time:** 1 ngadto sa 2 ka adlaw (depende sa approval)."
+    }
+  },
+  "cmo_marriage_solemnization": {
+    "department": "City Mayor's Office",
+    "answers": {
+      "en": "Couples can request the City Mayor to officiate their wedding through **Marriage Solemnization**.\n\n---\n### 💍 Solemnization Process\n\n**Steps:**\n1. Secure a Marriage License from the Local Civil Registrar (LCR).\n2. Submit the Marriage License and request letter to the CMO at least two (2) weeks before the desired date.\n3. Pay the Solemnization Fee at the City Treasurer's Office.\n4. Attend the scheduled wedding at the Mayor's Office.\n\n💰 **Cost:** Solemnization Fee ~₱300.00.\n⏱️ **Processing Time:** Scheduling takes 10-15 mins; subject to the Mayor's availability.",
+      "tl": "Maaaring hilingin sa City Mayor na magkasal sa inyo sa pamamagitan ng **Marriage Solemnization**.\n\n---\n### 💍 Proseso ng Kasal sa Mayor\n\n**Steps:**\n1. Kumuha ng Marriage License sa Local Civil Registrar (LCR).\n2. Isumite ang Marriage License at request letter sa CMO, dalawang (2) linggo bago ang kasal.\n3. Magbayad ng Solemnization Fee sa City Treasurer's Office.\n4. Pumunta sa araw ng kasal sa opisina ng Mayor.\n\n💰 **Bayad:** Solemnization Fee ~₱300.00.\n⏱️ **Processing Time:** 10-15 mins para sa scheduling; depende sa schedule ng Mayor.",
+      "bis": "Pwede mo magpakasal sa City Mayor pinaagi sa **Marriage Solemnization**.\n\n---\n### 💍 Proseso sa Pagpakasal\n\n**Steps:**\n1. Pagkuha daan og Marriage License sa Local Civil Registrar (LCR).\n2. Isumite ang Marriage License ug request letter sa CMO, duha (2) ka semana sa dili pa ang petsa.\n3. Pagbayad sa Solemnization Fee sa City Treasurer's Office.\n4. Tunga sa naka-schedule nga adlaw sa kasal sa opisina sa Mayor.\n\n💰 **Bayad:** Solemnization Fee ~₱300.00.\n⏱️ **Processing Time:** 10-15 mins ang pag-schedule; depende kung libre ang Mayor."
+    }
+  },
+  "cmo_job_recommendation": {
+    "department": "City Mayor's Office - PESO",
+    "answers": {
+      "en": "Job seekers can request an **Endorsement / Recommendation Letter** for local or overseas employment from the CMO/PESO.\n\n---\n### 💼 Recommendation Process\n\n**Steps:**\n1. Prepare your Resume/Bio-data and a cover letter indicating the company you are applying to.\n2. Submit the documents to the Public Employment Service Office (PESO) or the Mayor's Office receiving clerk.\n3. The office will prepare the endorsement letter signed by the Mayor.\n4. Claim the sealed recommendation letter.\n\n💰 **Cost:** Free of charge.\n⏱️ **Processing Time:** Around 15 to 30 minutes.",
+      "tl": "Maaaring humingi ng **Recommendation / Endorsement Letter** para sa trabaho mula sa CMO o PESO.\n\n---\n### 💼 Proseso\n\n**Steps:**\n1. Ihanda ang Resume/Bio-data at cover letter kung saan nais mag-apply.\n2. Isumite ito sa Public Employment Service Office (PESO) o sa CMO.\n3. Ipoproseso ng opisina ang endorsement letter na pirmado ng Mayor.\n4. Kunin ang rekomendasyon na nakaselyo.\n\n💰 **Bayad:** Libre.\n⏱️ **Processing Time:** Tinatayang 15 hanggang 30 minuto.",
+      "bis": "Ang mga nangita og trabaho pwede mangayo og **Recommendation / Endorsement Letter** gikan sa CMO o PESO.\n\n---\n### 💼 Proseso\n\n**Steps:**\n1. Iandam ang imong Resume/Bio-data ug cover letter para sa kumpanya nga imong aplayan.\n2. Isumite ni sa Public Employment Service Office (PESO) o sa CMO.\n3. Buhaton sa opisina ang endorsement letter nga pinirmahan sa Mayor.\n4. Kuhaa ang imong recommendation letter.\n\n💰 **Bayad:** Libre / Walay bayad.\n⏱️ **Processing Time:** Mga 15 hantod 30 minutos."
+    }
+  },
+  "cmo_financial_assistance": {
+    "department": "City Mayor's Office",
+    "answers": {
+      "en": "Citizens in crisis can apply for **Medical or Financial Assistance (AICS)** from the City Mayor's Office.\n\n---\n### ❤️ Assistance Process\n\n**Steps:**\n1. Prepare the requirements (e.g., Medical Abstract, Hospital Bill, Barangay Certificate of Indigency, Valid ID).\n2. Submit documents to the CMO Assistance Desk or City Social Welfare and Development Office (CSWDO) for evaluation.\n3. Wait for the social worker's interview and assessment.\n4. Once approved, the releasing of funds or Guarantee Letter will be scheduled.\n\n💰 **Cost:** Free.\n⏱️ **Processing Time:** Evaluation takes 1-2 hours; release of funds varies.",
+      "tl": "Ang mga nangangailangan ay maaaring humingi ng **Medical o Financial Assistance** mula sa opisina ng Mayor.\n\n---\n### ❤️ Proseso ng Tulong Pinansyal\n\n**Steps:**\n1. Ihanda ang requirements (Medical Abstract, Reseta, Hospital Bill, Barangay Certificate of Indigency, Valid ID).\n2. Isumite ito sa CMO Assistance Desk o CSWDO para sa evaluation.\n3. Hintayin ang interview ng social worker.\n4. Kapag naaprubahan, bibigyan ka ng Guarantee Letter o i-schedule ang pag-release ng pera.\n\n💰 **Bayad:** Libre.\n⏱️ **Processing Time:** Evaluation ay 1-2 oras; ang pag-release ay nakadepende.",
+      "bis": "Ang mga nanginahanglan pwede mangayo og **Medical o Financial Assistance** gikan sa opisina sa Mayor.\n\n---\n### ❤️ Proseso sa Pagkuha og Tabang\n\n**Steps:**\n1. Iandam ang requirements (Medical Abstract, Reseta, Hospital Bill, Barangay Certificate of Indigency, Valid ID).\n2. Isumite ni sa CMO Assistance Desk o CSWDO aron ma-evaluate.\n3. Hulata ang interview sa social worker.\n4. Kung ma-aprubahan, hatagan ka og Guarantee Letter o i-schedule ang paghatag sa kwarta.\n\n💰 **Bayad:** Libre.\n⏱️ **Processing Time:** 1-2 ka oras ang evaluation; ang pag-release kay magdepende."
+    }
+  },
+  "cmo_scholarship": {
+    "department": "City Mayor's Office",
+    "answers": {
+      "en": "Students can apply for the **City Educational Scholarship Program**.\n\n---\n### 🎓 Scholarship Process\n\n**Steps:**\n1. Secure an application form from the CMO Scholarship Coordinator.\n2. Submit the completed form along with requirements (Report Card / True Copy of Grades, Certificate of Indigency, Voter's ID of parents, 2x2 ID picture).\n3. Attend the scheduled screening and interview.\n4. Wait for the posting of qualified scholars.\n\n💰 **Cost:** Free.\n⏱️ **Processing Time:** Applications are processed within the specific submission period (usually before the semester starts).",
+      "tl": "Maaaring mag-apply ang mga estudyante para sa **City Educational Scholarship Program**.\n\n---\n### 🎓 Proseso ng Scholarship\n\n**Steps:**\n1. Kumuha ng application form sa CMO Scholarship Coordinator.\n2. Isumite ito kasama ang requirements (Report Card / Grades, Certificate of Indigency, Voter's ID ng magulang, 2x2 picture).\n3. Umattend sa naka-schedule na screening at interview.\n4. Hintayin ang anunsyo ng mga nakapasang scholars.\n\n💰 **Bayad:** Libre.\n⏱️ **Processing Time:** Pinoproseso ito bago magsimula ang semestre.",
+      "bis": "Pwede mag-apply ang mga estudyante para sa **City Educational Scholarship Program**.\n\n---\n### 🎓 Proseso sa Scholarship\n\n**Steps:**\n1. Pagkuha og application form sa CMO Scholarship Coordinator.\n2. Isumite ni uban ang requirements (Report Card / Grades, Certificate of Indigency, Voter's ID sa ginikanan, 2x2 picture).\n3. Mu-attend sa screening ug interview.\n4. Hulata ang anunsyo sa mga nakapasar nga scholars.\n\n💰 **Bayad:** Libre.\n⏱️ **Processing Time:** Ginaproseso ni sa wala pa mag-start ang semester."
+    }
+  },
+  "cmo_tricycle_dropping": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "If a tricycle unit is no longer operational, the owner must apply for **Dropping of Franchise**.\n\n---\n### 📉 Dropping Process\n\n**Steps:**\n1. Surrender the Original MTOP Franchise, Tricycle Plate, and submit an Affidavit of Dropping to the BPLS.\n2. Secure the Order of Payment.\n3. Pay the Dropping Fee at the City Treasurer's Office.\n4. Claim the Certification of Dropped Franchise.\n\n💰 **Cost:** Dropping Fee is around ~₱150.00.\n⏱️ **Processing Time:** Around 1-2 hours.",
+      "tl": "Kung hindi na gagamitin ang tricycle, kailangang mag-apply ng **Dropping of Franchise**.\n\n---\n### 📉 Proseso ng Dropping\n\n**Steps:**\n1. I-surrender ang Original MTOP, Tricycle Plate, at isumite ang Affidavit of Dropping sa BPLS.\n2. Kunin ang Order of Payment.\n3. Magbayad ng Dropping Fee sa City Treasurer's Office.\n4. Kunin ang Certification of Dropped Franchise.\n\n💰 **Bayad:** Dropping Fee ay ~₱150.00.\n⏱️ **Processing Time:** Tinatayang 1-2 oras.",
+      "bis": "Kung dili na gamiton ang tricycle, kinahanglan mag-apply og **Dropping of Franchise**.\n\n---\n### 📉 Proseso sa Dropping\n\n**Steps:**\n1. I-surrender ang Original MTOP, Tricycle Plate, ug isumite ang Affidavit of Dropping sa BPLS.\n2. Kuhaa ang Order of Payment.\n3. Pagbayad sa Dropping Fee sa City Treasurer's Office.\n4. Kuhaa ang Certification of Dropped Franchise.\n\n💰 **Bayad:** Dropping Fee kay mga ~₱150.00.\n⏱️ **Processing Time:** Mga 1-2 ka oras."
+    }
+  },
+  "cmo_franchise_renewal": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "Tricycle operators must process their **MTOP / Franchise Renewal** annually.\n\n---\n### 🔄 Franchise Renewal\n\n**Steps:**\n1. Present your Previous MTOP, updated LTO CR/OR, and Barangay Clearance to the BPLS.\n2. Have the unit inspected for a Traffic Clearance.\n3. Get the Order of Payment and pay the Renewal Fee at the City Treasurer's Office.\n4. Present the receipt and claim your renewed MTOP Franchise and Sticker.\n\n💰 **Cost:** Mayor's Permit ~₱100.00, Sticker ~₱75.00.\n⏱️ **Processing Time:** Around 2-3 hours.",
+      "tl": "Kailangang i-renew ng mga operators ang kanilang **MTOP / Franchise** taon-taon.\n\n---\n### 🔄 Proseso ng Renewal\n\n**Steps:**\n1. Ipakita ang Nakaraang MTOP, updated LTO CR/OR, at Barangay Clearance sa BPLS.\n2. Ipainspeksyon ang tricycle para sa Traffic Clearance.\n3. Kunin ang Order of Payment at magbayad ng Renewal Fee sa City Treasurer's Office.\n4. Ipakita ang resibo at kunin ang na-renew na MTOP at Sticker.\n\n💰 **Bayad:** Mayor's Permit ~₱100.00, Sticker ~₱75.00.\n⏱️ **Processing Time:** Tinatayang 2-3 oras.",
+      "bis": "Kinahanglan i-renew sa mga operator ang ilahang **MTOP / Franchise** kada tuig.\n\n---\n### 🔄 Proseso sa Renewal\n\n**Steps:**\n1. Ipakita ang Nakaagi nga MTOP, updated LTO CR/OR, ug Barangay Clearance sa BPLS.\n2. Ipa-inspeksyon ang tricycle para sa Traffic Clearance.\n3. Kuhaa ang Order of Payment ug pagbayad sa Renewal Fee sa City Treasurer's Office.\n4. Ipakita ang resibo ug kuhaa ang na-renew nga MTOP ug Sticker.\n\n💰 **Bayad:** Mayor's Permit ~₱100.00, Sticker ~₱75.00.\n⏱️ **Processing Time:** Mga 2-3 ka oras."
+    }
+  },
+  "cmo_special_business_permit": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "Temporary businesses (like carnivals, trade fairs, peryahan, or seasonal stalls) require a **Special Business Permit**.\n\n---\n### 🎪 Special Permit Process\n\n**Steps:**\n1. Submit a letter of intent to the Mayor specifying the duration and type of business.\n2. Secure Barangay Clearance for the specific activity.\n3. BPLS will assess the application and issue an Order of Payment.\n4. Pay the corresponding fees at the City Treasurer's Office.\n5. Claim the Special Business Permit.\n\n💰 **Cost:** Computed per day/week based on the local tax code.\n⏱️ **Processing Time:** 1 to 2 days.",
+      "tl": "Ang mga panandaliang negosyo (tulad ng peryahan, trade fair, o seasonal stalls) ay nangangailangan ng **Special Business Permit**.\n\n---\n### 🎪 Proseso\n\n**Steps:**\n1. Isumite ang letter of intent sa Mayor na nagsasaad kung gaano katagal at anong klase ng negosyo.\n2. Kumuha ng Barangay Clearance para sa aktibidad.\n3. I-aassess ng BPLS at bibigyan ka ng Order of Payment.\n4. Magbayad ng fee sa City Treasurer's Office.\n5. Kunin ang Special Business Permit.\n\n💰 **Bayad:** Kinukwenta kada araw/linggo base sa tax code.\n⏱️ **Processing Time:** 1 hanggang 2 araw.",
+      "bis": "Ang mga temporaryo nga negosyo (pareha sa peryahan, trade fair, o seasonal stalls) kay nanginahanglan og **Special Business Permit**.\n\n---\n### 🎪 Proseso\n\n**Steps:**\n1. Isumite ang letter of intent sa Mayor kung unsa kadugay ug unsa nga klase sa negosyo.\n2. Pagkuha og Barangay Clearance para sa maong aktibidad.\n3. I-assess sa BPLS ug hatagan ka og Order of Payment.\n4. Pagbayad sa fee didto sa City Treasurer's Office.\n5. Kuhaa ang Special Business Permit.\n\n💰 **Bayad:** Kwentahon kada adlaw/semana base sa tax code.\n⏱️ **Processing Time:** 1 hantod 2 ka adlaw."
+    }
+  },
+  "cmo_use_of_facility": {
+    "department": "City Mayor's Office",
+    "answers": {
+      "en": "To request the **Use of Government Facilities** (like the City Gym or Plazas) for events:\n\n---\n### 🏢 Facility Reservation\n\n**Steps:**\n1. Submit a formal request letter to the City Mayor at least one (1) week before the event.\n2. Once approved, coordinate with the General Services Office (GSO) for logistics.\n3. Pay the corresponding rental fees (if applicable) at the City Treasurer's Office.\n4. Secure the approved permit from the Mayor's Office.\n\n💰 **Cost:** Depends on the facility and duration.\n⏱️ **Processing Time:** 1-2 days for approval.",
+      "tl": "Para humiram ng **Government Facilities** (tulad ng City Gym o Plaza) para sa inyong event:\n\n---\n### 🏢 Pag-reserve ng Pasilidad\n\n**Steps:**\n1. Isumite ang request letter sa City Mayor, isang (1) linggo bago ang event.\n2. Kapag naaprubahan, makipag-ugnayan sa General Services Office (GSO) para sa logistics.\n3. Magbayad ng rental fee (kung mayroon) sa City Treasurer's Office.\n4. Kunin ang approved na permit sa opisina ng Mayor.\n\n💰 **Bayad:** Depende sa pasilidad at oras ng gamit.\n⏱️ **Processing Time:** 1-2 araw para sa pag-apruba.",
+      "bis": "Para makagamit sa **Government Facilities** (parehas sa City Gym o Plaza) para sa inyong event:\n\n---\n### 🏢 Pag-reserve sa Pasilidad\n\n**Steps:**\n1. Isumite ang request letter sa City Mayor, usa (1) ka semana usa ang event.\n2. Kung ma-aprubahan na, pag-coordinate sa General Services Office (GSO).\n3. Pagbayad sa rental fee (kung naa) sa City Treasurer's Office.\n4. Kuhaa ang approved nga permit sa opisina sa Mayor.\n\n💰 **Bayad:** Depende sa pasilidad ug unsa kadugay gamiton.\n⏱️ **Processing Time:** 1-2 ka adlaw para ma-aprubahan."
+    }
+  },
+  "cmo_use_of_vehicle": {
+    "department": "City Mayor's Office",
+    "answers": {
+      "en": "To request the **Use of Government Vehicles** (Ambulance, Rescue, or Service Vehicles):\n\n---\n### 🚑 Vehicle Request\n\n**Steps:**\n1. Submit a letter of request specifying the date, destination, and purpose.\n2. For emergency dispatch (Ambulance/Rescue), contact the City Disaster Risk Reduction Management Office (CDRRMO) directly.\n3. For non-emergencies, wait for the Mayor's approval and Trip Ticket issuance.\n\n💰 **Cost:** Free for emergencies.\n⏱️ **Processing Time:** Immediate for emergencies; 1 day for non-emergency.",
+      "tl": "Para humiling ng paggamit ng **Government Vehicles** (Ambulansya, Rescue, o Service):\n\n---\n### 🚑 Proseso ng Pag-request\n\n**Steps:**\n1. Isumite ang request letter na nagsasaad ng petsa, destinasyon, at layunin.\n2. Para sa emergencies (Ambulansya), tumawag direkta sa CDRRMO.\n3. Para sa non-emergencies, hintayin ang apruba ng Mayor at ang Trip Ticket.\n\n💰 **Bayad:** Libre para sa emergencies.\n⏱️ **Processing Time:** Agad-agad para sa emergency; 1 araw para sa iba.",
+      "bis": "Para manghulam o mugamit og **Government Vehicles** (Ambulansya, Rescue, o Service):\n\n---\n### 🚑 Proseso sa Pag-request\n\n**Steps:**\n1. Isumite ang request letter nga naay petsa, adtoan, ug rason.\n2. Para sa mga emergency (Ambulansya), tawag diretso sa CDRRMO.\n3. Para sa dili emergency, hulata ang approval sa Mayor ug ang Trip Ticket.\n\n💰 **Bayad:** Libre para sa mga emergency.\n⏱️ **Processing Time:** Diretso kung emergency; 1 ka adlaw kung dili."
+    }
+  },
+  "cmo_firecracker_permit": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "To sell firecrackers and pyrotechnics during the holidays, you must secure a **Special Permit to Sell Firecrackers**.\n\n---\n### 🎆 Firecracker Permit Process\n\n**Steps:**\n1. Secure clearance from the Philippine National Police (PNP) and Bureau of Fire Protection (BFP).\n2. Submit clearances and application to the BPLS.\n3. Pay the required fees at the City Treasurer's Office.\n4. Claim your permit and set up only at the designated Firecracker Zone.\n\n💰 **Cost:** Varies per space/stall.\n⏱️ **Processing Time:** 1 to 2 days.",
+      "tl": "Upang magbenta ng paputok tuwing holidays, kailangang kumuha ng **Special Permit to Sell Firecrackers**.\n\n---\n### 🎆 Proseso ng Permit\n\n**Steps:**\n1. Kumuha ng clearance mula sa PNP at BFP.\n2. Isumite ang clearances at application sa BPLS.\n3. Magbayad ng fee sa City Treasurer's Office.\n4. Kunin ang permit at magtayo lamang ng pwesto sa designated Firecracker Zone.\n\n💰 **Bayad:** Nakadepende sa pwesto.\n⏱️ **Processing Time:** 1 hanggang 2 araw.",
+      "bis": "Para makabaligya og pabuto inig holidays, kinahanglan mokuha og **Special Permit to Sell Firecrackers**.\n\n---\n### 🎆 Proseso sa Permit\n\n**Steps:**\n1. Pagkuha daan og clearance gikan sa PNP ug BFP.\n2. Isumite ang clearances ug application didto sa BPLS.\n3. Pagbayad sa fee sa City Treasurer's Office.\n4. Kuhaa ang permit ug pagpwesto lang sa gi-assign nga Firecracker Zone.\n\n💰 **Bayad:** Magdepende sa pwesto.\n⏱️ **Processing Time:** 1 hantod 2 ka adlaw."
+    }
+  },
+  "cmo_market_stall": {
+    "department": "City Economic Enterprise",
+    "answers": {
+      "en": "To rent a space or stall at the public market, you need to apply for a **Market Stall Lease**.\n\n---\n### 🏪 Market Stall Application\n\n**Steps:**\n1. Inquire at the City Economic Enterprise Management and Development Office (CEEMDO) for vacant stalls.\n2. Submit a letter of intent to the Mayor.\n3. Once approved, secure a Market Clearance.\n4. Pay the initial deposit and rental fees at the City Treasurer's Office.\n5. Sign the Lease Contract and proceed with the Business Permit application.\n\n💰 **Cost:** Depends on the stall location and size.\n⏱️ **Processing Time:** Varies based on availability.",
+      "tl": "Para umupa ng pwesto sa palengke, kailangan mong mag-apply ng **Market Stall Lease**.\n\n---\n### 🏪 Proseso\n\n**Steps:**\n1. Magtanong sa CEEMDO kung may bakanteng pwesto.\n2. Isumite ang letter of intent sa Mayor.\n3. Kapag naaprubahan, kumuha ng Market Clearance.\n4. Magbayad ng deposit at upa sa City Treasurer's Office.\n5. Pumirma sa Lease Contract at mag-apply na ng Business Permit.\n\n💰 **Bayad:** Depende sa laki at lokasyon ng pwesto.\n⏱️ **Processing Time:** Depende sa availability ng pwesto.",
+      "bis": "Para maka-arkila og pwesto sa palengke, kinahanglan mag-apply og **Market Stall Lease**.\n\n---\n### 🏪 Proseso\n\n**Steps:**\n1. Pag-inquire sa CEEMDO kung naay bakante nga pwesto.\n2. Isumite ang letter of intent ngadto sa Mayor.\n3. Kung ma-aprubahan na, pagkuha og Market Clearance.\n4. Pagbayad sa deposit ug abang didto sa City Treasurer's Office.\n5. Pirma sa Lease Contract ug pag-apply na og Business Permit.\n\n💰 **Bayad:** Magdepende sa kadako ug lokasyon sa pwesto.\n⏱️ **Processing Time:** Magdepende kung naay bakante."
+    }
+  },
+  "cmo_cert_of_appearance": {
+    "department": "City Mayor's Office",
+    "answers": {
+      "en": "Official guests, auditors, or government employees visiting the city can secure a **Certificate of Appearance**.\n\n---\n### 📜 Certificate of Appearance\n\n**Steps:**\n1. Present your Travel Order or official ID to the CMO Receiving Clerk or HRMO.\n2. Log in to the visitor's logbook.\n3. Wait for the drafting and signing of the certificate by the authorized official.\n4. Claim the signed Certificate of Appearance.\n\n💰 **Cost:** Free.\n⏱️ **Processing Time:** 5 to 10 minutes.",
+      "tl": "Ang mga opisyal na bisita o empleyado ng gobyerno na bumisita sa lungsod ay maaaring kumuha ng **Certificate of Appearance**.\n\n---\n### 📜 Proseso\n\n**Steps:**\n1. Ipakita ang Travel Order o official ID sa CMO Receiving Clerk o HRMO.\n2. Pumirma sa visitor's logbook.\n3. Hintayin ang paggawa at pagpirma ng authorized official sa certificate.\n4. Kunin ang pirmadong Certificate of Appearance.\n\n💰 **Bayad:** Libre.\n⏱️ **Processing Time:** 5 hanggang 10 minuto.",
+      "bis": "Ang mga opisyal nga bisita o empleyado sa gobyerno nga nibisita sa syudad pwede mokuha og **Certificate of Appearance**.\n\n---\n### 📜 Proseso\n\n**Steps:**\n1. Ipakita ang inyong Travel Order o official ID sa CMO Receiving Clerk o HRMO.\n2. Pirma sa visitor's logbook.\n3. Hulata nga himuon ug pirmahan sa authorized official ang certificate.\n4. Kuhaa ang pinirmahan nga Certificate of Appearance.\n\n💰 **Bayad:** Libre.\n⏱️ **Processing Time:** 5 hantod 10 minutos."
+    }
+  },
+  "cmo_tree_cutting": {
+    "department": "City Mayor's Office - CENRO",
+    "answers": {
+      "en": "To cut down trees, especially those posing hazards or for construction, you need a **Mayor's Endorsement for Tree Cutting**.\n\n---\n### 🌳 Tree Cutting Permit\n\n**Steps:**\n1. Secure a Barangay Clearance / No Objection Certificate for tree cutting.\n2. Submit a request letter to the City Environment and Natural Resources Office (CENRO) with pictures of the tree.\n3. CENRO will inspect the tree and endorse the request to the Mayor and DENR.\n4. Secure the final Tree Cutting Permit from the DENR.\n\n💰 **Cost:** Inspection is usually free; DENR fees may apply.\n⏱️ **Processing Time:** 3 to 5 days (includes inspection).",
+      "tl": "Para magputol ng puno, lalo na kung ito ay delikado o para sa konstruksyon, kailangan ng **Mayor's Endorsement for Tree Cutting**.\n\n---\n### 🌳 Proseso ng Permit\n\n**Steps:**\n1. Kumuha ng Barangay Clearance / No Objection Certificate.\n2. Isumite ang request letter sa CENRO kasama ang litrato ng puno.\n3. I-inspeksyon ng CENRO ang puno at i-eendorso sa Mayor at DENR.\n4. Kunin ang pinal na Tree Cutting Permit sa DENR.\n\n💰 **Bayad:** Kadalasan libre ang inspection; maaaring may bayad sa DENR.\n⏱️ **Processing Time:** 3 hanggang 5 araw (kasama ang inspeksyon).",
+      "bis": "Para mamutol og kahoy, labi na kung delikado o tungod sa construction, kinahanglan og **Mayor's Endorsement for Tree Cutting**.\n\n---\n### 🌳 Proseso sa Permit\n\n**Steps:**\n1. Pagkuha og Barangay Clearance / No Objection Certificate.\n2. Isumite ang request letter sa CENRO uban ang litrato sa kahoy.\n3. I-inspeksyon sa CENRO ang kahoy ug i-endorse sa Mayor ug DENR.\n4. Kuhaa ang final nga Tree Cutting Permit sa DENR.\n\n💰 **Bayad:** Kasagaran libre ang inspection; naa poy bayad sa DENR.\n⏱️ **Processing Time:** 3 ngadto sa 5 ka adlaw (apil ang inspection)."
+    }
+  },
+  "cmo_excavation_permit": {
+    "department": "City Mayor's Office - Engineering",
+    "answers": {
+      "en": "For road diggings or installation of pipes/cables, an **Excavation Permit** must be secured.\n\n---\n### 🚧 Excavation Permit\n\n**Steps:**\n1. Submit your project plans and a request letter to the City Engineering Office (CEO).\n2. Secure clearances from traffic management and the affected barangay.\n3. Pay the excavation fees and deposit/bond at the City Treasurer's Office.\n4. Present the receipt and receive the approved Excavation Permit.\n\n💰 **Cost:** Depends on the area/length of excavation.\n⏱️ **Processing Time:** 2 to 3 days.",
+      "tl": "Para sa paghuhukay sa kalsada (pagkabit ng tubo/kable), kailangan ng **Excavation Permit**.\n\n---\n### 🚧 Proseso ng Permit\n\n**Steps:**\n1. Isumite ang plano ng proyekto at request letter sa City Engineering Office (CEO).\n2. Kumuha ng clearances mula sa traffic management at barangay.\n3. Magbayad ng excavation fee at bond sa City Treasurer's Office.\n4. Ipakita ang resibo para makuha ang Excavation Permit.\n\n💰 **Bayad:** Depende sa haba/laki ng huhukayin.\n⏱️ **Processing Time:** 2 hanggang 3 araw.",
+      "bis": "Para sa pagpangubkob sa kalsada (pagtaod og tubo o kable), kinahanglan og **Excavation Permit**.\n\n---\n### 🚧 Proseso sa Permit\n\n**Steps:**\n1. Isumite ang plano sa proyekto ug request letter sa City Engineering Office (CEO).\n2. Pagkuha og clearance gikan sa traffic management ug barangay.\n3. Pagbayad sa excavation fee ug bond sa City Treasurer's Office.\n4. Ipakita ang resibo aron makuha ang Excavation Permit.\n\n💰 **Bayad:** Magdepende sa gidak-on sa kubkubon.\n⏱️ **Processing Time:** 2 hantod 3 ka adlaw."
+    }
+  },
+  "cmo_pesos_job_fair": {
+    "department": "City Mayor's Office - PESO",
+    "answers": {
+      "en": "To participate in or inquire about a **Job Fair**, the Public Employment Service Office (PESO) is the main contact.\n\n---\n### 👔 Job Fair Participation\n\n**Steps:**\n1. Visit the PESO office or check the official City Government Facebook page for upcoming Job Fair announcements.\n2. Prepare multiple copies of your Resume/Bio-data with recent 2x2 ID pictures.\n3. Pre-register online or walk-in during the Job Fair day at the venue (usually the City Gym).\n4. Proceed to the interview booths of your target companies.\n\n💰 **Cost:** Completely Free.\n⏱️ **Processing Time:** Same day interview.",
+      "tl": "Para sumali o mag-inquire tungkol sa **Job Fair**, ang PESO ang inyong lalapitan.\n\n---\n### 👔 Pagsali sa Job Fair\n\n**Steps:**\n1. Pumunta sa PESO o tignan ang official Facebook page ng City Government para sa mga anunsyo ng Job Fair.\n2. Maghanda ng maraming kopya ng Resume/Bio-data at 2x2 pictures.\n3. Mag-register online o mag-walk-in sa mismong araw ng Job Fair.\n4. Pumunta sa mga interview booth ng mga kumpanya.\n\n💰 **Bayad:** Libre.\n⏱️ **Processing Time:** Interview sa mismong araw.",
+      "bis": "Para moapil o mag-inquire bahin sa **Job Fair**, ang PESO ang inyong adtoan.\n\n---\n### 👔 Pag-apil sa Job Fair\n\n**Steps:**\n1. Adto sa PESO o i-check ang official Facebook page sa City Government para sa announcements sa Job Fair.\n2. Pag-andam og daghang kopya sa imong Resume/Bio-data ug 2x2 pictures.\n3. Pag-register daan online o walk-in inig adlaw mismo sa Job Fair.\n4. Adto sa interview booth sa mga kumpanya nga imong apply-an.\n\n💰 **Bayad:** Libre.\n⏱️ **Processing Time:** Interview sa maong adlaw."
+    }
+  },
+  "cmo_new_business_permit_requirements": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "Based on the Citizen's Charter, here are the **Requirements** for a New Business Permit:\n\n1. **DTI / SEC / CDA Registration**\n2. **Location plan or sketch**\n3. **Proof of right to use location** (Title, Lease Contract, etc.)\n4. **Barangay Clearance for Business**\n\nPlease ensure all documents are complete before submitting them to the BPLS.",
+      "tl": "Ayon sa Citizen's Charter, narito ang mga **Kailangan** para sa Bagong Business Permit:\n\n1. **DTI / SEC / CDA Registration**\n2. **Location plan o sketch**\n3. **Katibayan ng pagmamay-ari o Lease Contract** ng pwesto\n4. **Barangay Clearance**\n\nSiguraduhing kumpleto ang mga dokumento bago pumunta sa BPLS.",
+      "bis": "Base sa Citizen's Charter, mao ni ang mga **Kinahanglanon** para sa Bag-ong Business Permit:\n\n1. **DTI / SEC / CDA Registration**\n2. **Location plan o sketch**\n3. **Katibayan sa pagpanag-iya o Lease Contract** sa pwesto\n4. **Barangay Clearance**\n\nSiguraduha nga kumpleto ang mga dokumento usa moadto sa BPLS."
+    }
+  },
+  "cmo_new_business_permit_process": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "Based on the Citizen's Charter, here is the **Step-by-Step Process** for a New Business Permit:\n\n1. **Submit** complete documentary requirements to the BPLS.\n2. **Wait** for assessment and secure the Order of Payment.\n3. **Pay** the assigned fees at the City Treasurer's Office and get the Official Receipt.\n4. **Present O.R. and claim** your Business Permit, Plate, and Clearances.\n\n⏱️ *Processing Time: Around 2 hours if requirements are complete.*",
+      "tl": "Ayon sa Citizen's Charter, narito ang **Proseso** para sa Bagong Business Permit:\n\n1. **Isumite** ang kumpletong requirements sa BPLS.\n2. **Hintayin** ang assessment at kunin ang Order of Payment.\n3. **Magbayad** sa City Treasurer's Office at kunin ang Official Receipt.\n4. **Ipakita ang O.R.** at kunin ang inyong Business Permit, Plate, at Clearances.\n\n⏱️ *Processing Time: Tinatayang 2 oras kung kumpleto ang requirements.*",
+      "bis": "Base sa Citizen's Charter, mao ni ang **Proseso** para sa Bag-ong Business Permit:\n\n1. **Isumite** ang kumpletong requirements sa BPLS.\n2. **Hulata** ang assessment ug kuhaa ang Order of Payment.\n3. **Pagbayad** sa City Treasurer's Office ug kuhaa ang Official Receipt.\n4. **Ipakita ang O.R.** ug kuhaa ang imong Business Permit, Plate, ug Clearances.\n\n⏱️ *Processing Time: Mga 2 ka oras kung kumpleto ang requirements.*"
+    }
+  },
+  "cmo_new_business_permit_fee": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "Based on the Citizen's Charter, the **Cost or Fee** for a New Business Permit depends on the capitalization and classification of your business. \n\nPlease proceed to the BPLS for an official assessment and secure the Order of Payment.",
+      "tl": "Ayon sa Citizen's Charter, ang **Bayad** para sa Bagong Business Permit ay depende sa kapital at klase ng inyong negosyo. \n\nPumunta sa BPLS upang ipa-assess ito at makakuha ng Order of Payment.",
+      "bis": "Base sa Citizen's Charter, ang **Bayad** para sa Bag-ong Business Permit kay magdepende sa kapital ug klase sa inyong negosyo. \n\nAdto sa BPLS para mapa-assess kini ug makakuha og Order of Payment."
+    }
+  },
+  "cmo_new_business_permit_location": {
+    "department": "City Mayor's Office - BPLS",
+    "answers": {
+      "en": "Based on the Citizen's Charter, to apply and pay for a New Business Permit, you need to go to two offices:\n\n1. **BPLS (Business Permit and Licensing Section)** - For submission of documents and assessment.\n2. **City Treasurer's Office** - For payment of assessed fees.",
+      "tl": "Ayon sa Citizen's Charter, para sa Bagong Business Permit, kailangan mong pumunta sa dalawang opisina:\n\n1. **BPLS (Business Permit and Licensing Section)** - Para sa pagpasa ng requirements at assessment.\n2. **City Treasurer's Office** - Para sa pagbabayad ng fees.",
+      "bis": "Base sa Citizen's Charter, para sa Bag-ong Business Permit, kinahanglan ka moadto sa duha ka opisina:\n\n1. **BPLS (Business Permit and Licensing Section)** - Para sa pagpasa sa requirements ug assessment.\n2. **City Treasurer's Office** - Para sa pagbayad sa fees."
+    }
+  }
+}

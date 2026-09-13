@@ -1,0 +1,340 @@
+AGRISENSE: A SMART IOT-BASED GRAIN QUALITY MONITORING, AND FORECASTING SYSTEM FOR GRAIN STORAGE FACILITY
+
+
+
+
+DAVAO DEL NORTE STATE COLLEGE 
+Institute of Computing
+New Visayas, Panabo City
+
+
+
+
+A Capstone Project Presented by:
+
+
+
+
+DON DOMINICK B. ENARGAN
+CYRELLE KHEN D. ORGA
+RHOSE AN P. RAGANIT
+
+
+MARCH 2026
+CHAPTER 1
+INTRODUCTION
+
+Background of Study
+
+The global food system is under increasing strain as post-harvest inefficiencies continue to undermine food availability and farmer livelihoods. According to the Food and Agriculture Organization, approximately one-third of all food produced globally is lost each year due to spoilage [1], with staple grains such as rice and corn being particularly vulnerable during storage. Collectively, these pressures underscore that addressing post-harvest grain spoilage through affordable, proactive, and technology-driven solutions is both a local necessity and a global development imperative. These losses carry direct implications for three United Nations Sustainable Development Goals: SDG 2 (Zero Hunger), which advocates for sustainable and resilient food production systems; SDG 9 (Industry, Innovation, and Infrastructure), which promotes inclusive industrialization and technological innovation; and SDG 13 (Climate Action), which acknowledges that rising temperatures and humidity — especially in tropical regions — accelerate the conditions that lead to grain deterioration [2]. 
+Globally, post-harvest grain losses represent a systemic challenge that disproportionately affects smallholder farmers who lack access to adequate storage technologies and real-time monitoring tools. In the Philippines specifically, the Philippine Statistics Authority has documented substantial annual post-harvest losses in rice and corn, consistently identifying storage spoilage as one of the primary contributing factors [3]. The country's tropical climate — marked by persistently high temperatures and relative humidity — creates inherently hostile conditions for grain preservation, compounding the vulnerability of poorly equipped storage facilities. In Davao region, due to its tropical climate marked by high temperatures and humidity, it accelerates grain deterioration, yet most local storage within the region still rely on reactive, manual inspections that fail to prevent spoilage [4]. The prohibitive cost of commercial-grade monitoring systems further widens the technological gap between large commercial grain operators and subsistence-level farming households [5].
+The core problem identified in this study is the inadequacy of current grain storage monitoring practices among smallholder farmers in Davao region, whose reliance on manual inspection leaves stored harvests chronically exposed to moisture migration, condensation, mold growth, and pest infestation. The root causes include the absence of real-time environmental sensing infrastructure, limited technical capacity among local farmers, and the financial inaccessibility of commercial monitoring solutions [5]. These conditions produce cascading effects: significant income losses for farming households, reduced grain quality and market value, and broader threats to community food security. Framed through an objective tree lens, the desired outcome is a shift from reactive and delayed responses to proactive, automated, and continuous monitoring — enabling grain storage operators to detect and respond to dangerous environmental thresholds before spoilage occurs, thereby protecting both harvest quality and farmer income. 
+	Existing grain monitoring solutions, where available, remain largely inaccessible to smallholder farmers due to their high cost and technical complexity, leaving a critical gap between commercially available technologies and the operational realities of small-scale grain storage in tropical agricultural communities. This study addresses that gap by developing AGRISENSE, a Smart IoT-Based Grain Quality Preservation Monitoring System that integrates environmental sensors to continuously measure temperature, humidity, and dew point inside grain warehouses, and automatically triggers aeration mechanisms when storage conditions approach unsafe levels [5]. Conducted under the research, development, and extension mandate of Davao del Norte State College as provided under Republic Act 7879 [6], this study aims to deliver an affordable, user-friendly, and technically reliable solution tailored to the needs of smallholder farmers.
+
+
+Objectives of the Study
+The main objective of this project is to design and develop a Smart IoT-Based Grain Quality Preservation Monitoring System that accepts real-time temperature and humidity sensor data as input from grain storage warehouses and produces automated ventilation control signals, real-time forecasting displays, and alert notifications to help prevent spoilage of stored grains. Specifically, the project aims to:
+Develop a multi-sensor environmental monitoring system for grain storage warehouses, processes them through sensors measuring temperature (°C) and relative humidity (%) at intervals, and produces real-time sensor data transmitted wirelessly to the central IoT controller (ESP32) for evaluation and storage.
+Implement an automated ventilation control system that sends control signals to exhaust fans or any ventilation system available based on humidity threshold comparisons to maintain optimal storage conditions and prevent buildup of moisture.
+Develop a realtime application thru webpage or mobile app to visualize sensor data and ventilation status, providing graphical monitoring and automated alerts when storage thresholds are exceeded.
+Implement a data logging and analytics system that processes 30 day minimum historical sensor data using statistical algorithms to produce trend reports monthly, quarterly and annually, with downloadable CSV files.
+
+
+Significance of Study
+
+The study introduces a proactive, IoT-driven approach to grain quality preservation, transforming traditional reactive and manual storage monitoring into an automated, real-time environmental management system. It enhances post-harvest grain quality, reduces farmer income losses, and contributes to the growing field of smart agriculture and precision farming technology. The following are the study's main beneficiaries:
+Smallholder farmers in Davao region. By implementing AGRISENSE, smallholder farmers will be able to continuously monitor the environmental conditions of their grain storage warehouses in real time, receive automated alerts before dangerous humidity and temperature levels cause irreversible spoilage, and reduce post-harvest grain losses that have long undermined their income and livelihood after every harvest cycle.
+Grain Traders and Agricultural Cooperatives. The system will help grain traders and cooperatives minimize reputation damage caused by the delivery of spoiled or degraded grain products to buyers and markets. By ensuring that stored rice and corn are preserved under safe environmental conditions.
+Provincial Government Unit of Davao. The adoption of AGRISENSE will support the region’s agricultural productivity and food security objectives by reducing post-harvest losses that annually erode the economic output of Davao region’s grain farming sector. 
+Department of Agriculture and Bureau of Plant Industry. AGRISENSE will provide national agricultural agencies with a low-cost, locally developed IoT-based model for grain quality preservation that can be considered for integration into post-harvest management programs and extension services directed at smallholder farmers across Davao Region and similar tropical grain-producing regions in the Philippines.
+Davao del Norte State College. The development of AGRISENSE will strengthen DNSC's research, development, and extension (RDE) portfolio by producing an applied technological output that directly addresses a real and pressing problem in the agricultural community the institution serves. The study will reinforce DNSC's mandate under Republic Act 7879 to promote research and extension services in agriculture and relevant fields, and will contribute to the college's institutional visibility as a center for community-responsive applied research in Davao del Norte.
+Future Researchers. This study will lay the foundation for future research on IoT-based smart agriculture systems applicable to post-harvest management in tropical countries. It has the potential to spur further innovations in grain quality monitoring, automated environmental control, and precision agriculture that will benefit not only in the Davao region but also a broader range of farming communities seeking affordable and technology-driven solutions to post-harvest grain spoilage in the country.
+
+Scope and Limitation
+	This project focuses on the design and development of grain bins and silos in Davao region. The system encompasses four primary operational processes: continuous environmental data collection, real-time data processing and dew point computation, automated ventilation control, and web and mobile-based monitoring with alert notification. Development and testing of the prototype will be conducted within one grain bin storage warehouse in the study locale, and while the system is designed to be applicable to grain bins and silos, findings and system configurations may require adaptation before deployment in other grain storage contexts or geographic locations.
+The system is built around an ESP32 microcontroller integrated with temperature and humidity sensors that continuously measure ambient environmental conditions inside enclosed grain storage facilities in real time. The microcontroller processes raw sensor data to compute the dew point — the critical threshold indicator for dangerous moisture condensation that leads to mold growth, pest infestation, and grain deterioration — and continuously compares live readings against predefined safe storage thresholds. When monitored values exceed these thresholds, the system automatically activates exhaust fans to regulate the internal storage environment without requiring manual intervention. All processed sensor data is simultaneously transmitted to a mobile application interface that displays live readings, generates automated alerts when unsafe conditions are detected, and logs all environmental data for historical record-keeping and post-harvest decision-making.
+However, AGRISENSE is limited to monitoring the ambient air conditions inside grain storage facilities. System performance is dependent on the consistent operation of the ESP32 microcontroller and the accuracy of environmental sensors under actual tropical warehouse conditions, with sensor readings potentially affected by physical obstructions, facility size, irregular power supply, or suboptimal sensor placement. The mobile application requires a stable internet or local network connection to function effectively as a prototype.
+Review of Related Literature and Works
+Related Literature
+	We can’t deny the fact that grain storage is an essential component in the economy and the society.  It occupies vital places specially in Asian countries like the Philippines. Kumar et al. believed that an IoT-based real-time control and monitoring system for food grain procurement and storage is the answer to problems that the grain bin owners face today [7]. The main purpose of grain bins is to provide a safe space for grains and reduce grain loss due to imbalance in humidity and temperature which may cause moisture build-up. One of the major problems the agriculture sector faces today is the loss of agricultural harvest due to spoilage [8]. This section reviews the existing literature related to smart IoT-based grain quality preservation and monitoring system for grain storage facilities. 
+	Several studies like an IoT-based smart grains warehouse monitoring by Arun et al. [9] shows how IoT systems can ensure the safety and sustainability of grains by employing IoT sensors that monitor a variety of elements that can greatly affect the health of grains inside storage facilities. A study by Parkhi et al. [10] also supports the use of warehouse monitoring systems on which the study describes the design and implementation by employing different sensors to detect and monitor different parameters such as temperature, humidity, temperature and the such. Similarly, the implementation of ESP32-based sensor architectures by Banerjee et al. [11] validates the need of low-cost IoT modules for rural grain storage monitoring. Islam et al. [12] and Wanyonyi [13] emphasize the need to shift towards being ‘proactive’ that goes beyond delivering real-time alerts, but also giving automated corrections tailored specifically for tropical climates like the Philippines.
+	Across these studies, key themes and patterns emerged. The common findings of these studies is to use IoT based detection and monitoring systems to measure the correct parameters needed for a grain to be preserved for the longest period of time. Those common methodological trends are limited to the use of sensors to monitor the humidity, temperature and moisture inside grain bins only. 
+On the other hand, multiple sensors can only reactively help grain bins. These systems focus on the “detection” of critical thresholds, whereas the actual need of grain bins is more than that. It requires an IoT device that is preventive rather than reactive, it requires control and automation where when the system spots a problem, it can solve it on its own. In summary, this review on related literature confirms the need of a smart IoT monitoring system for grain bins, which can help improve the grain health and reduce post harvest spoilage.
+
+
+
+
+Related Works
+	Currently, several research-based systems and commercially available products utilize IoT technology for grain monitoring and forecasting systems. Commercially available products such as [14] and [15] provide accurate data on temperature and moisture, they can also provide real-time notifications using web/mobile interfaces. Similarly, developed systems such as [16], offer comprehensive sensor integration for remote grain monitoring. However, most of these products and systems remain reactive in nature. In contrast, AgriSense introduces a proactive approach; aside from monitoring humidity, moisture, and temperature, it can also provide real-time notifications through web or mobile interface. In addition, AgriSense integrates automated ventilation systems. This feature allows immediate, autonomous intervention to stabilize grain bins’ environment, therefore significantly improving the preservation of grain compared to manual or purely informative products and systems.
+
+
+Definition of Terms
+
+Aeration: The process of moving ambient air through the grain mass to manage grain temperature and moisture. In this study, it refers to the automated activation of exhaust fans or blowers by the AGRISENSE system.
+AGRISENSE: The name of the proposed system, representing a Smart IoT-Based Grain Quality Preservation and Monitoring System designed to automate storage environment management.
+Ambient Air Conditions: The atmospheric conditions (specifically temperature and relative humidity) existing within the enclosed headspace of the grain storage facility.
+Automated Ventilation Control: A closed-loop mechanism within the system that triggers physical relays to turn fans on or off based on whether real-time sensor data exceeds predefined safety thresholds.
+Data Logging: The process of capturing and storing time-stamped environmental data over a minimum period of 30 days to facilitate trend analysis and historical reporting.
+Dew Point: The specific temperature at which the air becomes saturated and water vapor begins to condense into liquid. This study uses computed dew point as a primary indicator to prevent moisture-related spoilage.
+ESP32 Microcontroller: The low-cost, low-power system-on-a-chip with integrated Wi-Fi and dual-mode Bluetooth used as the central processing unit for the AGRISENSE prototype.
+Grain Spoilage: The deterioration of grain quality caused by mold growth, pest infestation, or moisture migration, leading to reduced market value and potential health risks (e.g., aflatoxins).
+Internet of Things (IoT): A network of physical objects (sensors and actuators) that use internet connectivity to exchange data. In this study, it enables remote monitoring and cloud-based alerting.
+Post-Harvest Losses: The measurable decrease in grain quantity or quality occurring between the time of harvest and the moment of consumption or sale.
+Proactive Monitoring: A management strategy that utilizes real-time data to anticipate and correct hazardous storage conditions before physical spoilage occurs, as opposed to reactive manual inspections.
+Relative Humidity (RH): The amount of water vapor present in the air, expressed as a percentage of the amount needed for saturation at the same temperature.
+Relay Signal: An electrical signal sent by the ESP32 to a switch (relay) that controls high-voltage equipment, such as industrial exhaust fans.
+Smallholder Farmer: For the purpose of this study, farmers in the Davao Region who manage small-scale agricultural operations and typically lack access to expensive industrial-grade storage technologies.
+Threshold: A predefined numerical value for temperature or humidity which, when approached or exceeded, triggers an automated system response or user alert.
+
+
+
+
+
+CHAPTER 2
+METHODOLOGY
+
+	The methodology used in the development of Agrisense, a smart IoT-based grain quality preservation, monitoring and forecasting system for grain storage facilities. This chapter will discuss the overall development process of the IoT and the web and mobile system, including the chosen System Development Life Cycle (SDLC) model, the PADIM framework, and the specific step-by-step process used in planning, analysis, design, implementation, testing, and maintenance of the system. This chapter also outlines the tools, diagrams, requirements, and processes involved in ensuring the success of this proposed project.
+
+	Agrisense adopts an Agile SDLC model, which is essential for IoT-based systems that also has a web and mobile application as it requires a continuous improvement, trial and errors and iterative development. This integration enables the balance between structure and adaptability, making it suitable for IoT-based systems with both well-defined requirements, evolving components and functionalities. [17]
+
+The project begins with the Planning phase, where the proponents defined the project scope, objectives, timeline, and required resources based on the approved concept paper. During this phase, they also established the overall direction of the system and ensured its feasibility within the given timeframe. In the Analysis phase, the proponents gathered and finalized system requirements by reviewing existing fire safety processes, identifying user needs, and determining both functional and non-functional requirements necessary for the system.
+In the Design phase, the proponents translated these requirements into a structured system architecture, including the design of the database, user interface, and overall system flow, supported by diagrams and prototypes to visualize how the system will operate. During the Implementation phase, the proponents developed the system using an iterative approach, where coding, integration of IoT components, and testing were performed incrementally. This allowed them to refine features such as real-time monitoring, alert mechanisms, and automated reporting based on testing results.
+Finally, in the Maintenance phase, the proponents conducted system evaluation, identified issues, and applied necessary improvements to enhance system performance and usability. Although limited within the project duration, this phase ensured that the system remains stable, reliable, and ready for future enhancements.
+
+
+
+
+
+
+				Figure 1. Agile Method Approach
+
+Figure 2. Project Team Organization
+
+
+
+System Planning
+Project Team Organization
+	The project team, as shown in Figure 2, is organized to ensure effective coordination and clear distribution of responsibilities. The Adviser provides overall guidance and ensures that the project meets academic and technical standards. The Project Manager oversees planning, task coordination, and progress monitoring to ensure timely completion of the project. Supporting roles include the System Developer, who handles coding and system implementation, and the System Analyst and Documentation Specialist, who is responsible for requirements analysis and preparation of project documentation. This structure enables efficient collaboration and balanced management of both technical and documentation aspects of the project.
+
+Figure 2. Project Team Organization
+	Rhose An Raganit serves as the System Analyst, responsible for gathering, analyzing system requirements and ensuring that the goals are met on time and the project will successfully be completed. Don Dominick Enargan serves as the System Developer, responsible for designing, coding, integrating IoT-based systems and its web and mobile applications. Cyrelle Khen Orga serves as the Documentarian, responsible for preparing documentation, reports, and diagrams, as well as ensuring that all of the projects’ output and process are properly documented.
+
+Work Breakdown Structure (WBS)
+	The Work Breakdown Structure of the project shown in figure 3, presents a hierarchical decomposition of the entire system development process into small and manageable phases and tasks that are specifically aligned with the PADIM framework. 
+
+FIGURE 3. Work Breakdown Structure (WBS)
+	It begins with the planning phase where problems are identified, objectives are defined, and the outline and scope of the project is identified. It is then followed by Analysis and Design where existing systems are studied, gaps identified, system architecture is developed. Implementation phase covers the development and integration of hardware and software components, Testing phase ensures that functionality is accurate and reliable. Finally, the maintenance phase focuses on the continuous success in improving the system's sustainability.
+Gantt Chart
+	The Gantt chart shown in figure 4, presents the timeline and planned schedule for the activities for the development of the Agrisense, a smart IoT-based grain quality preservation, monitoring and forecasting system for grain storage facilities, aligning tasks with the PADIM framework.
+Figure 4. Gantt Chart
+	The chart showcases the sequence and the duration of phases from Planning to Maintenance, ensuring that all essential activities are completed within the specified timeline and schedule. The Gantt chart helps the proponents in monitoring the progress of the study, executing time management effectively, which in return ensures that all of the phases are complete and on time.
+
+
+SYSTEM ANALYSIS
+System Architecture
+The system architecture of the project AgriSense: Smart IoT Monitoring and Forecasting System for Grain Spoilage, as shown in Figure X, presents a structured framework that illustrates how the different components of the system interact to support real-time monitoring, predictive forecasting, and automated intervention. The architecture is composed of four main layers: hardware (perception layer), data management (network and storage), intelligence (analytical engine), and software (user interface).
+At the hardware level, the system utilizes IoT-based modules equipped with temperature, humidity, and moisture sensors installed within the grain bins. These sensors continuously collect environmental data and transmit it through secure communication protocols to the central system. This enables real-time data acquisition and ensures that any conditions leading to grain spoilage are immediately captured and recorded.
+At the intelligence level, the system includes a centralized analytical engine that processes incoming sensor data using predefined safety thresholds and predictive modeling techniques. The system analyzes the data to identify immediate risks and generates a 7-day outlook to forecast potential spoilage timelines. When abnormal conditions or high-risk trends are detected, the system automatically triggers alerts and sends control commands to the physical ventilation actuators.
+The data management component consists of a relational database and cloud storage, where all sensor logs, forecast results, and user account records are securely stored. This enables efficient data retrieval for historical trend analysis and long-term reporting. At the software level, a web-based dashboard is provided, allowing warehouse staff and administrators to monitor real-time data, view visualized forecast models, and manage system configurations effectively.
+Functional and Non-Functional Requirements
+The functional and non-functional requirements define the expected capabilities and quality attributes of the proposed AgriSense: Smart IoT Monitoring and Forecasting System for Grain Spoilage. The functional requirements specify the core features of the system, including real-time environmental data collection, intelligent spoilage forecasting, automated ventilation control, and centralized monitoring. Meanwhile, the non-functional requirements describe how well the system performs, focusing on aspects such as reliability, usability, security, and performance efficiency based on ISO/IEC 25010 standards. These requirements ensure that the system operates effectively, delivers accurate predictive results, and supports timely decision-making to prevent agricultural loss.
+
+
+The system shall provide the following functionalities:
+The system shall collect real-time environmental data from IoT sensor modules, including temperature, humidity, and moisture levels within the grain bins.
+The system shall allow administrators to input system settings, safety thresholds, and user access credentials.
+The system shall process incoming sensor data using predefined thresholds and time-series analysis techniques.
+The system shall analyze processed data to identify potential spoilage risks and generate a 7-day outlook.
+The system shall store sensor readings, forecast results, and historical alert logs in a centralized database or cloud storage.
+The system shall transmit data between the hardware sensors, server, and mobile interface using secure communication protocols.
+The system shall generate and send real-time push notifications to warehouse staff when critical threshold breaches are detected.
+The system shall display real-time data, trend visualizations, and system status through a user-friendly dashboard.
+The system shall generate reports summarizing environmental conditions, risk incidents, and system performance over time.
+The following are the system’s non-functional requirements:
+Performance Efficiency. The system shall process sensor readings and update the forecasting dashboard in real time with minimal latency to ensure prompt intervention.
+Reliability. The system shall ensure continuous environmental monitoring and accurate risk detection with minimal system downtime or data loss.
+Usability. The system shall provide a user-friendly interface with clear visualizations that is easy to operate for warehouse staff with varying technical backgrounds.
+Security. The system shall protect agricultural data and hardware control commands through robust authentication, authorization, and encrypted transmission.
+Compatibility. The system shall be accessible across different devices, specifically optimized for Android-based mobile devices and web browsers.
+Maintainability. The system shall be designed with modular code to allow for easy debugging, sensor calibration, and future software enhancements.
+Scalability. The system shall support the expansion to additional grain silos and sensor nodes across different locations in the Davao region without significant performance degradation.
+Availability. The system shall remain accessible to authorized users at all times, supported by a stable cloud infrastructure to ensure 24/7 grain protection.
+
+Use Case Diagram
+	The primary actors identified in the project AgriSense: Smart IoT Monitoring and Forecasting System for Grain Spoilage, as illustrated in Figure 10, are the Admin and the Warehouse Staff, with supporting roles played by the IoT Sensor Module and the Notification Module.
+
+
+
+Figure 5. Use Case Diagram
+	The Admin is responsible for the overall management and governance of the system. This includes managing user accounts, assigning roles and permissions, and configuring the environmental thresholds that define safe, warning, and danger zones for the stored grain. These interactions are critical for ensuring the system remains aligned with specific storage requirements and operates within accurate parameters. The administrator provides essential configuration data, which the system processes to maintain operational standards across all silos.
+On the other hand, the Warehouse Staff interacts with the system primarily through monitoring and response activities. They are responsible for registering grain bins, viewing real-time conditions via the dashboard, and analyzing the 7-day spoilage forecast to anticipate potential risks. The system processes incoming environmental data and generates push notifications when threshold breaches are detected. These alerts are transmitted to the staff, enabling them to take immediate action, such as acknowledging the alert or manually overseeing the ventilation response.
+Additionally, the IoT Sensor Module acts as a primary hardware actor by continuously collecting and transmitting environmental readings, while the Notification Module serves as a secondary system actor that facilitates the delivery of alerts to the human users.
+Context Flow Diagram
+The Context Flow Diagram shown in Figure X presents a high-level view of the project AgriSense: Smart IoT Monitoring and Forecasting System for Grain Spoilage, illustrating how the system interacts with external entities and how data flows across the system boundary. It focuses on the logical flow of business processes, highlighting key inputs, processes, and outputs without detailing the internal system structure.+3
+
+Figure 6. Context Flow Diagram
+	In the diagram, the main external entities include the Warehouse Staff, and Grain Bins. The grain bins serve as the primary source of input by continuously providing environmental metrics such as temperature, humidity, and moisture readings. This sensor data is transmitted to the system, where it is analyzed and processed to monitor grain health and generate predictive spoilage forecasts.
+On the other hand, the Warehouse Staff receives critical outputs from the system, including real-time monitoring data, condition alerts, and 7-day spoilage forecast reports. When the system detects abnormal conditions or high-risk trends based on analyzed sensor data, it generates alert notifications that are transmitted to the staff, enabling immediate response and intervention to prevent grain loss.
+The diagram also shows key data flows such as environmental metrics, system queries, and forecast reports, which represent the essential interactions between the system and its external entities. These flows demonstrate how raw environmental data is collected, processed, and transformed into meaningful, predictive outputs that support data-driven decision-making and enhance agricultural management.
+
+Data Flow Diagram
+The Level 1 Data Flow Diagram (DFD) presents a more detailed representation of the AgriSense: Smart IoT Monitoring and Forecasting System for Grain Spoilage by expanding the processes identified in the Context Diagram. This level breaks down the system into eight major sub-processes, illustrating the transformation of raw sensor data into predictive insights while maintaining the same external entities and data boundaries.
+
+
+Figure 7. Data Flow Diagram
+	In this diagram, the system is decomposed into several key modules, including data acquisition, analysis, automated response, and system management. The IoT Sensor Modules remain the primary source of input, continuously transmitting raw analog and digital signals such as temperature, humidity, and moisture readings. This data is handled by the Collecting Sensor Readings (1.0) process, which validates the signals before the Store & Manage Data (2.0) module archives them into the Sensor Log Records as historical environment data.
+The "engine" of the system resides in the Monitor, Process & Analyze Data (3.0) module. This process pulls the historical data stream to evaluate conditions against predefined thresholds and produces processed trends. These trends flow into the Forecasting and Prediction (7.0) module, which utilizes predictive logic to generate a 7-Day Outlook and spoilage timelines, storing these results for future review.
+Immediate system responses are handled through the automated response modules. If abnormal conditions are detected, Control Ventilation (4.0) issues start/stop commands to the physical ventilation hardware, while the Alert & Notification (5.0) process transmits push notifications to the Warehouse Staff. Simultaneously, the View / Display Data (6.0) module compiles real-time dashboard data and visualized forecast models for the user interface.
+Finally, the Admin and Staff interact with the system through the Manage Users (8.0) module. This security gatekeeper processes user credentials and system configurations, communicating with the User Accounts data store to verify identities and issue authorized session tokens, ensuring that system parameters and access levels are properly maintained.
+
+SYSTEM DESIGN
+Entity Relationship Diagram
+The Entity Relationship Diagram (ERD) illustrated in Figure X, defines the structure of the database for the proposed AgriSense: Smart IoT Monitoring and Forecasting System for Grain Spoilage, showing how data entities are organized and related to one another. In this context, entities represent the major data components of the system, such as Silos, Users, Readings, Forecast Logs, Alert Logs, and Settings, which are essential for system operation and predictive data management.
+The Silo entity acts as the central hub, storing information about the physical grain bins, including their names, grain types, and current status. The User entity manages credentials and roles for administrators and warehouse staff, ensuring secure access and accountability within the platform. Real-time environmental metrics are captured in the Readings entity, which stores timestamped data such as temperature, humidity, and moisture levels collected from the sensors.
+The system processes these readings to generate predictive insights, which are stored in the Forecast Logs entity to provide a 7-day outlook on spoilage risks. When conditions exceed predefined parameters, records are created in the Alert Logs entity, capturing the type and timing of the breach for staff notification. Furthermore, the Settings entity stores configurable parameters, such as safe, warning, and danger thresholds, which are specifically tailored to the requirements of each silo.
+Relationships between these entities are defined through primary and foreign keys, ensuring data integrity and consistency across the agricultural monitoring network. For example, one silo can generate thousands of sensor reading records (one-to-many relationship), and one silo can be associated with multiple historical and future forecast logs to support long-term trend analysis.
+
+Figure 8. Entity Relationship Diagram
+	In this diagram, the Silo entity acts as the central hub, storing information about the physical grain bins, including their names, grain types, and current status. The User entity manages credentials and roles for administrators and warehouse staff, ensuring secure access and accountability within the platform. Real-time environmental metrics are captured in the Readings entity, which stores timestamped data such as temperature, humidity, and moisture levels collected from the sensors.
+The system processes these readings to generate predictive insights, which are stored in the Forecast Logs entity to provide a 7-day outlook on spoilage risks. When conditions exceed predefined parameters, records are created in the Alert Logs entity, capturing the type and timing of the breach for staff notification. Furthermore, the Settings entity stores configurable parameters, such as safe, warning, and danger thresholds, which are specifically tailored to the requirements of each silo.
+Relationships between these entities are defined through primary and foreign keys, ensuring data integrity and consistency across the agricultural monitoring network. For example, one silo can generate thousands of sensor reading records (one-to-many relationship), and one silo can be associated with multiple historical and future forecast logs to support long-term trend analysis.
+JSON Schema Design
+The JSON schema design illustrated in Figure X, is utilized to represent key data components such as sensor readings, user information, predictive forecasts, and system alerts. The use of JSON Schema supports interoperability between different system components and external services. Since the system relies on real-time data transmission via APIs and wireless communication protocols, having a standardized data format ensures seamless communication between the hardware sensors, the backend server, and the mobile application. This standardization facilitates efficient data exchange and supports future enhancements or integration with additional agricultural monitoring tools.
+
+
+Figure 9. JSON Design Schema
+	In this design, the sensor data schema specifies required fields such as the silo ID, timestamp, temperature, humidity, and moisture levels, along with their corresponding data types, such as integers, strings, and floats. Similarly, the alert schema defines the structure of generated spoilage notifications, including the alert type, severity level, timestamp, and associated sensor metadata.
+The diagram also illustrates validation rules such as required fields, data types, value constraints, and formatting standards. These rules ensure that incoming data from the IoT sensor modules and administrative inputs are properly validated before being processed by the intelligence layer. This rigorous validation reduces errors, prevents the entry of invalid or corrupted data, and enhances overall system reliability, which is critical for maintaining the accuracy of the 7-day forecasting model.
+
+Data Dictionary
+The Data Dictionary presents a detailed description of all data elements used in the proposed AgriSense: Smart IoT Monitoring and Forecasting System for Grain Spoilage, serving as a reference for the system’s database structure and data organization. It defines the tables, fields, data types, and descriptions to ensure consistency, accuracy, and proper understanding of how data is stored and managed within the system. This section is essential in guiding the implementation of the database and supporting system development, maintenance, and future enhancements.
+
+Table 1 provides an overview of all the database tables utilized in the system, such as Silos, Users, Readings, Forecast Logs, Alert Logs, and Settings. Each table represents a specific data component necessary for system functionality. For instance, the Users table contains account and role information for administrators and warehouse staff, while the Silos and Readings tables store information related to the physical storage units and their real-time environmental data logs
+
+
+Table 2: Users Table Overview
+
+Table 3: Silos Table Overview
+
+Table 4: Readings Table Overview
+
+Table 5: Settings Table Overview
+
+Table 6: Alert Logs Table Overview
+
+
+Table 7: Forecast Logs Table Overview
+
+
+Technologies, Concepts, and Theories
+This section presents the key models, algorithms, and emerging technologies utilized in the development of AgriSense: Smart IoT Monitoring and Forecasting System for Grain Spoilage. It explains how data is processed from acquisition to decision-making, as well as the tools and technologies used to implement the system. The discussion follows the major stages of the system workflow, including data collection, pre-processing, feature extraction, and forecasting.
+Data Collection
+Data collection is performed through IoT-based sensor modules installed within grain silos, including temperature, humidity, and moisture sensors. These devices continuously capture environmental data in real time and transmit it to the central system via wireless communication protocols. This process ensures that the system receives accurate and timely data necessary for monitoring the health of stored grain and detecting potential spoilage risks.
+Data Pre-Processing
+Before analysis, the collected data undergoes pre-processing to improve its quality and reliability. This includes filtering sensor noise, handling missing or inconsistent values caused by network fluctuations, and normalizing readings to a standard format. Pre-processing ensures that the input data is clean and suitable for further analysis, reducing the likelihood of incorrect risk indices or false notifications.
+Feature Extraction
+Feature extraction involves identifying relevant attributes from the collected data that contribute to spoilage detection and forecasting. Key features include ambient temperature levels, moisture content percentages, and the rate of humidity change over time. These features represent the current internal environment of the silo and serve as inputs to the forecasting algorithm. Extracting meaningful features improves the accuracy and efficiency of the system's predictive capabilities.
+Forecasting
+The system utilizes a combination of threshold-based logic and time-series analysis to classify environmental conditions as safe, warning, or danger zones. Threshold-based methods trigger immediate ventilation responses when sensor values exceed predefined limits, while predictive techniques analyze historical patterns to generate a 7-Day Spoilage Forecast. This hybrid approach enhances the system's ability to not only respond to current breaches but also anticipate future risks before grain quality is compromised.
+
+Technologies Used in the System
+Internet of Things (IOT)
+The system primarily relies on Internet of Things (IoT) technology, which consists of interconnected sensors deployed across the grain bin to collect environmental data such as temperature, humidity, and moisture. These sensors communicate with the central system using lightweight protocols such as MQTT or HTTP, allowing efficient and real-time transmission of data.
+
+
+
+
+
+
+
+
+
+	Figure 10. Internet of Things (IoT)
+Database Management System
+In terms of data management, a Database Management System (DBMS) is utilized to store and organize sensor data, alerts, user information, and generated reports. This ensures efficient data retrieval and supports historical analysis. Additionally, cloud computing technologies may be incorporated to provide scalable storage, remote access, and improved system availability. These technologies work together to create a reliable, scalable, and efficient system capable of supporting real-time fire detection and decision-making within the campus environment.
+Figure 11. Database Management System
+
+
+
+
+
+
+
+
+
+
+REFERENCES
+[1]	Food and Agriculture Organization of the United Nations (FAO), "Global food losses and food waste – Extent, causes and prevention," FAO, Rome, Italy, Rep. 2011. [Online]. Available: https://www.fao.org/4/mb060e/mb060e00.htm
+
+
+[2]	United Nations, "The 17 Goals," Sustainable Development Goals, 2015. [Online]. Available: https://sdgs.un.org/goals
+
+[3] 	Philippine Statistics Authority (PSA), "Selected Statistics on Agriculture 2023," PSA, Quezon City, Philippines, 2023.
+
+[4] 	Department of Agriculture (DA) RFO-XI, "Davao Region Agriculture Regional Profile and Development Plan 2023-2028," DA-Davao, Davao City, Philippines, 2023.
+
+[5] 	A. S. Selvaraj and S. Anusha, "RFID Enabled Smart Data Analysis in a Smart Warehouse Monitoring System using IoT," J. Phys.: Conf. Ser., vol. 1717, no. 1, p. 012022, Jan. 2021. 
+
+[6] 	An Act Converting the Davao del Norte National Agricultural School into the Davao del Norte State College, Republic Act No. 7879, Feb. 14, 1995.
+
+[7]	P. M. S. Kumar, M. G. S. J. Prakash, and S. R. R. S. S. S. J. P. S. Kumar, "IOT Based Real-Time Control and Monitoring System for Food Grain Procurement and Storage," IOP Conf. Ser.: Mater. Sci. Eng., vol. 993, no. 1, p. 012079, Dec. 2020. doi: 10.1088/1757-899X/993/1/012079.
+
+[8] 	TAM Systems, "Top 5 Benefits of On-Farm Grain Storage," TAM Systems Blog, Dec. 05, 2018. [Online]. Available: https://www.tamsystems.com/blog/benefits-on-farm-grain-storage/
+
+[9] 	R. A. Arun, J. Manju, and A. G. Balamurugan, "An IoT-based Smart Grains Warehouse Monitoring System," AIP Conf. Proc., vol. 3075, no. 1, p. 020144, 2024. [Online]. Available: https://doi.org/10.1063/5.0217089
+
+[10]	P. M. S. Kumar, M. G. S. J. Prakash, and S. R. R. S. S. S. J. P. S. Kumar, "IoT-Enabled Crop Storage System: An Integrated Approach to Reduce Post-Harvest Losses," in Sustainable Computing and Intelligent Systems, vol. 993, H. Gupta, S. Kumar, and S. Bhuyan, Eds. Singapore: Springer Nature, 2023, pp. 175–188. [Online]. Available: https://doi.org/10.1007/978-981-19-5845-8_16
+
+[11]	S. Banerjee, A. Das, and K. Roy, "An IoT-based Smart Grains Warehouse Monitoring System," AIP Conf. Proc., vol. 3014, no. 1, p. 020144, 2024. doi: 10.1063/5.0217089.
+
+[12]  M. S. Islam, A. Rahman, and T. Khatun, "IoT-Enabled Crop Storage System:An Integrated Approach to Reduce Post-Harvest Losses," MDPI Eng. Proc., vol. 118, no. 1, p. 90, Nov. 2025.
+
+[13] 	E. N. Wanyonyi, "A Smart IoT-Based Real-Time System for Monitoring Storage Conditions of Maize Grains," East Afr. J. Inf. Technol., vol. 8, no. 1, pp. 146-155, May 2025.
+
+[14]	Tri-States Grain Conditioning (TSGC) Inc., "SAFETRACK Wireless Grain Monitor System," TSGC Inc. Product Catalog, 2024. [Online]. Available: https://tsgcinc.com/project/safetrack/
+
+[15]	 Pfeuffer GmbH, "DuoLine STAR: Wireless Grain Monitoring and Aeration Control," Pfeuffer Quality Control Equipment, 2024. [Online]. Available: https://www.pfeuffer.com/product/duoline-star
+
+[16]	R. A. Arun, J. Manju, and A. G. Balamurugan, "An IoT-based Smart Grains Warehouse Monitoring System," AIP Conf. Proc., vol. 3075, no. 1, p. 020144, Apr. 2024. [Online]. Available: https://doi.org/10.1063/5.0217089
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figure 1. Problem Tree Analysis Diagram
+
+
+Figure 2. Objective Tree Analysis Diagram
+
+
+
+Problem Tree and Objective Tree Discussion
+The Problem Tree Diagram, systematically maps the causes, core problem, and cascading effects related to the spoilage and quality degradation of stored rice and corn grains in Davao Region. The core problem at the center of the diagram is driven by four root causes: persistently high humidity and temperature inside grain storage facilities accelerated by the Philippines' tropical climate; the absence of real-time monitoring that allows dangerous environmental changes to go undetected until spoilage is already irreversible; delayed detection of spoilage indicators resulting from reliance on infrequent manual physical inspection; and inadequate ventilation and storage management that allows heat and moisture to accumulate unchecked inside warehouses. These root causes collectively produce four direct effects — grain prone to spoilage and reduced market value, loss of income and revenue for farmers and storage operators, reputation damage for grain traders and cooperatives, and increased post-harvest losses across the agricultural community — which further escalate into two higher-order consequences: severe financial strain on farming households and an ultimate threat to the long-term viability of smallholder grain farming businesses in the municipality.
+The Objective Tree Diagram, directly mirrors the Problem Tree by converting each identified problem into a corresponding positive outcome or solution, organized around the central objective of developing a system that monitors and controls the humidity and temperature of a grain storage facility. Each of the four root causes is addressed by a corresponding system-level solution: controlled humidity and temperature management through automated environmental sensing and ventilation control; continuous IoT-based environmental monitoring that eliminates reliance on manual inspection; fast detection of spoilage indicators through real-time dew point computation and automated alert notifications; and adequate ventilation and storage management through the automated activation of exhaust fans or aeration blowers in direct response to sensor-detected threshold breaches. These four solutions produce four direct positive outcomes — grain safety from spoilage and degradation, high income and revenue for farmers and storage operators, a strengthened reputation for grain traders and cooperatives, and increased post-harvest income for farming households — which collectively contribute to two long-term benefits at the top of the diagram: increased gross profit and the strengthened overall viability of agricultural businesses, enabling smallholder grain farmers in Davao region to sustain, grow, and remain competitive within the grain agriculture industry.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Figure 3. COMPARISON TABLE OF EXISTING SYSTEM AND PROPOSED SYSTEM
+Figure 3 presents a comparison table evaluating AGRISENSE alongside two commercially available grain monitoring systems across five key features: humidity monitoring, temperature monitoring, web or mobile interface, automated fan control, and real-time alerts and notifications. The comparison reveals that while both existing commercial systems offer partial monitoring capabilities, neither provides a complete and integrated solution that combines all five features into a single system. Notably, automated fan control and humidity monitoring emerge as the most critical gaps in the existing systems, as these two features are essential for proactively preventing moisture-related grain spoilage in tropical storage environments such as those found in Davao region. AGRISENSE addresses all identified gaps by integrating all five features into a unified, locally deployable, and accessible solution designed specifically for smallholder grain farmers.
+
+The first existing system, the SAFETRACK Wireless Grain Monitor System by SafeGrain Inc., supports temperature monitoring, a web or mobile interface, and real-time alerts and notifications, but lacks both humidity monitoring and automated fan control, requiring manual intervention from the storage operator even after unsafe conditions are detected. The second existing system, the DuoLine STAR Mobile Plus and Cables by Pfeuffer, similarly supports temperature monitoring, a mobile interface, and real-time alerts, but also omits humidity monitoring and automated fan control, leaving ventilation response entirely dependent on the physical presence and judgment of the farmer. In contrast, AGRISENSE integrates both humidity and temperature monitoring simultaneously, features a mobile application for remote access to live readings and historical data logs, automatically activates exhaust fans upon threshold breaches without manual intervention, and delivers real-time alerts to farmers regardless of their location — making it the only system among those compared that offers a comprehensive, proactive, and fully automated grain quality preservation monitoring solution.

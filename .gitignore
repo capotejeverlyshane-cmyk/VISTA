@@ -1,0 +1,27 @@
+# Environments
+.env
+backend/.env
+venv/
+.venv/
+backend/venv/
+backend/.venv/
+env/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDEs
+.vscode/
+.idea/
+
+# Large binaries and installers
+*.msi
+
+# Temp files
+~$*
+Thumbs.db
+.DS_Store

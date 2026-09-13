@@ -1,0 +1,146 @@
+[
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth?",
+    "predicted_intent": "birth_certificate_process",
+    "confidence": 0.5276279373922398,
+    "created_at": "2026-05-01T16:02:59.863463"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth?",
+    "predicted_intent": "birth_certificate_process",
+    "confidence": 0.5276279373922398,
+    "created_at": "2026-05-01T16:28:53.660011"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth?",
+    "predicted_intent": "birth_certificate_process",
+    "confidence": 0.5276279373922398,
+    "created_at": "2026-05-01T16:39:44.481381"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth cert",
+    "predicted_intent": "birth_certificate_process",
+    "confidence": 0.5939033893929883,
+    "created_at": "2026-05-01T16:40:00.886137"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth?",
+    "predicted_intent": "birth_certificate_process",
+    "confidence": 0.5276279373922398,
+    "created_at": "2026-05-01T16:54:15.820279"
+  },
+  {
+    "question": "What is the exact cost of the barangay clearance?",
+    "predicted_intent": "inquiry_barangay_clearance_fee",
+    "confidence": 0.5652129145300514,
+    "created_at": "2026-05-01T17:54:15.876640"
+  },
+  {
+    "question": "I want to start a business; what do I need?",
+    "predicted_intent": "new_business_permit_process",
+    "confidence": 0.3494323027328834,
+    "created_at": "2026-05-01T22:47:29.895758"
+  },
+  {
+    "question": "Where do I go to get a new Mayor's permit?",
+    "predicted_intent": "new_business_permit_process",
+    "confidence": 0.5307015748711474,
+    "created_at": "2026-05-01T22:47:48.350706"
+  },
+  {
+    "question": "What is the process for eBOSS application?",
+    "predicted_intent": "real_property_tax_payment",
+    "confidence": 0.3276573917690149,
+    "created_at": "2026-05-01T22:48:04.450202"
+  },
+  {
+    "question": "What documents do I need if I am leasing the space for my business?",
+    "predicted_intent": "birth_certificate_requirements",
+    "confidence": 0.45946555328580835,
+    "created_at": "2026-05-01T22:48:36.105698"
+  },
+  {
+    "question": "How much does a new business permit cost?",
+    "predicted_intent": "business_permit_fee",
+    "confidence": 0.5060389963923637,
+    "created_at": "2026-05-01T22:48:44.736851"
+  },
+  {
+    "question": "how to retire on business",
+    "predicted_intent": "cmo_retire_business_permit",
+    "confidence": 0.3442841805881688,
+    "created_at": "2026-05-02T15:36:44.877357"
+  },
+  {
+    "question": "unsaon pag bayad ug tax",
+    "predicted_intent": "real_property_tax_payment",
+    "confidence": 0.24920665128904596,
+    "created_at": "2026-05-02T19:35:36.696991"
+  },
+  {
+    "question": "gusto ko mukuha og mayor's clearance, unsaon?",
+    "predicted_intent": "inquiry_barangay_clearance_fee",
+    "confidence": 0.3173877324836807,
+    "created_at": "2026-05-02T19:45:15.880608"
+  },
+  {
+    "question": "may laro kami gusto namin manghiram ng gym sa city hall, paano?",
+    "predicted_intent": "real_property_tax_payment",
+    "confidence": 0.27069595912357347,
+    "created_at": "2026-05-02T19:47:13.237687"
+  },
+  {
+    "question": "Gusto ko mo apply sa educational assistance",
+    "predicted_intent": "new_business_permit_process",
+    "confidence": 0.2670966115977541,
+    "created_at": "2026-05-02T19:47:40.899569"
+  },
+  {
+    "question": "gusto ko mukuha og mayor's clearance, unsaon?",
+    "predicted_intent": "inquiry_barangay_clearance_fee",
+    "confidence": 0.3173877324836807,
+    "created_at": "2026-05-02T19:51:28.255240"
+  },
+  {
+    "question": "may laro kami gusto namin manghiram ng gym sa city hall, paano?",
+    "predicted_intent": "real_property_tax_payment",
+    "confidence": 0.27069595912357347,
+    "created_at": "2026-05-02T19:51:38.332178"
+  },
+  {
+    "question": "Gusto ko mo apply sa educational assistance",
+    "predicted_intent": "new_business_permit_process",
+    "confidence": 0.2670966115977541,
+    "created_at": "2026-05-02T19:51:56.967716"
+  },
+  {
+    "question": "may laro kami gusto namin manghiram ng gym sa city hall, paano?",
+    "predicted_intent": "cmo_use_of_facility",
+    "confidence": 0.33516618569604795,
+    "created_at": "2026-05-02T20:00:44.769505"
+  },
+  {
+    "question": "Gusto ko mo apply sa educational assista",
+    "predicted_intent": "cmo_scholarship",
+    "confidence": 0.5311212608334951,
+    "created_at": "2026-05-02T20:01:03.732221"
+  },
+  {
+    "question": "may laro kami gusto namin manghiram ng gym sa city hall, paano?",
+    "predicted_intent": "cmo_use_of_facility",
+    "confidence": 0.33516618569604795,
+    "created_at": "2026-05-02T20:03:13.972138"
+  },
+  {
+    "question": "Gusto ko mo apply sa educational assista",
+    "predicted_intent": "cmo_scholarship",
+    "confidence": 0.5311212608334951,
+    "created_at": "2026-05-02T20:04:16.458601"
+  },
+  {
+    "question": "may laro kami gusto namin manghiram ng gym sa city hall, paano?",
+    "predicted_intent": "cmo_use_of_facility",
+    "confidence": 0.33516618569604795,
+    "created_at": "2026-05-02T20:18:51.931173"
+  }
+]

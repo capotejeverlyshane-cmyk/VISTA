@@ -1,0 +1,625 @@
+[
+  {
+    "question": "Unsaon pag kuha ug birth",
+    "intent": "birth_certificate_process",
+    "language": "bis",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T13:54:44.641363"
+  },
+  {
+    "question": "hi",
+    "intent": "real_property_tax_due_date",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:08:24.815947"
+  },
+  {
+    "question": "hello?",
+    "intent": "real_property_tax_due_date",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:08:36.694437"
+  },
+  {
+    "question": "hi vista",
+    "intent": "greetings",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:16:58.692845"
+  },
+  {
+    "question": "unsaon pag bayad ug tax?",
+    "intent": "greetings",
+    "language": "bis",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:17:20.484630"
+  },
+  {
+    "question": "tax",
+    "intent": "greetings",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:17:36.660626"
+  },
+  {
+    "question": "unsaon pag kuha ug tax",
+    "intent": "greetings",
+    "language": "bis",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:17:56.596930"
+  },
+  {
+    "question": "How do I get a birth certificate?",
+    "intent": "birth_certificate_process",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:18:12.005908"
+  },
+  {
+    "question": "hi",
+    "intent": "greetings",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:18:31.204409"
+  },
+  {
+    "question": "What are the requirements for a birth certificate?",
+    "intent": "birth_certificate_requirements",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:18:44.423399"
+  },
+  {
+    "question": "Business Permit Application Guide",
+    "intent": "business_permit_fee",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:18:53.319123"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth?",
+    "intent": "greetings",
+    "language": "bis",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:19:20.324081"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth?",
+    "intent": "greetings",
+    "language": "bis",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:49:37.871829"
+  },
+  {
+    "question": "Kinahanglan nako og birth certificate",
+    "intent": "birth_certificate_process",
+    "language": "bis",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:51:16.404758"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth?",
+    "intent": "greetings",
+    "language": "bis",
+    "confidence": 0.75,
+    "created_at": "2026-05-01T15:51:28.838736"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth?",
+    "intent": "birth_certificate_process",
+    "language": "bis",
+    "confidence": 0.5276279373922398,
+    "created_at": "2026-05-01T16:02:59.889412"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth?",
+    "intent": "birth_certificate_process",
+    "language": "bis",
+    "confidence": 0.5276279373922398,
+    "created_at": "2026-05-01T16:28:54.400629"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth?",
+    "intent": "birth_certificate_process",
+    "language": "bis",
+    "confidence": 0.5276279373922398,
+    "created_at": "2026-05-01T16:39:44.593733"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth cert",
+    "intent": "birth_certificate_process",
+    "language": "bis",
+    "confidence": 0.5939033893929883,
+    "created_at": "2026-05-01T16:40:00.971768"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth certificate",
+    "intent": "birth_certificate_process",
+    "language": "bis",
+    "confidence": 0.7167196023319418,
+    "created_at": "2026-05-01T16:40:14.323659"
+  },
+  {
+    "question": "kabalo ka unsaon pag kuha ug birth?",
+    "intent": "birth_certificate_process",
+    "language": "bis",
+    "confidence": 0.5276279373922398,
+    "created_at": "2026-05-01T16:54:15.958209"
+  },
+  {
+    "question": "What is the exact cost of the barangay clearance?",
+    "intent": "inquiry_barangay_clearance_fee",
+    "language": "en",
+    "confidence": 0.5652129145300514,
+    "created_at": "2026-05-01T17:54:16.028578"
+  },
+  {
+    "question": "How much is the barangay clearance for a business permit?",
+    "intent": "inquiry_barangay_clearance_fee",
+    "language": "en",
+    "confidence": 0.5720902946679338,
+    "created_at": "2026-05-01T17:54:34.509781"
+  },
+  {
+    "question": "How much is the barangay clearance for a business permit?",
+    "intent": "inquiry_barangay_clearance_fee",
+    "language": "en",
+    "confidence": 0.75143500930518,
+    "created_at": "2026-05-01T17:57:07.945476"
+  },
+  {
+    "question": "How much is the barangay clearance for a business permit?",
+    "intent": "inquiry_barangay_clearance_fee",
+    "language": "en",
+    "confidence": 0.75143500930518,
+    "created_at": "2026-05-01T18:09:49.511106"
+  },
+  {
+    "question": "unsaon pagkuha ug birth certificate?",
+    "intent": "birth_certificate_process",
+    "language": "bis",
+    "confidence": 0.8191427862974651,
+    "created_at": "2026-05-01T18:35:13.563563"
+  },
+  {
+    "question": "How much is the barangay clearance for a business permit?",
+    "intent": "inquiry_barangay_clearance_fee",
+    "language": "en",
+    "confidence": 0.75143500930518,
+    "created_at": "2026-05-01T18:35:45.597612"
+  },
+  {
+    "question": "How much is the barangay clearance for a business permit?",
+    "intent": "inquiry_barangay_clearance_fee",
+    "language": "en",
+    "confidence": 0.751433025696382,
+    "created_at": "2026-05-01T18:36:14.620244"
+  },
+  {
+    "question": "How much is the barangay clearance for a business permit?",
+    "intent": "inquiry_barangay_clearance_fee",
+    "language": "en",
+    "confidence": 0.751433025696382,
+    "created_at": "2026-05-01T18:38:25.728748"
+  },
+  {
+    "question": "How do I get a birth certificate?",
+    "intent": "birth_certificate_process",
+    "language": "en",
+    "confidence": 1,
+    "created_at": "2026-05-01T18:39:12.328954"
+  },
+  {
+    "question": "Birth Certificate Requirements Checklist",
+    "intent": "birth_certificate_requirements",
+    "language": "en",
+    "confidence": 0.7404704224363429,
+    "created_at": "2026-05-01T18:41:07.932275"
+  },
+  {
+    "question": "Business Permit Application Guide",
+    "intent": "business_permit_fee",
+    "language": "en",
+    "confidence": 0.748967141796684,
+    "created_at": "2026-05-01T18:41:15.743626"
+  },
+  {
+    "question": "How do I get a birth certificate?",
+    "intent": "birth_certificate_process",
+    "language": "en",
+    "confidence": 1,
+    "created_at": "2026-05-01T18:44:10.033042"
+  },
+  {
+    "question": "How do I get a birth certificate?",
+    "intent": "birth_certificate_process",
+    "language": "en",
+    "confidence": 1,
+    "created_at": "2026-05-01T18:45:40.410946"
+  },
+  {
+    "question": "How do I get a birth certificate?",
+    "intent": "birth_certificate_process",
+    "language": "en",
+    "confidence": 1,
+    "created_at": "2026-05-01T18:46:00.235813"
+  },
+  {
+    "question": "Business Permit Application Guide",
+    "intent": "business_permit_fee",
+    "language": "en",
+    "confidence": 0.748967141796684,
+    "created_at": "2026-05-01T18:57:07.951875"
+  },
+  {
+    "question": "How do I get a birth certificate?",
+    "intent": "birth_certificate_process",
+    "language": "en",
+    "confidence": 1,
+    "created_at": "2026-05-01T19:11:52.984133"
+  },
+  {
+    "question": "unsaon pag kuha ug birth certificate",
+    "intent": "birth_certificate_process",
+    "language": "bis",
+    "confidence": 0.7266456235849348,
+    "created_at": "2026-05-01T19:12:46.434704"
+  },
+  {
+    "question": "Birth Certificate Requirements Checklist",
+    "intent": "birth_certificate_requirements",
+    "language": "en",
+    "confidence": 0.7404704224363429,
+    "created_at": "2026-05-01T19:13:49.505964"
+  },
+  {
+    "question": "How do I apply for a new business permit?",
+    "intent": "new_business_permit_process",
+    "language": "en",
+    "confidence": 0.9097056996880173,
+    "created_at": "2026-05-01T22:46:46.880800"
+  },
+  {
+    "question": "What are the requirements for a new business permit?",
+    "intent": "new_business_permit_process",
+    "language": "en",
+    "confidence": 0.7716478531229558,
+    "created_at": "2026-05-01T22:47:06.025967"
+  },
+  {
+    "question": "I want to start a business; what do I need?",
+    "intent": "new_business_permit_process",
+    "language": "en",
+    "confidence": 0.3494323027328834,
+    "created_at": "2026-05-01T22:47:29.914246"
+  },
+  {
+    "question": "Can I apply for a business permit online?",
+    "intent": "new_business_permit_process",
+    "language": "en",
+    "confidence": 0.7185740680877462,
+    "created_at": "2026-05-01T22:47:39.602003"
+  },
+  {
+    "question": "Where do I go to get a new Mayor's permit?",
+    "intent": "new_business_permit_process",
+    "language": "en",
+    "confidence": 0.5307015748711474,
+    "created_at": "2026-05-01T22:47:48.401733"
+  },
+  {
+    "question": "How long does it take to get a new business permit?",
+    "intent": "new_business_permit_process",
+    "language": "en",
+    "confidence": 0.8745508805256177,
+    "created_at": "2026-05-01T22:47:57.248307"
+  },
+  {
+    "question": "What is the process for eBOSS application?",
+    "intent": "real_property_tax_payment",
+    "language": "en",
+    "confidence": 0.3276573917690149,
+    "created_at": "2026-05-01T22:48:04.490094"
+  },
+  {
+    "question": "Do I need a barangay clearance first before going to city hall?",
+    "intent": "inquiry_barangay_clearance_fee",
+    "language": "en",
+    "confidence": 0.6219150689582263,
+    "created_at": "2026-05-01T22:48:14.093771"
+  },
+  {
+    "question": "What documents do I need if I am leasing the space for my business?",
+    "intent": "birth_certificate_requirements",
+    "language": "en",
+    "confidence": 0.45946555328580835,
+    "created_at": "2026-05-01T22:48:36.167287"
+  },
+  {
+    "question": "How much does a new business permit cost?",
+    "intent": "business_permit_fee",
+    "language": "en",
+    "confidence": 0.5060389963923637,
+    "created_at": "2026-05-01T22:48:44.786184"
+  },
+  {
+    "question": "how to retire on business",
+    "intent": "cmo_retire_business_permit",
+    "language": "en",
+    "confidence": 0.3442841805881688,
+    "created_at": "2026-05-02T15:36:46.747321"
+  },
+  {
+    "question": "my motorcycle is impounded, how can I claim it?",
+    "intent": "cmo_release_impounded_vehicle",
+    "language": "tl",
+    "confidence": 0.684589015641647,
+    "created_at": "2026-05-02T15:46:39.894188"
+  },
+  {
+    "question": "my motorcycle is impounded, how can I claim it?",
+    "intent": "cmo_release_impounded_vehicle",
+    "language": "en",
+    "confidence": 0.684589015641647,
+    "created_at": "2026-05-02T15:50:09.242732"
+  },
+  {
+    "question": "How do I get a birth certificate?",
+    "intent": "birth_certificate_process",
+    "language": "en",
+    "confidence": 0.9668395393528247,
+    "created_at": "2026-05-02T16:12:07.106149"
+  },
+  {
+    "question": "Birth Certificate Requirements Checklist",
+    "intent": "birth_certificate_requirements",
+    "language": "en",
+    "confidence": 0.6316727305374805,
+    "created_at": "2026-05-02T16:12:25.564291"
+  },
+  {
+    "question": "unsaon pag bayad ug tax",
+    "intent": "real_property_tax_payment",
+    "language": "bis",
+    "confidence": 0.24920665128904596,
+    "created_at": "2026-05-02T19:35:37.788436"
+  },
+  {
+    "question": "gusto ko mukuha og mayor's clearance, unsaon?",
+    "intent": "inquiry_barangay_clearance_fee",
+    "language": "bis",
+    "confidence": 0.3173877324836807,
+    "created_at": "2026-05-02T19:45:16.724977"
+  },
+  {
+    "question": "may laro kami gusto namin manghiram ng gym sa city hall, paano?",
+    "intent": "real_property_tax_payment",
+    "language": "tl",
+    "confidence": 0.27069595912357347,
+    "created_at": "2026-05-02T19:47:14.505211"
+  },
+  {
+    "question": "Gusto ko mo apply sa educational assistance",
+    "intent": "new_business_permit_process",
+    "language": "en",
+    "confidence": 0.2670966115977541,
+    "created_at": "2026-05-02T19:47:41.392199"
+  },
+  {
+    "question": "gusto ko mukuha og mayor's clearance, unsaon?",
+    "intent": "inquiry_barangay_clearance_fee",
+    "language": "bis",
+    "confidence": 0.3173877324836807,
+    "created_at": "2026-05-02T19:51:28.310795"
+  },
+  {
+    "question": "may laro kami gusto namin manghiram ng gym sa city hall, paano?",
+    "intent": "real_property_tax_payment",
+    "language": "tl",
+    "confidence": 0.27069595912357347,
+    "created_at": "2026-05-02T19:51:39.288399"
+  },
+  {
+    "question": "Gusto ko mo apply sa educational assistance",
+    "intent": "new_business_permit_process",
+    "language": "en",
+    "confidence": 0.2670966115977541,
+    "created_at": "2026-05-02T19:51:57.019054"
+  },
+  {
+    "question": "gusto ko mukuha og mayor's clearance, unsaon?",
+    "intent": "cmo_mayors_clearance",
+    "language": "bis",
+    "confidence": 0.8989558692303448,
+    "created_at": "2026-05-02T19:59:42.796614"
+  },
+  {
+    "question": "may laro kami gusto namin manghiram ng gym sa city hall, paano?",
+    "intent": "cmo_use_of_facility",
+    "language": "tl",
+    "confidence": 0.33516618569604795,
+    "created_at": "2026-05-02T20:00:44.810190"
+  },
+  {
+    "question": "Gusto ko mo apply sa educational assista",
+    "intent": "cmo_scholarship",
+    "language": "en",
+    "confidence": 0.5311212608334951,
+    "created_at": "2026-05-02T20:01:03.814801"
+  },
+  {
+    "question": "may laro kami gusto namin manghiram ng gym sa city hall, paano?",
+    "intent": "cmo_use_of_facility",
+    "language": "tl",
+    "confidence": 0.33516618569604795,
+    "created_at": "2026-05-02T20:03:14.090256"
+  },
+  {
+    "question": "Gusto ko mo apply sa educational assistance",
+    "intent": "cmo_scholarship",
+    "language": "bis",
+    "confidence": 0.7784192279521909,
+    "created_at": "2026-05-02T20:03:16.354405"
+  },
+  {
+    "question": "Gusto ko mo apply sa educational assista",
+    "intent": "cmo_scholarship",
+    "language": "bis",
+    "confidence": 0.5311212608334951,
+    "created_at": "2026-05-02T20:04:16.566365"
+  },
+  {
+    "question": "may laro kami gusto namin manghiram ng gym sa city hall, paano?",
+    "intent": "cmo_use_of_facility",
+    "language": "tl",
+    "confidence": 0.33516618569604795,
+    "created_at": "2026-05-02T20:18:52.284146"
+  },
+  {
+    "question": "may laro kami gusto namin manghiram ng gym sa city hall, paano?",
+    "intent": "cmo_use_of_facility",
+    "language": "tl",
+    "confidence": 0.7770805283349627,
+    "created_at": "2026-05-02T20:23:22.809005"
+  },
+  {
+    "question": "how much ang rental fee",
+    "intent": "business_permit_fee",
+    "language": "en",
+    "confidence": 0.7027971370682216,
+    "created_at": "2026-05-02T20:24:16.399514"
+  },
+  {
+    "question": "how to apply for New Business Permit",
+    "intent": "new_business_permit_process",
+    "language": "en",
+    "confidence": 0.59071506058302,
+    "created_at": "2026-05-02T20:49:04.133377"
+  },
+  {
+    "question": "how to apply for New Business Permit",
+    "intent": "cmo_new_business_permit",
+    "language": "en",
+    "confidence": 0.8055409924718695,
+    "created_at": "2026-05-02T20:50:33.268951"
+  },
+  {
+    "question": "How do I get a birth certificate?",
+    "intent": "birth_certificate_process",
+    "language": "en",
+    "confidence": 0.9897218335061118,
+    "created_at": "2026-05-03T00:17:48.476675"
+  },
+  {
+    "question": "unsaon pagkuha og prangkisa sa tricycle",
+    "intent": "cmo_mtop_franchise",
+    "language": "bis",
+    "confidence": 0.75,
+    "created_at": "2026-05-03T17:11:57.334591"
+  },
+  {
+    "question": "unsaon pag kuha ug barangay clearance",
+    "intent": "inquiry_barangay_clearance_fee",
+    "language": "bis",
+    "confidence": 0.75,
+    "created_at": "2026-05-03T17:13:39.123133"
+  },
+  {
+    "question": "unsaon pag kuha ug Drivers license",
+    "intent": "inquiry_barangay_clearance_process",
+    "language": "bis",
+    "confidence": 1.0,
+    "created_at": "2026-05-03T17:19:43.217509"
+  },
+  {
+    "question": "unsaon pagkuha ug traffic clearance",
+    "intent": "inquiry_barangay_clearance_process",
+    "language": "bis",
+    "confidence": 1.0,
+    "created_at": "2026-05-03T17:20:05.824016"
+  },
+  {
+    "question": "what are the requirements for business permit",
+    "intent": "cmo_renew_business_permit",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-04T15:55:37.291064"
+  },
+  {
+    "question": "what are the requirements for new business permit",
+    "intent": "cmo_new_business_permit_requirements",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-04T15:56:02.326990"
+  },
+  {
+    "question": "retirement",
+    "intent": "cmo_retirement_of_business_permit_requirements",
+    "language": "en",
+    "confidence": 1.0,
+    "created_at": "2026-05-04T17:49:18.411083"
+  },
+  {
+    "question": "how to get inssurance",
+    "intent": "cmo_mtop_franchise",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-04T18:15:02.371806"
+  },
+  {
+    "question": "What is the process for Birth Certificate?",
+    "intent": "birth_certificate_process",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-05T16:55:01.221364"
+  },
+  {
+    "question": "How do I get a birth certificate?",
+    "intent": "birth_certificate_process",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-06T15:20:05.368179"
+  },
+  {
+    "question": "What is the process for Renew Business Permit?",
+    "intent": "birth_certificate_process",
+    "language": "en",
+    "confidence": 1.0,
+    "created_at": "2026-05-06T15:20:55.656815"
+  },
+  {
+    "question": "What is the process for Renew Business Permit?",
+    "intent": "cmo_renew_business_permit",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-06T15:41:55.750398"
+  },
+  {
+    "question": "What is the process for Franchise Renewal?",
+    "intent": "cmo_motorized_tricycle_operators_permit_franchise_renewal_process",
+    "language": "en",
+    "confidence": 0.75,
+    "created_at": "2026-05-06T15:42:39.750806"
+  },
+  {
+    "question": "unsaon pag kuha ug birth certificate",
+    "intent": "cmo_motorized_tricycle_operators_permit_franchise_renewal_process",
+    "language": "bis",
+    "confidence": 1.0,
+    "created_at": "2026-05-06T15:47:26.300274"
+  },
+  {
+    "question": "unsaon pag kuha ug new business permit",
+    "intent": "cmo_motorized_tricycle_operators_permit_franchise_renewal_process",
+    "language": "bis",
+    "confidence": 1.0,
+    "created_at": "2026-05-06T15:48:10.908131"
+  },
+  {
+    "question": "Kasagaran nga requirements mao ang valid ID, completed request form, ug authorization letter kung representative ang mokuha.",
+    "intent": "cmo_motorized_tricycle_operators_permit_franchise_renewal_location",
+    "language": "bis",
+    "confidence": 1.0,
+    "created_at": "2026-05-06T15:49:10.899842"
+  }
+]

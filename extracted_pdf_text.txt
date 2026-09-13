@@ -1,0 +1,1985 @@
+=== PAGE 1 ===
+ VISTA: A NLP-BASED CHATBOT FOR CITIZEN INQUIRY​
+AND LOCAL GOVERNMENT SERVICES 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+A Capstone Project Presented to 
+Faculty of the Institute of Computing 
+Davao del Norte State College 
+New Visayas, Panabo City 
+ 
+ 
+Jeverly Shane B. Capote 
+Honey Mariel S. Corpuz 
+Axl Bien Meñoza 
+ 
+ 
+ 
+ 
+ 
+May 2026 
+
+
+=== PAGE 2 ===
+CHAPTER 1 
+INTRODUCTION 
+Background of the Project 
+The rapid advancement of digital technologies has fundamentally transformed 
+how governments deliver public services and communicate with citizens across the 
+globe. Public institutions worldwide are adopting electronic government (e-government) 
+initiatives to improve service efficiency, transparency, and accessibility through 
+information and communication technologies (ICT) [1]. Digital platforms allow citizens to 
+access official information remotely, reducing the need for physical visits and helping 
+standardize service communication across channels. Research highlights that chatbots, 
+a conversational interface capable of interpreting user questions and providing 
+automated responses can support organizations by delivering consistent answers to 
+frequently asked questions and reducing the workload associated with repetitive 
+inquiries [2]. In government settings, AI-guided chatbots enhance citizen–government 
+communication by improving responsiveness and standardizing information delivery [3]. 
+From a governance perspective, digital platforms support "doing more with less" by 
+enabling government offices to allocate human resources to complex, judgment-based 
+tasks while routine information delivery is supported by technology [4]. 
+The core problem identified in this study is the inefficient and fragmented 
+handling of citizen inquiries at the local government level, specifically in Panabo City, 
+Davao del Norte. Citizens commonly inquire about frontline services documented in the 
+
+
+=== PAGE 3 ===
+Citizen's Charter, including business permitting, civil registry, and local treasury 
+services. Although the Citizen's Charter serves as an official reference, accessing 
+information can still be inconvenient for citizens when it is not easily searchable in 
+natural language. The root causes include the absence of a centralized automated 
+response system, limited personnel capacity during peak inquiry periods, the lack of a 
+24/7 accessible digital inquiry platform, and the absence of multilingual support for local 
+languages such as Cebuano/Bisaya and Filipino/Tagalog. These conditions produce 
+cascading effects: frustrated citizens unable to access timely information, delayed and 
+inconsistent dissemination of service requirements, overwhelmed frontline staff 
+burdened by high volumes of repetitive inquiries, and reduced public trust in LGU 
+responsiveness. 
+Globally, one of the persistent challenges in public service delivery is the large 
+volume of repetitive citizen inquiries, particularly questions about service requirements, 
+documentary needs, step-by-step procedures, office schedules, fees, and processing 
+timelines. According to the United Nations E-Government Survey 2022, digital 
+government initiatives are critical for strengthening institutional transparency, improving 
+public service delivery, and fostering citizen participation in governance processes [1]. 
+Several international studies demonstrate the effectiveness of AI-driven chatbot 
+systems in government service delivery. Androutsopoulou et al. [3] showed how 
+AI-guided chatbots transform citizen–government communication by providing 
+consistent, round-the-clock responses to municipal service inquiries, significantly 
+reducing the burden on frontline staff. Khurana et al. [2] further highlights how Natural 
+Language Processing techniques enable machines to interpret the semantic meaning of 
+
+
+=== PAGE 4 ===
+human text, making NLP the foundational technology for any modern chatbot system. 
+Adamopoulou and Moussiades [5] provide a comprehensive historical and technical 
+survey of chatbot evolution, establishing that retrieval-based chatbots which match user 
+inputs against a predefined knowledge base are the most suitable architecture for 
+domains requiring verified, accurate responses, such as government services. 
+In the Philippines, national programs continue to promote digital transformation 
+through ICT-enabled initiatives, as outlined in the Department of Information and 
+Communications Technology (DICT) E-Government Masterplan 2022 [6]. To streamline 
+services, Republic Act No. 11032, also known as the Ease of Doing Business and 
+Efficient Government Service Delivery Act, mandates all local government units (LGUs) 
+to establish a Citizen's Charter detailing step-by-step procedures, requirements, fees, 
+and processing times for all frontline services [7]. Despite these policies, many LGUs 
+still face significant gaps in implementing centralized, automated inquiry systems, with 
+most relying on basic social media auto-replies or manual front-desk handling [8]. The 
+Anti-Red Tape Authority (ARTA) further reinforces the Citizen's Charter requirement 
+through reference guidelines that standardize how government agencies should present 
+service information to the public [9], yet localized digital application in municipal and city 
+governments remains a significant challenge due to resource constraints. Furthermore, 
+Filipino and Cebuano are classified as low-resource languages in NLP research, 
+meaning there is a critical scarcity of publicly available, labeled datasets for tasks such 
+as intent classification and text categorization in these languages [10]. 
+At the local level, existing digital inquiry solutions, where available, remain largely 
+inaccessible to local government units due to their reliance on proprietary platforms, 
+
+
+=== PAGE 5 ===
+computationally heavy deep learning models, or English-only interfaces, leaving a 
+critical gap between nationally available technologies and the operational realities of 
+city-level government offices in linguistically diverse regions like Mindanao. In Panabo 
+City, a first-class component city in Davao del Norte with a population of 184,599 as of 
+the 2020 Census [11], citizen inquiries are still handled through manual and fragmented 
+channels such as front-desk assistance, phone calls, and social media messaging. 
+While these channels remain important, they may lead to delayed responses during 
+peak hours, inconsistent answers depending on staff availability, and inefficiencies for 
+both citizens and government personnel. 
+This study addresses that gap by developing VISTA (Virtual Intelligent Services 
+and Transactions Assistant): An NLP-based Chatbot for Citizen Inquiry and Local 
+Government Services. VISTA is a knowledge-based, retrieval-oriented chatbot that 
+integrates Natural Language Processing (NLP) with supervised ​
+machine 
+learning 
+algorithms to classify citizen inquiries and retrieve validated responses from the LGU's 
+Citizen's Charter [5]. The system supports multilingual inquiries in English, 
+Filipino/Tagalog, and Cebuano/Bisaya, and features a controlled retraining mechanism 
+where only administrator-validated queries are incorporated into the model, ensuring 
+that the chatbot provides only verified, official information. Conducted under the 
+research, development, and extension mandate of Davao del Norte State College as 
+provided under Republic Act 7879 [12], this study aims to deliver an accessible, locally 
+deployable, and technically reliable solution tailored to the needs of citizens and 
+frontline offices in Panabo City. 
+
+
+=== PAGE 6 ===
+This study is aligned with several national and international development 
+agendas. At the institutional level, the project supports the Davao del Norte State 
+College Research, Development, and Extension (DNSC RDE) Agenda, which prioritizes 
+the development of technology-driven solutions that address community-level concerns 
+and contribute to local governance improvement [13]. At the national level, the study 
+aligns with the Commission on Higher Education (CHED) Achieve Agenda, which 
+encourages higher education institutions to produce research outputs that are 
+responsive to societal needs and contribute to national development goals through 
+innovation and technology [14]. The study also supports the Department of Science and 
+Technology (DOST) Harmonized Research and Development Agenda, which promotes 
+the development of smart technologies and digital platforms for improving public service 
+delivery and governance efficiency in the Philippines [15]. At the international level, this 
+study directly contributes to three United Nations Sustainable Development Goals (UN 
+SDGs): SDG 9 (Industry, Innovation, and Infrastructure), specifically Target 9.c, which 
+promotes the development of information and communication technology to increase 
+access to the internet and digital services in developing countries [16]; SDG 11 
+(Sustainable Cities and Communities), specifically Target 11.3, which advocates for 
+inclusive, participatory, and integrated planning and management of urban services; and 
+SDG 16 (Peace, Justice, and Strong Institutions), specifically Target 16.6, which calls 
+for the development of effective, accountable, and transparent institutions at all levels 
+[16]. 
+ 
+ 
+
+
+=== PAGE 7 ===
+Objectives of the Study 
+This study aims to develop a web-based system for citizen inquiry and local 
+government services integrating NLP-based chatbot to automate the delivery of verified 
+public service information and streamline inquiry management. Specifically, the project 
+aims to: 
+1. Develop a structured, multilingual knowledge base (English, Filipino/Tagalog, 
+Cebuano/Bisaya) from LGU-approved sources such as the Citizen's Charter and 
+FAQs. 
+2.  
+Preprocess the textual data using NLP techniques and apply TF-IDF 
+vectorization to convert text into numerical representations suitable for machine 
+learning classification and response retrieval. 
+3.  Train and evaluate three supervised machine learning algorithms to identify 
+the most accurate intent classification model based on accuracy, precision, recall, 
+and F1-score. 
+4.  Design an administrator module with an analytics dashboard to manage the 
+knowledge base, monitor inquiry trends, and implement a controlled retraining 
+mechanism that incorporates only validated unmatched queries to improve model 
+performance. 
+Significance of the Study 
+This study is significant as it provides an automated, real-time, and multilingual 
+information retrieval system that transforms traditional reactive service delivery into 
+proactive citizen inquiry management. The following are the study's main beneficiaries: 
+
+
+=== PAGE 8 ===
+●​ Citizens and Residents of Panabo City. VISTA will enable citizens to access 
+official service information — including requirements, procedures, ​ fees, 
+schedules, and processing times — instantly and in their preferred language 
+(English, Filipino/Tagalog, or Cebuano/Bisaya) without requiring immediate office 
+visits. The chatbot provides consistent, validated answers sourced from the 
+Citizen's Charter, reducing waiting time, repeated visits, and the frustration of 
+receiving inconsistent information across different inquiry channels. 
+●​ Local Government Frontline Offices. The system will help frontline offices of 
+Panabo City Hall reduce the volume of repetitive inquiries handled manually, 
+supporting the consistent dissemination of official service requirements anchored 
+on LGU-approved references. By automating routine information delivery, VISTA 
+allows frontline offices to operate more efficiently, particularly during peak service 
+hours and high- demand periods. 
+●​ Frontline Government Personnel. By redirecting routine inquiries to the 
+chatbot, 
+frontline 
+staff 
+can 
+prioritize 
+case-specific 
+concerns, 
+complex 
+transactions, and tasks that require human judgment. This reduces staff ​
+fatigue, minimizes the risk of providing inconsistent answers, and allows 
+personnel to focus on value-added activities. 
+●​ LGU Management and Planning Units. VISTA's analytics dashboard will 
+provide management with data-driven insights into citizen inquiry trends, 
+including the most frequently asked service categories, peak inquiry periods, and 
+common unresolved questions. These analytics support evidence-based 
+
+
+=== PAGE 9 ===
+communication planning, resource allocation, and service improvement 
+decisions. 
+●​ Davao del Norte State College (DNSC). The development of VISTA will 
+strengthen DNSC's research, development, and extension (RDE) portfolio by 
+producing an applied technological output that directly addresses a real 
+challenge in local government service delivery, reinforcing DNSC's ​mandate 
+under Republic Act 7879 [12]. 
+●​ Future Researchers and Developers. This study lays the foundation for future 
+research on NLP-based smart governance systems applicable to ​ citizen 
+service delivery in linguistically diverse regions. VISTA may serve ​ as a baseline 
+system for extensions such as voice interaction, sentiment analysis, and 
+improved algorithm architectures. 
+Scope and Limitation 
+This project focuses on the development of VISTA, a web-based multilingual 
+(English, Filipino/Tagalog, Cebuano/Bisaya) chatbot that provides automated responses 
+to citizen inquiries about selected Panabo City Hall frontline services. The system will 
+be tested and evaluated within Panabo City, Davao del Norte. The system 
+encompasses four primary operational components: a citizen-facing chatbot interface 
+for multilingual inquiry submission and response retrieval, an NLP-based intent 
+classification module using supervised machine learning algorithms (SVM, Logistic 
+Regression, Neural Network), an administrator portal for knowledge base management 
+and controlled model retraining, and an analytics dashboard for inquiry logging and 
+trend visualization. 
+
+
+=== PAGE 10 ===
+The initial deployment and testing of the system will be limited to a baseline of 
+approximately 1,500 pre-defined question variations distributed across five (5) selected 
+frontline offices of Panabo City Hall. These five offices and their approximate question 
+allocations are as follows: City Mayor's Office with approximately 1,000 question 
+variations covering its extensive range of services, City Civil Registrar's Office with 
+approximately 100 question variations, City Treasurer's Office with approximately 100 
+question variations, City Assessor's Office with approximately 150 question variations, 
+and City Social Welfare and Development Office with approximately 150 question 
+variations. The questions for each service consist of the most common frequently asked 
+questions (FAQs) gathered from the Citizen's Charter and historical citizen inquiries 
+from the LGU's public communication channels. This 1, 500-question baseline exists 
+because it is not feasible to anticipate every possible citizen inquiry phrasing during the 
+initial data gathering phase. 
+However, the system is not limited in its capacity to accept additional questions. 
+VISTA includes a controlled retraining feature that allows the administrator to 
+continuously expand the knowledge base beyond the initial baseline over time. When 
+citizens submit inquiries that the system cannot match to an existing intent (unmatched 
+queries), these queries are logged and queued for administrator review. Once the 
+administrator reviews and resolves an unmatched query by assigning it to the correct 
+intent or creating a new intent, the resolved query is permanently added to the 
+knowledge base and training dataset. This mechanism serves as the system's room for 
+improvement, it ensures that the chatbot continuously learns from real-world citizen 
+
+
+=== PAGE 11 ===
+interactions while maintaining the accuracy and trustworthiness of its responses, since 
+all additions require explicit human validation before being incorporated into the model. 
+The administrator of the system is the designated authorized LGU personnel, 
+such as the Public Information Officer or IT staff of Panabo City Hall, who is responsible 
+for monitoring the chatbot, resolving unmatched queries, updating the knowledge base, 
+and triggering model retraining through the administrator portal. The system is built 
+around a Python-based backend server integrated with a TF-IDF feature extraction 
+pipeline and supervised machine learning classifiers that classify citizen text inquiries 
+into predefined service intent categories in real time. Development and testing of the 
+prototype will be conducted using service information documented in the Panabo City 
+Citizen's Charter, and while the system is designed to be adaptable to other LGU 
+contexts, findings and system configurations may require modification before 
+deployment in other municipal or provincial government offices. 
+VISTA is limited to providing information support and will not process official 
+government transactions, payments, or document submissions. The accuracy of the 
+chatbot's responses is highly dependent on the quality and completeness of the 
+manually curated knowledge base maintained by LGU administrators. NLP classification 
+performance may vary across languages due to local slang, code-switching, and 
+spelling variations inherent in Cebuano/Bisaya and Filipino/Tagalog text inputs. The 
+system does not feature automatic real-time self-learning to prevent the AI from 
+adopting incorrect or malicious user inputs; all learning requires explicit administrator 
+review and validation. The web application requires a stable internet connection and 
+
+
+=== PAGE 12 ===
+modern web browsers to function effectively as a prototype.​
+ 
+Review of Related Literature and Works 
+Related Literature 
+The integration of information and communication technologies in public 
+administration has fundamentally shifted how governments interact with citizens. 
+According to the United Nations E-Government Survey 2022, digital government 
+initiatives are critical for strengthening institutional transparency, improving public 
+service delivery, and fostering citizen participation in governance processes [1]. As 
+these platforms mature, chatbots have emerged as a primary interface for navigating 
+complex government portals and delivering automated responses to citizen inquiries [2]. 
+In the public sector, studies show that AI-guided chatbots significantly reduce response 
+times and mitigate the workload of frontline personnel who handle high volumes of 
+repetitive inquiries [3]. This aligns with the principles of "lean government," where 
+technology handles routine tasks, allowing human workers to focus on specialized 
+service delivery that requires professional judgment [4]. 
+Several studies demonstrate the effectiveness of AI-driven chatbot systems in 
+government service delivery. Androutsopoulou et al. [3] showed how AI-guided chatbots 
+transform citizen–government communication by providing consistent, round-the-clock 
+responses to municipal service inquiries, significantly reducing the burden on frontline 
+staff. The Bologna City chatbot implementation validated the use of Support Vector 
+Machines (SVM) combined with TF-IDF feature extraction for classifying citizen inquiries 
+into service categories with high accuracy. Similarly, research by Khurana et al. [2] 
+
+
+=== PAGE 13 ===
+highlights how Natural Language Processing techniques enable machines to interpret 
+the semantic meaning of human text, making NLP the foundational technology for any 
+modern chatbot system. Adamopoulou and Moussiades [5] provide a comprehensive 
+historical and technical survey of chatbot evolution, establishing that retrieval-based 
+chatbots which match user inputs against a predefined knowledge base are the most 
+suitable architecture for domains requiring verified, accurate responses, such as 
+government services. 
+In the Philippine context, the push for automated, accessible e-governance is 
+mandated by national frameworks including the DICT E-Government Masterplan 2022 
+[6] and the Anti-Red Tape Authority (ARTA) guidelines on the Citizen's Charter [9], yet 
+localized application in municipal and city governments remains a significant challenge 
+due to resource constraints [8]. Republic Act No. 11032 requires all LGUs to maintain a 
+Citizen's Charter [7], providing a standardized, official data source that can serve as the 
+foundation for a knowledge-based chatbot system. 
+A dominant theme across the literature is the reliance on Natural Language 
+Processing to accurately classify user intentions [5]. To process text, raw user input 
+must be converted into numerical data. Literature heavily supports the use of Term 
+Frequency-Inverse Document Frequency (TF-IDF) for feature extraction, as it effectively 
+weighs the importance of specific keywords in a query while filtering out common 
+conversational noise (stop words) [17]. TF-IDF has been shown to outperform simpler 
+bag-of-words approaches in structured domain classification tasks due to its ability to 
+distinguish meaningful terms from generic vocabulary. 
+
+
+=== PAGE 14 ===
+Regarding classification, the literature justifies the use of traditional machine 
+learning algorithms over computationally heavy deep learning models for text 
+categorization in structured domains. Support Vector Machine (SVM) is widely utilized 
+because it excels in high-dimensional text spaces and provides robust accuracy for 
+classification tasks, particularly when the number of features exceeds the number of 
+training samples [18]. Logistic Regression is also favored as a reliable probabilistic 
+model for multiclass text problems, offering interpretable probability estimates for each 
+predicted class [19]. Neural Networks, specifically the Multilayer Perceptron (MLP), 
+have demonstrated strong performance in text classification tasks due to their ability to 
+learn non-linear patterns and complex feature interactions that linear models may miss 
+[20]. By utilizing robust machine learning libraries such as Scikit-learn to evaluate these 
+three specific algorithms [21], developers can ensure a mathematically sound, 
+lightweight, and highly accurate intent classification pipeline suitable for deployment on 
+resource-constrained LGU servers. 
+Across these studies, key themes and patterns emerged. The common findings 
+confirm that NLP-based chatbots using supervised machine learning classifiers provide 
+accurate, consistent, and efficient responses to structured domain inquiries. Common 
+methodological trends include the use of TF-IDF for feature extraction, SVM and neural 
+network-based classifiers for text classification, and retrieval-based architectures for 
+response generation. On the other hand, most existing systems are limited to 
+single-language (English) support and lack controlled retraining mechanisms that allow 
+administrators to validate and approve new training data before it is incorporated into 
+the model. 
+
+
+=== PAGE 15 ===
+Despite the proven benefits of AI chatbots and algorithms like SVM and neural 
+network classifiers, a significant research gap exists at the local government level. Many 
+LGUs rely on basic social media auto-replies or manual handling [8]. Furthermore, 
+existing advanced government chatbots are predominantly built for the English 
+language and do not account for local Philippine dialects (Cebuano/Bisaya) or 
+code-switching. Moreover, Filipino and Cebuano are classified as low-resource 
+languages in NLP research, meaning there is a critical scarcity of publicly available, 
+labeled datasets for tasks such as intent classification and text categorization in these 
+languages [10]. This absence is even more pronounced in the government services 
+domain, where no pre-built training corpus exists for Philippine LGU citizen inquiries — 
+forcing system developers to construct their own datasets from primary documents such 
+as the Citizen's Charter. Finally, many chatbot systems lack a "controlled retraining 
+workflow," meaning they either remain static and become outdated, or they use 
+unsupervised learning which risks providing citizens with unverified information. 
+The literature confirms that an NLP-based chatbot using TF-IDF and supervised 
+learning algorithms (SVM, Logistic Regression, Neural Network) is a highly effective 
+solution for managing routine inquiries. However, the lack of localized, multilingual 
+systems anchored on verified documents like the Citizen's Charter highlights a clear 
+gap. VISTA addresses this by providing a controlled, governable AI framework tailored 
+specifically for Panabo City's linguistic and administrative context. 
+Related Works​
+​
+There are five existing automated inquiry systems and published studies that can 
+be compared to the proposed VISTA system. These systems utilize natural language 
+
+
+=== PAGE 16 ===
+processing, government knowledge bases, and conversational interfaces to automate 
+public service inquiries. However, the proposed VISTA system introduces additional 
+critical functionalities tailored for local government units (LGUs), such as multilingual 
+support for English, Tagalog, and Cebuano/Bisaya, a controlled retraining mechanism, 
+an admin analytics dashboard, and an open-source, locally deployable architecture.​
+​
+The first related system is the eGovPH Portal [22]. This system is primarily 
+designed as a centralized platform for Philippine government services, providing 
+citizens with access to a verified knowledge base of national and local government 
+transactions. Through its recent eGovAI integration, the platform utilizes Natural 
+Language Processing (NLP) to handle conversational inquiries and offers multilingual 
+support for various Philippine dialects. Figure 1 shows the interfaces of the system [6].​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+​
+Figure 1. eGovPH Ai Assistant Interface  
+
+
+=== PAGE 17 ===
+Although the system is highly reliable and advanced, it functions as a centralized, 
+closed-source national platform. There is no open-source, locally deployable framework 
+that individual Local Government Units (LGUs) can host, govern, and customize on their 
+own servers. Furthermore, it lacks a localized, controlled retraining mechanism that 
+would allow non-technical municipal staff to independently update their city's specific 
+dataset (such as a localized Citizen's Charter). Thus, while eGovPH excels at the 
+national level, it does not fully satisfy the localized, deployable criteria presented in 
+Table 1.  
+The second related system is AskGov Singapore [23]. This system focuses on 
+answering citizen queries through an AI-guided conversational interface utilizing 
+advanced NLP models, specifically BERT, to classify user intents and retrieve 
+information from verified government databases [3]. Its key features include accurate 
+intent classification, automated response generation, and centralized knowledge 
+management. The system demonstrates how modern AI improves government 
+communication efficiency. Figure 2 below shows the interface of the system. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 2. AskGov Conversational Interface 
+ 
+
+
+=== PAGE 18 ===
+Although the system successfully demonstrates NLP intent classification and a 
+verified knowledge base, it mainly focuses on single-language interactions and lacks 
+multilingual support for Philippine regional languages (Tagalog and Cebuano/Bisaya). 
+The system also does not specifically implement a controlled retraining mechanism 
+where administrators manually validate unmatched queries before the model learns 
+them. Additionally, it is a proprietary national system rather than an open-source tool 
+deployable by local municipalities. 
+The third related study is the Bologna City Chatbot [24] developed for municipal 
+citizen services. This system utilizes Support Vector Machines (SVM) combined with 
+TF-IDF feature extraction to classify citizen text inquiries into specific municipal service 
+categories. The system provides automated, round-the-clock responses to routine 
+administrative questions, significantly reducing the workload on city hall staff. Figure 3 
+illustrates the Interface of the chatbot. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 3. Bologna City Chatbot Interface 
+​
+​
+However, the study primarily focuses on European languages and does not 
+support the linguistic nuances and code-switching common in the Philippines (English, 
+
+
+=== PAGE 19 ===
+Tagalog, Bisaya). Furthermore, the system lacks a dedicated admin analytics 
+dashboard for monitoring inquiry trends and a controlled retraining module for 
+continuous human-in-the-loop knowledge base expansion. 
+The fourth related system is the PhilHealth Virtual Assistant [25]. This system 
+uses Google Dialogflow to provide automated assistance to members regarding their 
+health insurance benefits, contributions, and membership status. Its key features 
+include NLP intent classification and predefined conversational flows. Figure 4 shows 
+the user interface of the PhilHealth Virtual Assistant. 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4. PhilHealth Virtual Assistant Interface​
+ 
+Although the Virtual Assistant demonstrates the effectiveness of intent 
+classification in the Philippine public sector, its knowledge base is strictly limited to 
+national health insurance rather than comprehensive local government services. The 
+system does not utilize a locally deployable architecture, relying instead on proprietary 
+cloud services (Dialogflow). It also lacks targeted support for Cebuano/Bisaya text 
+inputs and a custom admin analytics dashboard. 
+
+
+=== PAGE 20 ===
+The fifth related system is the Sophia Chatbot [26], an AI-powered conversational 
+assistant adopted by the Quezon City local government to support victim-survivors of 
+domestic violence. Developed by the non-profit organization Spring ACT, the system 
+utilizes Natural Language Processing (NLP) to understand user inputs and securely 
+guide citizens to appropriate legal resources, evidence collection tools, and municipal 
+protection centers. While it successfully demonstrates AI chatbot integration within a 
+Philippine LGU and supports local languages, its knowledge base is strictly 
+domain-locked to domestic violence advocacy rather than comprehensive local 
+government services like the Citizen's Charter. Additionally, because it is centrally 
+managed on a secure global network to prioritize strict anonymity, it lacks an 
+open-source, locally deployable framework and a controlled retraining dashboard that 
+would allow municipal administrators to validate and expand general civic intents 
+independently. Figure 5 shows the Interface of Sophia chatbot.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+​
+Figure 5. Sophia Chatbot Interface 
+
+
+=== PAGE 21 ===
+​
+​
+Table 1 presents a comparison table evaluating VISTA alongside five existing 
+automated inquiry systems across six key features: NLP intent classification, 
+multilingual support, verified knowledge base, controlled retraining, admin analytics 
+dashboard, and open-source deployability. The comparison reveals that while existing 
+systems offer partial capabilities, none provides a complete and integrated solution that 
+combines all six features into a single system. 
+Table 1. Comparison of Existing Systems and Proposed System 
+Title of the 
+Study / 
+System 
+NLP 
+Intent 
+Classifi
+cation 
+Multilingua
+l Support 
+Verified 
+Knowledg
+e Base 
+Controlled 
+Retraining 
+Admin 
+Analytics 
+Dashboar
+d 
+Open-S
+ource / 
+Locally 
+Deploya
+ble 
+eGovPH Portal 
+[6] 
+ 
+ 
+✓ 
+ 
+ 
+ 
+AskGov 
+Singapore [3] 
+✓ 
+(BERT) 
+ 
+✓ 
+ 
+ 
+ 
+Bologna City 
+Chatbot [4] 
+✓ 
+(SVM) 
+ 
+✓ 
+ 
+ 
+ 
+PhilHealth 
+Virtual 
+Assistant 
+✓ 
+(Dialogf
+low) 
+ 
+Partial 
+ 
+ 
+ 
+
+
+=== PAGE 22 ===
+Jakarta e-Gov 
+Bot 
+✓ 
+(Naïve 
+Bayes) 
+ 
+Partial 
+ 
+ 
+Partial 
+VISTA 
+(Proposed 
+System) 
+✓ 
+(SVM/L
+R/MLP) 
+✓ 
+(EN/TL/BS
+) 
+✓ 
+(Citizen's 
+Charter) 
+✓ 
+✓ 
+✓ 
+Based on the reviewed literature and related works, existing systems provide 
+useful features such as NLP intent classification, verified knowledge bases, and 
+automated conversational interfaces. However, most systems do not combine 
+multilingual support (English, Tagalog, Cebuano), controlled retraining, an admin 
+analytics dashboard, and an open-source locally deployable architecture in one system. 
+This gap supports the development of VISTA as a comprehensive, multilingual, and 
+locally manageable automated inquiry system tailored for Panabo City Hall and similar 
+local government units. 
+Definition of Terms 
+Administrator Portal 
+A secured web-based module used by authorized LGU 
+personnel to manage VISTA's knowledge base, review 
+unmatched citizen queries, update FAQ entries, and 
+trigger controlled model retraining. In this study, it 
+refers 
+to 
+the 
+backend 
+management 
+interface 
+accessible only through authenticated administrator 
+credentials. 
+Analytics Dashboard 
+The 
+system 
+component 
+that 
+visualizes 
+inquiry 
+frequency, top service intents, peak inquiry periods, 
+and unmatched query statistics based on aggregated 
+inquiry logs. In this study, it refers to the data 
+visualization interface within the administrator portal. 
+Artificial Intelligence (AI) Computing methods that enable systems to perform 
+tasks that typically require human intelligence, such as 
+language interpretation, pattern recognition, and 
+
+
+=== PAGE 23 ===
+decision-making. In this study, AI refers specifically to 
+the machine learning algorithms used for intent 
+classification. 
+Cebuano/Bisaya 
+A local language widely used in Mindanao; included as 
+a supported inquiry language in VISTA to serve the 
+linguistic diversity of the Panabo City community. 
+Chatbot 
+A conversational system that interacts with users 
+through text-based interfaces and provides automated 
+responses using NLP techniques and a structured 
+knowledge base. In this study, it refers to the 
+citizen-facing VISTA web interface. 
+Citizen's Charter 
+An official LGU document mandated by Republic Act 
+No. 
+11032, 
+describing 
+all 
+frontline 
+services, 
+requirements, procedures, fees, and processing times. 
+In this study, it serves as the primary validated data 
+source for VISTA's knowledge base. 
+Confusion Matrix 
+A classification evaluation table used to compute the 
+accuracy, precision, recall, and F1-score of the 
+machine learning models by comparing predicted 
+intent labels against actual intent labels. 
+Controlled Retraining 
+A 
+supervised 
+learning 
+mechanism 
+where 
+only 
+administrator-reviewed 
+and 
+validated 
+unmatched 
+queries are incorporated into the training dataset 
+before triggering a model retrain cycle. This prevents 
+the AI from adopting incorrect or malicious user inputs. 
+Intent Classification 
+The process of utilizing machine learning algorithms to 
+assign a user's text inquiry to a specific service 
+category (intent) in order to retrieve the appropriate 
+validated response from the knowledge base. 
+Knowledge Base 
+A structured repository of validated service information 
+— including requirements, procedures, schedules, 
+fees, and processing times — sourced from the 
+Citizen's Charter and used for automated response 
+retrieval. 
+Logistic Regression 
+A probabilistic machine learning algorithm used for 
+multiclass 
+text 
+classification that estimates the 
+probability that a given input belongs to each possible 
+intent category. 
+Multilayer Perceptron 
+(MLP) 
+A type of artificial neural network consisting of an input 
+layer, one or more hidden layers, and an output layer 
+that learns non-linear patterns in text features through 
+backpropagation, used as one of three candidate 
+algorithms for VISTA's intent classification pipeline. 
+
+
+=== PAGE 24 ===
+Natural Language 
+Processing (NLP) 
+A subfield of artificial intelligence that provides 
+techniques enabling computers to process, clean, and 
+interpret 
+human 
+language 
+text 
+for 
+automated 
+understanding and response generation. 
+Stop Words 
+Common conversational words (e.g., "the," "is," "and," 
+"ang," 
+"sa") 
+that 
+are 
+removed 
+during 
+text 
+preprocessing to improve the algorithm's focus on 
+meaningful, domain-specific key terms. 
+Support Vector Machine 
+(SVM) 
+A supervised machine learning algorithm that creates 
+an optimal hyperplane to separate different intent 
+categories in high-dimensional feature space, used as 
+one of three candidate algorithms for VISTA's intent 
+classification pipeline. 
+TF-IDF (Term 
+Frequency–Inverse 
+Document Frequency) 
+A statistical method used to convert text into numerical 
+feature vectors by evaluating how relevant a word is to 
+a document within a collection of documents, giving 
+higher weight to distinctive keywords and lower weight 
+to common words. 
+VISTA 
+Virtual Intelligent Services and Transactions Assistant; 
+the name of the proposed NLP-based chatbot system 
+designed to automate citizen inquiry handling for 
+Panabo City local government services. 
+Confidence Threshold 
+The minimum probability score (set at 35%) that the 
+machine learning classifier must produce for a 
+predicted intent before the system considers the 
+classification valid and returns a response. 
+Intent 
+A predefined category representing a specific citizen 
+service 
+inquiry 
+(e.g., 
+“business_permit_fee”, 
+“birth_certificate_process”) used by the classifier to 
+route queries to the correct knowledge base response 
+ 
+
+
+=== PAGE 25 ===
+CHAPTER 2 
+METHODOLOGY 
+The methodology used in the development of VISTA, an NLP-based chatbot for 
+citizen inquiry and local government services, is discussed in this chapter. It covers the 
+overall development process of the web-based chatbot system, including the chosen 
+System Development Life Cycle (SDLC) model, the PADIM framework, and the specific 
+step-by-step process used in planning, analysis, design, implementation, testing, and 
+maintenance of the system. This chapter also outlines the tools, diagrams, 
+requirements, and processes involved in ensuring the success of this proposed project. 
+VISTA adopts an Agile SDLC model, which is essential for web-based systems 
+that integrate machine learning pipelines, as it requires continuous improvement, 
+iterative testing, and incremental development. This integration enables the balance 
+between structure and adaptability, making it suitable for NLP-based systems with both 
+well-defined requirements and evolving components such as multilingual training 
+datasets and classification model accuracy [27]. The Agile framework shown in figure 6 
+that is used in this study follows the PADIM cycle: Planning, Analysis, Design, 
+Implementation, and Maintenance. Each phase is executed iteratively, allowing the 
+development team to revisit and refine components based on testing feedback and 
+evolving requirements. 
+In the Planning phase, the proponents defined the project scope, objectives, 
+timeline, and required resources based on the approved concept paper. During the 
+Analysis phase, the proponents gathered and finalized system requirements by 
+
+
+=== PAGE 26 ===
+reviewing existing LGU inquiry processes, identifying citizen needs, and determining 
+both functional and non-functional requirements. In the Design phase, the proponents 
+translated these requirements into a structured system architecture, including the 
+design of the database, user interface, NLP classification pipeline, and overall system 
+flow, supported by diagrams and prototypes. During the Implementation phase, the 
+proponents developed the system using an iterative approach, where coding, 
+integration of NLP components, and testing were performed incrementally, allowing 
+them to refine features such as intent classification accuracy, multilingual support, and 
+controlled retraining mechanisms based on testing results. Finally, in the Maintenance 
+phase, the proponents conducted system evaluation, identified issues, and applied 
+necessary improvements to enhance system performance and usability. 
+ 
+ 
+ 
+ 
+ 
+​
+Figure 6. PADIM / Agile SDLC Cycle 
+System Planning 
+Systems Planning sets the groundwork for VISTA by outlining the goals, scope, 
+feasibility, resources, risks, and timeline of the project. Major activities involve identifying 
+the needs of citizens and LGU administrators in receiving prompt and accurate 
+
+
+=== PAGE 27 ===
+responses to frontline service inquiries. The researchers will define the main objective of 
+the system, which is to develop a web-based, multilingual chatbot powered by Natural 
+Language Processing (NLP) that can accurately classify citizen inquiries and retrieve 
+validated responses from the knowledge base through a centralized interface. A 
+feasibility appraisal will be conducted to assess the technical and operational feasibility 
+of the system based on the availability of LGU server infrastructure, computing 
+resources for machine learning model training, internet connectivity, and the capability 
+of administrators to manage the knowledge base via the admin dashboard. Possible 
+risks such as misclassification of queries due to language variations, unsupported 
+inquiries, inaccurate or outdated responses, system downtime, and data privacy 
+concerns will also be considered during the planning stage. Tasks will be structured in a 
+Work Breakdown Structure (WBS), and the development phases and timelines will be 
+presented in a Gantt chart to ensure proper monitoring, organized task distribution, and 
+timely completion of the project.  
+ 
+Project Team Organization 
+The project team as shown in Figure 7, is organized to ensure effective 
+coordination and clear distribution of responsibilities. The team consists of Four 
+members with the following designated roles. 
+
+
+=== PAGE 28 ===
+ 
+Figure 7. Project Team Organization 
+The Adviser provides overall guidance and ensures that the project meets 
+academic and technical standards. The Project Manager is responsible for managing 
+the overall workflow, handling technical writing, ensuring all parts of the system are 
+coordinated, finalizing the capstone manuscript, and communicating with stakeholders 
+(LGU Administrators). The System Analyst is primarily responsible for designing the 
+database structure, developing the web interfaces, ensuring a user-friendly 
+conversational UI, and verifying responsive design principles. The System Developer 
+focuses on designing, writing, and testing the core application logic, implementing the 
+machine learning classification models, and integrating the backend with the frontend 
+environment. 
+ 
+ 
+
+
+=== PAGE 29 ===
+Work Breakdown Structure (WBS) 
+The Work Breakdown Structure of the project shown in Figure 8, presents a 
+hierarchical decomposition of the entire system development process into manageable 
+phases and tasks that are specifically aligned with the PADIM framework. 
+ 
+Figure 8. Work Breakdown Structure (WBS) 
+It begins with the Planning phase where problems are identified, objectives are 
+defined, and the outline and scope of the project is established. It is then followed by 
+Analysis where existing LGU inquiry systems are studied, gaps identified, and functional 
+and non-functional requirements determined. The Design phase covers system 
+architecture development, ERD and database schema creation, UI/UX prototyping, and 
+NLP pipeline design. The Implementation phase encompasses backend API 
+
+
+=== PAGE 30 ===
+development, frontend integration, NLP model training and evaluation, and user 
+acceptance testing. Finally, the Maintenance phase focuses on monitoring classification 
+accuracy, executing the controlled retraining loop, expanding the knowledge base, and 
+addressing system bugs and updates. 
+Gantt Chart 
+The Gantt chart Shown in Figure 9, presents the timeline and planned schedule 
+for the activities for the development of VISTA, aligning tasks with the PADIM 
+framework. 
+ 
+Figure 9. Gantt Chart 
+The chart showcases the sequence and the duration of phases from Planning to 
+Maintenance, ensuring that all essential activities are completed within the specified 
+timeline. The Planning phase, including Project Initiation, Scoping, and Resource 
+Planning, runs from April to the first week of May 2026. The Analysis and Design phase, 
+
+
+=== PAGE 31 ===
+covering Literature Review, System Architecture Design, and ERD/Schema/UI 
+Prototyping, spans from the second week of May to the end of May 2026. The 
+Implementation phase, encompassing Backend Development, Frontend Development, 
+and NLP Model Training, runs from the first week of June through June 1, 2026. The 
+Testing and Evaluation phase and the Maintenance and Documentation phase are 
+scheduled to follow the implementation period; however, specific progress percentages 
+and end dates for these phases are not yet assigned, as they will be determined based 
+on the actual completion of the implementation deliverables. The Gantt chart helps the 
+proponents in monitoring the progress of the study and executing time management 
+effectively. 
+System Analysis 
+This section presents the analysis phase of the VISTA system development. It 
+covers the system architecture, functional and non-functional requirements, use case 
+diagram, context flow diagram, and Level 1 data flow diagram. 
+System Architecture 
+The system architecture of VISTA Shown in Figure 10, presents a structured 
+framework that illustrates how the different components of the system interact to 
+support real-time citizen inquiry classification, multilingual response retrieval, and 
+administrative knowledge base management. The architecture is composed of three 
+main tiers: Client Tier (Frontend Interface), Application Tier (Backend Server), and Data 
+Tier. 
+
+
+=== PAGE 32 ===
+ 
+Figure 10. System Architecture 
+At the Client Tier, the system provides two web-based interfaces: (1) the Citizen 
+Chat Interface, where citizens submit natural language inquiries in English, 
+Filipino/Tagalog, or Cebuano/Bisaya and receive automated responses, utilizing 
+Firebase Authentication for secure citizen login and session management; and (2) the 
+LGU Admin Dashboard, where authorized administrators manage the knowledge base, 
+review unmatched queries, trigger model retraining, and view analytics. 
+At the Application Tier, the Python-based backend server (FastAPI) receives 
+HTTP/REST requests from both client interfaces. To ensure security, requests 
+originating from the LGU Admin Dashboard are verified using a server-side 
+Token-Based Authentication mechanism. When a citizen submits a query, the server 
+routes the raw text through the Machine Learning and NLP Pipeline, which consists of 
+three sequential stages: (1) the Text Preprocessor performs tokenization, lowercasing, 
+
+
+=== PAGE 33 ===
+and stop word removal; (2) the TF-IDF Feature Extractor converts the cleaned text into 
+numerical feature vectors; and (3) the Intent Classifier — using the best-performing 
+model among SVM, Logistic Regression, and Neural Network (MLP) as determined 
+during evaluation — predicts the most probable service intent. The predicted intent is 
+returned to the server, which retrieves the corresponding validated response from the 
+knowledge base. 
+At the Data Tier, the system utilizes a dual-storage approach to manage 
+information efficiently. A structured file system (utilizing JSON and CSV formats) serves 
+as the Knowledge Base, storing the training data, intent classifications, and validated 
+multilingual answers for fast in-memory retrieval and administrative editing. 
+Simultaneously, an SQLite relational database is employed to store transactional and 
+historical data, specifically the chat logs for descriptive analytics, citizen feedback 
+records, and unmatched query logs for future active learning. 
+Conceptual Framework 
+The conceptual framework shown in Figure 11, illustrates how the VISTA system 
+receives citizen text inquiries, processes them through its NLP classification pipeline, 
+and produces automated service responses and administrative analytics. Based on the 
+requirements of Panabo City Hall’s frontline offices and citizen users, the framework 
+ensures that the system provides accurate multilingual inquiry handling, knowledge 
+base management, and data-driven insights through a centralized web-based platform. 
+Input 
+The input of the system includes raw natural language text submitted by citizens 
+through the chatbot interface. Inquiries may be in English, Filipino/Tagalog, or 
+
+
+=== PAGE 34 ===
+Cebuano/Bisaya. The system also receives administrator inputs including knowledge 
+base updates (new intents, edited responses), unmatched query resolutions, and 
+retraining commands through the administrator dashboard. The initial knowledge base 
+content is sourced from the Panabo City Citizen’s Charter, covering five frontline offices: 
+City Mayor’s Office, City Civil Registrar’s Office, City Treasurer’s Office, City Assessor’s 
+Office, and the City Social Welfare and Development Office. 
+Process 
+The process begins when a citizen submits a text query through the chatbot 
+interface. The backend server receives the raw text and passes it through the NLP 
+classification pipeline, which consists of three stages: (1) the Text Preprocessor 
+performs tokenization, lowercasing, and stop word removal to clean the raw input; (2) 
+the TF-IDF Feature Extractor converts the cleaned text into numerical feature vectors; 
+and (3) the Intent Classifier using the best-performing model among SVM, Logistic 
+Regression, and Neural Network (MLP) predicts the most probable service intent. If the 
+classification confidence exceeds the predefined threshold (35%), the system retrieves 
+the corresponding validated response from the knowledge base. If the confidence falls 
+below the threshold, the query is logged as an unmatched query for administrator 
+review. Administrators can also manage the knowledge base, review unmatched 
+queries, and trigger controlled model retraining through the admin dashboard. 
+Output 
+The output of the system is a web-based chatbot interface that delivers 
+automated, validated responses to citizen inquiries in real time. The system also 
+provides an administrator dashboard that displays inquiry analytics, including the most 
+
+
+=== PAGE 35 ===
+frequently asked service categories, peak inquiry periods, and unmatched query logs. 
+Additional outputs include classification performance reports, exportable chat logs, and 
+a continuously improving knowledge base through the controlled retraining mechanism. 
+​
+​
+​
+​
+​
+ 
+ 
+ 
+ 
+ 
+Figure 11. Conceptual Framework 
+Functional and non-functional requirements 
+This section discusses the system's expected system functionalities (functional 
+requirements) and expected quality attributes (non-functional requirements). 
+Functional Requirements: 
+The system shall provide the following functionalities: 
+1. The system shall accept natural language text inputs from citizens in English, 
+Filipino/Tagalog, and Cebuano/Bisaya through a web-based chatbot interface. 
+
+
+=== PAGE 36 ===
+2. The system shall preprocess raw text input using tokenization, lowercasing, 
+and stop word removal, then extract features using TF-IDF ​ vectorization. 
+3. The system shall classify the preprocessed input into a predefined service 
+intent category using a trained supervised machine learning model (SVM, 
+Logistic Regression, or Neural Network). 
+4. The system shall retrieve and display the corresponding validated response 
+from the knowledge base when the classification confidence exceeds the 
+predefined threshold. 
+5. The system shall log unmatched queries (below confidence threshold) for 
+administrator review and potential incorporation into the training dataset. 
+6. The system shall provide an administrator dashboard to view inquiry analytics, 
+manage knowledge base intents, review unmatched queries, and trigger 
+controlled model retraining. 
+7. The system shall allow administrators to securely log in using Firebase 
+Authentication. 
+8. The system shall display inquiry frequency, top service categories, and peak 
+usage periods through an analytics visualization interface. 
+9. The system shall support a controlled retraining mechanism where only 
+administrator-validated queries are incorporated into the model. 
+Non-Functional Requirements: 
+The following are the system's non-functional requirements: 
+
+
+=== PAGE 37 ===
+1. Performance Efficiency. The chatbot shall return responses within 2 seconds 
+of the user query to ensure prompt and satisfactory citizen interaction. 
+2. Reliability. The backend shall gracefully handle fallback conditions if the intent 
+confidence falls below the 35% threshold, logging unmatched queries and 
+providing a helpful default response. 
+3. Usability. The web interface shall be responsive and accessible on both 
+desktop and mobile devices, with a conversational UI that is intuitive for citizens 
+with varying technical backgrounds. 
+4. Security. Administrator passwords shall be securely encrypted and handled via 
+Firebase Authentication, with role-based access control for administrative 
+functions. 
+5. Compatibility. The system shall be accessible through modern web browsers 
+(Chrome, Firefox, Edge, Safari) on both desktop and mobile platforms. 
+6. Maintainability. The system shall be designed with modular code to allow for 
+easy debugging, knowledge base updates, model retraining, and future software 
+enhancements. 
+7. Scalability. The system shall support the addition of new service categories 
+and training data without requiring fundamental architectural changes. 
+Use Case Diagram 
+A Use Case Diagram highlights the details of system users' (also known as 
+actors) and interactions with the proposed system. As shown in Figure 12, the primary 
+
+
+=== PAGE 38 ===
+actors identified in VISTA are the Citizen/Resident and the LGU Administrator, with 
+supporting roles played by Firebase Authentication and the NLP Classification Engine.  
+The Citizen/Resident interacts with the system primarily through inquiry and 
+response activities. They submit natural language questions through the chatbot 
+interface, receive classified responses from the knowledge base, provide feedback on 
+response helpfulness, and view related service articles and office directory information. 
+The LGU Administrator is responsible for the overall management and governance of 
+the system. This includes managing the knowledge base (adding, editing, and deleting 
+intent categories and responses), reviewing unmatched queries that fell below the 
+confidence threshold, assigning unmatched queries to appropriate intents, triggering 
+controlled model retraining, viewing inquiry analytics and trend reports, and managing 
+system configurations. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+=== PAGE 39 ===
+ 
+Figure 12. Use Case Diagram 
+Context Flow Diagram (Level 0 Data Flow Diagram) 
+The Context Flow Diagram in the current system depicts the flow of business 
+actions (logical). It specifies the business events and the data each event requires and 
+produces. It also shows how the system interacts with external entities (system, 
+organization groups, external data stores, etc.). 
+In the diagram shown in Figure 13, the three external entities interacting with the 
+VISTA system are the Citizen (User), the LGU admin, and Firebase Auth. The Citizen 
+serves as the primary source of input by submitting user queries and language 
+preferences, user credentials, and feedback. In return, the system provides them with AI 
+responses, related articles, chat history, user account information, and various service 
+details such as LGU services, the office directory, settings details, and help center 
+details. Meanwhile, the LGU admin provides administrative inputs to the system, 
+including admin credentials, directory data management, retrain commands, query 
+review actions, and new intent data. In exchange, the system outputs comprehensive 
+operational data to the admin dashboard, such as system analytics, citizen feedbacks, 
+unmatched queries, system health, total queries, chat logs, as well as current directory 
+and knowledge base details. Finally, Firebase Auth acts as a third-party security entity 
+that receives auth token requests from the system and returns the corresponding auth 
+tokens and user profiles to facilitate secure login for both citizens and administrators. 
+ 
+
+
+=== PAGE 40 ===
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 13. Context Flow Diagram (Level 0 DFD) 
+Level 1 Data Flow Diagram 
+The Level 1 Data Flow Diagram  shown in Figure 14, decomposes the VISTA 
+system into its constituent sub-processes, providing a more detailed view of how data 
+flows between system modules. The external entities and data flows established in the 
+Context Flow Diagram (Level 0 DFD) are retained and expanded upon in this diagram. 
+In this diagram, the main VISTA system (from Level 0) is decomposed into eight 
+key operational modules: (1.0) User Authentication, (2.0) Chat Query Processing, (3.0) 
+Feedback Management, (4.0) Content & Service Display, (5.0) Knowledge Base 
+Management, (6.0) Model Retraining, (7.0) Analytics & Reporting, and (8.0) Directory 
+Management. Furthermore, while the system handles various types of data, the data 
+
+
+=== PAGE 41 ===
+stores in this diagram are consolidated into two primary data stores: D1 (Knowledge 
+Base), which contains intents, training data, and the service directory; and D2 (System 
+Logs), which contains chat logs, unmatched queries, and analytics data. This 
+consolidation accurately reflects the actual system design, where a single SQLite 
+database efficiently manages all persistent data through relational tables.  
+ 
+ 
+ 
+​
+ 
+ 
+ 
+ 
+ 
+​
+​
+Figure 14. Level 1 Data Flow Diagram 
+ 
+ 
+
+
+=== PAGE 42 ===
+System Design 
+This section presents the design phase of the VISTA system development, 
+detailing the database structure through the Entity Relationship Diagram, JSON schema 
+design, data dictionary, and the technologies, concepts, and theories used in developing 
+the system. 
+Entity Relationship Diagram (ERD) 
+The Entity Relationship Diagram (ERD) shown in Figure 15, defines the structure 
+of the database for VISTA, showing how data entities are organized and related to one 
+another. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 15. Entity Relationship Diagram (ERD) 
+
+
+=== PAGE 43 ===
+The Entity Relationship Diagram illustrates the relational database schema 
+supporting the VISTA system. The ANSWERS entity serves as a core component, 
+storing the validated response texts in multiple languages (English, Tagalog, Bisaya) 
+sourced from the Citizen's Charter. The INTENTS entity acts as the training data 
+repository, storing individual user questions, their assigned intent tags, languages, and 
+source documents, which are used to train the machine learning models 
+(NLP_MODEL). The performance evaluations for these models are tracked in the 
+TRAINING_METRICS entity. Citizen inquiries are recorded in the CHAT_LOGS entity, 
+which logs the user's original question, detected language, predicted intent, the model's 
+confidence score, and a timestamp. User feedback regarding the chatbot's responses is 
+collected in the FEEDBACK entity. Queries that fail to match an intent with high 
+confidence are stored in the UNRESOLVED_QUERIES entity, pending administrator 
+review. To support broader information retrieval, the ARTICLES entity stores 
+supplementary knowledge base content. Finally, the OFFICE_DIRECTORY entity 
+manages organizational data, including department names, office names, contact 
+numbers, locations, and descriptions.  
+ 
+JSON Schema Diagram 
+Although VISTA uses an SQL-based database (SQLite) as its primary data store, 
+a JSON schema design shown in Figure 16, is also utilized to represent key data 
+components such as intent definitions, training phrases, and API request/response 
+structures. The use of JSON Schema supports interoperability between different system 
+components and external services. 
+
+
+=== PAGE 44 ===
+Figure 16. JSON Schema Design 
+The schema defines validation rules such as required fields, data types, and 
+formatting standards. These rules ensure that incoming data from citizen queries and 
+administrative inputs are properly validated before being processed by the classification 
+pipeline, reducing errors and enhancing overall system reliability. 
+Data Dictionary 
+The data dictionary of the system displayed in this section presents a detailed 
+description of all data elements used in VISTA, serving as a reference for the system's 
+database structure and data organization. 
+Table 2. List of Database Tables 
+Table Name 
+Description 
+OFFICE_DIRECTORY 
+Manages organizational data including department 
+names, locations, contacts, and descriptions. 
+ARTICLES 
+Stores supplementary knowledge base content and 
+announcements linked to specific departments. 
+ANSWERS 
+Core repository for official, validated LGU service 
+responses in English, Tagalog, and Bisaya. 
+
+
+=== PAGE 45 ===
+INTENTS 
+Dataset of labeled sample questions and intent tags used 
+for training the machine learning model. 
+NLP_MODEL 
+Stores metadata about trained classification models, 
+including accuracy and file paths. 
+TRAINING_METRICS 
+Records performance evaluation metrics (precision, 
+recall, f1-score) for the models across intents. 
+CHAT_LOGS 
+Historical records of all citizen-chatbot interactions, 
+tracking predicted intents and confidence scores. 
+FEEDBACK 
+Collects citizen ratings and comments on the helpfulness 
+of the chatbot's provided answers. 
+UNRESOLVED_QUERI
+ES 
+Records citizen questions that fell below the confidence 
+threshold, pending administrator review. 
+ 
+​
+Table 2.1. OFFICE_DIRECTORY Table 
+Field Name 
+Data Type 
+Description 
+id 
+INTEGER 
+(PK) 
+Auto-incremented unique identifier for the 
+office. 
+department_name 
+TEXT 
+Name of the department. 
+office_name 
+TEXT 
+Name of the specific office or division. 
+contact_number 
+TEXT 
+Contact details for the office. 
+location 
+TEXT 
+Physical location or building of the office. 
+
+
+=== PAGE 46 ===
+description 
+TEXT 
+Brief description of the office's functions and 
+services. 
+​
+Table 2.2. ARTICLES Table 
+Field Name 
+Data Type 
+Description 
+id 
+INTEGER (PK) 
+Auto-incremented unique identifier for the article. 
+title 
+TEXT 
+Title of the article or announcement. 
+department 
+TEXT (FK) 
+Foreign key linking to the associated department. 
+content 
+TEXT 
+Full text content of the article. 
+​
+Table 2.3. ANSWERS Table 
+Field Name 
+Data Type 
+Description 
+intent_key 
+TEXT (PK) 
+Unique string identifier (intent tag) for the service 
+category. 
+department 
+TEXT (FK) 
+Foreign key linking to the responsible department. 
+en_answer 
+TEXT 
+Validated response text in English. 
+tl_answer 
+TEXT 
+Validated response text in Tagalog (Filipino). 
+bis_answer 
+TEXT 
+Validated response text in Bisaya (Cebuano). 
+ 
+ 
+Table 2.4. INTENTS Table 
+Field Name 
+Data Type 
+Description 
+
+
+=== PAGE 47 ===
+id 
+INTEGER 
+(PK) 
+Auto-incremented unique identifier for the training 
+sample. 
+department 
+TEXT (FK) 
+Foreign key linking to the associated department. 
+intent 
+TEXT 
+The target intent classification tag. 
+language 
+TEXT 
+Language of the question (e.g., en, tl, bis). 
+question 
+TEXT 
+Sample citizen query used for training the NLP 
+model. 
+source 
+TEXT 
+Origin of the training data (e.g., citizen_charter, 
+user_logs). 
+tags 
+TEXT 
+Keywords associated with the intent. 
+ 
+Table 2.5. NLP_MODEL Table 
+Field Name 
+Data Type 
+Description 
+model_name 
+TEXT (PK) 
+Unique identifier/name for the trained model. 
+model_file 
+TEXT 
+File path where the serialized model is stored. 
+accuracy 
+REAL 
+Overall classification accuracy score of the model. 
+best_model 
+TEXT 
+Boolean or string flag indicating if it is the current 
+production model. 
+trained_at 
+TIMESTAMP 
+Date and time when the model was trained. 
+ 
+Table 2.6. TRAINING_METRICS Table 
+Field Name 
+Data Type 
+Description 
+
+
+=== PAGE 48 ===
+metric_id 
+INTEGER 
+(PK) 
+Auto-incremented unique identifier for the metric 
+record. 
+model_name 
+TEXT (FK) 
+Foreign key linking to the NLP_MODEL table. 
+intent_name 
+TEXT 
+Specific intent category being evaluated. 
+precision 
+REAL 
+Precision score for the intent classification. 
+recall 
+REAL 
+Recall score for the intent classification. 
+f1_score 
+REAL 
+F1-score for the intent classification. 
+support 
+INTEGER 
+Number of true instances for the intent in the test 
+set. 
+ 
+Table 2.7. CHAT_LOGS Table 
+Field Name 
+Data Type 
+Description 
+id 
+INTEGER 
+(PK) 
+Auto-incremented unique identifier for the chat log 
+entry. 
+intent_key 
+TEXT (FK) 
+Foreign key linking to the matched intent in 
+ANSWERS. 
+question 
+TEXT 
+Original text query submitted by the citizen. 
+intent 
+TEXT 
+The intent predicted by the NLP classifier. 
+language 
+TEXT 
+Language detected from the user's input. 
+confidence 
+REAL 
+Classification confidence score of the prediction. 
+created_at 
+TIMESTAMP 
+Timestamp of the interaction. 
+ 
+
+
+=== PAGE 49 ===
+Table 2.8. FEEDBACK Table 
+Field Name 
+Data Type 
+Description 
+id 
+INTEGER 
+(PK) 
+Auto-incremented unique identifier for the feedback 
+entry. 
+question 
+TEXT 
+Original query that triggered the feedback. 
+answer 
+TEXT 
+The response provided by the chatbot. 
+intent 
+TEXT 
+The predicted intent associated with the interaction. 
+helpful 
+BOOLEAN 
+True if the citizen found the answer helpful, False 
+otherwise. 
+language 
+TEXT 
+Language of the interaction. 
+comment 
+TEXT 
+Optional textual feedback from the citizen. 
+created_at 
+TIMESTAMP 
+Timestamp when the feedback was submitted. 
+ 
+Table 2.9. UNRESOLVED_QUERIES Table 
+Field Name 
+Data Type 
+Description 
+id 
+INTEGER 
+(PK) 
+Auto-incremented unique identifier for the 
+unresolved query. 
+question 
+TEXT 
+Original text query submitted by the citizen that 
+failed to match. 
+predicted_intent 
+TEXT 
+The highest scoring intent, though below 
+threshold. 
+
+
+=== PAGE 50 ===
+confidence 
+REAL 
+The below-threshold confidence score. 
+created_at 
+TIMESTAMP 
+Timestamp when the unresolved query was 
+logged. 
+ 
+Technologies, Concepts, and Theories 
+This section deeply discusses the model/ algorithm/ emerging technologies 
+shown in the system architecture. It includes the discussion of the following but is not 
+limited to, depending on the study's objectives and the process involved in the model. 
+Data Collection 
+Data collection is performed through manual extraction and digitization of service 
+information from the official Panabo City Citizen's Charter (CMO 2026 edition), 
+supplemented by historical citizen inquiries sourced from the LGU's public Facebook 
+Messenger page. The Citizen's Charter provides structured information including 
+service names, requirements, procedures, fees, and processing times for all frontline 
+offices. The dataset used in this study is a custom-built dataset constructed entirely by 
+the developers from these primary LGU sources; no pre-existing or downloaded dataset 
+was used, as no publicly available training corpus exists for Philippine LGU citizen 
+inquiries in English, Filipino/Tagalog, and Cebuano/Bisaya. 
+Data Pre-processing 
+Before classification, the collected text data undergoes pre-processing to 
+improve its quality and reliability [28]. This includes tokenization (splitting sentences into 
+individual words), lowercasing (converting all text to lowercase for uniformity), and stop 
+
+
+=== PAGE 51 ===
+word removal (filtering common conversational words such as "the," "is," "ang," "sa" that 
+do not contribute to intent meaning). Pre-processing is performed using Python libraries 
+including NLTK and Scikit-learn's built-in text utilities. This ensures that the input data is 
+clean and suitable for feature extraction, reducing the likelihood of misclassification 
+caused by noise in the text. 
+Feature Extraction 
+Feature extraction involves transforming the cleaned text into numerical format 
+suitable for machine learning algorithms. VISTA utilizes Term Frequency-Inverse 
+Document Frequency (TF-IDF) vectorization, which evaluates how relevant a word is to 
+a document within a collection of documents [17]. TF-IDF assigns higher weights to 
+distinctive, domain-specific keywords (e.g., "permit," "clearance," "cedula," "business") 
+and lower weights to common words that appear across many documents. 
+Classification 
+The system evaluates three supervised machine learning algorithms to 
+determine the optimal classifier for VISTA's intent classification pipeline. The purpose of 
+these algorithms is intent classification — when a citizen types a message, the 
+algorithm analyzes the processed text, determines what the user's intent or goal is, and 
+matches it to the correct FAQ category in the knowledge base so the chatbot can reply 
+with an accurate, validated response. 
+Support Vector Machine (SVM) [18] creates an optimal hyperplane to separate 
+different intent categories in high-dimensional TF-IDF feature space. SVM is particularly 
+
+
+=== PAGE 52 ===
+effective for text classification because it handles the high dimensionality of text features 
+well and provides robust decision boundaries even with limited training data. 
+Logistic Regression [19] is a probabilistic model that estimates the probability of 
+a query belonging to each possible intent category. It provides interpretable confidence 
+scores and serves as a reliable baseline classifier for multiclass text problems. 
+Neural Network — Multilayer Perceptron (MLP) [20] is a feedforward artificial 
+neural network consisting of an input layer, one or more hidden layers, and an output 
+layer. MLP classifiers learn non-linear patterns and complex feature interactions through 
+backpropagation, often achieving higher accuracy than linear models when sufficient 
+training data is available. 
+All three algorithms are implemented and evaluated using the Scikit-learn 
+machine learning library [21]. The model achieving the highest combined accuracy, 
+precision, recall, and F1-score across all intent categories is selected for production 
+deployment. 
+This part also includes a list of the technologies required to develop the system. 
+A definition of the technology, a snapshot of the Interface as the proponents used it, and 
+a discussion of how the technology was utilized are included in the manuscript. 
+Python Programming Language. As shown in FIgure 17, Python serves as the 
+primary backend programming language for VISTA. It was selected because it provides 
+the most robust and mature ecosystem of Natural Language Processing and machine 
+learning libraries available, including NLTK for text preprocessing and Scikit-learn for 
+model training and evaluation. Python's syntax is clean and readable, which accelerates 
+
+
+=== PAGE 53 ===
+development and debugging. Furthermore, the FastAPI web framework, built on Python, 
+handles all HTTP/REST API endpoints for both the chatbot and administrator interfaces, 
+providing high-performance asynchronous request handling suitable for real-time 
+chatbot interactions [29]. 
+ 
+Figure 17. Python Source Code in VS Code 
+Scikit-learn Machine Learning Library. Scikit-learn [21] shown in Figure 18, 
+provides the implementation of all three classification algorithms (SVM, Logistic 
+Regression, Neural Network/MLP), TF-IDF vectorization, model evaluation metrics, and 
+the complete machine learning pipeline infrastructure. It was chosen because it is the 
+industry standard open-source library for traditional machine learning in Python, offering 
+
+
+=== PAGE 54 ===
+well-documented and computationally efficient implementations that are suitable for 
+deployment on resource-constrained LGU servers without requiring GPU hardware [21]. 
+ 
+​
+Figure 18. Scikit-learn Implementation in Source Code 
+ 
+Natural Language Toolkit (NLTK). NLTK provides essential text preprocessing 
+utilities including tokenization, stop word lists, and stemming functions used to clean 
+and normalize raw citizen text input as shown in Figure 19. NLTK was selected because 
+it is one of the most widely used and well-documented NLP libraries for Python, offering 
+
+
+=== PAGE 55 ===
+comprehensive support for text processing tasks that are foundational to the system's 
+classification pipeline [30]. 
+​
+Figure 19. NLTK Implementation in Source Code 
+SQLite Database. SQLite serves as the lightweight, serverless relational 
+database management system for storing intents, training data, chat logs, unmatched 
+queries, and administrator credentials that is shown in Figure 20. It was chosen 
+because its self-contained, zero-configuration nature makes it ideal for local deployment 
+on LGU servers without requiring a separate database server or complex installation 
+procedures, thereby reducing the technical burden on LGU IT staff [31]. 
+ 
+
+
+=== PAGE 56 ===
+​
+Figure 20. SQLite Database Schema 
+Firebase Authentication. Firebase Authentication provides secure citizen login 
+and session management, allowing residents to securely save their chat history across 
+devices using Google, Email, or Phone OTP. As shown in Figure 21, the client-side 
+application initializes the core Firebase configuration parameters to instantiate the 
+authentication instance. It was selected because it offers a reliable, free-tier 
+authentication service that handles password hashing, session tokens, and secure 
+credential storage without requiring the developers to build a custom authentication 
+system from scratch [32]. 
+ 
+
+
+=== PAGE 57 ===
+​
+Figure 21. Integration of Firebase Auth in the VISTA Client Application 
+ 
+HTML/CSS/JavaScript 
+Frontend. 
+The 
+citizen 
+chatbot 
+interface 
+and 
+administrator dashboard are built using standard web technologies (HTML5, CSS3, 
+JavaScript) to ensure cross-browser compatibility and responsive design on both 
+desktop and mobile devices as shown in Figure 22. These technologies were chosen 
+because they are universally supported by all modern web browsers without requiring 
+additional plugins or frameworks, ensuring maximum accessibility for citizens regardless 
+of their device or browser choice [33]. 
+ 
+​
+Figure 22. Frontend Source Code 
+
+
+=== PAGE 58 ===
+System Development and Testing 
+This section presents the results of the machine learning model evaluation 
+conducted during the development of VISTA. The evaluation compares the performance 
+of the three candidate classification algorithms, Support Vector Machine (SVM), Logistic 
+Regression, and Neural Network (Multilayer Perceptron), using the custom-built intent 
+classification dataset derived from the Panabo City Citizen’s Charter. 
+To determine the best-performing algorithm for VISTA's intent classification 
+pipeline, the three supervised machine learning models, Support Vector Machine 
+(SVM), Logistic Regression, and Neural Network (Multilayer Perceptron), were trained 
+and evaluated using the custom-built dataset in Google Colab. 
+The evaluation uses four standard machine learning metrics computed from the 
+Confusion Matrix [34]. Accuracy is the ratio of correctly predicted intents to the total 
+number of predictions, calculated as: Accuracy = (TP + TN) / (TP + TN + FP + FN), 
+where TP is True Positive, TN is True Negative, FP is False Positive, and FN is False 
+Negative. Precision is the ratio of true positive predictions to all positive predictions for 
+each intent category, calculated as: Precision = TP / (TP + FP), measuring the 
+exactness of the classifier. Recall is the ratio of true positive predictions to all actual 
+instances of each intent category, calculated as: Recall = TP / (TP + FN), measuring the 
+completeness of the classifier. F1-Score is the harmonic mean of Precision and Recall, 
+calculated as: F1 = 2 × (Precision × Recall) / (Precision + Recall), providing a balanced 
+measure of classification performance [35]. 
+
+
+=== PAGE 59 ===
+The raw performance breakdown for each intent category across the tested 
+models is shown in Figure 23, which displays the generated classification report results 
+exported directly from the Google Colab environment. 
+​
+ Figure 23. Classification Report Results in Google Colab 
+​
+​
+To further analyze where the models succeeded or failed in predicting specific 
+intents, confusion matrices were generated for each algorithm. Figure 24 and Figure 25 
+illustrate the confusion matrices for the Support Vector Machine (SVM) and Logistic 
+Regression models, respectively. As seen in the visualizations, both models struggled 
+significantly, displaying scattered predictions with high rates of false positives and false 
+negatives. This indicates their inability to effectively separate the complex, multilingual 
+intent categories present in the dataset. 
+
+
+=== PAGE 60 ===
+​
+Figure 24. Confusion Matrix for SVM 
+
+
+=== PAGE 61 ===
+​
+Figure 25. Confusion Matrix for Logistic Regression 
+ 
+In stark contrast, Figure 26 presents the confusion matrix for the Neural Network 
+(MLP). The distinct, dark diagonal line across the matrix indicates a high volume of True 
+Positives, confirming that the MLP model successfully learned the non-linear patterns of 
+the textual data and made highly accurate predictions across almost all intent 
+categories with minimal confusion. 
+
+
+=== PAGE 62 ===
+​
+Figure 26. Confusion Matrix for Neural Network (MLP) 
+ 
+​
+​
+A direct visual comparison of the models' overall predictive accuracy is illustrated 
+in the bar chart in Figure 27. This chart highlights the massive performance gap 
+between the traditional linear models and the deep learning approach for this specific 
+natural language dataset. 
+
+
+=== PAGE 63 ===
+​
+Figure 27. Comparative Accuracy of SVM, Logistic Regression, and MLP 
+​
+​
+The numerical breakdown of these results is presented in Table 3. As shown in 
+the table, the Logistic Regression model performed the poorest, achieving an accuracy 
+of only 0.09 (9%) and an F1-Score of 0.06, rendering it unusable for the system. The 
+Support Vector Machine (SVM) performed marginally better but still yielded an 
+unacceptable accuracy of 0.30 (30%). However, the Neural Network (MLP) 
+demonstrated outstanding performance, achieving an accuracy of 0.92 (92%), a 
+precision of 0.95 (95%), a recall of 0.92 (92%), and an F1-Score of 0.92. 
+​
+Table 3. Comparative Evaluation Metrics of Three Classification Algorithms 
+Algorithm 
+Accuracy 
+Precision 
+Recall 
+F1-Score 
+Support 
+Vector 
+Machine 
+(SVM) 
+0.30 
+0.30 
+0.30 
+0.29 
+
+
+=== PAGE 64 ===
+Logistic Regression 
+0.09 
+0.05 
+0.09 
+0.06 
+Neural Network (MLP) 
+0.92 
+0.95 
+0.92 
+0.92 
+Based on the evaluation metrics detailed in Table 3 and the supporting visual 
+figures, the Neural Network (MLP) was definitively selected as the core classification 
+algorithm for the VISTA system. It proved to be the only model capable of reliably 
+understanding and categorizing the complex, multilingual citizen queries with the high 
+confidence required for deployment. 
+The following subsections describe the planned testing strategy and implementation 
+approach for deploying VISTA in Panabo City Hall. 
+ 
+Systems Test Plan 
+The test plan encompasses three levels of testing: (1) Unit Testing of individual 
+NLP pipeline components (preprocessor, vectorizer, classifier); (2) Integration Testing of 
+the complete request-response flow from frontend to backend to database; and (3) User 
+Acceptance Testing with actual LGU staff and citizens to validate usability and response 
+quality. 
+Systems Implementation Plan 
+The implementation plan includes: (1) deployment of the backend server on the 
+LGU's local infrastructure at Panabo City Hall or on a cloud hosting platform such as a 
+virtual private server (VPS) to ensure 24/7 availability; (2) configuration of Firebase 
+Authentication for administrator accounts; (3) initial population of the knowledge base 
+from the Citizen's Charter with approximately 1,500 curated question variations across 
+
+
+=== PAGE 65 ===
+five frontline offices; (4) training and evaluation of the three ML models in Google Colab 
+to select the optimal classifier; and (5) a soft launch period with selected LGU offices in 
+Panabo City before full public deployment. The system will be piloted and tested 
+specifically within Panabo City, Davao del Norte, with frontline staff from the 
+participating offices and selected citizen volunteers serving as the initial user base for 
+User Acceptance Testing. 
+Systems Security Plan 
+The VISTA system will implement security measures to protect citizen inquiry 
+data, knowledge base content, and administrator access. Authentication will be required 
+before the administrator can access the dashboard and manage system functions such 
+as knowledge base editing, unmatched query review, and model retraining. 
+Administrator credentials will be protected through Firebase Authentication, which 
+handles password hashing, session token management, and secure credential storage. 
+Access control will be applied to ensure that only authorized LGU administrators 
+can manage knowledge base intents, view inquiry analytics, review unmatched queries, 
+and trigger model retraining. The system will also protect stored data in the SQLite 
+database, including citizen chat logs, intent definitions, training data, and unmatched 
+query records. 
+The system will maintain data integrity by storing records properly and preventing 
+unauthorized modification of important system information. Input sanitization will be 
+implemented to prevent injection attacks on the backend API. Rate limiting will be 
+applied to prevent API abuse. The system will also monitor login activity and failed login 
+attempts to help identify possible security issues. These security measures will help 
+
+
+=== PAGE 66 ===
+ensure that VISTA remains reliable, protected, and suitable for handling citizen inquiries 
+at Panabo City Hall. 
+Systems Maintenance Plan 
+The VISTA system will follow a structured maintenance plan to ensure 
+continuous operation, accuracy, and reliability. Regular maintenance will include 
+monthly reviews of the knowledge base to ensure alignment with the current Citizen’s 
+Charter, 
+quarterly 
+model 
+retraining 
+cycles 
+incorporating 
+accumulated 
+administrator-validated queries, and weekly automated backups of the SQLite database 
+to prevent data loss. 
+The administrator or system maintainer will also monitor classification accuracy trends 
+through the analytics dashboard to determine when the model requires retraining. If a 
+significant drop in accuracy is observed, or if new service categories are added by 
+Panabo City Hall, the administrator will trigger the controlled retraining process to 
+update the machine learning models. 
+Software maintenance will include updating the web application frontend, improving 
+system functions based on user feedback, reviewing SQLite database records, fixing 
+detected errors, and updating system documentation. The knowledge base responses, 
+intent categories, and office directory information will also be reviewed regularly to 
+ensure that the system remains aligned with actual Panabo City Hall services and 
+processes. Through this maintenance plan, VISTA will continue to support accurate 
+multilingual citizen inquiry classification, knowledge base management, and real-time 
+chatbot response delivery. 
+ 
+
+
+=== PAGE 67 ===
+REFERENCES 
+[1] United Nations Department of Economic and Social Affairs, UN 
+E-Government Survey 2022: The Future of Digital Government. New York, ​
+NY, USA: United Nations, 2022. 
+[2] D. Khurana, A. Koli, K. Khatter, and S. Singh, "Natural language processing: 
+State of the art, current trends and challenges," Multimedia Tools and 
+Applications, vol. 82, pp. 3713–3744, 2023. 
+[3] A. Androutsopoulou, N. Karacapilidis, E. Loukis, and Y. Charalabidis, 
+"Transforming the communication between citizens and government through 
+AI-guided chatbots," Government Information Quarterly, vol. 36, ​
+no. 
+2, 
+pp. 
+358–367, 2019. 
+[4] M. Janssen and E. Estevez, "Lean government and platform-based 
+governance—Doing more with less," Government Information Quarterly, ​ vol. 
+30, pp. S1–S8, 2013. 
+[5] E. Adamopoulou and L. Moussiades, "Chatbots: History, technology, and 
+applications," Machine Learning with Applications, vol. 2, p. 100006, 2020. 
+[6] Department of Information and Communications Technology (DICT), 
+E-Government Masterplan 2022. Quezon City, Philippines: DICT, 2022. 
+[7] Republic Act No. 11032, "Ease of Doing Business and Efficient Government 
+Service Delivery Act of 2018," Official Gazette of the Republic of the Philippines, 
+2018. 
+[8] J. R. Reyes, "Digitalization of Local Government Units in the Philippines: A 
+Review," Philippine Journal of Public Administration, vol. 65, no. 1, pp. 45–​67, 
+2021. 
+[9] Anti-Red Tape Authority (ARTA), Reference Guidelines for the Citizen's 
+Charter. Quezon City, Philippines: ARTA, 2021. 
+
+
+=== PAGE 68 ===
+[10] P. Joshi, S. Santy, A. Budhiraja, K. Bali, and M. Choudhury, "The State and 
+Fate of Linguistic Diversity and Inclusion in the NLP World," in ​
+Proceedings 
+of the 58th Annual Meeting of the Association for ​
+Computational Linguistics 
+(ACL 2020), pp. 6282–6293, 2020. 
+[11] Philippine Statistics Authority, 2020 Census of Population and Housing: 
+Panabo City, Davao del Norte. Quezon City, Philippines: PSA, 2021. 
+[12] An Act Converting the Davao del Norte National Agricultural School into the 
+Davao del Norte State College, Republic Act No. 7879, Feb. 14, 1995. 
+[13] Davao del Norte State College, DNSC Research, Development, and 
+Extension Agenda 2023–2028. Panabo City, Davao del Norte: DNSC, ​
+2023. 
+[14] Commission on Higher Education (CHED), CHED Achieve Agenda: 
+Framework for Higher Education Innovation and Research. Quezon City, 
+Philippines: CHED, 2023. 
+[15] Department of Science and Technology (DOST), Harmonized National 
+Research and Development Agenda 2022–2028. Taguig City, Philippines: ​DOST, 
+2022. 
+[16] United Nations, "The 17 Goals," Sustainable Development Goals, 2015.  
+[Online]. Available: https://sdgs.un.org/goals 
+[17] G. Salton and C. Buckley, "Term-weighting approaches in automatic text 
+retrieval," Information Processing & Management, vol. 24, no. 5, pp. 513–​ 523, 
+1988. 
+[18] T. Joachims, "Text categorization with Support Vector Machines: Learning 
+with many relevant features," in Machine Learning: ECML-98, Berlin, Heidelberg: 
+Springer, 1998, pp. 137–142. 
+[19] C. D. Manning, P. Raghavan, and H. Schütze, Introduction to Information 
+Retrieval. Cambridge, UK: Cambridge University Press, 2008. 
+
+
+=== PAGE 69 ===
+[20] I. Goodfellow, Y. Bengio, and A. Courville, Deep Learning. Cambridge, MA, 
+USA: MIT Press, 2016. 
+[21] F. Pedregosa et al., "Scikit-learn: Machine learning in Python," Journal of 
+Machine Learning Research, vol. 12, pp. 2825–2830, 2011. 
+[22] Department of Information and Communications Technology (DICT), "eGov   
+PH - The Philippine e-Government Super App," Republic of the Philippines, 
+2023. [Online]. Available: https://e.gov.ph/. [Accessed: May 31, 2026]. 
+[23] Open Government Products (OGP), "AskGov: A help centre for citizens to 
+find clear, direct answers," Government Technology Agency of Singapore, ​2023. 
+[Online]. Available: https://ask.gov.sg/. [Accessed: May 31, 2026]. 
+[24] E. Neri, M. Mamei, and F. Zambonelli, "Automating Citizen Reports 
+Classification in Municipalities using Machine Learning," IEEE 15th ​International 
+Conference on Smart Cities: Improving Quality of Life Using ​ICT 
+& 
+IoT 
+(HONET-ICT), 
+2018. 
+[Online]. 
+Available: 
+https://ieeexplore.ieee.org/document/8551772. (Note: This is a highly reliable 
+academic paper regarding SVM text classification for Italian ​ municipalities). 
+[25] Philippine Health Insurance Corporation (PhilHealth), "PhilHealth tests AI- 
+powered Chatbots to handle public queries," Republic of the Philippines, ​ 2023. 
+[Online]. Available: https://www.philhealth.gov.ph/. [Accessed: May ​31, 2026]. 
+[26] Spring ACT and Quezon City Government, "Sophia: The world's first chatbot 
+empowering survivors of domestic violence," Spring ACT, Switzerland, ​
+Nov. 
+2023. [Online]. Available: https://sophia.chat/. [Accessed: May 31, ​ 2026]. 
+[27] K. Schwaber and J. Sutherland, The Scrum Guide: The Definitive Guide to 
+Scrum: The Rules of the Game. Scrum.org, 2020. 
+[28] R. Feldman and J. Sanger, The Text Mining Handbook: Advanced 
+Approaches in Analyzing Unstructured Data. Cambridge, UK: Cambridge 
+University Press, 2007. 
+
+
+=== PAGE 70 ===
+[29] S. Ramírez, "FastAPI: Modern, fast web framework for building APIs with 
+Python," 2019. [Online]. Available: https://fastapi.tiangolo.com/ 
+[30] S. Bird, E. Klein, and E. Loper, Natural Language Processing with Python. 
+Sebastopol, CA, USA: O'Reilly Media, 2009. 
+[31] 
+SQLite 
+Consortium, 
+"About 
+SQLite," 
+2023. 
+[Online]. 
+Available:  
+https://www.sqlite.org/about.html 
+[32]  Google Firebase, "Firebase Authentication Documentation," 2023. [Online]. ​
+​
+Available: https://firebase.google.com/docs/auth 
+[33] E. Freeman and E. Robson, Head First HTML and CSS, 2nd ed. Sebastopol, 
+​
+CA, USA: O'Reilly Media, 2012.  
+[34] C. Goutte and E. Gaussier, "A probabilistic interpretation of precision, recall ​
+​
+and F-score, with implication for evaluation," in Advances in Information ​ ​
+​
+Retrieval, Springer, 2005, pp. 345–359. 
+[35] D. M. W. Powers, "Evaluation: From precision, recall and F-measure to 
+ROC, ​informedness, markedness and correlation," Journal of Machine Learning ​
+Technologies, vol. 2, no. 1, pp. 37–63, 2011. 
+ 
+ 
+ 
+
+

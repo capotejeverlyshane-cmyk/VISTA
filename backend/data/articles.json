@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Birth Certificate Requirements Checklist",
+    "department": "Civil Registrar",
+    "content": "Checklist of valid ID, request form, authorization letter, and payment instructions for birth certificate requests.",
+    "url": "https://psa.gov.ph/civilregistration/requesting-civil-registry-document/birth-certificate"
+  },
+  {
+    "id": 2,
+    "title": "Business Permit Application Guide",
+    "department": "BPLO",
+    "content": "Guide for applying for a new business permit, including DTI or SEC registration, barangay clearance, fire safety requirements, and fees.",
+    "url": "https://panabocity.gov.ph/bplo/"
+  },
+  {
+    "id": 3,
+    "title": "Real Property Tax Payment Guide",
+    "department": "Treasurer",
+    "content": "Instructions on paying real property tax, including tax declarations, tax bills, cashier payment procedures, and due dates.",
+    "url": "https://panabocity.gov.ph/city-treasurers-office/"
+  },
+  {
+    "id": 4,
+    "title": "Steps to Retire a Business Permit",
+    "department": "BPLO",
+    "content": "business permit retire close stop steps requirements",
+    "url": "https://panabocity.gov.ph/bplo/retirement"
+  },
+  {
+    "id": 5,
+    "title": "Guide to Renewing a Business Permit",
+    "department": "BPLO",
+    "content": "business permit renew renewal steps requirements",
+    "url": "https://panabocity.gov.ph/bplo/renewal"
+  },
+  {
+    "id": 6,
+    "title": "Application Form for Business Permit (PDF)",
+    "department": "BPLO",
+    "content": "Downloadable unified application form for new business permit or renewal pdf form document file.",
+    "url": "https://panabocity.gov.ph/forms/unified_business_permit_application.pdf"
+  },
+  {
+    "id": 7,
+    "title": "MTOP Tricycle Franchise Application Form (PDF)",
+    "department": "City Mayor's Office",
+    "content": "Downloadable application form for Motorized Tricycle Operator's Permit MTOP franchise new renewal pdf form.",
+    "url": "https://panabocity.gov.ph/forms/mtop_application_form.pdf"
+  },
+  {
+    "id": 8,
+    "title": "Civil Registry Request Form (PDF)",
+    "department": "Civil Registrar",
+    "content": "Downloadable request form for birth certificate, marriage certificate, death certificate pdf document.",
+    "url": "https://panabocity.gov.ph/forms/civil_registry_request.pdf"
+  }
+]

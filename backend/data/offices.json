@@ -1,0 +1,117 @@
+[
+  {
+    "office_id": "cmo",
+    "name": "City Mayor's Office",
+    "head_of_office": {
+      "name": "[Name of City Mayor]",
+      "title": "City Mayor"
+    },
+    "contact": {
+      "phone": "[Phone Number / Local Ext]",
+      "email": "[Email Address]",
+      "social_media": "[Facebook Page URL]"
+    },
+    "location": {
+      "building": "[Main City Hall or Annex]",
+      "floor": "[Floor Number]",
+      "room": "[Room Number]"
+    },
+    "operating_hours": {
+      "standard": "8:00 AM - 5:00 PM (Mon-Fri)",
+      "noon_break": false,
+      "cut_off_time": "4:30 PM"
+    }
+  },
+  {
+    "office_id": "bplo",
+    "name": "Business Permit & Licensing Office",
+    "head_of_office": {
+      "name": "[Name of BPLO Head]",
+      "title": "BPLO Head"
+    },
+    "contact": {
+      "phone": "[Phone Number / Local Ext]",
+      "email": "[Email Address]",
+      "social_media": ""
+    },
+    "location": {
+      "building": "[Main City Hall or Annex]",
+      "floor": "[Floor Number]",
+      "room": "[Room Number]"
+    },
+    "operating_hours": {
+      "standard": "8:00 AM - 5:00 PM (Mon-Fri)",
+      "noon_break": false,
+      "cut_off_time": "4:30 PM"
+    }
+  },
+  {
+    "office_id": "cto",
+    "name": "City Treasurer's Office",
+    "head_of_office": {
+      "name": "[Name of City Treasurer]",
+      "title": "City Treasurer"
+    },
+    "contact": {
+      "phone": "[Phone Number / Local Ext]",
+      "email": "[Email Address]",
+      "social_media": ""
+    },
+    "location": {
+      "building": "[Main City Hall or Annex]",
+      "floor": "[Floor Number]",
+      "room": "[Room Number]"
+    },
+    "operating_hours": {
+      "standard": "8:00 AM - 5:00 PM (Mon-Fri)",
+      "noon_break": true,
+      "cut_off_time": "4:00 PM"
+    }
+  },
+  {
+    "office_id": "lcr",
+    "name": "Local Civil Registrar",
+    "head_of_office": {
+      "name": "[Name of Local Civil Registrar]",
+      "title": "Local Civil Registrar"
+    },
+    "contact": {
+      "phone": "[Phone Number / Local Ext]",
+      "email": "[Email Address]",
+      "social_media": ""
+    },
+    "location": {
+      "building": "[Main City Hall or Annex]",
+      "floor": "[Floor Number]",
+      "room": "[Room Number]"
+    },
+    "operating_hours": {
+      "standard": "8:00 AM - 5:00 PM (Mon-Fri)",
+      "noon_break": false,
+      "cut_off_time": "4:30 PM"
+    }
+  },
+  {
+    "office_id": "cho",
+    "name": "City Health Office",
+    "head_of_office": {
+      "name": "[Name of City Health Officer]",
+      "title": "City Health Officer"
+    },
+    "contact": {
+      "phone": "[Phone Number / Local Ext]",
+      "email": "[Email Address]",
+      "social_media": ""
+    },
+    "location": {
+      "building": "[Health Center Building]",
+      "floor": "[Floor Number]",
+      "room": "[Room Number]"
+    },
+    "operating_hours": {
+      "standard": "8:00 AM - 5:00 PM (Mon-Fri)",
+      "noon_break": true,
+      "cut_off_time": "4:00 PM"
+    }
+  }
+]

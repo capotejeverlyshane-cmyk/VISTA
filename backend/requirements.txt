@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pandas
+scikit-learn
+joblib
+numpy
+python-multipart
+python-dotenv
+deep-translator
+spacy
+sumy
+lxml
+passlib[bcrypt]
+python-jose[cryptography]
+supabase
