@@ -5,14 +5,19 @@ import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin
 import spacy
 
-# Load spaCy model for inference
-try:
-    nlp = spacy.load("en_core_web_md")
-except OSError:
-    print("[INFO] Downloading spaCy model en_core_web_md (this might take a while if not cached)...")
-    from spacy.cli import download
-    download("en_core_web_md")
-    nlp = spacy.load("en_core_web_md")
+nlp = None
+def get_nlp():
+    global nlp
+    if nlp is None:
+        import spacy
+        try:
+            nlp = spacy.load("en_core_web_md")
+        except OSError:
+            print("[INFO] Downloading spaCy model en_core_web_md (this might take a while if not cached)...")
+            from spacy.cli import download
+            download("en_core_web_md")
+            nlp = spacy.load("en_core_web_md")
+    return nlp
 
 class SpaCyVectorTransformer(BaseEstimator, TransformerMixin):
     """
@@ -24,7 +29,8 @@ class SpaCyVectorTransformer(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X):
-        return np.array([nlp(text).vector for text in X])
+        _nlp = get_nlp()
+        return np.array([_nlp(text).vector for text in X])
 
 # Backward compatibility hack for old models trained when this was in __main__
 import sys
