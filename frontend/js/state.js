@@ -22,6 +22,7 @@ export const state = {
   isListening: false,
   isSending: false,
   context: null,
+  contextLanguage: null,
   stopTypingFlag: false,
   typingInterval: null,
   currentSessionId: sessionStorage.getItem("vista_current_session") || null,

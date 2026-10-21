@@ -1,10 +1,33 @@
-import json
+import csv
+from pathlib import Path
 from typing import Dict, Any
 from supabase_client import supabase
 
 # Global caches
 ANSWERS: Dict[str, Any] = {}
 OFFICES: list = []
+LOCAL_INTENTS_PATH = Path(__file__).resolve().parent.parent / "intents.csv"
+
+
+def load_local_answers():
+    """Read intent names and multilingual answers from the training export."""
+    with LOCAL_INTENTS_PATH.open(encoding="utf-8-sig", newline="") as file:
+        reader = csv.DictReader(file)
+        required_columns = {"intent_name", "en_answer", "tl_answer", "bis_answer"}
+        if not required_columns.issubset(reader.fieldnames or []):
+            raise ValueError("Local intents CSV is missing required answer columns.")
+        return {
+            row["intent_name"]: {
+                "id": row.get("id"),
+                "department": row.get("department", "General"),
+                "answers": {
+                    language: row.get(f"{language}_answer", "")
+                    for language in ("en", "tl", "bis")
+                },
+            }
+            for row in reader
+            if row.get("intent_name")
+        }
 
 def refresh_answers_cache():
     """Fetches all intents from Supabase and rebuilds the ANSWERS dictionary."""
@@ -24,20 +47,23 @@ def refresh_answers_cache():
                         "bis": row.get("bis_answer", "")
                     }
                 }
+        if not new_answers:
+            raise ValueError("Supabase returned no knowledge-base intents.")
         ANSWERS.clear()
         ANSWERS.update(new_answers)
         print(f"[INFO] Cache refreshed: Loaded {len(ANSWERS)} intents from Supabase.")
     except Exception as e:
         print(f"[ERROR] Failed to refresh answers cache from Supabase: {e}")
-        # Fallback to local if Supabase fails (optional, but good for safety)
         try:
-            with open("data/answers.json", "r", encoding="utf-8") as f:
-                local_answers = json.load(f)
-                ANSWERS.clear()
-                ANSWERS.update(local_answers)
-                print("[INFO] Fallback: Loaded answers from local JSON.")
-        except Exception as local_e:
+            local_answers = load_local_answers()
+            if not local_answers:
+                raise ValueError("Local intents CSV contains no answers.")
+            ANSWERS.clear()
+            ANSWERS.update(local_answers)
+            print(f"[INFO] Fallback: Loaded {len(ANSWERS)} intents from local CSV.")
+        except (OSError, ValueError, csv.Error) as local_e:
             print(f"[ERROR] Fallback failed: {local_e}")
+            raise RuntimeError("Unable to load the knowledge base.") from local_e
 
 def load_offices():
     """Loads offices directory data from Supabase."""

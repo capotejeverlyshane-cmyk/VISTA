@@ -1,136 +1,221 @@
+import logging
+import re
 import time
 from fastapi import APIRouter, Request
-from pydantic import BaseModel
-from typing import Optional
-from deep_translator import GoogleTranslator
-from services.nlp import get_confidence, predict_intent, summarize_text, DISAMBIGUATION_RULES
-from services.cache import ANSWERS, OFFICES
-from supabase_client import supabase
+from pydantic import BaseModel, Field, field_validator
+from services.cache import ANSWERS
+from services.nlp import (
+    DISAMBIGUATION_RULES,
+    LANGUAGE_ALIASES,
+    get_confidence,
+    normalize_language,
+    predict_intent,
+    resolve_language,
+    summarize_text,
+)
 from utils.preprocess import clean_text
+from supabase_client import supabase
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
+
+# Selections supply missing query context; the trained model still chooses the intent.
+FOLLOW_UP_QUERIES = {
+    "awaiting_business_permit_type": (
+        ("new business permit", ("new", "bago", "bag-o", "bagong", "bag-ong")),
+        ("renew business permit", ("renew", "renewal")),
+        ("retirement of business permit", ("retire", "retirement", "sarado", "close")),
+        ("change location business permit", ("transfer", "change location")),
+    ),
+    "awaiting_mtop_type": (
+        ("new MTOP franchise", ("new", "bago", "bag-o", "bagong", "bag-ong")),
+        ("renewal of MTOP franchise", ("renew", "renewal")),
+        ("annual MTOP mayor's permit", ("annual",)),
+        ("dropping of MTOP franchise", ("drop", "dropping")),
+        ("substitution of MTOP unit", ("substitute", "substitution")),
+        ("transfer of MTOP ownership", ("transfer",)),
+    ),
+}
+
+
+def fallback_reply(lang: str, kind: str) -> str:
+    messages = {
+        "unresolved": {
+            "en": "I'm sorry, I didn't understand that. Could you rephrase your question?",
+            "tl": "Pasensya na, hindi ko naiintindihan ang inyong tanong. Maaari po bang linawin?",
+            "bis": "Pasayloa ko, wala ko makasabot sa imong pangutana. Mahimo ba nimong klaruhon?",
+        },
+        "missing_intent": {
+            "en": "No information available for this intent yet.",
+            "tl": "Wala pang impormasyon para sa katanungang ito.",
+            "bis": "Wala pay impormasyon bahin niini.",
+        },
+    }
+    return messages[kind][normalize_language(lang)]
+
+
+def context_error_reply(lang: str, context: str) -> str:
+    messages = {
+        "awaiting_business_permit_type": {
+            "en": "I couldn't recognize that type. Please reply with 1, 2, 3, or 4.",
+            "tl": "Hindi ko nakilala ang uri na iyon. Paki-reply ng 1, 2, 3, o 4.",
+            "bis": "Wala nako mailhi kana nga klase. Palihug reply og 1, 2, 3, o 4.",
+        },
+        "awaiting_mtop_type": {
+            "en": "I couldn't recognize that type. Please reply with 1 to 6.",
+            "tl": "Hindi ko nakilala ang uri na iyon. Paki-reply ng numero 1 hanggang 6.",
+            "bis": "Wala nako mailhi kana nga klase. Palihug reply og numero 1 hangtod 6.",
+        },
+    }
+    return messages[context][normalize_language(lang)]
+
+
+def answer_for_intent(
+    intent: str, lang: str, default_answer: str = "No answer found."
+) -> str:
+    intent_data = ANSWERS.get(intent)
+    if not intent_data:
+        return default_answer
+
+    answer = intent_data.get("answers", {}).get(normalize_language(lang))
+    return (
+        answer.strip() if isinstance(answer, str) and answer.strip() else default_answer
+    )
+
 
 class ChatRequest(BaseModel):
-    message: str
-    language: str
-    context: Optional[str] = None  # To handle follow-up disambiguation context
+    message: str = Field(min_length=1)
+    language: str = "auto"
+    context: str | None = None
+    context_language: str | None = None
+
+    @field_validator("message")
+    @classmethod
+    def validate_message(cls, message: str) -> str:
+        message = message.strip()
+        if not message or not any(character.isalnum() for character in message):
+            raise ValueError("Message must contain letters or numbers.")
+        return message
+
+    @field_validator("language", "context_language")
+    @classmethod
+    def validate_language(cls, language: str | None) -> str | None:
+        if language is None:
+            return None
+        value = language.strip().lower()
+        if value != "auto" and value not in LANGUAGE_ALIASES:
+            raise ValueError("Language must be auto, English, Tagalog, or Bisaya.")
+        return value
+
+
+def make_reply(reply: str, lang: str, intent: str, context: str | None = None) -> dict:
+    return {
+        "reply": reply,
+        "summary": "",
+        "context": context,
+        "intent": intent,
+        "language": lang,
+    }
+
 
 @router.post("/chat")
 async def chat(request: ChatRequest, req: Request):
     user_msg = request.message
-    lang = request.language
     context = request.context
-    
-    # 1. Handle Active Context (Follow-ups)
-    if context:
-        if context == "awaiting_business_permit_type":
-            type_mapping = {
-                "1": "cmo_business_permit_new", "new": "cmo_business_permit_new", "bago": "cmo_business_permit_new", "bag-o": "cmo_business_permit_new",
-                "2": "cmo_business_permit_renewal", "renew": "cmo_business_permit_renewal", "renewal": "cmo_business_permit_renewal",
-                "3": "cmo_business_permit_retirement", "retire": "cmo_business_permit_retirement", "retirement": "cmo_business_permit_retirement", "sarado": "cmo_business_permit_retirement", "close": "cmo_business_permit_retirement",
-                "4": "cmo_business_permit_transfer", "transfer": "cmo_business_permit_transfer", "change location": "cmo_business_permit_transfer"
-            }
-            user_lower = user_msg.lower().strip()
-            matched_intent = None
-            for key, intent_val in type_mapping.items():
-                if key in user_lower:
-                    matched_intent = intent_val
+    lang = resolve_language(request.language, user_msg)
+    model_input = user_msg
+    user_lower = user_msg.casefold().strip().rstrip(".!?")
+
+    if context in FOLLOW_UP_QUERIES:
+        choices = FOLLOW_UP_QUERIES[context]
+        selection = re.fullmatch(r"(?:option\s+)?([0-9]+)", user_lower)
+        matched_query = None
+        if selection:
+            number = int(selection[1])
+            if 1 <= number <= len(choices):
+                matched_query = choices[number - 1][0]
+        else:
+            for query, aliases in choices:
+                if user_lower in aliases:
+                    matched_query = query
                     break
-            if matched_intent:
-                ans = ANSWERS.get(matched_intent, {}).get("answers", {}).get(lang, "Information not available yet.")
-                summary = summarize_text(ans)
-                log_chat(user_msg, matched_intent, req.client.host, True, confidence=1.0)
-                return {"reply": ans, "summary": summary, "context": None, "intent": matched_intent}
-            else:
-                return {"reply": "I couldn't recognize that type. Please reply with 1, 2, 3, or 4.", "context": "awaiting_business_permit_type"}
-                
-        elif context == "awaiting_mtop_type":
-            type_mapping = {
-                "1": "cmo_mtop_new", "new": "cmo_mtop_new", "bago": "cmo_mtop_new", "bag-o": "cmo_mtop_new",
-                "2": "cmo_mtop_renewal", "renew": "cmo_mtop_renewal", "renewal": "cmo_mtop_renewal",
-                "3": "cmo_mtop_annual", "annual": "cmo_mtop_annual",
-                "4": "cmo_mtop_dropping", "drop": "cmo_mtop_dropping", "dropping": "cmo_mtop_dropping",
-                "5": "cmo_mtop_substitution", "substitute": "cmo_mtop_substitution", "substitution": "cmo_mtop_substitution",
-                "6": "cmo_mtop_transfer", "transfer": "cmo_mtop_transfer"
-            }
-            user_lower = user_msg.lower().strip()
-            matched_intent = None
-            for key, intent_val in type_mapping.items():
-                if key in user_lower:
-                    matched_intent = intent_val
-                    break
-            if matched_intent:
-                ans = ANSWERS.get(matched_intent, {}).get("answers", {}).get(lang, "Information not available yet.")
-                summary = summarize_text(ans)
-                log_chat(user_msg, matched_intent, req.client.host, True, confidence=1.0)
-                return {"reply": ans, "summary": summary, "context": None, "intent": matched_intent}
-            else:
-                return {"reply": "I couldn't recognize that type. Please reply with 1 to 6.", "context": "awaiting_mtop_type"}
 
-    # 2. Check Disambiguation Rules
-    user_lower = user_msg.lower()
-    for rule_name, rule_data in DISAMBIGUATION_RULES.items():
-        has_trigger = any(trigger in user_lower for trigger in rule_data["trigger_words"])
-        has_exclude = any(exclude in user_lower for exclude in rule_data["exclude_words"])
-        
-        if has_trigger and not has_exclude:
-            # Trigger disambiguation
-            reply_text = rule_data["response"].get(lang, rule_data["response"]["en"])
-            return {"reply": reply_text, "summary": "", "context": rule_data["context"], "intent": "disambiguation"}
+        # A bare selection has no reliable language of its own.
+        if (
+            (selection or matched_query)
+            and request.language == "auto"
+            and request.context_language
+            and request.context_language != "auto"
+        ):
+            lang = normalize_language(request.context_language)
 
-    # 3. Translation to English for the model (if necessary)
-    en_msg = user_msg
-    if lang != "en":
-        try:
-            translator = GoogleTranslator(source=lang, target='en')
-            en_msg = translator.translate(user_msg)
-        except Exception as e:
-            print(f"[WARN] Translation failed: {e}")
-            en_msg = user_msg
+        if selection and matched_query is None:
+            return make_reply(
+                context_error_reply(lang, context), lang, "disambiguation", context
+            )
+        if matched_query:
+            model_input = matched_query
+        # Other messages are fresh questions, not forced into the old menu.
 
-    # 4. Process text and predict intent
-    cleaned = clean_text(en_msg)
+    # Offer a menu only for a bare topic, never override a complete model query.
+    if model_input == user_msg:
+        for rule in DISAMBIGUATION_RULES.values():
+            if user_lower in rule["trigger_words"]:
+                return make_reply(
+                    rule["response"][lang], lang, "disambiguation", rule["context"]
+                )
+
+    cleaned = clean_text(model_input)
+    print(f"CLEANED: {cleaned}")
+
     intent = predict_intent(cleaned)
-    confidence = get_confidence(en_msg, cleaned)
-    print(f"[INFO] Message: '{user_msg}' -> EN: '{en_msg}' -> Intent: {intent} (Conf: {confidence:.2f})")
+    print(f"INTENT: {cleaned}")
 
-    # 5. Fetch Answer
-    if confidence < 0.35: # Changed threshold to 0.35
-        # Fallback answers
-        if lang == "tl":
-            ans = "Pasensya na, hindi ko naiintindihan ang inyong tanong. Maaari po bang linawin?"
-        elif lang == "bis":
-            ans = "Pasayloa ko, wala ko makasabot sa imong pangutana. Mahimo ba nimong klaruhon?"
-        else:
-            ans = "I'm sorry, I didn't understand that. Could you rephrase your question?"
-        log_chat(user_msg, "unresolved", req.client.host, False, confidence=confidence)
-        supabase.table("unresolved_queries").insert({"question": user_msg, "language": lang}).execute()
-        return {"reply": ans, "summary": "", "context": None, "intent": "unresolved"}
-    else:
-        ans_data = ANSWERS.get(intent)
-        if ans_data:
-            ans = ans_data.get("answers", {}).get(lang, ans_data.get("answers", {}).get("en", "No answer found."))
-            summary = summarize_text(ans)
-            log_chat(user_msg, intent, req.client.host, True, confidence=confidence)
-            return {"reply": ans, "summary": summary, "context": None, "intent": intent}
-        else:
-            if lang == "tl":
-                ans = "Wala pang impormasyon para sa katanungang ito."
-            elif lang == "bis":
-                ans = "Wala pay impormasyon bahin niini."
-            else:
-                ans = "No information available for this intent yet."
-            log_chat(user_msg, intent, req.client.host, False, confidence=confidence)
-            return {"reply": ans, "summary": "", "context": None, "intent": intent}
+    confidence = get_confidence(model_input, cleaned)
+    print(f"CL: {confidence}")
+
+    logger.info(
+        "Chat prediction: intent=%s language=%s confidence=%s", intent, lang, confidence
+    )
+    ip = req.client.host if req.client else None
+
+    if not intent or (confidence is not None and confidence < 0.8):
+        log_chat(user_msg, intent or "unresolved", ip, False, confidence)
+        return make_reply(fallback_reply(lang, "unresolved"), lang, "unresolved")
+
+    answer = answer_for_intent(intent, lang, "")
+    if not answer:
+        logger.warning(
+            "Missing knowledge-base answer: intent=%s language=%s", intent, lang
+        )
+        log_chat(user_msg, intent, ip, False, confidence)
+        return make_reply(fallback_reply(lang, "missing_intent"), lang, intent)
+
+    response = make_reply(answer, lang, intent)
+    # The available summarizer uses an English tokenizer.
+    response["summary"] = summarize_text(answer) if lang == "en" else answer
+    log_chat(user_msg, intent, ip, True, confidence)
+    return response
+
 
 def log_chat(msg, intent, ip, resolved, confidence=0.0):
+
     try:
-        supabase.table("chat_logs").insert({
-            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-            "user_message": msg,
-            "predicted_intent": intent,
-            "confidence": confidence,
-            "resolved": resolved
-        }).execute()
+        supabase.table("chat_logs").insert(
+            {
+                "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                "user_message": msg,
+                "predicted_intent": intent,
+                "confidence": confidence,
+                # "resolved": resolved,
+            }
+        ).execute()
+        logger.info(
+            "Chat handled: intent=%s ip=%s resolved=%s confidence=%s",
+            intent,
+            ip,
+            resolved,
+            confidence,
+        )
     except Exception as e:
         print(f"[ERROR] Failed to log chat: {e}")

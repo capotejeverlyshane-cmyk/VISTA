@@ -36,6 +36,8 @@ export function clearChat() {
 export function startNewChat() {
   state.currentSessionId = Date.now().toString();
   state.currentMessages = [];
+  state.context = null;
+  state.contextLanguage = null;
   sessionStorage.setItem("vista_current_session", state.currentSessionId);
   sessionStorage.setItem("vista_current_messages", "[]");
   clearChat();
@@ -230,7 +232,8 @@ export async function sendMessage() {
     const payload = {
       message: text,
       language: state.language,
-      context: state.context
+      context: state.context,
+      context_language: state.contextLanguage || null
     };
 
     const response = await fetch(`${API_URL}/chat`, {
@@ -253,6 +256,7 @@ export async function sendMessage() {
     };
 
     state.context = data.context || null;
+    state.contextLanguage = data.language || null;
 
     state.currentMessages.push({ role: "bot", text: data.reply || "No response received." });
     sessionStorage.setItem("vista_current_messages", JSON.stringify(state.currentMessages));

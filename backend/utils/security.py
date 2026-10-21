@@ -5,11 +5,12 @@ import bcrypt
 from jose import jwt, JWTError
 from dotenv import load_dotenv
 
-env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), '.env')
-load_dotenv(env_path)
-
-if not os.environ.get("JWT_SECRET_KEY"):
-    load_dotenv()
+utils_dir = os.path.dirname(os.path.abspath(__file__))
+backend_dir = os.path.dirname(utils_dir)
+parent_dir = os.path.dirname(backend_dir)
+load_dotenv(os.path.join(backend_dir, '.env'))
+load_dotenv(os.path.join(parent_dir, '.env'))
+load_dotenv()
 
 # JWT Settings
 SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "fallback-secret-change-me-in-production")

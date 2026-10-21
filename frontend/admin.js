@@ -190,7 +190,7 @@ function applyTheme(theme) {
   const mobileBtn = document.getElementById("mobileThemeBtn");
   if (label) label.textContent = theme === "dark" ? "Light Mode" : "Dark Mode";
   if (mobileBtn) mobileBtn.textContent = theme === "dark" ? "☀️" : "🌙";
-  
+
   // Re-render chart to update colors if initialized
   if (analyticsChartInstance) {
     loadAnalytics();
@@ -302,16 +302,16 @@ async function loadAnalytics() {
   try {
     const res = await adminFetch(`${API_URL}/api/admin/analytics`);
     const data = await res.json();
-    
+
     document.getElementById("analyticsBadge").textContent = data.type;
     document.getElementById("analyticsDesc").textContent = data.description;
-    
+
     const ctx = document.getElementById("analyticsChart").getContext("2d");
-    
+
     if (analyticsChartInstance) {
       analyticsChartInstance.destroy();
     }
-    
+
     const isDark = adminState.theme === "dark";
     const textColor = isDark ? "#94a3b8" : "#64748b";
     const gridColor = isDark ? "#334155" : "#e2e8f0";
@@ -401,7 +401,7 @@ function renderKnowledge(data) {
 function filterKnowledge() {
   const q = document.getElementById("knowledgeSearch").value.toLowerCase();
   const filtered = adminState.knowledgeData.filter(item =>
-    item.intent.toLowerCase().includes(q) || 
+    item.intent.toLowerCase().includes(q) ||
     (item.en_question && item.en_question.toLowerCase().includes(q)) ||
     item.department.toLowerCase().includes(q)
   );
@@ -762,13 +762,14 @@ function closeResolveModal() {
 function populateResolveDropdown() {
   const select = document.getElementById("resolveExistingIntentSelect");
   select.innerHTML = '<option value="">-- Select an Intent --</option>';
-  
+
   // Sort knowledge data alphabetically by intent name
   const sortedData = [...adminState.knowledgeData].sort((a, b) => a.intent.localeCompare(b.intent));
-  
+  // console.log(sortedData)
+
   sortedData.forEach(item => {
     const opt = document.createElement("option");
-    opt.value = item.intent;
+    opt.value = item.intent_id;
     opt.textContent = `${item.intent} (${item.department || 'No Dept'})`;
     select.appendChild(opt);
   });
@@ -777,20 +778,22 @@ function populateResolveDropdown() {
 async function handleLinkIntent() {
   const question = document.getElementById("resolveQueryText").value;
   const intent = document.getElementById("resolveExistingIntentSelect").value;
-  
+  const language = document.getElementById("resolveExistingIntentSelectLang").value;
+
+
   if (!intent) {
     showToast("⚠️ Please select an intent to link this query to.");
     return;
   }
-  
+
   try {
-    const payload = { question, intent };
+    const payload = { question, intent, language };
     const res = await adminFetch(`${API_URL}/api/admin/unresolved/link`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
-    
+
     const data = await res.json();
     if (data.status === "success") {
       showToast("✅ Query successfully linked to intent!");
@@ -831,10 +834,10 @@ function populateDatalists() {
   const intentList = document.getElementById("intent-list");
   const deptList = document.getElementById("department-list");
   const tagsList = document.getElementById("tags-list");
-  
-  if(intentList) intentList.innerHTML = Array.from(intents).map(i => `<option value="${i}">`).join("");
-  if(deptList) deptList.innerHTML = Array.from(departments).map(d => `<option value="${d}">`).join("");
-  if(tagsList) tagsList.innerHTML = Array.from(tags).map(t => `<option value="${t}">`).join("");
+
+  if (intentList) intentList.innerHTML = Array.from(intents).map(i => `<option value="${i}">`).join("");
+  if (deptList) deptList.innerHTML = Array.from(departments).map(d => `<option value="${d}">`).join("");
+  if (tagsList) tagsList.innerHTML = Array.from(tags).map(t => `<option value="${t}">`).join("");
 }
 
 function openAddModal() {
@@ -848,12 +851,12 @@ function openAddModal() {
 
 function openEditModal(intentId) {
   const intent = adminState.knowledgeData.find(i => i.intent === intentId);
-  if(!intent) return;
-  
+  if (!intent) return;
+
   document.getElementById("modalMode").value = "edit";
   document.getElementById("editIntentId").value = intentId;
   document.getElementById("intentModalTitle").textContent = "Edit Intent";
-  
+
   // Populate form
   document.getElementById("add-en-question").value = intent.en_question || "";
   document.getElementById("add-intent").value = intent.intent;
@@ -864,7 +867,7 @@ function openEditModal(intentId) {
   document.getElementById("add-en-answer").value = intent.en_answer || "";
   document.getElementById("add-tl-answer").value = intent.tl_answer || "";
   document.getElementById("add-bis-answer").value = intent.bis_answer || "";
-  
+
   populateDatalists();
   document.getElementById("addIntentModal").classList.add("active");
 }
@@ -929,7 +932,7 @@ async function handleChangePassword(e) {
       body: JSON.stringify({ old_password: oldPwd, new_password: newPwd })
     });
     const data = await res.json();
-    
+
     if (data.status === "success") {
       showToast("✅ Administrator password changed successfully.");
       sessionStorage.setItem("vista_admin_token", newPwd); // update token
@@ -950,7 +953,7 @@ async function handleChangePassword(e) {
 async function confirmDelete() {
   const intentId = adminState.intentToDelete;
   if (!intentId) return;
-  
+
   try {
     const res = await adminFetch(`${API_URL}/api/admin/intents/${intentId}`, { method: "DELETE" });
     const data = await res.json();
@@ -961,7 +964,7 @@ async function confirmDelete() {
     } else {
       showToast("❌ Failed to delete intent.");
     }
-  } catch(err) {
+  } catch (err) {
     showToast("❌ Error connecting to server.");
   }
 }
@@ -972,7 +975,7 @@ async function handleAddIntent(e) {
 
   const mode = document.getElementById("modalMode").value;
   const editId = document.getElementById("editIntentId").value;
-  
+
   const payload = {
     en_question: document.getElementById("add-en-question").value,
     intent: document.getElementById("add-intent").value,
@@ -1014,12 +1017,12 @@ async function handleAddIntent(e) {
 async function handleAutoTranslate() {
   const enQuestion = document.getElementById("add-en-question").value.trim();
   const enAnswer = document.getElementById("add-en-answer").value.trim();
-  
+
   if (!enQuestion && !enAnswer) {
     showToast("⚠️ Please enter English text first.");
     return;
   }
-  
+
   const btn = document.getElementById("autoTranslateAllBtn");
   const originalHtml = btn.innerHTML;
   btn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg> Translating...`;
@@ -1027,7 +1030,7 @@ async function handleAutoTranslate() {
 
   try {
     let hasError = false;
-    
+
     if (enQuestion) {
       const resQ = await adminFetch(`${API_URL}/api/admin/translate`, {
         method: "POST",
@@ -1043,7 +1046,7 @@ async function handleAutoTranslate() {
         hasError = true;
       }
     }
-    
+
     if (enAnswer) {
       const resA = await adminFetch(`${API_URL}/api/admin/translate`, {
         method: "POST",
@@ -1059,7 +1062,7 @@ async function handleAutoTranslate() {
         hasError = true;
       }
     }
-    
+
     if (!hasError) {
       showToast("✨ Translation complete!");
     }
@@ -1170,16 +1173,16 @@ function renderDirectory() {
   const tbody = document.getElementById("directory-tbody");
   if (!tbody) return;
   tbody.innerHTML = "";
-  
+
   if (directoryData.length === 0) {
     tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px;">No offices found.</td></tr>`;
     return;
   }
-  
+
   directoryData.forEach((office, index) => {
     const statusClass = office.status === "open" ? "status-resolved" : "status-unresolved";
     const statusText = office.status === "open" ? "Open" : "Closed";
-    
+
     tbody.innerHTML += `
       <tr>
         <td style="font-weight:600;color:var(--text-color);">${escapeHtml(office.name || "Unknown")}</td>
@@ -1220,7 +1223,7 @@ function openEditOfficeModal(index) {
   document.getElementById("officeEmail").value = office.email || "";
   document.getElementById("officeHours").value = office.hours || "";
   document.getElementById("officeStatus").value = office.status || "open";
-  
+
   document.getElementById("officeModalTitle").textContent = "Edit Office";
   document.getElementById("officeModal").classList.add("active");
 }
@@ -1253,7 +1256,7 @@ async function saveOfficeData(offices) {
 document.getElementById("officeForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
   const index = parseInt(document.getElementById("officeIndex").value, 10);
-  
+
   const office = {
     name: document.getElementById("officeName").value.trim(),
     location: document.getElementById("officeLocation").value.trim(),
@@ -1263,14 +1266,14 @@ document.getElementById("officeForm")?.addEventListener("submit", (e) => {
     hours: document.getElementById("officeHours").value.trim(),
     status: document.getElementById("officeStatus").value
   };
-  
+
   const newDir = [...directoryData];
   if (index >= 0) {
     newDir[index] = office;
   } else {
     newDir.push(office);
   }
-  
+
   saveOfficeData(newDir);
 });
 
