@@ -9,6 +9,7 @@ from contextlib import asynccontextmanager
 from services.cache import init_cache, ANSWERS
 from services.nlp import load_models
 from routers import chat, admin, services
+from supabase_client import supabase
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -88,8 +89,20 @@ class FeedbackPayload(BaseModel):
 
 @app.post("/feedback")
 def submit_feedback_root(req: FeedbackPayload):
-    from routers.services import process_feedback_submission
-    return process_feedback_submission(req)
+    try:
+        row = {
+            "question": req.question or "",
+            "answer": req.answer or "",
+            "intent": req.intent or req.predicted_intent or "unresolved",
+            "helpful": bool(req.helpful),
+            "comment": req.comment if req.comment else None
+        }
+        supabase.table("feedback").insert(row).execute()
+        return {"status": "success"}
+    except Exception as e:
+        print(f"[ERROR] Feedback submission failed: {e}")
+        return {"status": "error", "message": str(e)}
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=8001, reload=True)
+

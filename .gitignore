@@ -25,3 +25,6 @@ __pycache__/
 ~$*
 Thumbs.db
 .DS_Store
+*.bak
+*.mojibake_backup
+*.before_markdown_format

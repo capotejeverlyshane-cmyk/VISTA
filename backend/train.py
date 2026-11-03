@@ -15,35 +15,134 @@ from sklearn.svm import LinearSVC
 from sklearn.neural_network import MLPClassifier
 
 from utils.preprocess import clean_text
+
 # from services.nlp import SpaCyVectorTransformer
-# from supabase_client import supabase
+from supabase_client import supabase
 
 MODEL_DIR = os.path.join(os.path.dirname(__file__), "models")
 os.makedirs(MODEL_DIR, exist_ok=True)
 
 
 def load_data():
-    print("[INFO] Loading training data from CSV...")
-
-    data_dir = os.path.join(os.path.dirname(__file__), "data")
-    intents_path = os.path.join(data_dir, "intents.csv") if os.path.exists(os.path.join(data_dir, "intents.csv")) else "intents.csv"
-    phrases_path = os.path.join(data_dir, "training_phrases_augmented.csv") if os.path.exists(os.path.join(data_dir, "training_phrases_augmented.csv")) else "training_phrases_augmented.csv"
-
-    intents_df = pd.read_csv(intents_path)
-    phrases_df = pd.read_csv(phrases_path)
-
-    # Create intent_id -> intent_name mapping
-    intent_map = dict(zip(intents_df["id"], intents_df["intent_name"]))
+    print("[INFO] Loading training data from Supabase and local CSV...")
 
     data = []
 
-    for _, row in phrases_df.iterrows():
-        intent_name = intent_map.get(row["intent_id"])
-        phrase = row["phrase"]
+    # --------------------------------------------------
+    # 1. Load intents from Supabase (paginated)
+    # --------------------------------------------------
+    supabase_intent_map = {}
+    page_size = 1000
+    start = 0
+    while True:
+        intents_res = (
+            supabase.table("intents")
+            .select("id, intent_name")
+            .range(start, start + page_size - 1)
+            .execute()
+        )
+        batch = intents_res.data or []
+        for row in batch:
+            if row.get("id") is not None and row.get("intent_name"):
+                supabase_intent_map[str(row["id"])] = row["intent_name"]
+        if len(batch) < page_size:
+            break
+        start += page_size
 
-        if intent_name and pd.notna(phrase) and str(phrase).strip():
-            data.append({"question": str(phrase), "intent": intent_name})
+    # --------------------------------------------------
+    # 2. Load training phrases from Supabase (paginated to avoid 1000-row limit)
+    # --------------------------------------------------
+    all_phrases = []
+    start = 0
+    while True:
+        phrases_res = (
+            supabase.table("training_phrases")
+            .select("intent_id, phrase")
+            .range(start, start + page_size - 1)
+            .execute()
+        )
+        batch = phrases_res.data or []
+        all_phrases.extend(batch)
+        if len(batch) < page_size:
+            break
+        start += page_size
 
+    for row in all_phrases:
+        intent_name = supabase_intent_map.get(str(row.get("intent_id")))
+        phrase = row.get("phrase")
+
+        if intent_name and phrase is not None and str(phrase).strip():
+            data.append(
+                {
+                    "question": str(phrase).strip(),
+                    "intent": intent_name,
+                    "source": "supabase",
+                }
+            )
+
+    print(
+        f"[INFO] Supabase samples: "
+        f"{sum(1 for row in data if row['source'] == 'supabase')} (from {len(all_phrases)} total phrases across all pages)"
+    )
+
+    # --------------------------------------------------
+    # 3. Load local CSV files
+    # --------------------------------------------------
+    print("[INFO] Loading local CSV files...")
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    intents_csv_path = os.path.join(BASE_DIR, "intents.csv")
+    phrases_csv_path = os.path.join(BASE_DIR, "training_phrases_augmented.csv")
+
+    intents_df = pd.read_csv(intents_csv_path) if os.path.exists(intents_csv_path) else pd.DataFrame()
+    phrases_df = pd.read_csv(phrases_csv_path) if os.path.exists(phrases_csv_path) else pd.DataFrame()
+
+    # Normalize ID types to prevent int/string mismatches
+    local_intent_map = {}
+    if not intents_df.empty:
+        local_intent_map = {
+            str(int(row["id"]))
+            if pd.notna(row["id"]) and str(row["id"]).replace(".", "", 1).isdigit()
+            else str(row["id"]).strip(): str(row["intent_name"]).strip()
+            for _, row in intents_df.iterrows()
+            if pd.notna(row["id"])
+            and pd.notna(row["intent_name"])
+            and str(row["intent_name"]).strip()
+        }
+
+    # Combine maps so CSV rows can resolve against both local and Supabase intents
+    intent_map = {**supabase_intent_map, **local_intent_map}
+
+    if not phrases_df.empty:
+        for _, row in phrases_df.iterrows():
+            raw_intent_id = row.get("intent_id")
+            phrase = row.get("phrase")
+
+            if pd.isna(raw_intent_id) or pd.isna(phrase):
+                continue
+
+            # Handle integer IDs stored as floats, e.g. 12.0
+            try:
+                intent_id = str(int(raw_intent_id))
+            except (ValueError, TypeError, OverflowError):
+                intent_id = str(raw_intent_id).strip()
+
+            intent_name = intent_map.get(intent_id)
+
+            if intent_name and str(phrase).strip():
+                data.append(
+                    {
+                        "question": str(phrase).strip(),
+                        "intent": intent_name,
+                        "source": "csv",
+                    }
+                )
+
+    print(f"[INFO] CSV samples: {sum(1 for row in data if row['source'] == 'csv')}")
+
+    # --------------------------------------------------
+    # 4. Combine and validate
+    # --------------------------------------------------
     df = pd.DataFrame(data)
 
     if df.empty:
@@ -51,9 +150,26 @@ def load_data():
 
     df["question"] = df["question"].astype(str).apply(clean_text)
 
-    # Check for intents with too few samples
-    intent_counts = df["intent"].value_counts()
+    df["intent"] = df["intent"].astype(str).str.strip()
 
+    # Remove empty cleaned questions and invalid labels
+    df = df[
+        df["question"].notna()
+        & df["question"].str.strip().ne("")
+        & df["intent"].str.strip().ne("")
+    ].copy()
+
+    # Remove duplicate question-intent pairs across both sources
+    before_dedup = len(df)
+
+    df = df.drop_duplicates(subset=["question", "intent"]).reset_index(drop=True)
+
+    print(f"[INFO] Removed {before_dedup - len(df)} duplicate question-intent pairs.")
+
+    # --------------------------------------------------
+    # 5. Check class distribution
+    # --------------------------------------------------
+    intent_counts = df["intent"].value_counts()
     rare_intents = intent_counts[intent_counts < 2]
 
     if not rare_intents.empty:
@@ -62,10 +178,13 @@ def load_data():
         for intent, count in rare_intents.items():
             print(f"  - {intent}: {count} sample(s)")
 
-    print(f"[INFO] Loaded {len(df)} training samples.")
+    print(f"\n[INFO] Total training samples: {len(df)}")
     print(f"[INFO] Number of intents: {df['intent'].nunique()}")
+    print("\n[INFO] Samples by source:")
+    print(df["source"].value_counts().to_string())
 
-    return df
+    # Return only the columns required for model training
+    return df[["question", "intent"]]
 
 
 # def train_and_compare():
@@ -278,74 +397,74 @@ def train_and_compare():
                 ),
             ]
         ),
-      #  "linear_svm_c1": Pipeline(
-      #      [
-      #          ("features", features),
-      #          (
-      #              "classifier",
-      #              LinearSVC(
-      #                  C=1.0, class_weight="balanced", max_iter=10000, random_state=42
-      #              ),
-      #          ),
-      #      ]
-      #  ),
-       # "linear_svm_c2": Pipeline(
-        #    [
-         #       ("features", features),
-        #        (
-        #            "classifier",
-        #            LinearSVC(
-        #                C=2.0, class_weight="balanced", max_iter=10000, random_state=42
-        #            ),
-        #        ),
-        #    ]
-        #),
-        #"linear_svm_c3": Pipeline(
-        #    [
-        #        ("features", features),
-        #        (
-        #            "classifier",
-        #            LinearSVC(
-        #                C=3.0, class_weight="balanced", max_iter=10000, random_state=42
-        #            ),
-        #        ),
-        #    ]
-        #),
-       # "linear_svm": Pipeline(
-        #    [
-        #        ("features", features),
-        #        (
-        #            "classifier",
-        #            LinearSVC(
-        #                C=1.5, class_weight="balanced", max_iter=10000, random_state=42
-        #            ),
-        #        ),
-        #    ]
-        #),
+        # "linear_svm_c1": Pipeline(
+        #     [
+        #         ("features", features),
+        #         (
+        #             "classifier",
+        #             LinearSVC(
+        #                 C=1.0, class_weight="balanced", max_iter=10000, random_state=42
+        #             ),
+        #         ),
+        #     ]
+        # ),
+        # "linear_svm_c2": Pipeline(
+        #     [
+        #         ("features", features),
+        #         (
+        #             "classifier",
+        #             LinearSVC(
+        #                 C=2.0, class_weight="balanced", max_iter=10000, random_state=42
+        #             ),
+        #         ),
+        #     ]
+        # ),
+        # "linear_svm_c3": Pipeline(
+        #     [
+        #         ("features", features),
+        #         (
+        #             "classifier",
+        #             LinearSVC(
+        #                 C=3.0, class_weight="balanced", max_iter=10000, random_state=42
+        #             ),
+        #         ),
+        #     ]
+        # ),
+        # "linear_svm": Pipeline(
+        #     [
+        #         ("features", features),
+        #         (
+        #             "classifier",
+        #             LinearSVC(
+        #                 C=1.5, class_weight="balanced", max_iter=10000, random_state=42
+        #             ),
+        #         ),
+        #     ]
+        # ),
         # -----------------------------------------------------
         # Neural Network - MLP
         # -----------------------------------------------------
-        #"mlp": Pipeline(
-        #    [
-        #        ("features", features),
-        #        (
-        #            "classifier",
-        #            MLPClassifier(
-        #                hidden_layer_sizes=(128, 64),
-        #                activation="relu",
-        #                solver="adam",
-        #                alpha=0.0001,
-        #                batch_size=64,
-        #                learning_rate_init=0.001,
-        #                max_iter=300,
-        #                early_stopping=True,
-        #                validation_fraction=0.10,
-        #                n_iter_no_change=10,
-        #                random_state=42,
-        #            ),
-        #        ),
-        #    ]
-        #),
+        # "mlp": Pipeline(
+        #     [
+        #         ("features", features),
+        #         (
+        #             "classifier",
+        #             MLPClassifier(
+        #                 hidden_layer_sizes=(128, 64),
+        #                 activation="relu",
+        #                 solver="adam",
+        #                 alpha=0.0001,
+        #                 batch_size=64,
+        #                 learning_rate_init=0.001,
+        #                 max_iter=300,
+        #                 early_stopping=True,
+        #                 validation_fraction=0.10,
+        #                 n_iter_no_change=10,
+        #                 random_state=42,
+        #             ),
+        #         ),
+        #     ]
+        # ),
     }
 
     results = {}
@@ -401,15 +520,15 @@ def train_and_compare():
     # =========================================================
     # SAVE BEST MODEL
     # =========================================================
+
     if best_pipeline is None:
         raise RuntimeError("No model was successfully trained.")
 
-    # Fix indentation here (4 spaces):
-    joblib.dump(best_pipeline, os.path.join(MODEL_DIR, "best_model.pkl"))
-    joblib.dump(best_pipeline, os.path.join(MODEL_DIR, "best_model_augmented.pkl"))
+    # joblib.dump(best_pipeline, os.path.join(MODEL_DIR, "best_model_augmented.pkl"))
+    # joblib.dump(label_encoder, os.path.join(MODEL_DIR, "label_encoder_augmented.pkl"))
 
+    joblib.dump(best_pipeline, os.path.join(MODEL_DIR, "best_model.pkl"))
     joblib.dump(label_encoder, os.path.join(MODEL_DIR, "label_encoder.pkl"))
-    joblib.dump(label_encoder, os.path.join(MODEL_DIR, "label_encoder_augmented.pkl"))
 
     # =========================================================
     # SAVE METRICS
@@ -449,5 +568,4 @@ def train_and_compare():
 
 
 if __name__ == "__main__":
-    # load_data()
     train_and_compare()

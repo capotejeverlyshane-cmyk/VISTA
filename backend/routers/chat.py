@@ -125,11 +125,11 @@ async def chat(request: ChatRequest, req: Request):
     lang = resolve_language(request.language, user_msg)
     model_input = user_msg
     user_lower = user_msg.casefold().strip().rstrip(".!?")
+    matched_query = None
 
     if context in FOLLOW_UP_QUERIES:
         choices = FOLLOW_UP_QUERIES[context]
         selection = re.fullmatch(r"(?:option\s+)?([0-9]+)", user_lower)
-        matched_query = None
         if selection:
             number = int(selection[1])
             if 1 <= number <= len(choices):
@@ -157,19 +157,23 @@ async def chat(request: ChatRequest, req: Request):
             model_input = matched_query
         # Other messages are fresh questions, not forced into the old menu.
 
-    # Offer a menu only for a bare topic, never override a complete model query.
+    # Offer a menu for an ambiguous topic, unless a specific subtype is already mentioned
     if model_input == user_msg:
         for rule in DISAMBIGUATION_RULES.values():
-            if user_lower in rule["trigger_words"]:
+            has_trigger = any(tw in user_lower for tw in rule["trigger_words"])
+            has_exclude = any(ew in user_lower for ew in rule.get("exclude_words", []))
+            if has_trigger and not has_exclude:
                 return make_reply(
                     rule["response"][lang], lang, "disambiguation", rule["context"]
                 )
+
+    print(f"MODEL INPUT: {model_input}")
 
     cleaned = clean_text(model_input)
     print(f"CLEANED: {cleaned}")
 
     intent = predict_intent(cleaned)
-    print(f"INTENT: {cleaned}")
+    print(f"INTENT: {intent}")
 
     confidence = get_confidence(model_input, cleaned)
     print(f"CL: {confidence}")
@@ -179,8 +183,15 @@ async def chat(request: ChatRequest, req: Request):
     )
     ip = req.client.host if req.client else None
 
-    if not intent or (confidence is not None and confidence < 0.8):
+    # Threshold: 0.50 for confirmed menu choices; 0.70 for open-ended queries (with 157 intents, 70%+ is very confident)
+    threshold = 0.50 if matched_query else 0.70
+    if confidence < threshold:
+        print(f"LOW CL: {confidence} (threshold: {threshold})")
+        log_unresolved_chat(model_input, confidence)
+
         log_chat(user_msg, intent or "unresolved", ip, False, confidence)
+        # log_chat(user_msg, intent or "unresolved", ip, False, confidence)
+
         return make_reply(fallback_reply(lang, "unresolved"), lang, "unresolved")
 
     answer = answer_for_intent(intent, lang, "")
@@ -196,6 +207,22 @@ async def chat(request: ChatRequest, req: Request):
     response["summary"] = summarize_text(answer) if lang == "en" else answer
     log_chat(user_msg, intent, ip, True, confidence)
     return response
+
+
+def log_unresolved_chat(question, confidence):
+
+    try:
+        supabase.table("unresolved_queries").insert(
+            {
+                "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                "question": question,
+                "confidence": confidence,
+                # "resolved": resolved,
+            }
+        ).execute()
+
+    except Exception as e:
+        print(f"[ERROR] Failed to log chat: {e}")
 
 
 def log_chat(msg, intent, ip, resolved, confidence=0.0):

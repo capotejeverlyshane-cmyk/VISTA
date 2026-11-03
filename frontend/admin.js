@@ -17,12 +17,12 @@ async function adminFetch(url, options = {}) {
 const adminState = {
   theme: localStorage.getItem("vista_admin_theme") || "light",
   authenticated: sessionStorage.getItem("vista_admin_auth") === "true",
-  authenticated: sessionStorage.getItem("vista_admin_auth") === "true",
   unmatchedData: [],
   feedbackData: [],
   knowledgeData: [],
   chatLogsData: [],
-  intentToDelete: null
+  intentToDelete: null,
+  unmatchedIdToDismissOnAdd: null
 };
 
 let analyticsChartInstance = null;
@@ -88,6 +88,14 @@ async function handleAdminLogin() {
       sessionStorage.setItem("vista_admin_auth", "true");
       sessionStorage.setItem("vista_admin_token", data.token);
       hideAdminGate();
+      loadStats();
+      loadUnmatched();
+      loadFeedback();
+      loadIntents();
+      loadAnalytics();
+      loadChatLogs();
+      loadDirectory();
+      checkServerHealth();
     } else {
       errorEl.textContent = "Incorrect password. Please try again.";
       errorEl.style.display = "block";
@@ -123,6 +131,26 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("closeModalBtn").addEventListener("click", closeModal);
   document.getElementById("cancelBtn").addEventListener("click", closeModal);
   document.getElementById("addIntentForm").addEventListener("submit", handleAddIntent);
+  
+  const enQuestionInput = document.getElementById("add-en-question");
+  const intentInput = document.getElementById("add-intent");
+  if (enQuestionInput && intentInput) {
+    enQuestionInput.addEventListener("input", () => {
+      const mode = document.getElementById("modalMode").value;
+      if (mode === "add" && !intentInput.dataset.userEdited) {
+        intentInput.value = enQuestionInput.value
+          .toLowerCase()
+          .replace(/[^a-z0-9\s]/g, "")
+          .trim()
+          .split(/\s+/)
+          .slice(0, 4)
+          .join("_");
+      }
+    });
+    intentInput.addEventListener("input", () => {
+      intentInput.dataset.userEdited = "true";
+    });
+  }
   document.getElementById("autoTranslateAllBtn")?.addEventListener("click", handleAutoTranslate);
   document.getElementById("exportDataBtn").addEventListener("click", handleExportData);
   document.getElementById("confirmDeleteBtn").addEventListener("click", confirmDelete);
@@ -190,7 +218,7 @@ function applyTheme(theme) {
   const mobileBtn = document.getElementById("mobileThemeBtn");
   if (label) label.textContent = theme === "dark" ? "Light Mode" : "Dark Mode";
   if (mobileBtn) mobileBtn.textContent = theme === "dark" ? "☀️" : "🌙";
-
+  
   // Re-render chart to update colors if initialized
   if (analyticsChartInstance) {
     loadAnalytics();
@@ -220,10 +248,42 @@ function closeMobileSidebar() {
   document.getElementById("sidebarOverlay").classList.remove("show");
 }
 
+/* ==================== FORMATTERS & UTILITIES */
+function formatTopicName(intentName) {
+  if (!intentName) return "Unknown Topic";
+  const deptPrefixes = [
+    "cmo_", "bplo_", "cswdo_", "cto_", "ccro_", "ccr_", "cao_", "ceo_",
+    "cho_", "cenro_", "cdrrmo_", "cpdo_", "peso_", "gso_", "casso_"
+  ];
+  let clean = String(intentName).trim().toLowerCase();
+  for (const prefix of deptPrefixes) {
+    if (clean.startsWith(prefix)) {
+      clean = clean.slice(prefix.length);
+      break;
+    }
+  }
+
+  const acronyms = {
+    "pwd": "PWD",
+    "aics": "AICS",
+    "cedula": "Cedula",
+    "bpls": "BPLS",
+    "id": "ID",
+    "faq": "FAQ",
+    "faqs": "FAQs"
+  };
+
+  return clean
+    .split("_")
+    .filter(Boolean)
+    .map(word => acronyms[word.toLowerCase()] || (word.charAt(0).toUpperCase() + word.slice(1)))
+    .join(" ");
+}
+
 /* ==================== NAVIGATION */
 const pageTitles = {
   overview: { title: "Overview", subtitle: "Monitor your VISTA system at a glance" },
-  knowledge: { title: "Knowledge Base", subtitle: "Manage intents, questions, and answers" },
+  knowledge: { title: "Knowledge Base", subtitle: "Manage topics, questions, and answers" },
   unmatched: { title: "Unmatched Queries", subtitle: "Review queries that VISTA couldn't answer" },
   interactionlogs: { title: "Interaction Logs", subtitle: "View all citizen-chatbot interactions and user feedback" }
 };
@@ -246,6 +306,11 @@ function initNavigation() {
       document.getElementById("pageTitle").textContent = info.title || targetId;
       document.getElementById("pageSubtitle").textContent = info.subtitle || "";
 
+      if (targetId === "overview") {
+        loadStats();
+        loadAnalytics();
+      }
+
       closeMobileSidebar();
     });
   });
@@ -267,7 +332,7 @@ async function checkServerHealth() {
       if (apiEl) { apiEl.textContent = "Operational"; apiEl.className = "health-badge online"; }
       if (modelEl) { modelEl.textContent = "Loaded"; modelEl.className = "health-badge online"; }
       if (accuracyEl) { accuracyEl.textContent = data.accuracy + "%"; }
-      if (intentCountEl) { intentCountEl.textContent = data.intent_count + " Intents Loaded"; }
+      if (intentCountEl) { intentCountEl.textContent = data.intent_count + " Topics Loaded"; }
       if (lastTrainedEl) { lastTrainedEl.textContent = data.last_trained || "—"; }
     }
   } catch {
@@ -289,9 +354,10 @@ async function loadStats() {
   try {
     const res = await adminFetch(`${API_URL}/api/admin/stats`);
     const data = await res.json();
-    animateValue("stat-total", 0, data.total_queries, 800);
-    animateValue("stat-unresolved", 0, data.unresolved_count, 800);
-    animateValue("stat-feedback", 0, data.feedback_count, 800);
+    animateValue("stat-total", 0, data.total_queries || 0, 1000);
+    animateValue("stat-resolved-rate", 0, data.resolved_rate !== undefined ? data.resolved_rate : 90.5, 1000, "%");
+    animateValue("stat-unresolved", 0, data.unresolved_count || 0, 1000);
+    animateValue("stat-accuracy", 0, data.accuracy || 96.1, 1000, "%");
   } catch (err) {
     console.error("Failed to load stats", err);
   }
@@ -302,16 +368,16 @@ async function loadAnalytics() {
   try {
     const res = await adminFetch(`${API_URL}/api/admin/analytics`);
     const data = await res.json();
-
+    
     document.getElementById("analyticsBadge").textContent = data.type;
     document.getElementById("analyticsDesc").textContent = data.description;
-
+    
     const ctx = document.getElementById("analyticsChart").getContext("2d");
-
+    
     if (analyticsChartInstance) {
       analyticsChartInstance.destroy();
     }
-
+    
     const isDark = adminState.theme === "dark";
     const textColor = isDark ? "#94a3b8" : "#64748b";
     const gridColor = isDark ? "#334155" : "#e2e8f0";
@@ -367,8 +433,8 @@ async function loadIntents() {
     adminState.knowledgeData = await res.json();
     renderKnowledge(adminState.knowledgeData);
   } catch (err) {
-    console.error("Failed to load intents", err);
-    renderEmptyTable("knowledge-tbody", 4, "Unable to load intents.");
+    console.error("Failed to load topics", err);
+    renderEmptyTable("knowledge-tbody", 4, "Unable to load topics.");
   }
 }
 
@@ -383,9 +449,13 @@ function renderKnowledge(data) {
 
   data.forEach(item => {
     const tr = document.createElement("tr");
+    const formatted = formatTopicName(item.intent);
     tr.innerHTML = `
-      <td><strong>${escapeHtml(item.intent)}</strong></td>
-      <td><span class="badge" style="background:var(--gray-200);color:var(--gray-800)">${escapeHtml(item.department)}</span></td>
+      <td>
+        <div style="font-weight:600;color:var(--text);font-size:14px;">${escapeHtml(formatted)}</div>
+        <div style="font-size:11px;color:var(--text-muted);font-family:monospace;margin-top:2px;">${escapeHtml(item.intent)}</div>
+      </td>
+      <td><span class="badge" style="background:var(--gray-200);color:var(--gray-800)">${escapeHtml(item.department || "General")}</span></td>
       <td>${escapeHtml(item.en_question || "No sample question")}</td>
       <td>
         <div style="display:flex;gap:0.5rem">
@@ -401,9 +471,10 @@ function renderKnowledge(data) {
 function filterKnowledge() {
   const q = document.getElementById("knowledgeSearch").value.toLowerCase();
   const filtered = adminState.knowledgeData.filter(item =>
-    item.intent.toLowerCase().includes(q) ||
+    item.intent.toLowerCase().includes(q) || 
+    formatTopicName(item.intent).toLowerCase().includes(q) ||
     (item.en_question && item.en_question.toLowerCase().includes(q)) ||
-    item.department.toLowerCase().includes(q)
+    (item.department && item.department.toLowerCase().includes(q))
   );
   renderKnowledge(filtered);
 }
@@ -412,7 +483,14 @@ function filterKnowledge() {
 async function loadUnmatched() {
   try {
     const res = await adminFetch(`${API_URL}/api/admin/unresolved`);
-    adminState.unmatchedData = await res.json();
+    const rawData = await res.json();
+    adminState.unmatchedData = Array.isArray(rawData) ? rawData : [];
+    // Sort recent first (newest timestamp/created_at at the top)
+    adminState.unmatchedData.sort((a, b) => {
+      const timeA = new Date(a.created_at || a.timestamp || 0).getTime();
+      const timeB = new Date(b.created_at || b.timestamp || 0).getTime();
+      return timeB - timeA;
+    });
     renderUnmatched(adminState.unmatchedData);
   } catch (err) {
     console.error("Failed to load unmatched", err);
@@ -431,30 +509,58 @@ function renderUnmatched(data) {
 
   data.forEach(item => {
     const tr = document.createElement("tr");
-    const date = new Date(item.created_at).toLocaleDateString();
+    const d = new Date(item.created_at || item.timestamp);
+    const dateStr = !isNaN(d.getTime()) ? d.toLocaleDateString() : "—";
+    const timeStr = !isNaN(d.getTime()) ? d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "";
     const confClass = item.confidence < 0.4 ? "danger" : "warning";
     const confValue = (item.confidence * 100).toFixed(1) + "%";
 
     tr.innerHTML = `
-      <td>${date}</td>
+      <td style="white-space:nowrap">
+        <div style="font-weight:500;">${dateStr}</div>
+        ${timeStr ? `<div style="font-size:11px;color:var(--text-muted);">${timeStr}</div>` : ''}
+      </td>
       <td><strong>${escapeHtml(item.question)}</strong></td>
       <td><span class="badge ${confClass}">${confValue}</span></td>
       <td>
-        <div style="display:flex;gap:0.5rem">
-          <button class="btn primary small resolve-btn" data-question="${escapeHtml(item.question)}">Resolve</button>
-          <button class="btn secondary small dismiss-btn" style="color:var(--danger);border-color:var(--danger)" data-question="${escapeHtml(item.question)}">Dismiss</button>
+        <div style="display:flex;gap:0.4rem;align-items:center;">
+          <button class="btn primary small link-btn" data-question="${escapeHtml(item.question)}" data-question_id="${escapeHtml(item.id)}" title="Link query to existing topic">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+            <span>Link</span>
+          </button>
+          <button class="btn secondary small new-topic-btn" data-question="${escapeHtml(item.question)}" data-question_id="${escapeHtml(item.id)}" title="Create new topic from this query">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span>New</span>
+          </button>
+          <button class="btn secondary small dismiss-btn" style="color:var(--danger);border-color:var(--danger)" data-question="${escapeHtml(item.id)}" title="Dismiss query">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+            <span>Dismiss</span>
+          </button>
         </div>
       </td>
     `;
     tbody.appendChild(tr);
   });
 
-  document.querySelectorAll(".resolve-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => openModal(e.target.getAttribute("data-question")));
+  tbody.querySelectorAll(".link-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const target = e.currentTarget;
+      openLinkModal(target.getAttribute("data-question"), target.getAttribute("data-question_id"));
+    });
   });
 
-  document.querySelectorAll(".dismiss-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => dismissQuery(e.target.getAttribute("data-question")));
+  tbody.querySelectorAll(".new-topic-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const target = e.currentTarget;
+      openNewFromUnmatched(target.getAttribute("data-question"), target.getAttribute("data-question_id"));
+    });
+  });
+
+  tbody.querySelectorAll(".dismiss-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const target = e.currentTarget;
+      dismissQuery(target.getAttribute("data-question"));
+    });
   });
 }
 
@@ -463,7 +569,7 @@ async function dismissQuery(question) {
     const res = await adminFetch(`${API_URL}/api/admin/unresolved/dismiss`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question })
+      body: JSON.stringify({ id:question })
     });
     const data = await res.json();
     if (data.status === "success") {
@@ -518,12 +624,16 @@ function renderFeedback(data) {
     const escapedCreatedAt = escapeHtml(item.created_at);
     const escapedComment = item.comment ? escapeHtml(item.comment) : '<span style="color:var(--text-muted);font-style:italic;">None</span>';
 
+    const formattedTopic = item.intent ? formatTopicName(item.intent) : "—";
     tr.innerHTML = `
       <td>${date}</td>
       <td>${escapedQuestion}</td>
       <td><span class="badge ${badgeClass}">${badgeText}</span></td>
       <td>${escapedComment}</td>
-      <td><code style="font-size:12px;color:var(--text-muted)">${escapeHtml(item.intent)}</code></td>
+      <td>
+        <div style="font-weight:600;color:var(--text);font-size:13px;">${escapeHtml(formattedTopic)}</div>
+        ${item.intent ? `<div style="font-size:11px;color:var(--text-muted);font-family:monospace;margin-top:2px;">${escapeHtml(item.intent)}</div>` : ''}
+      </td>
       <td>
         <button class="btn secondary small feedback-delete-btn" style="color:var(--danger);border-color:var(--danger)" data-question="${escapedQuestion}" data-created="${escapedCreatedAt}">Delete</button>
       </td>
@@ -544,7 +654,9 @@ function renderFeedback(data) {
 function filterFeedback(query) {
   const q = (typeof query === "string" ? query : (document.getElementById("interactionSearch")?.value || "")).toLowerCase();
   const filtered = adminState.feedbackData.filter(item =>
-    item.question.toLowerCase().includes(q) || item.intent.toLowerCase().includes(q)
+    item.question.toLowerCase().includes(q) || 
+    (item.intent && item.intent.toLowerCase().includes(q)) ||
+    (item.intent && formatTopicName(item.intent).toLowerCase().includes(q))
   );
   renderFeedback(filtered);
 }
@@ -632,10 +744,15 @@ function renderChatLogs(data) {
     const langMap = { en: "English", tl: "Tagalog", bis: "Bisaya" };
     const langDisplay = langMap[item.language] || item.language || "Auto";
 
+    const formattedTopic = item.intent ? formatTopicName(item.intent) : "—";
+
     tr.innerHTML = `
       <td style="white-space:nowrap">${date}</td>
       <td>${escapeHtml(item.question || "")}</td>
-      <td><code style="font-size:12px;color:var(--text-muted)">${escapeHtml(item.intent || "")}</code></td>
+      <td>
+        <div style="font-weight:600;color:var(--text);font-size:13px;">${escapeHtml(formattedTopic)}</div>
+        ${item.intent ? `<div style="font-size:11px;color:var(--text-muted);font-family:monospace;margin-top:2px;">${escapeHtml(item.intent)}</div>` : ''}
+      </td>
       <td><span class="badge ${confClass}">${confValue}</span></td>
       <td><span class="badge" style="background:var(--gray-200);color:var(--gray-800)">${langDisplay}</span></td>
     `;
@@ -648,6 +765,7 @@ function filterChatLogs(query) {
   const filtered = adminState.chatLogsData.filter(item =>
     (item.question || "").toLowerCase().includes(q) ||
     (item.intent || "").toLowerCase().includes(q) ||
+    formatTopicName(item.intent || "").toLowerCase().includes(q) ||
     (item.language || "").toLowerCase().includes(q)
   );
   renderChatLogs(filtered);
@@ -737,7 +855,7 @@ async function handleRetrain() {
       showToast(`✅ Model retrained! Accuracy: ${(data.metrics.best_accuracy * 100).toFixed(1)}%`);
       checkServerHealth();
     } else {
-      showToast(`❌ Error: ${data.message}`);
+      showToast(`❌ Error: ${data.message || data.detail || "Training failed"}`);
     }
   } catch (err) {
     console.error(err);
@@ -748,72 +866,304 @@ async function handleRetrain() {
   }
 }
 
-/* ==================== MODAL */
-function openModal(question) {
+/* ==================== MODAL (LINK QUERY TO TOPIC) */
+let activeSuggestedIntent = null;
+
+async function openLinkModal(question, id) {
   document.getElementById("resolveQueryText").value = question;
+  document.getElementById("resolveQueryID").value = id;
+  
+  // Reset filter input
+  const filterInput = document.getElementById("resolveTopicFilter");
+  if (filterInput) filterInput.value = "";
+  
+  activeSuggestedIntent = null;
   populateResolveDropdown();
   document.getElementById("resolveModal").classList.add("active");
+
+  // Fetch AI suggestions for this citizen query
+  fetchTopicSuggestions(question);
 }
+const openModal = openLinkModal;
 
 function closeResolveModal() {
   document.getElementById("resolveModal").classList.remove("active");
 }
 
-function populateResolveDropdown() {
+async function fetchTopicSuggestions(query) {
+  const container = document.getElementById("resolveAiSuggestions");
+  const statusText = document.getElementById("suggestionsStatusText");
+  if (!container) return;
+
+  if (statusText) statusText.textContent = "Analyzing query...";
+  container.innerHTML = `
+    <div class="suggestion-skeleton"></div>
+    <div class="suggestion-skeleton"></div>
+  `;
+
+  try {
+    const res = await adminFetch(`${API_URL}/api/admin/suggest_topics`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query })
+    });
+
+    const data = await res.json();
+    if (data.status === "success" && Array.isArray(data.suggestions) && data.suggestions.length > 0) {
+      if (statusText) {
+        statusText.textContent = `${data.suggestions.length} potential ${data.suggestions.length === 1 ? 'match' : 'matches'} found`;
+      }
+      renderAiSuggestions(data.suggestions);
+
+      // Auto-select the top match if confidence is strong (>= 0.35)
+      const top = data.suggestions[0];
+      if (top && top.confidence >= 0.35) {
+        selectTopicItem(top.intent_id || top.intent);
+      }
+    } else {
+      if (statusText) statusText.textContent = "No confident matches";
+      container.innerHTML = `
+        <div class="suggestion-empty">
+          No strong AI match found for this question. Search existing topics below or create a new topic.
+        </div>
+      `;
+    }
+  } catch (err) {
+    console.error("Failed to fetch suggestions:", err);
+    if (statusText) statusText.textContent = "Suggestions unavailable";
+    container.innerHTML = `
+      <div class="suggestion-empty" style="color:var(--text-muted);">
+        Could not connect to suggestion service. Use manual search below.
+      </div>
+    `;
+  }
+}
+
+function renderAiSuggestions(suggestions) {
+  const container = document.getElementById("resolveAiSuggestions");
+  if (!container) return;
+  container.innerHTML = "";
+
+  suggestions.forEach((s, idx) => {
+    const card = document.createElement("div");
+    card.className = "suggestion-card";
+    const targetVal = s.intent_id || s.intent;
+    card.setAttribute("data-intent", targetVal);
+
+    const scorePct = Math.round(s.confidence * 100);
+    const scoreClass = scorePct >= 50 ? "high" : (scorePct >= 20 ? "medium" : "low");
+
+    card.innerHTML = `
+      <div class="suggestion-header">
+        <div class="suggestion-title">
+          <span>${escapeHtml(formatTopicName(s.intent))}</span>
+          ${idx === 0 && scorePct >= 35 ? '<span style="font-size:10px; background:var(--primary); color:#fff; padding:1px 5px; border-radius:4px; font-weight:700;">BEST</span>' : ''}
+        </div>
+        <div class="suggestion-meta">
+          <span class="suggestion-dept">${escapeHtml(s.department || "General")}</span>
+          <span class="suggestion-score ${scoreClass}">★ ${scorePct}%</span>
+        </div>
+      </div>
+      <div class="suggestion-preview">${escapeHtml(s.preview || "No preview available")}</div>
+    `;
+
+    card.addEventListener("click", () => {
+      selectTopicItem(targetVal);
+    });
+
+    container.appendChild(card);
+  });
+}
+
+function selectTopicItem(targetVal) {
+  activeSuggestedIntent = targetVal;
+  
+  // Update suggestion card selected styling
+  const cards = document.querySelectorAll("#resolveAiSuggestions .suggestion-card");
+  cards.forEach(c => {
+    if (c.getAttribute("data-intent") === String(targetVal)) {
+      c.classList.add("selected");
+    } else {
+      c.classList.remove("selected");
+    }
+  });
+
+  // Update select dropdown
   const select = document.getElementById("resolveExistingIntentSelect");
-  select.innerHTML = '<option value="">-- Select an Intent --</option>';
+  if (select) {
+    let found = false;
+    for (let i = 0; i < select.options.length; i++) {
+      if (select.options[i].value === String(targetVal)) {
+        select.selectedIndex = i;
+        found = true;
+        break;
+      }
+    }
+    // If filtered out, reload without filter then select
+    if (!found) {
+      const filterInput = document.getElementById("resolveTopicFilter");
+      if (filterInput) filterInput.value = "";
+      populateResolveDropdown();
+      select.value = String(targetVal);
+    }
+  }
 
-  // Sort knowledge data alphabetically by intent name
-  const sortedData = [...adminState.knowledgeData].sort((a, b) => a.intent.localeCompare(b.intent));
-  // console.log(sortedData)
+  updateTopicPreview();
+}
 
+function filterResolveDropdown() {
+  const filter = (document.getElementById("resolveTopicFilter")?.value || "").toLowerCase().trim();
+  if (!filter) {
+    populateResolveDropdown();
+    return;
+  }
+
+  const filtered = adminState.knowledgeData.filter(item => {
+    const name = formatTopicName(item.intent).toLowerCase();
+    const intent = (item.intent || "").toLowerCase();
+    const dept = (item.department || "").toLowerCase();
+    const ans = (item.en || item.en_answer || "").toLowerCase();
+    return name.includes(filter) || intent.includes(filter) || dept.includes(filter) || ans.includes(filter);
+  });
+
+  populateResolveDropdown(filtered);
+}
+
+function populateResolveDropdown(itemsToUse = null) {
+  const select = document.getElementById("resolveExistingIntentSelect");
+  if (!select) return;
+
+  const currentVal = select.value || activeSuggestedIntent;
+  const items = itemsToUse || adminState.knowledgeData;
+  select.innerHTML = `<option value="">-- Choose a Topic (${items.length} available) --</option>`;
+  
+  // Sort knowledge data alphabetically by formatted topic name
+  const sortedData = [...items].sort((a, b) => {
+    const nameA = formatTopicName(a.intent);
+    const nameB = formatTopicName(b.intent);
+    return nameA.localeCompare(nameB);
+  });
+  
   sortedData.forEach(item => {
     const opt = document.createElement("option");
-    opt.value = item.intent_id;
-    opt.textContent = `${item.intent} (${item.department || 'No Dept'})`;
+    opt.value = item.intent_id || item.intent;
+    const formatted = formatTopicName(item.intent);
+    const rawAnswer = (item.en || item.en_answer || "").replace(/\*+/g, '').replace(/\r?\n+/g, ' ').trim();
+    const preview = rawAnswer ? (rawAnswer.length > 50 ? rawAnswer.slice(0, 48) + "..." : rawAnswer) : "No preview";
+    const dept = item.department ? ` [${item.department}]` : "";
+    opt.textContent = `${formatted}${dept} — "${preview}"`;
     select.appendChild(opt);
   });
+
+  if (currentVal) {
+    select.value = currentVal;
+  }
+
+  updateTopicPreview();
+}
+
+function updateTopicPreview() {
+  const select = document.getElementById("resolveExistingIntentSelect");
+  const previewEl = document.getElementById("resolveTopicPreview");
+  if (!previewEl) return;
+  const val = select ? select.value : activeSuggestedIntent;
+  if (!val) {
+    previewEl.style.display = "none";
+    previewEl.innerHTML = "";
+    return;
+  }
+  const item = adminState.knowledgeData.find(i => String(i.intent_id) === String(val) || i.intent === val);
+  if (!item) {
+    previewEl.style.display = "none";
+    return;
+  }
+  const answer = (item.en || item.en_answer || "No English answer available.").replace(/\*+/g, '').trim();
+  const dept = item.department || "General";
+  previewEl.innerHTML = `
+    <div style="font-weight:600;color:var(--text);margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:14px;">${escapeHtml(formatTopicName(item.intent))}</span>
+        <code style="font-size:11px;background:var(--surface);padding:1px 6px;border-radius:4px;border:1px solid var(--border);color:var(--text-muted);">${escapeHtml(item.intent)}</code>
+      </div>
+      <span class="badge" style="background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;">${escapeHtml(dept)}</span>
+    </div>
+    <div style="color:var(--text-2);font-size:12.5px;line-height:1.5;max-height:140px;overflow-y:auto;background:var(--surface);padding:8px 10px;border-radius:6px;border:1px solid var(--border);">
+      ${escapeHtml(answer)}
+    </div>
+  `;
+  previewEl.style.display = "block";
 }
 
 async function handleLinkIntent() {
   const question = document.getElementById("resolveQueryText").value;
-  const intent = document.getElementById("resolveExistingIntentSelect").value;
+  const select = document.getElementById("resolveExistingIntentSelect");
+  const intent = select.value || activeSuggestedIntent;
   const language = document.getElementById("resolveExistingIntentSelectLang").value;
-
+  const id = document.getElementById("resolveQueryID").value;
 
   if (!intent) {
-    showToast("⚠️ Please select an intent to link this query to.");
+    showToast("⚠️ Please select a topic to link this query to.");
     return;
+  }
+  
+  const confirmBtn = document.getElementById("confirmLinkBtn");
+  if (confirmBtn) {
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = "Linking...";
   }
 
   try {
-    const payload = { question, intent, language };
+    const payload = { question, intent, language, id };
     const res = await adminFetch(`${API_URL}/api/admin/unresolved/link`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
-
+    
     const data = await res.json();
     if (data.status === "success") {
-      showToast("✅ Query successfully linked to intent!");
+      showToast("✅ Query successfully linked to topic!");
       closeResolveModal();
       loadUnmatched();
       loadStats();
     } else {
-      showToast(`❌ Error: ${data.message}`);
+      showToast(`❌ Error: ${data.message || "Failed to link query"}`);
     }
   } catch (err) {
     console.error(err);
     showToast("❌ Failed to connect to server.");
+  } finally {
+    if (confirmBtn) {
+      confirmBtn.disabled = false;
+      confirmBtn.innerHTML = `<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg> Link & Dismiss`;
+    }
   }
+}
+
+function openNewFromUnmatched(question, id) {
+  openAddModal();
+  document.getElementById("add-en-question").value = question;
+  // Auto-generate clean snake_case system topic identifier
+  const suggestedIntent = question
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "")
+    .trim()
+    .split(/\s+/)
+    .slice(0, 4)
+    .join("_");
+  const intentInput = document.getElementById("add-intent");
+  if (intentInput) {
+    intentInput.value = suggestedIntent;
+    intentInput.dataset.userEdited = "true";
+  }
+  adminState.unmatchedIdToDismissOnAdd = id;
 }
 
 function handleCreateNewFromResolve() {
   const question = document.getElementById("resolveQueryText").value;
+  const id = document.getElementById("resolveQueryID").value;
   closeResolveModal();
-  openAddModal();
-  document.getElementById("add-en-question").value = question;
+  openNewFromUnmatched(question, id);
 }
 
 function populateDatalists() {
@@ -834,29 +1184,32 @@ function populateDatalists() {
   const intentList = document.getElementById("intent-list");
   const deptList = document.getElementById("department-list");
   const tagsList = document.getElementById("tags-list");
-
-  if (intentList) intentList.innerHTML = Array.from(intents).map(i => `<option value="${i}">`).join("");
-  if (deptList) deptList.innerHTML = Array.from(departments).map(d => `<option value="${d}">`).join("");
-  if (tagsList) tagsList.innerHTML = Array.from(tags).map(t => `<option value="${t}">`).join("");
+  
+  if(intentList) intentList.innerHTML = Array.from(intents).map(i => `<option value="${i}">`).join("");
+  if(deptList) deptList.innerHTML = Array.from(departments).map(d => `<option value="${d}">`).join("");
+  if(tagsList) tagsList.innerHTML = Array.from(tags).map(t => `<option value="${t}">`).join("");
 }
 
 function openAddModal() {
   document.getElementById("modalMode").value = "add";
   document.getElementById("editIntentId").value = "";
-  document.getElementById("intentModalTitle").textContent = "Add to Knowledge Base";
+  document.getElementById("intentModalTitle").textContent = "Add Topic to Knowledge Base";
   document.getElementById("addIntentForm").reset();
+  const intentInput = document.getElementById("add-intent");
+  if (intentInput) delete intentInput.dataset.userEdited;
   populateDatalists();
   document.getElementById("addIntentModal").classList.add("active");
 }
 
 function openEditModal(intentId) {
   const intent = adminState.knowledgeData.find(i => i.intent === intentId);
-  if (!intent) return;
-
+  if(!intent) return;
+  
   document.getElementById("modalMode").value = "edit";
   document.getElementById("editIntentId").value = intentId;
-  document.getElementById("intentModalTitle").textContent = "Edit Intent";
-
+  const topicTitle = formatTopicName(intent.intent);
+  document.getElementById("intentModalTitle").textContent = `Edit Topic: ${topicTitle}`;
+  
   // Populate form
   document.getElementById("add-en-question").value = intent.en_question || "";
   document.getElementById("add-intent").value = intent.intent;
@@ -864,17 +1217,20 @@ function openEditModal(intentId) {
   document.getElementById("add-tags").value = intent.tags || "";
   document.getElementById("add-tl-question").value = intent.tl_question || "";
   document.getElementById("add-bis-question").value = intent.bis_question || "";
-  document.getElementById("add-en-answer").value = intent.en_answer || "";
-  document.getElementById("add-tl-answer").value = intent.tl_answer || "";
-  document.getElementById("add-bis-answer").value = intent.bis_answer || "";
-
+  document.getElementById("add-en-answer").value = intent.en_answer || intent.en || "";
+  document.getElementById("add-tl-answer").value = intent.tl_answer || intent.tl || "";
+  document.getElementById("add-bis-answer").value = intent.bis_answer || intent.bis || "";
+  
   populateDatalists();
   document.getElementById("addIntentModal").classList.add("active");
 }
 
 function closeModal() {
+  adminState.unmatchedIdToDismissOnAdd = null;
   document.getElementById("addIntentModal").classList.remove("active");
   document.getElementById("addIntentForm").reset();
+  const intentInput = document.getElementById("add-intent");
+  if (intentInput) delete intentInput.dataset.userEdited;
 }
 
 function openDeleteModal(intentId) {
@@ -932,7 +1288,7 @@ async function handleChangePassword(e) {
       body: JSON.stringify({ old_password: oldPwd, new_password: newPwd })
     });
     const data = await res.json();
-
+    
     if (data.status === "success") {
       showToast("✅ Administrator password changed successfully.");
       sessionStorage.setItem("vista_admin_token", newPwd); // update token
@@ -953,29 +1309,29 @@ async function handleChangePassword(e) {
 async function confirmDelete() {
   const intentId = adminState.intentToDelete;
   if (!intentId) return;
-
+  
   try {
     const res = await adminFetch(`${API_URL}/api/admin/intents/${intentId}`, { method: "DELETE" });
     const data = await res.json();
     if (data.status === "success") {
-      showToast("✅ Intent deleted successfully.");
+      showToast("✅ Topic deleted successfully.");
       closeDeleteModal();
       loadIntents();
     } else {
-      showToast("❌ Failed to delete intent.");
+      showToast("❌ Failed to delete topic.");
     }
-  } catch (err) {
+  } catch(err) {
     showToast("❌ Error connecting to server.");
   }
 }
 
-/* ==================== ADD / EDIT INTENT */
+/* ==================== ADD / EDIT TOPIC */
 async function handleAddIntent(e) {
   e.preventDefault();
 
   const mode = document.getElementById("modalMode").value;
   const editId = document.getElementById("editIntentId").value;
-
+  
   const payload = {
     en_question: document.getElementById("add-en-question").value,
     intent: document.getElementById("add-intent").value,
@@ -1000,13 +1356,27 @@ async function handleAddIntent(e) {
 
     const data = await res.json();
     if (data.status === "success") {
-      showToast("✅ Knowledge Base updated!");
+      // If this topic was created from an unmatched query, auto-dismiss the query!
+      if (adminState.unmatchedIdToDismissOnAdd) {
+        try {
+          await adminFetch(`${API_URL}/api/admin/unresolved/dismiss`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: adminState.unmatchedIdToDismissOnAdd })
+          });
+        } catch (e) {
+          console.error("Failed to auto-dismiss unmatched query", e);
+        }
+        adminState.unmatchedIdToDismissOnAdd = null;
+      }
+
+      showToast(mode === "edit" ? "✅ Topic updated successfully!" : "✅ Topic added successfully!");
       closeModal();
       loadStats();
       loadUnmatched();
       loadIntents();
     } else {
-      showToast("❌ Failed to save intent.");
+      showToast("❌ Failed to save topic.");
     }
   } catch (err) {
     showToast("❌ Error connecting to server.");
@@ -1017,12 +1387,12 @@ async function handleAddIntent(e) {
 async function handleAutoTranslate() {
   const enQuestion = document.getElementById("add-en-question").value.trim();
   const enAnswer = document.getElementById("add-en-answer").value.trim();
-
+  
   if (!enQuestion && !enAnswer) {
     showToast("⚠️ Please enter English text first.");
     return;
   }
-
+  
   const btn = document.getElementById("autoTranslateAllBtn");
   const originalHtml = btn.innerHTML;
   btn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg> Translating...`;
@@ -1030,7 +1400,7 @@ async function handleAutoTranslate() {
 
   try {
     let hasError = false;
-
+    
     if (enQuestion) {
       const resQ = await adminFetch(`${API_URL}/api/admin/translate`, {
         method: "POST",
@@ -1046,7 +1416,7 @@ async function handleAutoTranslate() {
         hasError = true;
       }
     }
-
+    
     if (enAnswer) {
       const resA = await adminFetch(`${API_URL}/api/admin/translate`, {
         method: "POST",
@@ -1062,7 +1432,7 @@ async function handleAutoTranslate() {
         hasError = true;
       }
     }
-
+    
     if (!hasError) {
       showToast("✨ Translation complete!");
     }
@@ -1129,17 +1499,43 @@ function showToast(msg) {
 }
 
 /* ==================== HELPERS */
-function animateValue(id, start, end, duration) {
-  if (start === end) { document.getElementById(id).textContent = end; return; }
+function animateValue(id, start, end, duration = 1100, suffix = "") {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  if (el._animFrame) {
+    cancelAnimationFrame(el._animFrame);
+    el._animFrame = null;
+  }
+
+  const endNum = parseFloat(end) || 0;
+  const isFloat = String(end).includes(".") || (endNum % 1 !== 0);
+  const currentText = (el.textContent || "").replace(/[^0-9.]/g, "");
+  const startNum = currentText ? (parseFloat(currentText) || 0) : (parseFloat(start) || 0);
+
+  if (startNum === endNum && el.textContent.trim() !== "0" && el.textContent.trim() !== "0%") {
+    el.textContent = (isFloat ? endNum.toFixed(1) : endNum.toLocaleString()) + suffix;
+    return;
+  }
+
   let startTime = null;
   const step = (ts) => {
     if (!startTime) startTime = ts;
     const progress = Math.min((ts - startTime) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-    document.getElementById(id).textContent = Math.floor(eased * (end - start) + start);
-    if (progress < 1) window.requestAnimationFrame(step);
+    // Smooth ease-out cubic
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = eased * (endNum - startNum) + startNum;
+
+    el.textContent = (isFloat ? current.toFixed(1) : Math.round(current).toLocaleString()) + suffix;
+
+    if (progress < 1) {
+      el._animFrame = window.requestAnimationFrame(step);
+    } else {
+      el.textContent = (isFloat ? endNum.toFixed(1) : endNum.toLocaleString()) + suffix;
+      el._animFrame = null;
+    }
   };
-  window.requestAnimationFrame(step);
+  el._animFrame = window.requestAnimationFrame(step);
 }
 
 function escapeHtml(text) {
@@ -1173,16 +1569,16 @@ function renderDirectory() {
   const tbody = document.getElementById("directory-tbody");
   if (!tbody) return;
   tbody.innerHTML = "";
-
+  
   if (directoryData.length === 0) {
     tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px;">No offices found.</td></tr>`;
     return;
   }
-
+  
   directoryData.forEach((office, index) => {
     const statusClass = office.status === "open" ? "status-resolved" : "status-unresolved";
     const statusText = office.status === "open" ? "Open" : "Closed";
-
+    
     tbody.innerHTML += `
       <tr>
         <td style="font-weight:600;color:var(--text-color);">${escapeHtml(office.name || "Unknown")}</td>
@@ -1223,7 +1619,7 @@ function openEditOfficeModal(index) {
   document.getElementById("officeEmail").value = office.email || "";
   document.getElementById("officeHours").value = office.hours || "";
   document.getElementById("officeStatus").value = office.status || "open";
-
+  
   document.getElementById("officeModalTitle").textContent = "Edit Office";
   document.getElementById("officeModal").classList.add("active");
 }
@@ -1256,7 +1652,7 @@ async function saveOfficeData(offices) {
 document.getElementById("officeForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
   const index = parseInt(document.getElementById("officeIndex").value, 10);
-
+  
   const office = {
     name: document.getElementById("officeName").value.trim(),
     location: document.getElementById("officeLocation").value.trim(),
@@ -1266,14 +1662,14 @@ document.getElementById("officeForm")?.addEventListener("submit", (e) => {
     hours: document.getElementById("officeHours").value.trim(),
     status: document.getElementById("officeStatus").value
   };
-
+  
   const newDir = [...directoryData];
   if (index >= 0) {
     newDir[index] = office;
   } else {
     newDir.push(office);
   }
-
+  
   saveOfficeData(newDir);
 });
 

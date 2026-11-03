@@ -30,28 +30,38 @@ def load_local_answers():
         }
 
 def refresh_answers_cache():
-    """Fetches all intents from Supabase and rebuilds the ANSWERS dictionary."""
+    """Fetches all intents from Supabase and rebuilds the ANSWERS dictionary, preserving complete local answers."""
     global ANSWERS
     try:
+        local_answers = load_local_answers()
         res = supabase.table("intents").select("*").execute()
-        new_answers = {}
+        new_answers = dict(local_answers)
         for row in res.data:
             intent_name = row.get("intent_name")
             if intent_name:
+                en = row.get("en_answer", "")
+                tl = row.get("tl_answer", "")
+                bis = row.get("bis_answer", "")
+                # If Supabase has placeholder template text, keep rich local answer if available
+                if "Please update via Admin Dashboard" in str(en) and intent_name in local_answers:
+                    local_en = local_answers[intent_name].get("answers", {}).get("en", "")
+                    if "Please update via Admin Dashboard" not in str(local_en):
+                        continue
+
                 new_answers[intent_name] = {
                     "id": row.get("id"),
                     "department": row.get("department", "General"),
                     "answers": {
-                        "en": row.get("en_answer", ""),
-                        "tl": row.get("tl_answer", ""),
-                        "bis": row.get("bis_answer", "")
+                        "en": en,
+                        "tl": tl,
+                        "bis": bis
                     }
                 }
         if not new_answers:
             raise ValueError("Supabase returned no knowledge-base intents.")
         ANSWERS.clear()
         ANSWERS.update(new_answers)
-        print(f"[INFO] Cache refreshed: Loaded {len(ANSWERS)} intents from Supabase.")
+        print(f"[INFO] Cache refreshed: Loaded {len(ANSWERS)} intents.")
     except Exception as e:
         print(f"[ERROR] Failed to refresh answers cache from Supabase: {e}")
         try:

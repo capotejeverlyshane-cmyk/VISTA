@@ -1,6 +1,7 @@
 import re
 from fastapi import APIRouter
 from pydantic import BaseModel
+from typing import Optional
 from services.cache import ANSWERS, OFFICES
 
 from supabase_client import supabase
@@ -61,23 +62,24 @@ def get_offices():
 
 class FeedbackRequest(BaseModel):
     question: str
-    predicted_intent: str
-    feedback: str
-    language: str
+    predicted_intent: Optional[str] = ""
+    feedback: Optional[str] = ""
+    language: Optional[str] = "en"
+    comment: Optional[str] = None
 
 
 @router.post("/feedback")
 def submit_feedback(req: FeedbackRequest):
     try:
-        print("Feedback")
-        supabase.table("feedback").insert({
-            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-            "question": req.question,
-            "predicted_intent": req.predicted_intent,
-            "feedback_type": req.feedback,
-            "language": req.language
-        }).execute()
-
+        is_helpful = True if (req.feedback or "").lower() in ["helpful", "true", "yes"] else False
+        row = {
+            "question": req.question or "",
+            "answer": "",
+            "intent": req.predicted_intent or "unresolved",
+            "helpful": is_helpful,
+            "comment": req.comment if req.comment else None
+        }
+        supabase.table("feedback").insert(row).execute()
         return {"status": "success"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
