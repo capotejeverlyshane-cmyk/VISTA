@@ -1,6 +1,6 @@
 export const API_URL = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost")
   ? "http://127.0.0.1:8001"
-  : "https://your-backend-service.onrender.com"; // <--- Replace with your live backend URL
+  : "https://vista-qqiz.onrender.com"; // <--- Replace with your live backend URL
 
 /* ==================== FIREBASE CONFIG */
 export const firebaseConfig = {
