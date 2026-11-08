@@ -13,3 +13,5 @@ lxml
 passlib[bcrypt]
 python-jose[cryptography]
 supabase
+nltk
+httpx

@@ -21,16 +21,19 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="VISTA LGU Chatbot API", lifespan=lifespan)
 
 # Setup CORS
-frontend_url = os.environ.get("FRONTEND_URL", "http://127.0.0.1:5500")
-# In backend/app.py:
+frontend_url = os.environ.get("FRONTEND_URL", "")
+allowed_origins = [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "http://127.0.0.1:8085",
+    "http://localhost:8085",
+]
+if frontend_url:
+    allowed_origins.append(frontend_url)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://127.0.0.1:8085",
-        "http://localhost:8085",
-        "https://*.vercel.app",             # Allows your Vercel deployment
-        "https://your-exact-app.vercel.app"  # Your production Vercel domain
-    ],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
