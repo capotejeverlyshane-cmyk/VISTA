@@ -3,7 +3,7 @@ import re
 import time
 from fastapi import APIRouter, Request
 from pydantic import BaseModel, Field, field_validator
-from services.cache import ANSWERS
+from services.cache import ANSWERS, TRAINING_PHRASES
 from services.nlp import (
     DISAMBIGUATION_RULES,
     LANGUAGE_ALIASES,
@@ -18,6 +18,22 @@ from supabase_client import supabase
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
+
+GREETING_PHRASES = {
+    "hi",
+    "hi there",
+    "hello",
+    "hey",
+    "hey there",
+    "hello there",
+    "greetings",
+    "good morning",
+    "good afternoon",
+    "good evening",
+}
+NORMALIZED_GREETING_PHRASES = {
+    re.sub(r"(.)\1+", r"\1", phrase) for phrase in GREETING_PHRASES
+}
 
 # Selections supply missing query context; the trained model still chooses the intent.
 FOLLOW_UP_QUERIES = {
@@ -118,6 +134,38 @@ def make_reply(reply: str, lang: str, intent: str, context: str | None = None) -
     }
 
 
+def matches_disambiguation_query(message: str, rule: dict) -> bool:
+    normalized = re.sub(r"[^\w\s]", " ", message.casefold())
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    topic_matches = any(
+        re.search(rf"(?<!\w){re.escape(trigger.casefold())}(?!\w)", normalized)
+        for trigger in rule["trigger_words"]
+    )
+    if not topic_matches:
+        return False
+
+    if any(
+        re.search(rf"(?<!\w){re.escape(exclusion.casefold())}(?!\w)", normalized)
+        for exclusion in rule["exclude_words"]
+    ):
+        return False
+
+    return bool(
+        re.search(
+            r"\b(?:apply|applies|applying|application|applications|get|getting|"
+            r"obtain|obtaining|secure|securing|register|registering|"
+            r"process|procedure|procedures|steps?|"
+            r"require|requires|requirement|requirements|requirment|requirments|requiement|requiements|reqs?|"
+            r"document|documents|dokumento|"
+            r"kailangan|pangangailangan|kinahanglan|rekisito|requisito|"
+            r"kuha|kumuha|mokuha|pagkuha|magkuha|unsaon|paano|how|"
+            r"bayad|magkano|pila|fee|fees|cost|costs|price|payment)\b",
+            normalized,
+        )
+    )
+
+
+
 @router.post("/chat")
 async def chat(request: ChatRequest, req: Request):
     user_msg = request.message
@@ -125,11 +173,12 @@ async def chat(request: ChatRequest, req: Request):
     lang = resolve_language(request.language, user_msg)
     model_input = user_msg
     user_lower = user_msg.casefold().strip().rstrip(".!?")
-    matched_query = None
 
     if context in FOLLOW_UP_QUERIES:
         choices = FOLLOW_UP_QUERIES[context]
         selection = re.fullmatch(r"(?:option\s+)?([0-9]+)", user_lower)
+        matched_query = None
+        choice_number = None
         if selection:
             number = int(selection[1])
             if 1 <= number <= len(choices):
@@ -157,12 +206,12 @@ async def chat(request: ChatRequest, req: Request):
             model_input = matched_query
         # Other messages are fresh questions, not forced into the old menu.
 
-    # Offer a menu for an ambiguous topic, unless a specific subtype is already mentioned
+    # Clarify broad business-permit application questions before classification.
     if model_input == user_msg:
         for rule in DISAMBIGUATION_RULES.values():
-            has_trigger = any(tw in user_lower for tw in rule["trigger_words"])
-            has_exclude = any(ew in user_lower for ew in rule.get("exclude_words", []))
-            if has_trigger and not has_exclude:
+            if user_lower in rule["trigger_words"] or matches_disambiguation_query(
+                user_msg, rule
+            ):
                 return make_reply(
                     rule["response"][lang], lang, "disambiguation", rule["context"]
                 )
@@ -172,10 +221,26 @@ async def chat(request: ChatRequest, req: Request):
     cleaned = clean_text(model_input)
     print(f"CLEANED: {cleaned}")
 
-    intent = predict_intent(cleaned)
+    normalized_greeting = re.sub(r"(.)\1+", r"\1", user_lower)
+    is_greeting = (
+        model_input == user_msg
+        and normalized_greeting in NORMALIZED_GREETING_PHRASES
+    )
+    approved_intent = (
+        TRAINING_PHRASES.get(cleaned) if model_input == user_msg else None
+    )
+    intent = (
+        "greetings"
+        if is_greeting
+        else approved_intent or predict_intent(cleaned)
+    )
     print(f"INTENT: {intent}")
 
-    confidence = get_confidence(model_input, cleaned)
+    confidence = (
+        1.0
+        if is_greeting or approved_intent
+        else get_confidence(model_input, cleaned)
+    )
     print(f"CL: {confidence}")
 
     logger.info(
@@ -183,10 +248,9 @@ async def chat(request: ChatRequest, req: Request):
     )
     ip = req.client.host if req.client else None
 
-    # Threshold: 0.50 for confirmed menu choices; 0.70 for open-ended queries (with 157 intents, 70%+ is very confident)
-    threshold = 0.50 if matched_query else 0.70
-    if confidence < threshold:
-        print(f"LOW CL: {confidence} (threshold: {threshold})")
+    # if not intent or (confidence is not None and confidence < 0.8):
+    if confidence < 0.8:
+        print(f"LOW CL: {confidence}")
         log_unresolved_chat(model_input, confidence)
 
         log_chat(user_msg, intent or "unresolved", ip, False, confidence)

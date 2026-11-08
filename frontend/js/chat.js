@@ -233,7 +233,7 @@ export async function sendMessage() {
       message: text,
       language: state.language,
       context: state.context,
-      context_language: state.contextLanguage || null
+      context_language: state.contextLanguage
     };
 
     const response = await fetch(`${API_URL}/chat`, {
@@ -256,7 +256,7 @@ export async function sendMessage() {
     };
 
     state.context = data.context || null;
-    state.contextLanguage = data.language || null;
+    state.contextLanguage = state.context ? (data.language || null) : null;
 
     state.currentMessages.push({ role: "bot", text: data.reply || "No response received." });
     sessionStorage.setItem("vista_current_messages", JSON.stringify(state.currentMessages));

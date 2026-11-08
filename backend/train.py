@@ -23,13 +23,16 @@ MODEL_DIR = os.path.join(os.path.dirname(__file__), "models")
 os.makedirs(MODEL_DIR, exist_ok=True)
 
 
+import pandas as pd
+
+
 def load_data():
     print("[INFO] Loading training data from Supabase and local CSV...")
 
     data = []
 
     # --------------------------------------------------
-    # 1. Load intents from Supabase (paginated)
+    # 1. Load intents from Supabase
     # --------------------------------------------------
     supabase_intent_map = {}
     page_size = 1000
@@ -50,7 +53,7 @@ def load_data():
         start += page_size
 
     # --------------------------------------------------
-    # 2. Load training phrases from Supabase (paginated to avoid 1000-row limit)
+    # 2. Load training phrases from Supabase
     # --------------------------------------------------
     all_phrases = []
     start = 0
@@ -82,7 +85,8 @@ def load_data():
 
     print(
         f"[INFO] Supabase samples: "
-        f"{sum(1 for row in data if row['source'] == 'supabase')} (from {len(all_phrases)} total phrases across all pages)"
+        f"{sum(1 for row in data if row['source'] == 'supabase')} "
+        f"(from {len(all_phrases)} training phrases across all pages)"
     )
 
     # --------------------------------------------------
@@ -90,53 +94,43 @@ def load_data():
     # --------------------------------------------------
     print("[INFO] Loading local CSV files...")
 
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    intents_csv_path = os.path.join(BASE_DIR, "intents.csv")
-    phrases_csv_path = os.path.join(BASE_DIR, "training_phrases_augmented.csv")
-
-    intents_df = pd.read_csv(intents_csv_path) if os.path.exists(intents_csv_path) else pd.DataFrame()
-    phrases_df = pd.read_csv(phrases_csv_path) if os.path.exists(phrases_csv_path) else pd.DataFrame()
+    intents_df = pd.read_csv("intents.csv")
+    phrases_df = pd.read_csv("training_phrases_augmented.csv")
 
     # Normalize ID types to prevent int/string mismatches
-    local_intent_map = {}
-    if not intents_df.empty:
-        local_intent_map = {
-            str(int(row["id"]))
-            if pd.notna(row["id"]) and str(row["id"]).replace(".", "", 1).isdigit()
-            else str(row["id"]).strip(): str(row["intent_name"]).strip()
-            for _, row in intents_df.iterrows()
-            if pd.notna(row["id"])
-            and pd.notna(row["intent_name"])
-            and str(row["intent_name"]).strip()
-        }
+    local_intent_map = {
+        str(int(row["id"]))
+        if pd.notna(row["id"]) and str(row["id"]).replace(".", "", 1).isdigit()
+        else str(row["id"]).strip(): str(row["intent_name"]).strip()
+        for _, row in intents_df.iterrows()
+        if pd.notna(row["id"])
+        and pd.notna(row["intent_name"])
+        and str(row["intent_name"]).strip()
+    }
 
-    # Combine maps so CSV rows can resolve against both local and Supabase intents
-    intent_map = {**supabase_intent_map, **local_intent_map}
+    for _, row in phrases_df.iterrows():
+        raw_intent_id = row.get("intent_id")
+        phrase = row.get("phrase")
 
-    if not phrases_df.empty:
-        for _, row in phrases_df.iterrows():
-            raw_intent_id = row.get("intent_id")
-            phrase = row.get("phrase")
+        if pd.isna(raw_intent_id) or pd.isna(phrase):
+            continue
 
-            if pd.isna(raw_intent_id) or pd.isna(phrase):
-                continue
+        # Handle integer IDs stored as floats, e.g. 12.0
+        try:
+            intent_id = str(int(raw_intent_id))
+        except (ValueError, TypeError, OverflowError):
+            intent_id = str(raw_intent_id).strip()
 
-            # Handle integer IDs stored as floats, e.g. 12.0
-            try:
-                intent_id = str(int(raw_intent_id))
-            except (ValueError, TypeError, OverflowError):
-                intent_id = str(raw_intent_id).strip()
+        intent_name = local_intent_map.get(intent_id)
 
-            intent_name = intent_map.get(intent_id)
-
-            if intent_name and str(phrase).strip():
-                data.append(
-                    {
-                        "question": str(phrase).strip(),
-                        "intent": intent_name,
-                        "source": "csv",
-                    }
-                )
+        if intent_name and str(phrase).strip():
+            data.append(
+                {
+                    "question": str(phrase).strip(),
+                    "intent": intent_name,
+                    "source": "csv",
+                }
+            )
 
     print(f"[INFO] CSV samples: {sum(1 for row in data if row['source'] == 'csv')}")
 
@@ -317,13 +311,18 @@ def train_and_compare():
     rare = intent_counts[intent_counts < 2]
 
     if not rare.empty:
-        print("\n[ERROR] These intents have fewer than 2 samples:")
+        print(
+            "\n[WARNING] These intents have fewer than 2 samples "
+            "and will be included in training but excluded from holdout metrics:"
+        )
 
         for intent, count in rare.items():
             print(f"  {intent}: {count}")
 
+    trainable_intents = intent_counts[intent_counts >= 2]
+    if trainable_intents.empty:
         raise ValueError(
-            "Every intent must have at least 2 samples "
+            "At least one intent must have 2 or more samples "
             "for stratified train/test splitting."
         )
 
@@ -338,9 +337,17 @@ def train_and_compare():
     # Hold out test set
     # ---------------------------------------------------------
 
+    rare_mask = y.isin(rare.index).to_numpy()
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y_encoded, test_size=0.20, random_state=42, stratify=y_encoded
+        X.iloc[~rare_mask],
+        y_encoded[~rare_mask],
+        test_size=0.20,
+        random_state=42,
+        stratify=y_encoded[~rare_mask],
     )
+    if rare_mask.any():
+        X_train = pd.concat([X_train, X.iloc[rare_mask]])
+        y_train = np.concatenate([y_train, y_encoded[rare_mask]])
 
     print(f"\n[INFO] Training samples: {len(X_train)}")
     print(f"[INFO] Testing samples: {len(X_test)}")
@@ -524,6 +531,9 @@ def train_and_compare():
     if best_pipeline is None:
         raise RuntimeError("No model was successfully trained.")
 
+    # Keep holdout metrics for evaluation, but include every approved phrase in the saved model.
+    best_pipeline.fit(X, y_encoded)
+
     # joblib.dump(best_pipeline, os.path.join(MODEL_DIR, "best_model_augmented.pkl"))
     # joblib.dump(label_encoder, os.path.join(MODEL_DIR, "label_encoder_augmented.pkl"))
 
@@ -568,4 +578,5 @@ def train_and_compare():
 
 
 if __name__ == "__main__":
-    train_and_compare()
+    load_data()
+    # train_and_compare()

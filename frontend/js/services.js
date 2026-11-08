@@ -168,7 +168,7 @@ export async function loadDynamicDirectory() {
         if (currentHour >= 8 && currentHour < 17) {
            isOpen = true;
            // Check noon break
-           if (office.operating_hours?.noon_break && currentHour === 12) {
+           if (office.operating_hours.noon_break && currentHour === 12) {
              isOpen = false;
              statusText = "Noon Break";
            } else {
@@ -206,8 +206,8 @@ export async function loadDynamicDirectory() {
             </div>
             <div class="dir-info-row">
               <span class="dir-label">Hours</span>
-              <span class="dir-value">${escapeHTML(office.operating_hours?.standard || 'N/A')}
-                ${office.operating_hours?.noon_break ? '<br><small style="color:var(--danger)">Observes Noon Break</small>' : '<br><small style="color:var(--success)">No Noon Break</small>'}
+              <span class="dir-value">${escapeHTML(office.operating_hours.standard)}
+                ${office.operating_hours.noon_break ? '<br><small style="color:var(--danger)">Observes Noon Break</small>' : '<br><small style="color:var(--success)">No Noon Break</small>'}
               </span>
             </div>
           </div>

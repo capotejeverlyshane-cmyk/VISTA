@@ -1,36 +1,36 @@
 {
   "best_model": "logistic_regression",
-  "best_accuracy": 0.959915611814346,
-  "best_macro_f1": 0.9518907574844822,
-  "best_weighted_f1": 0.9590523275236967,
+  "best_accuracy": 0.9450375642546461,
+  "best_macro_f1": 0.910410808982654,
+  "best_weighted_f1": 0.9461689024201033,
   "all_results": {
     "logistic_regression": {
-      "accuracy": 0.959915611814346,
-      "macro_f1": 0.9518907574844822,
-      "weighted_f1": 0.9590523275236967,
+      "accuracy": 0.9450375642546461,
+      "macro_f1": 0.910410808982654,
+      "weighted_f1": 0.9461689024201033,
       "report": {
         "birth_certificate": {
-          "precision": 0.9482758620689655,
-          "recall": 1.0,
-          "f1-score": 0.9734513274336283,
-          "support": 55.0
-        },
-        "business_permit": {
           "precision": 1.0,
           "recall": 1.0,
           "f1-score": 1.0,
+          "support": 54.0
+        },
+        "business_permit": {
+          "precision": 0.9565217391304348,
+          "recall": 1.0,
+          "f1-score": 0.9777777777777777,
           "support": 22.0
         },
         "cao_cancellation_assessment": {
           "precision": 1.0,
-          "recall": 0.9166666666666666,
-          "f1-score": 0.9565217391304348,
+          "recall": 1.0,
+          "f1-score": 1.0,
           "support": 24.0
         },
         "cao_cert_no_improvement": {
-          "precision": 0.9032258064516129,
+          "precision": 1.0,
           "recall": 1.0,
-          "f1-score": 0.9491525423728814,
+          "f1-score": 1.0,
           "support": 28.0
         },
         "cao_certified_true_copy_tax_dec": {
@@ -40,15 +40,15 @@
           "support": 27.0
         },
         "cao_consolidation_tax_dec": {
-          "precision": 0.9259259259259259,
+          "precision": 1.0,
           "recall": 1.0,
-          "f1-score": 0.9615384615384616,
+          "f1-score": 1.0,
           "support": 25.0
         },
         "cao_new_tax_declaration": {
-          "precision": 0.85,
+          "precision": 0.918918918918919,
           "recall": 1.0,
-          "f1-score": 0.918918918918919,
+          "f1-score": 0.9577464788732394,
           "support": 34.0
         },
         "cao_property_assessment": {
@@ -65,8 +65,8 @@
         },
         "cao_revision_assessment": {
           "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+          "recall": 0.9642857142857143,
+          "f1-score": 0.9818181818181818,
           "support": 28.0
         },
         "cao_transfer_tax_declaration": {
@@ -77,152 +77,44 @@
         },
         "cao_verification_property": {
           "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+          "recall": 0.9629629629629629,
+          "f1-score": 0.9811320754716981,
           "support": 27.0
         },
-        "casso_annotation_cancellation_mortgaged_property": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "casso_building_new_assessment_and_transfer": {
-          "precision": 1.0,
-          "recall": 0.42857142857142855,
-          "f1-score": 0.6,
-          "support": 7.0
-        },
-        "casso_cancellation_physical_change_destruction_demolition": {
-          "precision": 0.875,
-          "recall": 1.0,
-          "f1-score": 0.9333333333333333,
-          "support": 7.0
-        },
-        "casso_certified_tax_declaration_and_certification": {
-          "precision": 1.0,
-          "recall": 0.5714285714285714,
-          "f1-score": 0.7272727272727273,
-          "support": 7.0
-        },
-        "casso_certified_tax_map_and_pin_verification": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "casso_land_new_assessment_and_transfer": {
-          "precision": 0.875,
-          "recall": 1.0,
-          "f1-score": 0.9333333333333333,
-          "support": 7.0
-        },
-        "casso_land_subdivision_segregation_consolidation": {
-          "precision": 1.0,
-          "recall": 0.8571428571428571,
-          "f1-score": 0.9230769230769231,
-          "support": 7.0
-        },
-        "casso_machinery_new_assessment_or_transfer": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 6.0
-        },
-        "casso_reassessment_erroneous_assessment_dispute": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "casso_reassessment_reclassification": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "ccro_application_for_marriage_license": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "ccro_issuance_of_certified_true_copy_civil_registry": {
-          "precision": 1.0,
-          "recall": 0.8571428571428571,
-          "f1-score": 0.9230769230769231,
-          "support": 7.0
-        },
-        "ccro_out_of_town_registration_of_live_birth": {
-          "precision": 1.0,
-          "recall": 0.8333333333333334,
-          "f1-score": 0.9090909090909091,
-          "support": 6.0
-        },
-        "ccro_petition_for_correction_or_change_of_name_sex_birthdate": {
-          "precision": 1.0,
-          "recall": 0.8571428571428571,
-          "f1-score": 0.9230769230769231,
-          "support": 7.0
-        },
-        "ccro_registration_of_birth_marriage_and_death_certificates": {
-          "precision": 0.8333333333333334,
-          "recall": 0.7142857142857143,
-          "f1-score": 0.7692307692307693,
-          "support": 7.0
-        },
-        "ccro_registration_of_court_decrees": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "ccro_registration_of_legal_instruments": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "ccro_request_for_authenticated_psa_copy": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
         "cmo_access_to_e_library_services": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 25.0
+          "precision": 0.3333333333333333,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.4444444444444444,
+          "support": 3.0
         },
         "cmo_app_new_business_permit_fsic_reqs": {
-          "precision": 0.9375,
+          "precision": 1.0,
           "recall": 1.0,
-          "f1-score": 0.967741935483871,
+          "f1-score": 1.0,
           "support": 15.0
         },
         "cmo_app_new_business_permit_lessee_reqs": {
-          "precision": 0.8823529411764706,
+          "precision": 0.8333333333333334,
           "recall": 1.0,
-          "f1-score": 0.9375,
+          "f1-score": 0.9090909090909091,
           "support": 15.0
         },
         "cmo_app_new_business_permit_steps_and_fees": {
-          "precision": 0.875,
-          "recall": 0.7777777777777778,
-          "f1-score": 0.8235294117647058,
-          "support": 18.0
+          "precision": 0.9411764705882353,
+          "recall": 0.9411764705882353,
+          "f1-score": 0.9411764705882353,
+          "support": 17.0
         },
         "cmo_app_new_business_permit_validity": {
-          "precision": 0.8571428571428571,
-          "recall": 0.9230769230769231,
-          "f1-score": 0.8888888888888888,
-          "support": 13.0
-        },
-        "cmo_application_for_new_business_permit_online": {
           "precision": 1.0,
           "recall": 1.0,
           "f1-score": 1.0,
+          "support": 13.0
+        },
+        "cmo_application_for_new_business_permit_online": {
+          "precision": 0.8888888888888888,
+          "recall": 1.0,
+          "f1-score": 0.9411764705882353,
           "support": 24.0
         },
         "cmo_application_for_new_business_permit_walk_in": {
@@ -232,15 +124,15 @@
           "support": 36.0
         },
         "cmo_application_for_new_business_permit_walk_in_process / cmo_application_for_new_business_permit_walk_in": {
-          "precision": 0.6666666666666666,
+          "precision": 0.8333333333333334,
           "recall": 0.8333333333333334,
-          "f1-score": 0.7407407407407407,
+          "f1-score": 0.8333333333333334,
           "support": 12.0
         },
         "cmo_application_for_renewal_of_business_permit_online": {
-          "precision": 1.0,
+          "precision": 0.967741935483871,
           "recall": 1.0,
-          "f1-score": 1.0,
+          "f1-score": 0.9836065573770492,
           "support": 30.0
         },
         "cmo_availment_of_pre_registration_seminar": {
@@ -249,16 +141,10 @@
           "f1-score": 1.0,
           "support": 16.0
         },
-        "cmo_barangay_clearance_fee": {
-          "precision": 0.8,
-          "recall": 0.5714285714285714,
-          "f1-score": 0.6666666666666666,
-          "support": 7.0
-        },
         "cmo_building_permit": {
-          "precision": 0.9583333333333334,
+          "precision": 0.7931034482758621,
           "recall": 1.0,
-          "f1-score": 0.9787234042553191,
+          "f1-score": 0.8846153846153846,
           "support": 23.0
         },
         "cmo_castration_neutering_in_dogs_and_cats": {
@@ -280,27 +166,33 @@
           "support": 26.0
         },
         "cmo_driver_id": {
-          "precision": 0.8518518518518519,
-          "recall": 0.92,
-          "f1-score": 0.8846153846153846,
+          "precision": 1.0,
+          "recall": 0.76,
+          "f1-score": 0.8636363636363636,
           "support": 25.0
         },
         "cmo_excavation_permit": {
-          "precision": 0.8888888888888888,
-          "recall": 1.0,
-          "f1-score": 0.9411764705882353,
+          "precision": 0.9583333333333334,
+          "recall": 0.9583333333333334,
+          "f1-score": 0.9583333333333334,
           "support": 24.0
         },
         "cmo_facilitation_for_the_accreditation_of_youth_organization_registration_program_yorp": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+          "precision": 0.5,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.5714285714285714,
+          "support": 3.0
+        },
+        "cmo_facilitation_for_yorp_accreditation": {
+          "precision": 0.9333333333333333,
+          "recall": 0.875,
+          "f1-score": 0.9032258064516129,
           "support": 16.0
         },
         "cmo_financial_assistance": {
-          "precision": 0.9230769230769231,
+          "precision": 0.8888888888888888,
           "recall": 1.0,
-          "f1-score": 0.96,
+          "f1-score": 0.9411764705882353,
           "support": 24.0
         },
         "cmo_firecracker_permit": {
@@ -310,9 +202,9 @@
           "support": 25.0
         },
         "cmo_franchise_renewal": {
-          "precision": 0.84,
-          "recall": 0.9130434782608695,
-          "f1-score": 0.875,
+          "precision": 0.7857142857142857,
+          "recall": 0.9565217391304348,
+          "f1-score": 0.8627450980392157,
           "support": 23.0
         },
         "cmo_issuance_of_billing_statement_for_socialized_housing_projects": {
@@ -323,8 +215,8 @@
         },
         "cmo_issuance_of_building_permit": {
           "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+          "recall": 0.9666666666666667,
+          "f1-score": 0.9830508474576272,
           "support": 30.0
         },
         "cmo_issuance_of_certificate_of_legitimate_bonafide_beneficiary": {
@@ -333,40 +225,46 @@
           "f1-score": 1.0,
           "support": 11.0
         },
-        "cmo_issuance_of_certification_to_homeowners_association_hoa_applicants_for_community_mortgage_program_cmp": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+        "cmo_issuance_of_certification_to_hoa_applicants_for_cmp": {
+          "precision": 0.9523809523809523,
+          "recall": 0.9090909090909091,
+          "f1-score": 0.9302325581395349,
           "support": 22.0
+        },
+        "cmo_issuance_of_certification_to_homeowners_association_hoa_applicants_for_community_mortgage_program_cmp": {
+          "precision": 0.5,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.5714285714285714,
+          "support": 3.0
         },
         "cmo_issuance_of_demolition_permit": {
           "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+          "recall": 0.8461538461538461,
+          "f1-score": 0.9166666666666666,
           "support": 26.0
         },
         "cmo_issuance_of_fencing_permit": {
           "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+          "recall": 0.9655172413793104,
+          "f1-score": 0.9824561403508771,
           "support": 29.0
         },
         "cmo_issuance_of_ground_preparation_and_excavation_permit": {
           "precision": 1.0,
-          "recall": 0.8235294117647058,
-          "f1-score": 0.9032258064516129,
+          "recall": 0.9411764705882353,
+          "f1-score": 0.9696969696969697,
           "support": 17.0
         },
         "cmo_issuance_of_indigenous_people_ip_certification": {
           "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+          "recall": 0.9565217391304348,
+          "f1-score": 0.9777777777777777,
           "support": 23.0
         },
         "cmo_issuance_of_meat_inspection_certificate": {
-          "precision": 0.9545454545454546,
+          "precision": 1.0,
           "recall": 1.0,
-          "f1-score": 0.9767441860465116,
+          "f1-score": 1.0,
           "support": 21.0
         },
         "cmo_issuance_of_miscellaneous_electrical_permit": {
@@ -400,15 +298,15 @@
           "support": 34.0
         },
         "cmo_issuance_of_traffic_clearance": {
-          "precision": 1.0,
+          "precision": 0.92,
           "recall": 1.0,
-          "f1-score": 1.0,
+          "f1-score": 0.9583333333333334,
           "support": 23.0
         },
         "cmo_issuance_of_tribal_identification_card_id": {
-          "precision": 1.0,
-          "recall": 0.88,
-          "f1-score": 0.9361702127659575,
+          "precision": 0.96,
+          "recall": 0.96,
+          "f1-score": 0.96,
           "support": 25.0
         },
         "cmo_job_recommendation": {
@@ -418,9 +316,9 @@
           "support": 22.0
         },
         "cmo_market_stall": {
-          "precision": 1.0,
-          "recall": 0.9545454545454546,
-          "f1-score": 0.9767441860465116,
+          "precision": 0.9565217391304348,
+          "recall": 1.0,
+          "f1-score": 0.9777777777777777,
           "support": 22.0
         },
         "cmo_marriage_solemnization": {
@@ -429,6 +327,12 @@
           "f1-score": 1.0,
           "support": 22.0
         },
+        "cmo_mayor_s_special_permit": {
+          "precision": 0.8787878787878788,
+          "recall": 0.9354838709677419,
+          "f1-score": 0.90625,
+          "support": 31.0
+        },
         "cmo_mayors_clearance": {
           "precision": 1.0,
           "recall": 1.0,
@@ -436,69 +340,93 @@
           "support": 25.0
         },
         "cmo_mayors_special_permit": {
-          "precision": 0.868421052631579,
-          "recall": 0.9705882352941176,
-          "f1-score": 0.9166666666666666,
-          "support": 34.0
+          "precision": 0.3,
+          "recall": 1.0,
+          "f1-score": 0.46153846153846156,
+          "support": 3.0
+        },
+        "cmo_motorized_tricycle_operators_permit_annual_mayor_s_permit": {
+          "precision": 0.9285714285714286,
+          "recall": 0.7647058823529411,
+          "f1-score": 0.8387096774193549,
+          "support": 17.0
         },
         "cmo_motorized_tricycle_operators_permit_annual_mayors_permit": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 17.0
+          "precision": 0.3333333333333333,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.4444444444444444,
+          "support": 3.0
         },
         "cmo_motorized_tricycle_operators_permit_dropping_of_franchise": {
-          "precision": 0.9375,
-          "recall": 0.8823529411764706,
-          "f1-score": 0.9090909090909091,
+          "precision": 0.875,
+          "recall": 0.8235294117647058,
+          "f1-score": 0.8484848484848485,
           "support": 17.0
         },
-        "cmo_motorized_tricycle_operators_permit_franchise_new_application_grantee": {
-          "precision": 0.7619047619047619,
-          "recall": 0.7619047619047619,
-          "f1-score": 0.7619047619047619,
+        "cmo_motorized_tricycle_operators_permit_franchise_new": {
+          "precision": 0.7222222222222222,
+          "recall": 0.6190476190476191,
+          "f1-score": 0.6666666666666666,
           "support": 21.0
         },
-        "cmo_motorized_tricycle_operators_permit_franchise_renewal_of_franchise": {
-          "precision": 0.8666666666666667,
-          "recall": 0.65,
-          "f1-score": 0.7428571428571429,
+        "cmo_motorized_tricycle_operators_permit_franchise_new_application_grantee": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1-score": 0.6666666666666666,
+          "support": 3.0
+        },
+        "cmo_motorized_tricycle_operators_permit_franchise_renewal": {
+          "precision": 0.7142857142857143,
+          "recall": 0.5,
+          "f1-score": 0.5882352941176471,
           "support": 20.0
+        },
+        "cmo_motorized_tricycle_operators_permit_franchise_renewal_of_franchise": {
+          "precision": 0.5,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.5714285714285714,
+          "support": 3.0
         },
         "cmo_motorized_tricycle_operators_permit_substitution_of_unit": {
           "precision": 1.0,
           "recall": 1.0,
           "f1-score": 1.0,
-          "support": 15.0
-        },
-        "cmo_motorized_tricycle_operators_permit_transfer_of_ownership": {
-          "precision": 0.8666666666666667,
-          "recall": 0.8125,
-          "f1-score": 0.8387096774193549,
           "support": 16.0
         },
+        "cmo_motorized_tricycle_operators_permit_transfer_of_ownership": {
+          "precision": 0.8235294117647058,
+          "recall": 0.875,
+          "f1-score": 0.8484848484848485,
+          "support": 16.0
+        },
+        "cmo_motorized_tricycle_trisikad_driver_s_identification_card": {
+          "precision": 0.65,
+          "recall": 0.7222222222222222,
+          "f1-score": 0.6842105263157895,
+          "support": 18.0
+        },
         "cmo_motorized_tricycle_trisikad_drivers_identification_card": {
-          "precision": 0.8666666666666667,
-          "recall": 0.7647058823529411,
-          "f1-score": 0.8125,
-          "support": 17.0
+          "precision": 0.2857142857142857,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.4,
+          "support": 3.0
         },
         "cmo_mtop_franchise": {
-          "precision": 0.7777777777777778,
-          "recall": 0.9130434782608695,
-          "f1-score": 0.84,
+          "precision": 0.7916666666666666,
+          "recall": 0.8260869565217391,
+          "f1-score": 0.8085106382978723,
           "support": 23.0
         },
         "cmo_mtop_transfer": {
-          "precision": 0.8636363636363636,
-          "recall": 0.9047619047619048,
-          "f1-score": 0.8837209302325582,
+          "precision": 0.8888888888888888,
+          "recall": 0.7619047619047619,
+          "f1-score": 0.8205128205128205,
           "support": 21.0
         },
         "cmo_new_business_permit": {
-          "precision": 0.9545454545454546,
+          "precision": 1.0,
           "recall": 0.9545454545454546,
-          "f1-score": 0.9545454545454546,
+          "f1-score": 0.9767441860465116,
           "support": 44.0
         },
         "cmo_occupational_permit": {
@@ -514,9 +442,9 @@
           "support": 25.0
         },
         "cmo_pet_registration_and_rabies_vaccination_of_dogs_and_cats": {
-          "precision": 0.9333333333333333,
+          "precision": 1.0,
           "recall": 1.0,
-          "f1-score": 0.9655172413793104,
+          "f1-score": 1.0,
           "support": 14.0
         },
         "cmo_redemption_adoption_of_impounded_dogs": {
@@ -526,27 +454,27 @@
           "support": 15.0
         },
         "cmo_release_impounded_vehicle": {
-          "precision": 0.9166666666666666,
-          "recall": 1.0,
-          "f1-score": 0.9565217391304348,
+          "precision": 1.0,
+          "recall": 0.7727272727272727,
+          "f1-score": 0.8717948717948718,
           "support": 22.0
         },
         "cmo_releasing_of_impounded_vehicle": {
-          "precision": 1.0,
-          "recall": 0.9,
-          "f1-score": 0.9473684210526315,
+          "precision": 0.8,
+          "recall": 1.0,
+          "f1-score": 0.8888888888888888,
           "support": 20.0
         },
         "cmo_renew_business_permit": {
           "precision": 1.0,
-          "recall": 0.7916666666666666,
-          "f1-score": 0.8837209302325582,
+          "recall": 0.9166666666666666,
+          "f1-score": 0.9565217391304348,
           "support": 24.0
         },
         "cmo_renewal_of_business_permit_walk_in": {
-          "precision": 0.8611111111111112,
-          "recall": 0.96875,
-          "f1-score": 0.9117647058823529,
+          "precision": 0.9375,
+          "recall": 0.9375,
+          "f1-score": 0.9375,
           "support": 32.0
         },
         "cmo_request_for_anti_drug_symposium": {
@@ -557,14 +485,20 @@
         },
         "cmo_request_for_copies_of_iec_statements_advisories": {
           "precision": 1.0,
-          "recall": 0.9375,
-          "f1-score": 0.967741935483871,
-          "support": 16.0
-        },
-        "cmo_request_for_facilitation_in_training_and_seminar": {
-          "precision": 1.0,
           "recall": 1.0,
           "f1-score": 1.0,
+          "support": 16.0
+        },
+        "cmo_request_for_e_library_services": {
+          "precision": 0.9545454545454546,
+          "recall": 0.84,
+          "f1-score": 0.8936170212765957,
+          "support": 25.0
+        },
+        "cmo_request_for_facilitation_in_trainings_and_seminars": {
+          "precision": 0.8823529411764706,
+          "recall": 1.0,
+          "f1-score": 0.9375,
           "support": 15.0
         },
         "cmo_request_for_library_materials_photocopy": {
@@ -577,7 +511,7 @@
           "precision": 1.0,
           "recall": 1.0,
           "f1-score": 1.0,
-          "support": 17.0
+          "support": 18.0
         },
         "cmo_request_for_media_accreditation": {
           "precision": 1.0,
@@ -597,29 +531,41 @@
           "f1-score": 1.0,
           "support": 18.0
         },
-        "cmo_request_for_technical_support_services_data_banking_research_and_development_services": {
+        "cmo_request_for_technical_support_services_data_banking_r_d": {
           "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+          "recall": 0.7333333333333333,
+          "f1-score": 0.8461538461538461,
           "support": 15.0
         },
+        "cmo_request_for_technical_support_services_data_banking_research_and_development_services": {
+          "precision": 0.42857142857142855,
+          "recall": 1.0,
+          "f1-score": 0.6,
+          "support": 3.0
+        },
         "cmo_retire_business_permit": {
-          "precision": 0.8076923076923077,
-          "recall": 0.8076923076923077,
-          "f1-score": 0.8076923076923077,
+          "precision": 0.9375,
+          "recall": 0.5769230769230769,
+          "f1-score": 0.7142857142857143,
           "support": 26.0
         },
         "cmo_retirement_of_business_permit": {
-          "precision": 0.8214285714285714,
-          "recall": 0.8214285714285714,
-          "f1-score": 0.8214285714285714,
+          "precision": 0.7105263157894737,
+          "recall": 0.9642857142857143,
+          "f1-score": 0.8181818181818182,
           "support": 28.0
         },
-        "cmo_review_and_endorsement_of_gender_and_development_gad_plan_and_budget_and_gender_and_development_gad_accomplishment_report": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+        "cmo_review_and_endorsement_of_gad_plan_and_budget": {
+          "precision": 0.875,
+          "recall": 0.9333333333333333,
+          "f1-score": 0.9032258064516129,
           "support": 15.0
+        },
+        "cmo_review_and_endorsement_of_gender_and_development_gad_plan_and_budget_and_gender_and_development_gad_accomplishment_report": {
+          "precision": 0.5,
+          "recall": 0.3333333333333333,
+          "f1-score": 0.4,
+          "support": 3.0
         },
         "cmo_scholarship": {
           "precision": 1.0,
@@ -634,9 +580,9 @@
           "support": 24.0
         },
         "cmo_special_permit": {
-          "precision": 0.9047619047619048,
-          "recall": 0.7916666666666666,
-          "f1-score": 0.8444444444444444,
+          "precision": 1.0,
+          "recall": 0.625,
+          "f1-score": 0.7692307692307693,
           "support": 24.0
         },
         "cmo_transfer_of_ownership_change_location": {
@@ -652,9 +598,9 @@
           "support": 23.0
         },
         "cmo_tricycle_dropping": {
-          "precision": 0.9130434782608695,
+          "precision": 0.875,
           "recall": 0.9130434782608695,
-          "f1-score": 0.9130434782608695,
+          "f1-score": 0.8936170212765957,
           "support": 23.0
         },
         "cmo_trisikad_operators_permit_top": {
@@ -665,20 +611,20 @@
         },
         "cmo_use_of_facility": {
           "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+          "recall": 0.9166666666666666,
+          "f1-score": 0.9565217391304348,
           "support": 24.0
         },
         "cmo_use_of_vehicle": {
-          "precision": 0.96,
+          "precision": 1.0,
           "recall": 1.0,
-          "f1-score": 0.9795918367346939,
+          "f1-score": 1.0,
           "support": 24.0
         },
         "cswdo_aics": {
           "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
+          "recall": 0.92,
+          "f1-score": 0.9583333333333334,
           "support": 25.0
         },
         "cswdo_cert_indigency": {
@@ -687,53 +633,17 @@
           "f1-score": 1.0,
           "support": 27.0
         },
-        "cswdo_day_care_services": {
+        "cswdo_day_care_enrollment": {
           "precision": 1.0,
           "recall": 1.0,
           "f1-score": 1.0,
           "support": 25.0
         },
-        "cswdo_exiting_4ps_limited_financial_assistance": {
-          "precision": 1.0,
-          "recall": 0.8571428571428571,
-          "f1-score": 0.9230769230769231,
-          "support": 7.0
-        },
-        "cswdo_hospital_medical_assistance": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cswdo_limited_financial_assistance": {
-          "precision": 0.875,
-          "recall": 1.0,
-          "f1-score": 0.9333333333333333,
-          "support": 7.0
-        },
         "cswdo_livelihood_assistance": {
           "precision": 1.0,
           "recall": 1.0,
           "f1-score": 1.0,
-          "support": 21.0
-        },
-        "cswdo_medicine_assistance": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cswdo_minor_local_travel_clearance": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cswdo_paupers_burial_assistance": {
-          "precision": 1.0,
-          "recall": 0.8571428571428571,
-          "f1-score": 0.9230769230769231,
-          "support": 7.0
+          "support": 20.0
         },
         "cswdo_pre_marriage_counseling": {
           "precision": 1.0,
@@ -741,29 +651,11 @@
           "f1-score": 1.0,
           "support": 25.0
         },
-        "cswdo_pwd_bedridden_financial_assistance": {
-          "precision": 1.0,
-          "recall": 0.8571428571428571,
-          "f1-score": 0.9230769230769231,
-          "support": 7.0
-        },
         "cswdo_pwd_id": {
-          "precision": 0.9722222222222222,
+          "precision": 1.0,
           "recall": 1.0,
-          "f1-score": 0.9859154929577465,
+          "f1-score": 1.0,
           "support": 35.0
-        },
-        "cswdo_pwd_purchase_booklet": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 6.0
-        },
-        "cswdo_pwd_therapy_medical_financial_assistance": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
         },
         "cswdo_relief_assistance": {
           "precision": 1.0,
@@ -771,29 +663,11 @@
           "f1-score": 1.0,
           "support": 30.0
         },
-        "cswdo_senior_citizen_burial_assistance": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
         "cswdo_senior_citizen_id": {
           "precision": 1.0,
           "recall": 1.0,
           "f1-score": 1.0,
           "support": 29.0
-        },
-        "cswdo_senior_citizen_purchase_booklet": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cswdo_shelter_assistance": {
-          "precision": 1.0,
-          "recall": 0.8571428571428571,
-          "f1-score": 0.9230769230769231,
-          "support": 7.0
         },
         "cswdo_social_case_study": {
           "precision": 1.0,
@@ -801,168 +675,48 @@
           "f1-score": 1.0,
           "support": 20.0
         },
-        "cswdo_solo_parent_membership_and_id": {
+        "cswdo_solo_parent_id": {
           "precision": 1.0,
           "recall": 1.0,
           "f1-score": 1.0,
           "support": 32.0
         },
-        "cswdo_sulong_dunong_youth_children": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_annual_fixed_tax_delivery_vehicle": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_assessment_business_permit": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_certification_full_payment_lost_receipts": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_community_tax_certificate_cedula": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_examination_books_of_accounts": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 6.0
-        },
-        "cto_official_receipt_amusement_tax": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_official_receipt_business_tax": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_official_receipt_miscellaneous_fees": {
-          "precision": 1.0,
-          "recall": 0.7142857142857143,
-          "f1-score": 0.8333333333333334,
-          "support": 7.0
-        },
-        "cto_official_receipt_real_property_tax": {
-          "precision": 0.8571428571428571,
-          "recall": 0.8571428571428571,
-          "f1-score": 0.8571428571428571,
-          "support": 7.0
-        },
-        "cto_official_receipt_real_property_transfer_tax": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 6.0
-        },
-        "cto_real_property_tax_clearance": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_registration_books_accounts_receipts_invoices": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_release_checks_government_private_transactions": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_release_salaries_allowances_honorariums_prizes": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_statement_of_account_rpt_business_permit": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "cto_weights_and_measures_inspection_fee": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 7.0
-        },
-        "goodbye": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1-score": 1.0,
-          "support": 4.0
-        },
         "greetings": {
-          "precision": 0.8837209302325582,
-          "recall": 0.9743589743589743,
-          "f1-score": 0.926829268292683,
+          "precision": 0.9487179487179487,
+          "recall": 0.9487179487179487,
+          "f1-score": 0.9487179487179487,
           "support": 39.0
         },
-        "help": {
-          "precision": 0.5,
-          "recall": 0.25,
-          "f1-score": 0.3333333333333333,
-          "support": 4.0
-        },
         "inquiry_barangay_clearance": {
-          "precision": 0.7647058823529411,
+          "precision": 0.9285714285714286,
           "recall": 1.0,
-          "f1-score": 0.8666666666666667,
+          "f1-score": 0.9629629629629629,
           "support": 13.0
         },
         "real_property_tax_due_date": {
-          "precision": 0.9565217391304348,
-          "recall": 0.9565217391304348,
-          "f1-score": 0.9565217391304348,
+          "precision": 0.9523809523809523,
+          "recall": 0.8695652173913043,
+          "f1-score": 0.9090909090909091,
           "support": 23.0
         },
         "real_property_tax_payment": {
-          "precision": 0.9259259259259259,
-          "recall": 0.9259259259259259,
-          "f1-score": 0.9259259259259259,
+          "precision": 0.896551724137931,
+          "recall": 0.9629629629629629,
+          "f1-score": 0.9285714285714286,
           "support": 27.0
         },
-        "thank_you": {
-          "precision": 1.0,
-          "recall": 0.6666666666666666,
-          "f1-score": 0.8,
-          "support": 3.0
-        },
-        "accuracy": 0.959915611814346,
+        "accuracy": 0.9450375642546461,
         "macro avg": {
-          "precision": 0.9630850869796699,
-          "recall": 0.9468383761179735,
-          "f1-score": 0.9518907574844822,
-          "support": 2844.0
+          "precision": 0.9101889519722577,
+          "recall": 0.92624894629396,
+          "f1-score": 0.910410808982654,
+          "support": 2529.0
         },
         "weighted avg": {
-          "precision": 0.9616614713262543,
-          "recall": 0.959915611814346,
-          "f1-score": 0.9590523275236967,
-          "support": 2844.0
+          "precision": 0.9538242788326392,
+          "recall": 0.9450375642546461,
+          "f1-score": 0.9461689024201033,
+          "support": 2529.0
         }
       }
     }

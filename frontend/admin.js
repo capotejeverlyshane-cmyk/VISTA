@@ -1,4 +1,6 @@
-const API_URL = "http://127.0.0.1:8001";
+export const API_URL = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost")
+  ? "http://127.0.0.1:8001"
+  : "https://your-backend-service.onrender.com"; // <--- Replace with your live backend URL
 
 async function adminFetch(url, options = {}) {
   options.headers = options.headers || {};
@@ -6,7 +8,21 @@ async function adminFetch(url, options = {}) {
   if (token) {
     options.headers['Authorization'] = `Bearer ${token}`;
   }
-  return fetch(url, options);
+  const res = await fetch(url, options);
+  if (res.status === 401 || res.status === 403) {
+    // Token expired or invalid: reset session and show login gate
+    sessionStorage.removeItem("vista_admin_auth");
+    sessionStorage.removeItem("vista_admin_token");
+    adminState.authenticated = false;
+    const gate = document.getElementById("adminLoginGate");
+    if (gate) {
+      gate.style.display = "flex";
+      gate.style.opacity = "1";
+      gate.style.visibility = "visible";
+      gate.style.pointerEvents = "auto";
+    }
+  }
+  return res;
 }
 
 
@@ -118,20 +134,24 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
   initMobileSidebar();
   initThemeToggle();
-  loadStats();
-  loadUnmatched();
-  loadFeedback();
-  loadIntents();
-  loadAnalytics();
-  loadChatLogs();
-  loadDirectory();
+
+  // Only load protected data if authenticated session exists
+  if (adminState.authenticated) {
+    loadStats();
+    loadUnmatched();
+    loadFeedback();
+    loadIntents();
+    loadAnalytics();
+    loadChatLogs();
+    loadDirectory();
+  }
   checkServerHealth();
 
   document.getElementById("retrainBtn").addEventListener("click", handleRetrain);
   document.getElementById("closeModalBtn").addEventListener("click", closeModal);
   document.getElementById("cancelBtn").addEventListener("click", closeModal);
   document.getElementById("addIntentForm").addEventListener("submit", handleAddIntent);
-  
+
   const enQuestionInput = document.getElementById("add-en-question");
   const intentInput = document.getElementById("add-intent");
   if (enQuestionInput && intentInput) {
@@ -218,7 +238,7 @@ function applyTheme(theme) {
   const mobileBtn = document.getElementById("mobileThemeBtn");
   if (label) label.textContent = theme === "dark" ? "Light Mode" : "Dark Mode";
   if (mobileBtn) mobileBtn.textContent = theme === "dark" ? "☀️" : "🌙";
-  
+
   // Re-render chart to update colors if initialized
   if (analyticsChartInstance) {
     loadAnalytics();
@@ -326,14 +346,32 @@ async function checkServerHealth() {
   const lastTrainedEl = document.getElementById("healthLastTrained");
 
   try {
-    const res = await fetch(`${API_URL}/health`);
+    const res = await fetch(`${API_URL}/api/admin/health`);
+    if (!res.ok) {
+      throw new Error(`Health check failed with status ${res.status}`);
+    }
     const data = await res.json();
-    if (data.status === "ok") {
-      if (apiEl) { apiEl.textContent = "Operational"; apiEl.className = "health-badge online"; }
-      if (modelEl) { modelEl.textContent = "Loaded"; modelEl.className = "health-badge online"; }
-      if (accuracyEl) { accuracyEl.textContent = data.accuracy + "%"; }
-      if (intentCountEl) { intentCountEl.textContent = data.intent_count + " Topics Loaded"; }
-      if (lastTrainedEl) { lastTrainedEl.textContent = data.last_trained || "—"; }
+    if (data.status !== "ok") {
+      throw new Error("Health check returned an unexpected response");
+    }
+
+    if (apiEl) { apiEl.textContent = "Operational"; apiEl.className = "health-badge online"; }
+    if (modelEl) {
+      modelEl.textContent = data.model_loaded ? "Loaded" : "Unavailable";
+      modelEl.className = data.model_loaded ? "health-badge online" : "health-badge offline";
+    }
+    if (accuracyEl) {
+      accuracyEl.textContent = Number.isFinite(data.accuracy) ? `${data.accuracy.toFixed(1)}%` : "—";
+      accuracyEl.className = Number.isFinite(data.accuracy) ? "health-badge online" : "health-badge offline";
+    }
+    if (intentCountEl) {
+      intentCountEl.textContent = Number.isFinite(data.intent_count)
+        ? `${data.intent_count} Topics Loaded`
+        : "—";
+    }
+    if (lastTrainedEl) { lastTrainedEl.textContent = data.last_trained || "—"; }
+    if (statusPill) {
+      statusPill.innerHTML = '<span class="status-dot online"></span><span>System Online</span>';
     }
   } catch {
     if (apiEl) { apiEl.textContent = "Offline"; apiEl.className = "health-badge offline"; }
@@ -368,16 +406,16 @@ async function loadAnalytics() {
   try {
     const res = await adminFetch(`${API_URL}/api/admin/analytics`);
     const data = await res.json();
-    
+
     document.getElementById("analyticsBadge").textContent = data.type;
     document.getElementById("analyticsDesc").textContent = data.description;
-    
+
     const ctx = document.getElementById("analyticsChart").getContext("2d");
-    
+
     if (analyticsChartInstance) {
       analyticsChartInstance.destroy();
     }
-    
+
     const isDark = adminState.theme === "dark";
     const textColor = isDark ? "#94a3b8" : "#64748b";
     const gridColor = isDark ? "#334155" : "#e2e8f0";
@@ -455,7 +493,7 @@ function renderKnowledge(data) {
         <div style="font-weight:600;color:var(--text);font-size:14px;">${escapeHtml(formatted)}</div>
         <div style="font-size:11px;color:var(--text-muted);font-family:monospace;margin-top:2px;">${escapeHtml(item.intent)}</div>
       </td>
-      <td><span class="badge" style="background:var(--gray-200);color:var(--gray-800)">${escapeHtml(item.department || "General")}</span></td>
+      <td><span class="badge" style="background:var(--surface-2);color:var(--text-2)">${escapeHtml(item.department || "General")}</span></td>
       <td>${escapeHtml(item.en_question || "No sample question")}</td>
       <td>
         <div style="display:flex;gap:0.5rem">
@@ -471,7 +509,7 @@ function renderKnowledge(data) {
 function filterKnowledge() {
   const q = document.getElementById("knowledgeSearch").value.toLowerCase();
   const filtered = adminState.knowledgeData.filter(item =>
-    item.intent.toLowerCase().includes(q) || 
+    item.intent.toLowerCase().includes(q) ||
     formatTopicName(item.intent).toLowerCase().includes(q) ||
     (item.en_question && item.en_question.toLowerCase().includes(q)) ||
     (item.department && item.department.toLowerCase().includes(q))
@@ -569,7 +607,7 @@ async function dismissQuery(question) {
     const res = await adminFetch(`${API_URL}/api/admin/unresolved/dismiss`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id:question })
+      body: JSON.stringify({ id: question })
     });
     const data = await res.json();
     if (data.status === "success") {
@@ -597,12 +635,19 @@ function filterUnmatched() {
 async function loadFeedback() {
   try {
     const res = await adminFetch(`${API_URL}/api/admin/feedback`);
-    adminState.feedbackData = await res.json();
+    const data = await res.json();
+    if (!res.ok || !Array.isArray(data)) throw new Error("Invalid feedback response.");
+    adminState.feedbackData = data.map(item => ({
+      ...item,
+      created_at: item.created_at || item.timestamp,
+      intent: item.intent || item.predicted_intent,
+      helpful: item.helpful ?? (item.feedback_type === "helpful")
+    }));
     adminState.feedbackData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     renderFeedback(adminState.feedbackData);
   } catch (err) {
     console.error("Failed to load feedback", err);
-    renderEmptyTable("feedback-tbody", 4, "Unable to load data. Is the server running?");
+    renderEmptyTable("feedback-tbody", 6, "Unable to load data. Is the server running?");
   }
 }
 
@@ -611,13 +656,14 @@ function renderFeedback(data) {
   tbody.innerHTML = "";
 
   if (!data.length) {
-    renderEmptyTable("feedback-tbody", 4, "No feedback entries yet.");
+    renderEmptyTable("feedback-tbody", 6, "No feedback entries yet.");
     return;
   }
 
   data.forEach(item => {
     const tr = document.createElement("tr");
-    const date = new Date(item.created_at).toLocaleDateString();
+    const feedbackDate = new Date(item.created_at);
+    const date = isNaN(feedbackDate.getTime()) ? "—" : feedbackDate.toLocaleDateString();
     const badgeClass = item.helpful ? "success" : "danger";
     const badgeText = item.helpful ? "👍 Helpful" : "👎 Not Helpful";
     const escapedQuestion = escapeHtml(item.question);
@@ -654,7 +700,7 @@ function renderFeedback(data) {
 function filterFeedback(query) {
   const q = (typeof query === "string" ? query : (document.getElementById("interactionSearch")?.value || "")).toLowerCase();
   const filtered = adminState.feedbackData.filter(item =>
-    item.question.toLowerCase().includes(q) || 
+    item.question.toLowerCase().includes(q) ||
     (item.intent && item.intent.toLowerCase().includes(q)) ||
     (item.intent && formatTopicName(item.intent).toLowerCase().includes(q))
   );
@@ -754,7 +800,7 @@ function renderChatLogs(data) {
         ${item.intent ? `<div style="font-size:11px;color:var(--text-muted);font-family:monospace;margin-top:2px;">${escapeHtml(item.intent)}</div>` : ''}
       </td>
       <td><span class="badge ${confClass}">${confValue}</span></td>
-      <td><span class="badge" style="background:var(--gray-200);color:var(--gray-800)">${langDisplay}</span></td>
+      <td><span class="badge" style="background:var(--surface-2);color:var(--text-2)">${escapeHtml(langDisplay)}</span></td>
     `;
     tbody.appendChild(tr);
   });
@@ -872,12 +918,14 @@ let activeSuggestedIntent = null;
 async function openLinkModal(question, id) {
   document.getElementById("resolveQueryText").value = question;
   document.getElementById("resolveQueryID").value = id;
-  
+
   // Reset filter input
   const filterInput = document.getElementById("resolveTopicFilter");
   if (filterInput) filterInput.value = "";
-  
+
   activeSuggestedIntent = null;
+  const topicSelect = document.getElementById("resolveExistingIntentSelect");
+  if (topicSelect) topicSelect.value = "";
   populateResolveDropdown();
   document.getElementById("resolveModal").classList.add("active");
 
@@ -977,7 +1025,7 @@ function renderAiSuggestions(suggestions) {
 
 function selectTopicItem(targetVal) {
   activeSuggestedIntent = targetVal;
-  
+
   // Update suggestion card selected styling
   const cards = document.querySelectorAll("#resolveAiSuggestions .suggestion-card");
   cards.forEach(c => {
@@ -1036,14 +1084,14 @@ function populateResolveDropdown(itemsToUse = null) {
   const currentVal = select.value || activeSuggestedIntent;
   const items = itemsToUse || adminState.knowledgeData;
   select.innerHTML = `<option value="">-- Choose a Topic (${items.length} available) --</option>`;
-  
+
   // Sort knowledge data alphabetically by formatted topic name
   const sortedData = [...items].sort((a, b) => {
     const nameA = formatTopicName(a.intent);
     const nameB = formatTopicName(b.intent);
     return nameA.localeCompare(nameB);
   });
-  
+
   sortedData.forEach(item => {
     const opt = document.createElement("option");
     opt.value = item.intent_id || item.intent;
@@ -1051,7 +1099,7 @@ function populateResolveDropdown(itemsToUse = null) {
     const rawAnswer = (item.en || item.en_answer || "").replace(/\*+/g, '').replace(/\r?\n+/g, ' ').trim();
     const preview = rawAnswer ? (rawAnswer.length > 50 ? rawAnswer.slice(0, 48) + "..." : rawAnswer) : "No preview";
     const dept = item.department ? ` [${item.department}]` : "";
-    opt.textContent = `${formatted}${dept} — "${preview}"`;
+    opt.textContent = `${formatted}${dept}`;
     select.appendChild(opt);
   });
 
@@ -1105,7 +1153,7 @@ async function handleLinkIntent() {
     showToast("⚠️ Please select a topic to link this query to.");
     return;
   }
-  
+
   const confirmBtn = document.getElementById("confirmLinkBtn");
   if (confirmBtn) {
     confirmBtn.disabled = true;
@@ -1119,7 +1167,7 @@ async function handleLinkIntent() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
-    
+
     const data = await res.json();
     if (data.status === "success") {
       showToast("✅ Query successfully linked to topic!");
@@ -1184,10 +1232,10 @@ function populateDatalists() {
   const intentList = document.getElementById("intent-list");
   const deptList = document.getElementById("department-list");
   const tagsList = document.getElementById("tags-list");
-  
-  if(intentList) intentList.innerHTML = Array.from(intents).map(i => `<option value="${i}">`).join("");
-  if(deptList) deptList.innerHTML = Array.from(departments).map(d => `<option value="${d}">`).join("");
-  if(tagsList) tagsList.innerHTML = Array.from(tags).map(t => `<option value="${t}">`).join("");
+
+  if (intentList) intentList.innerHTML = Array.from(intents).map(i => `<option value="${i}">`).join("");
+  if (deptList) deptList.innerHTML = Array.from(departments).map(d => `<option value="${d}">`).join("");
+  if (tagsList) tagsList.innerHTML = Array.from(tags).map(t => `<option value="${t}">`).join("");
 }
 
 function openAddModal() {
@@ -1203,13 +1251,13 @@ function openAddModal() {
 
 function openEditModal(intentId) {
   const intent = adminState.knowledgeData.find(i => i.intent === intentId);
-  if(!intent) return;
-  
+  if (!intent) return;
+
   document.getElementById("modalMode").value = "edit";
   document.getElementById("editIntentId").value = intentId;
   const topicTitle = formatTopicName(intent.intent);
   document.getElementById("intentModalTitle").textContent = `Edit Topic: ${topicTitle}`;
-  
+
   // Populate form
   document.getElementById("add-en-question").value = intent.en_question || "";
   document.getElementById("add-intent").value = intent.intent;
@@ -1220,7 +1268,7 @@ function openEditModal(intentId) {
   document.getElementById("add-en-answer").value = intent.en_answer || intent.en || "";
   document.getElementById("add-tl-answer").value = intent.tl_answer || intent.tl || "";
   document.getElementById("add-bis-answer").value = intent.bis_answer || intent.bis || "";
-  
+
   populateDatalists();
   document.getElementById("addIntentModal").classList.add("active");
 }
@@ -1288,7 +1336,7 @@ async function handleChangePassword(e) {
       body: JSON.stringify({ old_password: oldPwd, new_password: newPwd })
     });
     const data = await res.json();
-    
+
     if (data.status === "success") {
       showToast("✅ Administrator password changed successfully.");
       sessionStorage.setItem("vista_admin_token", newPwd); // update token
@@ -1309,7 +1357,7 @@ async function handleChangePassword(e) {
 async function confirmDelete() {
   const intentId = adminState.intentToDelete;
   if (!intentId) return;
-  
+
   try {
     const res = await adminFetch(`${API_URL}/api/admin/intents/${intentId}`, { method: "DELETE" });
     const data = await res.json();
@@ -1320,7 +1368,7 @@ async function confirmDelete() {
     } else {
       showToast("❌ Failed to delete topic.");
     }
-  } catch(err) {
+  } catch (err) {
     showToast("❌ Error connecting to server.");
   }
 }
@@ -1331,7 +1379,7 @@ async function handleAddIntent(e) {
 
   const mode = document.getElementById("modalMode").value;
   const editId = document.getElementById("editIntentId").value;
-  
+
   const payload = {
     en_question: document.getElementById("add-en-question").value,
     intent: document.getElementById("add-intent").value,
@@ -1387,12 +1435,12 @@ async function handleAddIntent(e) {
 async function handleAutoTranslate() {
   const enQuestion = document.getElementById("add-en-question").value.trim();
   const enAnswer = document.getElementById("add-en-answer").value.trim();
-  
+
   if (!enQuestion && !enAnswer) {
     showToast("⚠️ Please enter English text first.");
     return;
   }
-  
+
   const btn = document.getElementById("autoTranslateAllBtn");
   const originalHtml = btn.innerHTML;
   btn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg> Translating...`;
@@ -1400,7 +1448,7 @@ async function handleAutoTranslate() {
 
   try {
     let hasError = false;
-    
+
     if (enQuestion) {
       const resQ = await adminFetch(`${API_URL}/api/admin/translate`, {
         method: "POST",
@@ -1416,7 +1464,7 @@ async function handleAutoTranslate() {
         hasError = true;
       }
     }
-    
+
     if (enAnswer) {
       const resA = await adminFetch(`${API_URL}/api/admin/translate`, {
         method: "POST",
@@ -1432,7 +1480,7 @@ async function handleAutoTranslate() {
         hasError = true;
       }
     }
-    
+
     if (!hasError) {
       showToast("✨ Translation complete!");
     }
@@ -1556,12 +1604,23 @@ async function loadDirectory() {
   try {
     const res = await adminFetch(`${API_URL}/api/offices`);
     const data = await res.json();
-    if (!data.error) {
-      directoryData = data;
-      renderDirectory();
-    }
+    if (!res.ok || !Array.isArray(data)) throw new Error("Invalid office directory response.");
+    directoryData = data.map(office => {
+      const normalized = { ...office };
+      for (const field of ["head_of_office", "contact", "location", "operating_hours"]) {
+        const value = typeof office[field] === "string" ? JSON.parse(office[field]) : office[field];
+        if (value != null && (typeof value !== "object" || Array.isArray(value))) {
+          throw new Error(`Invalid office field: ${field}`);
+        }
+        normalized[field] = value || {};
+      }
+      return normalized;
+    });
+    renderDirectory();
   } catch (err) {
     console.error("Failed to load directory", err);
+    renderEmptyTable("directory-tbody", 5, "Unable to load the office directory.");
+    showToast("Unable to load the office directory.");
   }
 }
 
@@ -1569,32 +1628,46 @@ function renderDirectory() {
   const tbody = document.getElementById("directory-tbody");
   if (!tbody) return;
   tbody.innerHTML = "";
-  
+
   if (directoryData.length === 0) {
     tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px;">No offices found.</td></tr>`;
     return;
   }
-  
+
   directoryData.forEach((office, index) => {
-    const statusClass = office.status === "open" ? "status-resolved" : "status-unresolved";
-    const statusText = office.status === "open" ? "Open" : "Closed";
-    
+    const head = office.head_of_office || {};
+    const contact = office.contact || {};
+    const location = office.location || {};
+    const hours = office.operating_hours || {};
+    const locationDetails = [location.floor, location.room]
+      .filter(value => value !== undefined && value !== null && value !== "").join(" | ");
+
     tbody.innerHTML += `
       <tr>
-        <td style="font-weight:600;color:var(--text-color);">${escapeHtml(office.name || "Unknown")}</td>
-        <td>
-          <div style="font-size:13px;">${escapeHtml(office.location || "—")}</div>
-          <div style="font-size:12px;color:var(--text-muted);">${escapeHtml(office.head || "—")}</div>
+        <td style="font-weight:600;color:var(--text);">
+          ${escapeHtml(office.name || "Unknown")}
+          <div class="directory-detail">${escapeHtml(office.office_id || "—")}</div>
         </td>
         <td>
-          <div style="font-size:13px;">${escapeHtml(office.phone || "—")}</div>
-          <div style="font-size:12px;color:var(--text-muted);">${escapeHtml(office.email || "—")}</div>
+          <div>${escapeHtml(location.building || "—")}</div>
+          <div class="directory-detail">${escapeHtml(locationDetails || "—")}</div>
+          <div class="directory-detail">${escapeHtml(head.name || "—")}${head.title ? ` (${escapeHtml(head.title)})` : ""}</div>
         </td>
-        <td><span class="status-badge ${statusClass}">${statusText}</span></td>
         <td>
-          <div class="action-btns">
-            <button class="icon-btn" title="Edit" onclick="openEditOfficeModal(${index})">✏️</button>
-            <button class="icon-btn" style="color:var(--danger)" title="Delete" onclick="deleteOffice(${index})">🗑️</button>
+          <div>${escapeHtml(contact.phone || "—")}</div>
+          <div class="directory-detail">${escapeHtml(contact.email || "—")}</div>
+          ${contact.social_media ? `<div class="directory-detail">${escapeHtml(contact.social_media)}</div>` : ""}
+        </td>
+        <td>
+          <div>${escapeHtml(hours.standard || "—")}</div>
+          
+          ${typeof hours.noon_break === "boolean" ? `<div class="directory-detail">${hours.noon_break ? "Observes Noon Break" : "No Noon Break"}</div>` : ""}
+          ${hours.cut_off_time ? `<div class="directory-detail">Cut-off: ${escapeHtml(hours.cut_off_time)}</div>` : ""}
+        </td>
+        <td>
+          <div class="directory-actions">
+            <button type="button" class="btn secondary small" title="Edit" onclick="openEditOfficeModal(${index})">Edit</button>
+            <button type="button" class="btn secondary small" style="color:var(--danger)" title="Delete" onclick="deleteOffice(${index})">Delete</button>
           </div>
         </td>
       </tr>
@@ -1611,15 +1684,26 @@ function openAddOfficeModal() {
 
 function openEditOfficeModal(index) {
   const office = directoryData[index];
+  const head = office.head_of_office || {};
+  const contact = office.contact || {};
+  const location = office.location || {};
+  const hours = office.operating_hours || {};
   document.getElementById("officeIndex").value = index;
   document.getElementById("officeName").value = office.name || "";
-  document.getElementById("officeLocation").value = office.location || "";
-  document.getElementById("officeHead").value = office.head || "";
-  document.getElementById("officePhone").value = office.phone || "";
-  document.getElementById("officeEmail").value = office.email || "";
-  document.getElementById("officeHours").value = office.hours || "";
-  document.getElementById("officeStatus").value = office.status || "open";
-  
+  document.getElementById("officeId").value = office.office_id || "";
+  document.getElementById("officeLocation").value = location.building || "";
+  document.getElementById("officeFloor").value = location.floor ?? "";
+  document.getElementById("officeRoom").value = location.room ?? "";
+  document.getElementById("officeHead").value = head.name || "";
+  document.getElementById("officeHeadTitle").value = head.title || "";
+  document.getElementById("officePhone").value = contact.phone || "";
+  document.getElementById("officeEmail").value = contact.email || "";
+  document.getElementById("officeSocialMedia").value = contact.social_media || "";
+  document.getElementById("officeHours").value = hours.standard || "";
+  document.getElementById("officeCutOff").value = hours.cut_off_time || "";
+  document.getElementById("officeNoonBreak").value = String(hours.noon_break === true);
+  document.getElementById("officeStatus").value = office.status || "";
+
   document.getElementById("officeModalTitle").textContent = "Edit Office";
   document.getElementById("officeModal").classList.add("active");
 }
@@ -1636,15 +1720,16 @@ async function saveOfficeData(offices) {
       body: JSON.stringify(offices)
     });
     const result = await res.json();
-    if (result.status === "success") {
+    if (res.ok && result.status === "success") {
       showToast("Directory saved successfully.");
       directoryData = offices;
       renderDirectory();
       closeOfficeModal();
     } else {
-      alert("Error saving: " + result.message);
+      alert("Error saving: " + (result.message || result.detail || "Unable to save the office directory."));
     }
   } catch (err) {
+    console.error("Failed to save directory", err);
     alert("Connection error.");
   }
 }
@@ -1652,24 +1737,44 @@ async function saveOfficeData(offices) {
 document.getElementById("officeForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
   const index = parseInt(document.getElementById("officeIndex").value, 10);
-  
+  const existingOffice = index >= 0 ? directoryData[index] : {};
+
   const office = {
+    ...existingOffice,
+    office_id: document.getElementById("officeId").value.trim(),
     name: document.getElementById("officeName").value.trim(),
-    location: document.getElementById("officeLocation").value.trim(),
-    head: document.getElementById("officeHead").value.trim(),
-    phone: document.getElementById("officePhone").value.trim(),
-    email: document.getElementById("officeEmail").value.trim(),
-    hours: document.getElementById("officeHours").value.trim(),
-    status: document.getElementById("officeStatus").value
+    location: {
+      ...existingOffice.location,
+      building: document.getElementById("officeLocation").value.trim(),
+      floor: document.getElementById("officeFloor").value.trim(),
+      room: document.getElementById("officeRoom").value.trim()
+    },
+    head_of_office: {
+      ...existingOffice.head_of_office,
+      name: document.getElementById("officeHead").value.trim(),
+      title: document.getElementById("officeHeadTitle").value.trim()
+    },
+    contact: {
+      ...existingOffice.contact,
+      phone: document.getElementById("officePhone").value.trim(),
+      email: document.getElementById("officeEmail").value.trim(),
+      social_media: document.getElementById("officeSocialMedia").value.trim()
+    },
+    operating_hours: {
+      ...existingOffice.operating_hours,
+      standard: document.getElementById("officeHours").value.trim(),
+      noon_break: document.getElementById("officeNoonBreak").value === "true",
+      cut_off_time: document.getElementById("officeCutOff").value.trim()
+    }
   };
-  
+
   const newDir = [...directoryData];
   if (index >= 0) {
     newDir[index] = office;
   } else {
     newDir.push(office);
   }
-  
+
   saveOfficeData(newDir);
 });
 

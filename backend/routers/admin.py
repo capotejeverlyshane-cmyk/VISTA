@@ -1,8 +1,9 @@
 import json
 import os
 import csv
+from datetime import datetime
 from io import StringIO
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Body, Depends, HTTPException
 from fastapi.responses import Response
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
@@ -10,7 +11,7 @@ from typing import List, Optional
 
 from utils.security import verify_password, create_access_token
 from supabase_client import supabase
-from services.cache import ANSWERS, refresh_answers_cache
+from services.cache import ANSWERS, add_training_phrase, refresh_answers_cache
 import train
 
 router = APIRouter(prefix="/api/admin")
@@ -35,17 +36,12 @@ def admin_login(req: LoginRequest):
 
     db_hash = res.data[0]["password_hash"]
 
-    #  if verify_password(req.password, db_hash):
+    if not verify_password(req.password, db_hash):
+        raise HTTPException(status_code=401, detail="Invalid admin credentials")
+
     # Generate JWT token
     access_token = create_access_token(data={"sub": req.username})
     return {"status": "success", "token": access_token}
-    # raise HTTPException(status_code=401, detail="Invalid admin credentials")
-
-    # if verify_password(req.password, db_hash):
-    #     # Generate JWT token
-    #     access_token = create_access_token(data={"sub": req.username})
-    #     return {"status": "success", "token": access_token}
-    # raise HTTPException(status_code=401, detail="Invalid admin credentials")
 
 
 def verify_admin_token(token: str = Depends(oauth2_scheme)):
@@ -332,23 +328,66 @@ def delete_feedback(req: DeleteFeedbackRequest):
 
 
 @router.post("/offices", dependencies=[Depends(verify_admin_token)])
-def update_offices(offices: list):
+def update_offices(offices: list = Body(...)):
     try:
-        # Clear existing offices and insert the new list
-        supabase.table("office_directory").delete().neq("id", 0).execute()
+        if not all(isinstance(office, dict) for office in offices):
+            raise ValueError("Each office must be an object.")
 
-        # Remove any internal fields like 'id' if they conflict, though dicts should be fine
         new_offices = []
+        office_ids = set()
         for o in offices:
-            clean_o = {k: v for k, v in o.items() if k != "id"}
+            clean_o = {
+                k: v
+                for k, v in o.items()
+                if k
+                in (
+                    "office_id",
+                    "name",
+                    "head_of_office",
+                    "contact",
+                    "location",
+                    "operating_hours",
+                )
+            }
+            office_id = clean_o.get("office_id")
+            if not isinstance(office_id, str) or not office_id.strip():
+                raise ValueError("Each office must have a non-empty office_id.")
+            office_id = office_id.strip()
+            clean_o["office_id"] = office_id
+            if office_id in office_ids:
+                raise ValueError(f"Duplicate office_id: {office_id}")
+            office_ids.add(office_id)
+            name = clean_o.get("name")
+            if not isinstance(name, str) or not name.strip():
+                raise ValueError(f"Office {office_id} must have a non-empty name.")
+            clean_o["name"] = name.strip()
+
+            for field in ("head_of_office", "contact", "location", "operating_hours"):
+                value = clean_o.get(field)
+                if value is not None and not isinstance(value, dict):
+                    raise ValueError(f"Office {office_id}: {field} must be an object.")
+
             new_offices.append(clean_o)
 
-        supabase.table("office_directory").insert(new_offices).execute()
+        table = supabase.table("office_directory")
+        existing_response = table.select("office_id").execute()
+        existing_ids = {
+            office["office_id"]
+            for office in (existing_response.data or [])
+            if office.get("office_id")
+        }
+
+        if new_offices:
+            table.upsert(new_offices, on_conflict="office_id").execute()
+
+        removed_ids = existing_ids - office_ids
+        if removed_ids:
+            table.delete().in_("office_id", list(removed_ids)).execute()
 
         from services.cache import load_offices
 
         load_offices()
-        return {"status": "success"}
+        return {"status": "success", "count": len(new_offices)}
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
@@ -385,7 +424,6 @@ def update_articles(req: UpdateArticlesRequest):
         return {"status": "error", "message": str(e)}
 
 
-@router.post("/retrain", dependencies=[Depends(verify_admin_token)])
 @router.post("/train", dependencies=[Depends(verify_admin_token)])
 def trigger_training():
     from train import train_and_compare
@@ -431,34 +469,16 @@ def get_stats():
         )
         f_res = supabase.table("feedback").select("*", count="exact").execute()
 
-        total_q = q_res.count if hasattr(q_res, "count") else len(q_res.data or [])
-        unresolved_q = u_res.count if hasattr(u_res, "count") else len(u_res.data or [])
-        feedback_cnt = f_res.count if hasattr(f_res, "count") else len(f_res.data or [])
-
-        # Calculate resolved rate
-        resolved_rate = 100.0
-        if total_q > 0:
-            resolved_rate = round(max(0.0, min(100.0, ((total_q - unresolved_q) / total_q) * 100.0)), 1)
-
-        # Get latest model accuracy
-        accuracy = 96.1
-        metrics_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models", "metrics.json")
-        if os.path.exists(metrics_path):
-            try:
-                with open(metrics_path, "r", encoding="utf-8") as mf:
-                    mdata = json.load(mf)
-                    acc_val = mdata.get("best_accuracy")
-                    if acc_val:
-                        accuracy = round(float(acc_val) * 100.0, 1)
-            except Exception:
-                pass
-
         return {
-            "total_queries": total_q,
-            "unresolved_count": unresolved_q,
-            "resolved_rate": resolved_rate,
-            "accuracy": accuracy,
-            "feedback_count": feedback_cnt,
+            "total_queries": q_res.count
+            if hasattr(q_res, "count")
+            else len(q_res.data or []),
+            "unresolved_count": u_res.count
+            if hasattr(u_res, "count")
+            else len(u_res.data or []),
+            "feedback_count": f_res.count
+            if hasattr(f_res, "count")
+            else len(f_res.data or []),
             "knowledge_base_size": len(ANSWERS),
         }
     except Exception as e:
@@ -499,7 +519,6 @@ def get_unresolved():
         res = (
             supabase.table("unresolved_queries")
             .select("id, question, confidence, created_at:timestamp")
-            .order("timestamp", desc=True)
             .execute()
         )
 
@@ -535,66 +554,19 @@ class LinkUnresolvedRequest(BaseModel):
     language: Optional[str] = "en"
 
 
-# @router.post("/unresolved/link", dependencies=[Depends(verify_admin_token)])
-@router.post("/unresolved/link")
-def link_unresolved(req: LinkUnresolvedRequest):
-    try:
-        if not req.intent:
-            return {"status": "error", "message": "Topic not specified"}
-
-        intent_id = req.intent
-        # If req.intent is string name or not all digits, look up intent_id from Supabase or cache
-        if isinstance(intent_id, str) and not intent_id.isdigit():
-            res = (
-                supabase.table("intents")
-                .select("id")
-                .eq("intent_name", req.intent)
-                .execute()
-            )
-            if res.data and len(res.data) > 0:
-                intent_id = res.data[0]["id"]
-            else:
-                cached = ANSWERS.get(req.intent)
-                if cached and "id" in cached:
-                    intent_id = cached["id"]
-                else:
-                    return {"status": "error", "message": f"Topic '{req.intent}' not found"}
-        else:
-            intent_id = int(intent_id)
-
-        supabase.table("training_phrases").insert(
-            {
-                "intent_id": intent_id,
-                "language": req.language or "en",
-                "phrase": req.question,
-            }
-        ).execute()
-
-        # Dismiss it from unresolved_queries if id provided
-        if req.id:
-            supabase.table("unresolved_queries").delete().eq("id", req.id).execute()
-
-        return {"status": "success"}
-    except Exception as e:
-        print(f"[ERROR] link_unresolved failed: {e}")
-        return {"status": "error", "message": str(e)}
-
-
 class SuggestTopicsRequest(BaseModel):
     query: str
 
 
 @router.post("/suggest_topics", dependencies=[Depends(verify_admin_token)])
 def suggest_topics(req: SuggestTopicsRequest):
-    """Return the top 5 most relevant topics for a given citizen query,
-    ranked by model confidence. Uses the same NLP pipeline as the chatbot."""
     try:
-        from utils.preprocess import clean_text
-        from services.nlp import model, label_encoder
         import numpy as np
+        from services.nlp import label_encoder, model
+        from utils.preprocess import clean_text
 
         if model is None or label_encoder is None:
-            return {"status": "error", "message": "NLP model not loaded"}
+            return {"status": "error", "message": "NLP model is not loaded"}
 
         cleaned = clean_text(req.query)
         if not cleaned.strip():
@@ -607,50 +579,84 @@ def suggest_topics(req: SuggestTopicsRequest):
         if not ANSWERS:
             refresh_answers_cache()
 
-        probs = probabilities[0]
-        # Get top 5 indices sorted by descending probability
-        top_indices = np.argsort(probs)[::-1][:5]
-
         suggestions = []
-        for idx in top_indices:
-            confidence = float(probs[idx])
-            if confidence < 0.01:  # Skip negligible matches
+        for index in np.argsort(probabilities[0])[::-1][:5]:
+            confidence = float(probabilities[0][index])
+            if confidence < 0.01:
                 continue
-            intent_name = str(label_encoder.inverse_transform(
-                np.asarray([idx])
-            )[0])
 
-            # Look up answer and department from cache
+            intent_name = str(label_encoder.inverse_transform(np.asarray([index]))[0])
             intent_data = ANSWERS.get(intent_name, {})
-            en_answer = intent_data.get("answers", {}).get("en", "")
-            department = intent_data.get("department", "General")
             intent_id = intent_data.get("id", 0)
+            department = intent_data.get("department", "General")
 
-            if intent_id == 0:
-                try:
-                    res = supabase.table("intents").select("id, department").eq("intent_name", intent_name).execute()
-                    if res.data and len(res.data) > 0:
-                        intent_id = res.data[0]["id"]
-                        department = res.data[0].get("department", department)
-                except Exception:
-                    pass
+            if not intent_id:
+                result = (
+                    supabase.table("intents")
+                    .select("id, department")
+                    .eq("intent_name", intent_name)
+                    .execute()
+                )
+                if result.data:
+                    intent_id = result.data[0]["id"]
+                    department = result.data[0].get("department") or department
 
-            # Create a preview snippet of the answer
-            raw_answer = (en_answer or "").replace("*", "").replace("\n", " ").strip()
-            preview = raw_answer[:120] + "..." if len(raw_answer) > 120 else raw_answer
+            answer = intent_data.get("answers", {}).get("en", "")
+            preview = " ".join((answer or "").replace("*", "").split())
+            if len(preview) > 120:
+                preview = preview[:120].rstrip() + "..."
 
-            suggestions.append({
-                "intent": intent_name,
-                "intent_id": intent_id,
-                "confidence": round(confidence, 4),
-                "department": department,
-                "preview": preview or "No preview available",
-            })
+            suggestions.append(
+                {
+                    "intent": intent_name,
+                    "intent_id": intent_id,
+                    "confidence": round(confidence, 4),
+                    "department": department,
+                    "preview": preview or "No preview available",
+                }
+            )
 
         return {"status": "success", "suggestions": suggestions}
     except Exception as e:
         print(f"[ERROR] suggest_topics failed: {e}")
         return {"status": "error", "message": str(e)}
+
+
+@router.post("/unresolved/link", dependencies=[Depends(verify_admin_token)])
+def link_unresolved(req: LinkUnresolvedRequest):
+    try:
+        if not req.intent or not req.question.strip():
+            return {"status": "error", "message": "Topic and query are required"}
+
+        lookup = supabase.table("intents").select("id, intent_name")
+        if req.intent.isdigit():
+            lookup = lookup.eq("id", int(req.intent))
+        else:
+            lookup = lookup.eq("intent_name", req.intent)
+        result = lookup.execute()
+        if not result.data:
+            return {"status": "error", "message": f"Topic '{req.intent}' not found"}
+
+        intent_id = result.data[0]["id"]
+        intent_name = result.data[0]["intent_name"]
+
+        supabase.table("training_phrases").insert(
+            {
+                "intent_id": intent_id,
+                "language": req.language or "en",
+                "phrase": req.question.strip(),
+            }
+        ).execute()
+        add_training_phrase(req.question, intent_name)
+
+        if req.id is not None:
+            supabase.table("unresolved_queries").delete().eq("id", req.id).execute()
+
+        return {"status": "success"}
+    except Exception as e:
+        print(f"[ERROR] link_unresolved failed: {e}")
+        return {"status": "error", "message": str(e)}
+
 
 
 @router.get("/feedback", dependencies=[Depends(verify_admin_token)])
@@ -660,4 +666,54 @@ def get_feedback():
         return res.data or []
     except Exception as e:
         return []
-
+
+
+@router.post("/retrain", dependencies=[Depends(verify_admin_token)])
+def retrain():
+    metrics = train.train_and_compare()
+    from services.nlp import load_models
+
+    load_models()
+    return {"status": "success", "metrics": metrics}
+
+
+@router.get("/health")
+def get_health():
+    metrics_path = os.path.join(train.MODEL_DIR, "metrics.json")
+    model_path = os.path.join(train.MODEL_DIR, "best_model.pkl")
+    intent_count = len(ANSWERS) if ANSWERS else None
+    model_loaded = os.path.isfile(model_path)
+
+    if not os.path.isfile(metrics_path):
+        return {
+            "status": "ok",
+            "model_loaded": model_loaded,
+            "accuracy": None,
+            "intent_count": intent_count,
+            "last_trained": None,
+        }
+
+    with open(metrics_path, "r", encoding="utf-8") as f:
+        metrics = json.load(f)
+
+    best_accuracy = metrics.get("best_accuracy")
+    accuracy = (
+        round(float(best_accuracy) * 100, 1)
+        if isinstance(best_accuracy, (int, float))
+        else None
+    )
+    last_trained = (
+        datetime.fromtimestamp(os.path.getmtime(metrics_path)).astimezone().isoformat(
+            timespec="seconds"
+        )
+        if os.path.isfile(metrics_path)
+        else None
+    )
+
+    return {
+        "status": "ok",
+        "model_loaded": model_loaded,
+        "accuracy": accuracy,
+        "intent_count": intent_count,
+        "last_trained": last_trained,
+    }
