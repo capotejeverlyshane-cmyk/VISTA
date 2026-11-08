@@ -64,10 +64,24 @@ function initAdminAuth() {
   const gate = document.getElementById("adminLoginGate");
   const submitBtn = document.getElementById("adminLoginSubmit");
   const passwordInput = document.getElementById("adminPassword");
+  const toggleBtn = document.getElementById("togglePasswordBtn");
 
   if (adminState.authenticated) {
     hideAdminGate();
     return;
+  }
+
+  if (toggleBtn && passwordInput) {
+    toggleBtn.addEventListener("click", () => {
+      const isPassword = passwordInput.type === "password";
+      passwordInput.type = isPassword ? "text" : "password";
+      const eye = document.getElementById("eyeIcon");
+      if (eye) {
+        eye.innerHTML = isPassword
+          ? `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>`
+          : `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
+      }
+    });
   }
 
   submitBtn.addEventListener("click", handleAdminLogin);
@@ -88,8 +102,14 @@ async function handleAdminLogin() {
     return;
   }
 
+  errorEl.style.display = "none";
   submitBtn.disabled = true;
   submitBtn.textContent = "Verifying...";
+
+  // Notice if server is cold-starting
+  const wakeTimer = setTimeout(() => {
+    submitBtn.textContent = "Waking up server...";
+  }, 3500);
 
   try {
     const res = await fetch(`${API_URL}/api/admin/login`, {
@@ -97,9 +117,11 @@ async function handleAdminLogin() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ password })
     });
-    const data = await res.json();
+    clearTimeout(wakeTimer);
 
-    if (data.status === "success") {
+    const data = await res.json().catch(() => ({}));
+
+    if (res.ok && data.status === "success") {
       adminState.authenticated = true;
       sessionStorage.setItem("vista_admin_auth", "true");
       sessionStorage.setItem("vista_admin_token", data.token);
@@ -113,15 +135,17 @@ async function handleAdminLogin() {
       loadDirectory();
       checkServerHealth();
     } else {
-      errorEl.textContent = "Incorrect password. Please try again.";
+      errorEl.textContent = data.detail || "Incorrect password. Please try again.";
       errorEl.style.display = "block";
       passwordInput.value = "";
       passwordInput.focus();
     }
   } catch (err) {
-    errorEl.textContent = "Failed to connect to server.";
+    clearTimeout(wakeTimer);
+    errorEl.textContent = "Cannot reach server. Render may be waking up, please try again in a few seconds.";
     errorEl.style.display = "block";
   } finally {
+    clearTimeout(wakeTimer);
     submitBtn.disabled = false;
     submitBtn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg> Sign In`;
   }
