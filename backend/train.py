@@ -571,12 +571,11 @@ def train_and_compare():
     print(f"Weighted F1:  {best_result['weighted_f1']:.4f}")
 
     print(
-        f"\n[INFO] Model saved to: {os.path.join(MODEL_DIR, 'best_model_augmented.pkl')}"
+        f"\n[INFO] Model saved to: {os.path.join(MODEL_DIR, 'best_model.pkl')}"
     )
 
     return metrics_data
 
 
 if __name__ == "__main__":
-    load_data()
-    # train_and_compare()
+    train_and_compare()
