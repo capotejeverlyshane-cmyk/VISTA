@@ -376,7 +376,13 @@ DISAMBIGUATION_RULES = {
             "change location",
             "online",
             "imong",
-            
+            "assessment",
+            "cto",
+            "treasurer",
+            "treasury",
+            "statement of account",
+            "soa",
+            "tax",
         ],
         "response": {
             "en": (
