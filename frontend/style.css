@@ -1117,9 +1117,65 @@ html, body {
   gap: 6px;
 }
 
+.chat-box-wrap {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.chat-box-wrap .chat-box { min-height: 0; }
+
 .chat-box::-webkit-scrollbar { width: 5px; }
 .chat-box::-webkit-scrollbar-track { background: transparent; }
 .chat-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+.scroll-to-bottom {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 14px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transform: translateX(-50%);
+  max-width: calc(100% - 24px);
+  padding: 10px clamp(14px, 2vw, 20px);
+  border: 1px solid color-mix(in srgb, var(--accent1) 22%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--panel) 94%, transparent);
+  color: var(--text);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+  font: inherit;
+  font-size: clamp(13px, 1.2vw, 14px);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: color 0.18s, background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+
+.scroll-to-bottom::before {
+  content: "\2193";
+  color: var(--accent1);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.scroll-to-bottom.visible { display: inline-flex; }
+.scroll-to-bottom:hover {
+  transform: translate(-50%, -2px);
+  border-color: var(--accent1);
+  background: var(--panel);
+  color: var(--accent1);
+  box-shadow: var(--shadow-lg);
+}
+.scroll-to-bottom:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent1) 32%, transparent);
+  outline-offset: 3px;
+}
 
 /* MESSAGES */
 .message {
@@ -1379,36 +1435,84 @@ html, body {
 .input-bar {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 20px;
+  gap: clamp(8px, 1.2vw, 12px);
+  margin: 0 clamp(12px, 2vw, 20px) 10px;
+  padding: 8px;
   background: var(--panel);
-  border-top: 1px solid var(--border);
+  border: 1px solid var(--border);
   flex-shrink: 0;
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-}
-
-.input-bar input {
-  flex: 1;
-  background: var(--input-bg);
-  border: 1.5px solid var(--border);
-  color: var(--text);
-  padding: 14px 18px;
-  border-radius: var(--radius-md);
-  outline: none;
-  font-size: var(--font-size);
-  font-family: inherit;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
   transition: border-color 0.18s, box-shadow 0.18s;
 }
 
-.input-bar input:focus {
+.input-bar:focus-within {
+  border-color: color-mix(in srgb, var(--accent1) 62%, var(--border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent1) 10%, transparent), var(--shadow-sm);
+}
+
+.input-bar textarea {
+  flex: 1;
+  min-width: 0;
+  min-height: 50px;
+  max-height: 144px;
+  background: var(--input-bg);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  padding: 13px 16px;
+  border-radius: 14px;
+  outline: none;
+  font-size: var(--font-size);
+  font-family: inherit;
+  line-height: 1.45;
+  resize: none;
+  overflow-y: auto;
+  transition: border-color 0.18s, background-color 0.18s, box-shadow 0.18s;
+}
+
+.question-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.question-field textarea { flex: none; width: 100%; }
+
+.question-char-count {
+  align-self: flex-end;
+  padding: 2px 4px 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.question-char-count.at-limit { color: var(--danger); font-weight: 700; }
+
+.input-bar textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.input-bar textarea:focus {
   border-color: var(--accent1);
-  box-shadow: 0 0 0 3px rgba(109,40,217,0.12);
+  background: var(--panel);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent1) 12%, transparent);
+}
+
+.input-bar textarea:disabled {
+  opacity: 0.7;
+  cursor: wait;
 }
 
 .send-btn {
   width: 52px;
   height: 52px;
   flex-shrink: 0;
+  align-self: flex-end;
+  margin-left: auto;
   border-radius: var(--radius-md);
   border: none;
   background: linear-gradient(135deg, var(--accent1), var(--accent2));
@@ -1424,6 +1528,12 @@ html, body {
 
 .send-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-lg); }
 .send-btn:active { transform: scale(0.96); }
+.send-btn:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
 
 .send-btn svg {
   stroke: currentColor;
@@ -2244,6 +2354,7 @@ body.dark-theme .login-continue-btn {
   width: 52px;
   height: 52px;
   flex-shrink: 0;
+  align-self: flex-end;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
   background: var(--chip);
@@ -2303,7 +2414,7 @@ body.dark-theme .login-continue-btn {
   color: var(--accent1);
 }
 
-.input-bar input:disabled,
+.input-bar textarea:disabled,
 .send-btn:disabled,
 .voice-btn:disabled {
   opacity: 0.6;
@@ -2314,6 +2425,7 @@ body.dark-theme .login-continue-btn {
 .nav-item:focus,
 button:focus,
 input:focus,
+textarea:focus,
 select:focus {
   outline: 2px solid rgba(109,40,217,0.25);
   outline-offset: 2px;
@@ -3202,8 +3314,10 @@ body.dark-theme .markdown-body hr {
 
   .bubble {
     padding: 12px 14px;
-    font-size: 0.95rem; /* Slightly smaller text for better fit */
+    font-size: max(16px, var(--font-size));
   }
+
+  .meta { font-size: 12px; }
 
   .avatar-dot {
     width: 30px;
@@ -3216,12 +3330,51 @@ body.dark-theme .markdown-body hr {
   }
 
   .input-bar {
-    padding: 4px 6px;
+    gap: 7px;
+    margin: 0 10px 8px;
+    padding: 6px;
+    border-radius: 18px;
   }
 
   #user-input {
-    font-size: 14px;
-    padding: 8px;
+    min-height: 46px;
+    font-size: max(16px, var(--font-size));
+    padding: 10px 12px;
+    border-radius: 13px;
+  }
+
+  .voice-btn,
+  .send-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+  }
+
+  .scroll-to-bottom {
+    bottom: 12px;
+    gap: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .input-bar {
+    gap: 5px;
+    margin-right: 7px;
+    margin-left: 7px;
+    padding: 5px;
+  }
+
+  .voice-btn,
+  .send-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  #user-input {
+    min-height: 42px;
+    padding: 8px 10px;
   }
 }
 

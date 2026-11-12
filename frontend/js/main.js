@@ -14,7 +14,7 @@ import {
 } from './voice.js';
 import { 
   clearChat, initAutocomplete, handleKey, sendMessage, 
-  startNewChat, bindFeedbackModal 
+  startNewChat, bindFeedbackModal, bindChatView 
 } from './chat.js';
 import { 
   bindHistoryTabs, loadHistoryForUser, renderHistory, 
@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3. Chat & Voice
   initVoiceInput();
   initAutocomplete();
+  bindChatView();
   
   // Bind Send Button and Enter Key
   const sendBtn = document.querySelector(".send-btn");

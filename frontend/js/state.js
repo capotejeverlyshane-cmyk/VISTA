@@ -25,6 +25,8 @@ export const state = {
   contextLanguage: null,
   stopTypingFlag: false,
   typingInterval: null,
+  chatRequestController: null,
+  autoScrollPaused: false,
   currentSessionId: sessionStorage.getItem("vista_current_session") || null,
   currentMessages: JSON.parse(sessionStorage.getItem("vista_current_messages") || "[]")
 };

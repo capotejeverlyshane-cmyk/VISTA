@@ -198,18 +198,22 @@
               </div>
             </div>
 
-            <div id="chat-box" class="chat-box">
-              <!-- Welcome Hero -->
-              <div class="welcome-hero" id="welcomeHero">
-                <h2 class="welcome-title" id="welcomeTitle">How can I help you today?</h2>
-                <p class="welcome-subtitle">Your AI-powered LGU Citizen Assistant</p>
-                <div class="welcome-features">
-                  <div class="welcome-chip"><span>🌐</span> Trilingual Support</div>
-                  <div class="welcome-chip"><span>⚡</span> Instant Answers</div>
-                  <div class="welcome-chip"><span>🏛️</span> Government Services</div>
+            <div class="chat-box-wrap">
+              <div id="chat-box" class="chat-box">
+                <!-- Welcome Hero -->
+                <div class="welcome-hero" id="welcomeHero">
+                  <h2 class="welcome-title" id="welcomeTitle">How can I help you today?</h2>
+                  <p class="welcome-subtitle">Your AI-powered LGU Citizen Assistant</p>
+                  <div class="welcome-features">
+                    <div class="welcome-chip"><span>🌐</span> Trilingual Support</div>
+                    <div class="welcome-chip"><span>⚡</span> Instant Answers</div>
+                    <div class="welcome-chip"><span>🏛️</span> Government Services</div>
+                  </div>
                 </div>
-
               </div>
+              <button class="scroll-to-bottom" id="scrollToBottomBtn" type="button" aria-label="Scroll to bottom">
+                Scroll to bottom
+              </button>
             </div>
 
             <div class="quick-actions" id="quickActions">
@@ -222,8 +226,11 @@
 
             <div class="input-bar" style="position: relative;">
               <div class="autocomplete-dropdown" id="autocompleteDropdown"></div>
-              <input type="text" id="user-input" placeholder="Type your question here..." onkeydown="handleKey(event)"
-                autocomplete="off" aria-label="Type your message" />
+              <div class="question-field">
+                <textarea id="user-input" rows="1" placeholder="Type your question here..."
+                  autocomplete="off" aria-label="Type your message" aria-describedby="questionCharCount"></textarea>
+                <span class="question-char-count" id="questionCharCount" aria-label="Question character count">0 / 500</span>
+              </div>
               <button class="voice-btn" id="voiceBtn" title="Voice Input" aria-label="Voice input"><svg width="20"
                   height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" />

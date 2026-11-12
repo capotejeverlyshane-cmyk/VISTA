@@ -43,7 +43,9 @@ export function initVoiceInput() {
 
   recognition.onresult = (event) => {
     const transcript = event.results[0][0].transcript;
-    document.getElementById("user-input").value = transcript;
+    const input = document.getElementById("user-input");
+    input.value = transcript;
+    input.dispatchEvent(new Event("input", { bubbles: true }));
     showToast("Voice captured.");
   };
 

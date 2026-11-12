@@ -5,7 +5,8 @@ echo          STARTING VISTA SYSTEM (DEFENSE MODE)
 echo =======================================================
 echo.
 echo [1/2] Starting Frontend Web Server...
-start "VISTA Frontend (Port 8085)" cmd /k "cd frontend && echo Starting server... && npx -y http-server . -p 8085 --cors -c-1"
+start "VISTA Frontend (Port 8085)" cmd /k "cd frontend && echo Starting server... && 
+npx -y http-server . -p 5500 --cors -c-1"
 
 echo [2/2] Starting Python Backend Server...
 start "VISTA Backend (Port 8001)" cmd /k "cd backend && echo Activating Virtual Environment... && (if exist .venv\Scripts\activate (call .venv\Scripts\activate) else if exist venv\Scripts\activate (call venv\Scripts\activate)) && echo Starting FastAPI Server... && uvicorn app:app --reload --port 8001"

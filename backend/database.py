@@ -72,3 +72,4 @@ init_db()
 
 if __name__ == '__main__':
     print(f"Database initialized at {DB_PATH}")
+

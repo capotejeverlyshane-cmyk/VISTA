@@ -704,19 +704,57 @@ form { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
   }
 
   .sidebar.open { transform: translateX(0); }
-  .admin-layout { flex-direction: column; }
-  .main-content { margin-top: var(--mobile-bar); }
+  .admin-layout {
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+  }
+  .main-content {
+    height: calc(100vh - var(--mobile-bar));
+    height: calc(100dvh - var(--mobile-bar));
+    min-height: 0;
+    margin-top: var(--mobile-bar);
+  }
   .topbar { display: none; }
-  .content-area { padding: 20px 16px; }
+  .content-area { min-height: 0; padding: 20px 16px; }
   .stats-grid { grid-template-columns: 1fr; }
   .health-grid { grid-template-columns: 1fr 1fr; }
   .quick-actions-grid { grid-template-columns: 1fr 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .card-title-row { flex-direction: column; }
   .table-search { min-width: unset; width: 100%; }
+  .overview-grid {
+    flex: 0 0 auto;
+    flex-direction: column;
+    min-height: 0;
+    gap: 16px;
+  }
+  .chart-card { min-height: 320px; }
+  .overview-sidebar { overflow: visible; gap: 16px; }
+  .modal-overlay { padding: 8px; }
+  .modal-content {
+    width: 100%;
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+  }
+  .data-table th,
+  .data-table td { padding: 12px 14px; }
+  #knowledge .card-title-row > div:last-child,
+  #interactionlogs .card-title-row > div:last-child {
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 8px !important;
+  }
 }
 
 @media (max-width: 480px) {
+  .mobile-topbar { padding: 0 10px; }
+  .mobile-menu-btn { width: 40px; height: 40px; }
+  .mobile-brand { gap: 6px; font-size: 14px; }
+  .brand-icon-sm { width: 28px; height: 28px; }
+  .content-area { padding: 14px 12px; }
+  .stat-card { padding: 18px; gap: 14px; }
+  .stat-value { font-size: 28px; }
   .health-grid { grid-template-columns: 1fr; }
   .quick-actions-grid { grid-template-columns: 1fr; }
   .resolve-modal-content { width: calc(100vw - 16px); max-height: calc(100vh - 16px); }
@@ -724,6 +762,18 @@ form { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
   .suggestion-header { align-items: flex-start; }
   .suggestion-meta { gap: 4px; }
   .resolve-create-row { align-items: flex-start; flex-direction: column; }
+<<<<<<< Updated upstream
+=======
+  .resolve-section-heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .resolve-status { text-align: left; }
+  .modal-footer { flex-wrap: wrap; }
+  .modal-footer .btn { flex: 1 1 auto; justify-content: center; }
+  .card-header { padding: 16px; }
+  .chart-card { min-height: 300px; }
+  .chart-container-wrapper { padding: 0 14px 16px; }
+  .table-search { padding: 8px 10px; }
+  .toast { right: 12px; bottom: 12px; left: 12px; text-align: center; }
+>>>>>>> Stashed changes
 }
 
 /* ======================== ADMIN LOGIN GATE */

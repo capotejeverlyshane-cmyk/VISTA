@@ -5,6 +5,8 @@ import { showView, setActiveNav, closeFeedbackModal, closeAllDotsMenus } from '.
 import { saveHistory } from './history.js';
 import { speakText } from './voice.js';
 
+const MAX_QUESTION_LENGTH = 500;
+
 /* ==================== QUICK ACTIONS */
 export function updateQuickActionsVisibility() {
   const quickActions = document.getElementById("quickActions");
@@ -17,6 +19,8 @@ export function updateQuickActionsVisibility() {
 export function clearChat() {
   const chatBox = document.getElementById("chat-box");
   if (!chatBox) return;
+  state.autoScrollPaused = false;
+  document.getElementById("scrollToBottomBtn")?.classList.remove("visible");
   chatBox.innerHTML = `
     <div class="welcome-hero" id="welcomeHero">
       <h2 class="welcome-title" id="welcomeTitle">${state.loggedIn && state.username ? `How can I help you today, ${state.username}?` : "How can I help you today?"}</h2>
@@ -163,43 +167,100 @@ export function typeMessage(messageElement, text, speed = 10) {
   });
 }
 
-export function stopGenerating() {
-  if (state.typingInterval) {
-    state.stopTypingFlag = true;
-  }
-}
-
 export function toggleSendButton(isGenerating) {
   const btn = document.querySelector('.send-btn');
   if (!btn) return;
   
   if (isGenerating) {
+    btn.disabled = false;
     btn.onclick = stopGenerating;
+    btn.setAttribute("aria-label", "Stop generating");
     btn.innerHTML = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" ry="2"></rect></svg>`;
     btn.title = "Stop Generating";
   } else {
     btn.onclick = sendMessage;
+    btn.setAttribute("aria-label", "Send message");
     btn.innerHTML = `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>`;
     btn.title = "Send";
+    updateQuestionControls();
   }
 }
 
 export function scrollChat() {
   const chatBox = document.getElementById("chat-box");
-  if(chatBox) {
+  if (chatBox && !state.autoScrollPaused) {
       setTimeout(() => {
-        chatBox.scrollTop = chatBox.scrollHeight;
+        if (!state.autoScrollPaused) chatBox.scrollTop = chatBox.scrollHeight;
       }, 50);
   }
 }
 
+export function bindChatView() {
+  const chatBox = document.getElementById("chat-box");
+  const scrollButton = document.getElementById("scrollToBottomBtn");
+  const input = document.getElementById("user-input");
+  let previousScrollTop = chatBox?.scrollTop || 0;
+
+  chatBox?.addEventListener("scroll", () => {
+    const scrollingUp = chatBox.scrollTop < previousScrollTop;
+    previousScrollTop = chatBox.scrollTop;
+    if (!state.isSending || state.autoScrollPaused || !scrollingUp) return;
+    const distanceFromBottom = chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight;
+    if (distanceFromBottom > 32) {
+      state.autoScrollPaused = true;
+      scrollButton?.classList.add("visible");
+    }
+  });
+
+  scrollButton?.addEventListener("click", () => {
+    state.autoScrollPaused = false;
+    scrollButton.classList.remove("visible");
+    scrollChat();
+  });
+
+  input?.addEventListener("input", updateQuestionControls);
+  input?.addEventListener("input", resizeChatInput);
+  updateQuestionControls();
+  resizeChatInput();
+}
+
+function updateQuestionControls() {
+  const input = document.getElementById("user-input");
+  if (!input) return;
+
+  const characters = Array.from(input.value);
+  if (characters.length > MAX_QUESTION_LENGTH) {
+    input.value = characters.slice(0, MAX_QUESTION_LENGTH).join("");
+  }
+
+  const characterCount = Array.from(input.value).length;
+  const counter = document.getElementById("questionCharCount");
+  const sendButton = document.querySelector(".send-btn");
+  if (counter) {
+    counter.textContent = `${characterCount} / ${MAX_QUESTION_LENGTH}`;
+    counter.classList.toggle("at-limit", characterCount >= MAX_QUESTION_LENGTH);
+  }
+  if (sendButton && !state.isSending) {
+    sendButton.disabled = characterCount >= MAX_QUESTION_LENGTH;
+  }
+}
+
+function resizeChatInput() {
+  const input = document.getElementById("user-input");
+  if (!input) return;
+  input.style.height = "auto";
+  input.style.height = `${Math.min(input.scrollHeight, 144)}px`;
+}
+
 export async function sendMessage() {
   const input = document.getElementById("user-input");
-  const sendBtn = document.querySelector(".send-btn");
   const voiceBtn = document.getElementById("voiceBtn");
-  const text = input.value.trim();
+  updateQuestionControls();
+  const question = input.value.trim();
+  const textLength = Array.from(input.value).length;
 
-  if (!text || state.isSending) return;
+  if (!question || textLength >= MAX_QUESTION_LENGTH || state.isSending) return;
+  const text = question;
 
   // Hide old related topics to keep the UI clean
   document.querySelectorAll('.message-related-articles').forEach(el => {
@@ -208,8 +269,12 @@ export async function sendMessage() {
 
   state.isSending = true;
   state.stopTypingFlag = false;
+  state.autoScrollPaused = false;
+  document.getElementById("scrollToBottomBtn")?.classList.remove("visible");
+  const controller = new AbortController();
+  state.chatRequestController = controller;
   input.disabled = true;
-  voiceBtn.disabled = true;
+  if (voiceBtn) voiceBtn.disabled = true;
   toggleSendButton(true);
 
   showView("chat");
@@ -226,6 +291,7 @@ export async function sendMessage() {
 
   addMessage(text, "user");
   input.value = "";
+  resizeChatInput();
   addTypingIndicator();
 
   try {
@@ -239,14 +305,20 @@ export async function sendMessage() {
     const response = await fetch(`${API_URL}/chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      signal: controller.signal
     });
 
     const data = await response.json();
     removeTypingIndicator();
 
     const botMsg = addMessage("", "bot");
-    await typeMessage(botMsg, data.reply || "No response received.");
+    let displayReply = data.reply || "No response received.";
+    if (data.summary && data.summary !== data.reply && (data.reply || "").length >= 400) {
+      displayReply = `> 📋 **Quick Summary (3-Sentence LSA Summarizer):**\n> *${data.summary}*\n\n---\n\n${data.reply}`;
+    }
+    await typeMessage(botMsg, displayReply);
+    if (state.stopTypingFlag) return;
 
     state.lastBotPayload = {
       question: text,
@@ -258,7 +330,7 @@ export async function sendMessage() {
     state.context = data.context || null;
     state.contextLanguage = state.context ? (data.language || null) : null;
 
-    state.currentMessages.push({ role: "bot", text: data.reply || "No response received." });
+    state.currentMessages.push({ role: "bot", text: displayReply });
     sessionStorage.setItem("vista_current_messages", JSON.stringify(state.currentMessages));
 
     // Save history as a full session
@@ -271,37 +343,59 @@ export async function sendMessage() {
     addMessageActionButtons(botMsg, data.reply || "", state.lastBotPayload, sourceArticle);
     addRelatedArticlesToMessage(botMsg, otherArticles);
 
-    if (state.voiceReply && data.reply) {
+    if (state.voiceReply && data.reply && !state.stopTypingFlag) {
       setTimeout(() => speakText(data.reply), 500);
     }
   } catch (error) {
-    console.error(error);
     removeTypingIndicator();
-    const errMsg = addMessage("Unable to connect to VISTA server. Please make sure the backend is running.", "bot");
-    addMessageActionButtons(errMsg, "Unable to connect to VISTA server. Please make sure the backend is running.");
+    if (error.name !== "AbortError") {
+      console.error(error);
+      const errorText = "Unable to connect to VISTA server. Please make sure the backend is running.";
+      const errMsg = addMessage(errorText, "bot");
+      addMessageActionButtons(errMsg, errorText);
+    }
   } finally {
     state.isSending = false;
+    state.chatRequestController = null;
+    state.stopTypingFlag = false;
+    state.autoScrollPaused = false;
+    document.getElementById("scrollToBottomBtn")?.classList.remove("visible");
     input.disabled = false;
-    voiceBtn.disabled = false;
+    if (voiceBtn) voiceBtn.disabled = false;
     toggleSendButton(false);
     input.focus();
+    resizeChatInput();
   }
 }
 
 export function handleKey(event) {
-  if (event.key === "Enter") sendMessage();
+  if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
+    event.preventDefault();
+    sendMessage();
+  }
+}
+
+export function stopGenerating() {
+  if (!state.isSending) return;
+  state.stopTypingFlag = true;
+  state.chatRequestController?.abort();
+  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
 }
 
 /* ==================== QUICK ASK */
 export function quickAsk(question) {
-  document.getElementById("user-input").value = question;
+  const input = document.getElementById("user-input");
+  input.value = question;
+  input.dispatchEvent(new Event("input", { bubbles: true }));
   sendMessage();
 }
 
 export function quickAskAndGo(question) {
   showView("chat");
   setActiveNav("chat");
-  document.getElementById("user-input").value = question;
+  const input = document.getElementById("user-input");
+  input.value = question;
+  input.dispatchEvent(new Event("input", { bubbles: true }));
   sendMessage();
 }
 
@@ -400,6 +494,34 @@ export function addMessageActionButtons(msgElement, text, payload = null, source
       openFeedbackModal(payload);
       dropdown.classList.remove("show");
     };
+
+    if (payload.intent === "unresolved" || payload.intent === "missing_intent") {
+      const recoveryDiv = document.createElement("div");
+      recoveryDiv.className = "fallback-recovery-actions";
+      recoveryDiv.style.cssText = "display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; margin-bottom:6px;";
+      
+      const dirBtn = document.createElement("button");
+      dirBtn.className = "btn-secondary btn-sm";
+      dirBtn.style.cssText = "font-size:12px; padding:6px 14px; border-radius:20px; cursor:pointer; background:var(--accent1, #2563eb); color:white; border:none; display:inline-flex; align-items:center; gap:6px; font-weight:500;";
+      dirBtn.innerHTML = `🏢 Open Office Directory`;
+      dirBtn.onclick = () => {
+        showView("services");
+        if (typeof window.switchServiceTab === "function") window.switchServiceTab("directory");
+      };
+      recoveryDiv.appendChild(dirBtn);
+
+      const suggestions = ["Business Permit", "Birth Certificate", "Real Property Tax"];
+      suggestions.forEach(s => {
+        const chip = document.createElement("button");
+        chip.className = "btn-secondary btn-sm";
+        chip.style.cssText = "font-size:12px; padding:6px 12px; border-radius:20px; cursor:pointer; background:var(--surface, #f1f5f9); color:var(--text, #1e293b); border:1px solid var(--border, #cbd5e1);";
+        chip.textContent = s;
+        chip.onclick = () => quickAsk(s);
+        recoveryDiv.appendChild(chip);
+      });
+
+      row.appendChild(recoveryDiv);
+    }
   }
 
   const meta = content.querySelector(".meta");
@@ -541,6 +663,7 @@ export function initAutocomplete() {
         item.addEventListener("mousedown", (ev) => {
           ev.preventDefault(); 
           input.value = match;
+          input.dispatchEvent(new Event("input", { bubbles: true }));
           dropdown.classList.remove("show");
           input.focus();
         });

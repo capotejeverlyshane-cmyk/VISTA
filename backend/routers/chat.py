@@ -18,6 +18,10 @@ from supabase_client import supabase
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
+<<<<<<< Updated upstream
+=======
+MAX_CHAT_MESSAGE_LENGTH = 500
+>>>>>>> Stashed changes
 
 GREETING_PHRASES = {
     "hi",
@@ -57,6 +61,7 @@ FOLLOW_UP_QUERIES = {
 def fallback_reply(lang: str, kind: str) -> str:
     messages = {
         "unresolved": {
+<<<<<<< Updated upstream
             "en": "I'm sorry, I didn't understand that. Could you rephrase your question?",
             "tl": "Pasensya na, hindi ko naiintindihan ang inyong tanong. Maaari po bang linawin?",
             "bis": "Pasayloa ko, wala ko makasabot sa imong pangutana. Mahimo ba nimong klaruhon?",
@@ -65,6 +70,28 @@ def fallback_reply(lang: str, kind: str) -> str:
             "en": "No information available for this intent yet.",
             "tl": "Wala pang impormasyon para sa katanungang ito.",
             "bis": "Wala pay impormasyon bahin niini.",
+=======
+            "en": (
+                "I'm sorry, I couldn't find a direct answer to your question. "
+                "For direct assistance, you may check our **Office Directory** to find "
+                "the responsible department, office location, contact channels, and operating hours."
+            ),
+            "tl": (
+                "Pasensya na, hindi ko mahanap ang tiyak na sagot sa inyong tanong. "
+                "Para sa direktang tulong, maaari ninyong tingnan ang aming **Office Directory** "
+                "upang malaman ang kaukulang departamento, lokasyon ng opisina, contact channels, at oras ng operasyon."
+            ),
+            "bis": (
+                "Pasayloa ko, wala nako makita ang direktang tubag sa imong pangutana. "
+                "Para sa direktang tabang, mahimo nimong tan-awon ang atong **Office Directory** "
+                "aron makita ang responsableng departamento, lokasyon sa opisina, contact details, ug oras sa operasyon."
+            ),
+        },
+        "missing_intent": {
+            "en": "No specific information is available for this intent yet. Please refer to the Office Directory for assistance.",
+            "tl": "Wala pang tiyak na impormasyon para sa katanungang ito. Maaari pong sumangguni sa Office Directory para sa tulong.",
+            "bis": "Wala pay klarong impormasyon bahin niini. Palihug tan-awa ang Office Directory para sa tabang.",
+>>>>>>> Stashed changes
         },
     }
     return messages[kind][normalize_language(lang)]
@@ -100,7 +127,11 @@ def answer_for_intent(
 
 
 class ChatRequest(BaseModel):
+<<<<<<< Updated upstream
     message: str = Field(min_length=1)
+=======
+    message: str = Field(min_length=1, max_length=MAX_CHAT_MESSAGE_LENGTH)
+>>>>>>> Stashed changes
     language: str = "auto"
     context: str | None = None
     context_language: str | None = None
@@ -267,8 +298,13 @@ async def chat(request: ChatRequest, req: Request):
         return make_reply(fallback_reply(lang, "missing_intent"), lang, intent)
 
     response = make_reply(answer, lang, intent)
+<<<<<<< Updated upstream
     # The available summarizer uses an English tokenizer.
     response["summary"] = summarize_text(answer) if lang == "en" else answer
+=======
+    # Extractive summarization via LsaSummarizer for detailed responses
+    response["summary"] = summarize_text(answer)
+>>>>>>> Stashed changes
     log_chat(user_msg, intent, ip, True, confidence)
     return response
 
