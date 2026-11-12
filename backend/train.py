@@ -193,7 +193,7 @@ def load_data():
     return df[["question", "intent"]]
 
 
-# def train_and_compare():
+# def train_and_compare(compare_all: bool = False):
 #     df = load_data()
 
 #     X = df["question"]
@@ -302,7 +302,7 @@ def load_data():
 
 #     print(f"\nBest model: {best_name} ({best_score:.4f})")
 #     return metrics_data
-def train_and_compare():
+def train_and_compare(compare_all: bool = False):
     df = load_data()
 
     print(f"[INFO] Dataset: {len(df)} samples")
@@ -375,7 +375,7 @@ def train_and_compare():
     )
 
     # =========================================================
-    # MODELS TO COMPARE (Objective 3: LR, SVM, MLP)
+    # MODELS TO TRAIN (Fast Champion Model: Logistic Regression)
     # =========================================================
 
     models = {
@@ -394,7 +394,10 @@ def train_and_compare():
                 ),
             ]
         ),
-        "linear_svm": Pipeline(
+    }
+
+    if compare_all:
+        models["linear_svm"] = Pipeline(
             [
                 ("features", features),
                 (
@@ -407,11 +410,8 @@ def train_and_compare():
                     ),
                 ),
             ]
-        ),
-        # -----------------------------------------------------
-        # Neural Network - MLP
-        # -----------------------------------------------------
-        "mlp": Pipeline(
+        )
+        models["mlp"] = Pipeline(
             [
                 ("features", features),
                 (
@@ -431,8 +431,7 @@ def train_and_compare():
                     ),
                 ),
             ]
-        ),
-    }
+        )
 
     results = {}
 
