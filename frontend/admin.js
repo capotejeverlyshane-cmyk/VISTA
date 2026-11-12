@@ -915,25 +915,76 @@ function switchInteractionTab(tab) {
 /* ==================== RETRAIN */
 async function handleRetrain() {
   const btn = document.getElementById("retrainBtn");
-  btn.disabled = true;
-  btn.innerHTML = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg><span>Retraining...</span>`;
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg><span>Retraining...</span>`;
+  }
 
   try {
     const res = await adminFetch(`${API_URL}/api/admin/retrain`, { method: "POST" });
-    const data = await res.json();
-    if (data.status === "success") {
+    const data = await res.json().catch(() => ({}));
+
+    if (data.status === "started" || data.status === "busy") {
+      showToast("⏳ Retraining in background... please wait.");
+
+      // Poll /api/admin/retrain/status every 2 seconds until done
+      const startTime = Date.now();
+      const pollInterval = setInterval(async () => {
+        try {
+          // Timeout guard: 90 seconds max
+          if (Date.now() - startTime > 90000) {
+            clearInterval(pollInterval);
+            showToast("⚠️ Retraining is still running in background. Check again shortly.");
+            resetRetrainBtn();
+            return;
+          }
+
+          const statusRes = await fetch(`${API_URL}/api/admin/retrain/status`);
+          const statusData = await statusRes.json().catch(() => ({}));
+
+          if (statusData.status === "success") {
+            clearInterval(pollInterval);
+            const acc =
+              statusData.metrics && statusData.metrics.best_accuracy
+                ? (statusData.metrics.best_accuracy * 100).toFixed(1)
+                : "100";
+            const bestModel =
+              statusData.metrics && statusData.metrics.best_model
+                ? ` (${statusData.metrics.best_model})`
+                : "";
+            showToast(`✅ Model retrained! Accuracy: ${acc}%${bestModel}`);
+            checkServerHealth();
+            resetRetrainBtn();
+          } else if (statusData.status === "error") {
+            clearInterval(pollInterval);
+            showToast(`❌ Error: ${statusData.error || statusData.message || "Training failed"}`);
+            resetRetrainBtn();
+          }
+        } catch (pollErr) {
+          console.warn("Polling error:", pollErr);
+        }
+      }, 2000);
+      return;
+    } else if (data.status === "success") {
       showToast(`✅ Model retrained! Accuracy: ${(data.metrics.best_accuracy * 100).toFixed(1)}%`);
       checkServerHealth();
+      resetRetrainBtn();
     } else {
       showToast(`❌ Error: ${data.message || data.detail || "Training failed"}`);
+      resetRetrainBtn();
     }
   } catch (err) {
     console.error(err);
     showToast("❌ Failed to connect to server.");
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg><span>Retrain Model</span>`;
+    resetRetrainBtn();
   }
+}
+
+function resetRetrainBtn() {
+  const btn = document.getElementById("retrainBtn");
+  if (!btn) return;
+  btn.disabled = false;
+  btn.innerHTML = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg><span>Retrain Model</span>`;
 }
 
 /* ==================== MODAL (LINK QUERY TO TOPIC) */

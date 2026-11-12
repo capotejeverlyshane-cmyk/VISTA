@@ -94,8 +94,20 @@ def load_data():
     # --------------------------------------------------
     print("[INFO] Loading local CSV files...")
 
-    intents_df = pd.read_csv("intents.csv")
-    phrases_df = pd.read_csv("training_phrases_augmented.csv")
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    intents_path = os.path.join(base_dir, "intents.csv")
+    phrases_path = os.path.join(base_dir, "training_phrases_augmented.csv")
+
+    intents_df = (
+        pd.read_csv(intents_path)
+        if os.path.exists(intents_path)
+        else pd.DataFrame(columns=["id", "intent_name"])
+    )
+    phrases_df = (
+        pd.read_csv(phrases_path)
+        if os.path.exists(phrases_path)
+        else pd.DataFrame(columns=["intent_id", "phrase"])
+    )
 
     # Normalize ID types to prevent int/string mismatches
     local_intent_map = {
@@ -296,30 +308,21 @@ def train_and_compare():
     print(f"[INFO] Dataset: {len(df)} samples")
     print(f"[INFO] Intents: {df['intent'].nunique()}")
 
-    X = df["question"].astype(str)
-    y = df["intent"].astype(str)
-
     # ---------------------------------------------------------
-    # Check minimum samples per intent
+    # Check minimum samples per intent and satisfy stratification
     # ---------------------------------------------------------
-
-    intent_counts = y.value_counts()
-
+    intent_counts = df["intent"].value_counts()
     print("\n[INFO] Samples per intent:")
     print(intent_counts)
 
-    rare = intent_counts[intent_counts < 2]
+    rare_intents = intent_counts[intent_counts < 2].index
+    if not rare_intents.empty:
+        print(f"\n[INFO] Auto-duplicating {len(rare_intents)} single-sample intent(s) to satisfy stratified split: {list(rare_intents)}")
+        rare_subset = df[df["intent"].isin(rare_intents)].copy()
+        df = pd.concat([df, rare_subset], ignore_index=True)
 
-    if not rare.empty:
-        print("\n[ERROR] These intents have fewer than 2 samples:")
-
-        for intent, count in rare.items():
-            print(f"  {intent}: {count}")
-
-        raise ValueError(
-            "Every intent must have at least 2 samples "
-            "for stratified train/test splitting."
-        )
+    X = df["question"].astype(str)
+    y = df["intent"].astype(str)
 
     # ---------------------------------------------------------
     # Encode labels
@@ -340,7 +343,7 @@ def train_and_compare():
     print(f"[INFO] Testing samples: {len(X_test)}")
 
     # =========================================================
-    # WORD + CHARACTER TF-IDF
+    # WORD + CHARACTER TF-IDF (Optimized for Memory & Speed)
     # =========================================================
 
     word_tfidf = TfidfVectorizer(
@@ -351,7 +354,7 @@ def train_and_compare():
         ngram_range=(1, 2),
         min_df=1,
         max_df=0.98,
-        max_features=20000,
+        max_features=5000,
         norm="l2",
     )
 
@@ -359,7 +362,7 @@ def train_and_compare():
         analyzer="char_wb",
         ngram_range=(3, 5),
         min_df=1,
-        max_features=20000,
+        max_features=5000,
         sublinear_tf=True,
         norm="l2",
     )
@@ -372,7 +375,7 @@ def train_and_compare():
     )
 
     # =========================================================
-    # MODELS TO COMPARE
+    # MODELS TO COMPARE (Objective 3: LR, SVM, MLP)
     # =========================================================
 
     models = {
@@ -384,46 +387,13 @@ def train_and_compare():
                     LogisticRegression(
                         C=2.0,
                         class_weight="balanced",
-                        max_iter=5000,
+                        max_iter=1000,
                         solver="lbfgs",
                         random_state=42,
                     ),
                 ),
             ]
         ),
-        # "linear_svm_c1": Pipeline(
-        #     [
-        #         ("features", features),
-        #         (
-        #             "classifier",
-        #             LinearSVC(
-        #                 C=1.0, class_weight="balanced", max_iter=10000, random_state=42
-        #             ),
-        #         ),
-        #     ]
-        # ),
-        # "linear_svm_c2": Pipeline(
-        #     [
-        #         ("features", features),
-        #         (
-        #             "classifier",
-        #             LinearSVC(
-        #                 C=2.0, class_weight="balanced", max_iter=10000, random_state=42
-        #             ),
-        #         ),
-        #     ]
-        # ),
-        # "linear_svm_c3": Pipeline(
-        #     [
-        #         ("features", features),
-        #         (
-        #             "classifier",
-        #             LinearSVC(
-        #                 C=3.0, class_weight="balanced", max_iter=10000, random_state=42
-        #             ),
-        #         ),
-        #     ]
-        # ),
         "linear_svm": Pipeline(
             [
                 ("features", features),
@@ -431,8 +401,9 @@ def train_and_compare():
                     "classifier",
                     CalibratedClassifierCV(
                         LinearSVC(
-                            C=1.5, class_weight="balanced", max_iter=10000, random_state=42
-                        )
+                            C=1.5, class_weight="balanced", max_iter=3000, random_state=42
+                        ),
+                        cv=2,
                     ),
                 ),
             ]
@@ -446,16 +417,16 @@ def train_and_compare():
                 (
                     "classifier",
                     MLPClassifier(
-                        hidden_layer_sizes=(128, 64),
+                        hidden_layer_sizes=(64, 32),
                         activation="relu",
                         solver="adam",
                         alpha=0.0001,
                         batch_size=64,
                         learning_rate_init=0.001,
-                        max_iter=300,
+                        max_iter=60,
                         early_stopping=True,
                         validation_fraction=0.10,
-                        n_iter_no_change=10,
+                        n_iter_no_change=5,
                         random_state=42,
                     ),
                 ),

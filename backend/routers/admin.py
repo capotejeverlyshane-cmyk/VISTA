@@ -1,9 +1,11 @@
 import json
 import os
 import csv
+import threading
+import logging
 from datetime import datetime
 from io import StringIO
-from fastapi import APIRouter, Body, Depends, HTTPException
+from fastapi import APIRouter, Body, Depends, HTTPException, BackgroundTasks
 from fastapi.responses import Response
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
@@ -770,13 +772,69 @@ def get_feedback():
         return []
 
 
-@router.post("/retrain", dependencies=[Depends(verify_admin_token)])
-def retrain():
-    metrics = train.train_and_compare()
-    from services.nlp import load_models
+logger = logging.getLogger(__name__)
 
-    load_models()
-    return {"status": "success", "metrics": metrics}
+training_lock = threading.Lock()
+training_state = {
+    "status": "idle",  # "idle" | "running" | "success" | "error"
+    "message": "",
+    "metrics": None,
+    "error": None,
+    "started_at": None,
+    "completed_at": None,
+}
+
+
+def _execute_retraining():
+    global training_state
+    with training_lock:
+        training_state["status"] = "running"
+        training_state["message"] = "Model retraining in progress..."
+        training_state["error"] = None
+        training_state["started_at"] = datetime.now().isoformat()
+        try:
+            metrics = train.train_and_compare()
+            from services.nlp import load_models
+
+            load_models()
+            training_state["status"] = "success"
+            training_state["message"] = "Retraining completed successfully."
+            training_state["metrics"] = metrics
+            training_state["completed_at"] = datetime.now().isoformat()
+        except Exception as e:
+            logger.exception("Background retraining failed")
+            training_state["status"] = "error"
+            training_state["message"] = "Retraining failed."
+            training_state["error"] = str(e)
+            training_state["completed_at"] = datetime.now().isoformat()
+
+
+@router.post("/retrain", dependencies=[Depends(verify_admin_token)])
+def retrain(background_tasks: BackgroundTasks):
+    global training_state
+    if training_state["status"] == "running":
+        return {
+            "status": "busy",
+            "message": "Retraining is already in progress.",
+            "state": training_state,
+        }
+
+    training_state["status"] = "running"
+    training_state["message"] = "Model retraining initiated in the background."
+    training_state["error"] = None
+    training_state["started_at"] = datetime.now().isoformat()
+
+    background_tasks.add_task(_execute_retraining)
+    return {
+        "status": "started",
+        "message": "Model retraining initiated. Progress can be checked at /api/admin/retrain/status.",
+        "state": training_state,
+    }
+
+
+@router.get("/retrain/status")
+def get_retrain_status():
+    return training_state
 
 
 @router.get("/health")
