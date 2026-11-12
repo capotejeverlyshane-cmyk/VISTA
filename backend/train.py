@@ -34,25 +34,6 @@ def load_data():
     # --------------------------------------------------
     # 1. Load intents from Supabase
     # --------------------------------------------------
-<<<<<<< Updated upstream
-    supabase_intent_map = {}
-    page_size = 1000
-    start = 0
-    while True:
-        intents_res = (
-            supabase.table("intents")
-            .select("id, intent_name")
-            .range(start, start + page_size - 1)
-            .execute()
-        )
-        batch = intents_res.data or []
-        for row in batch:
-            if row.get("id") is not None and row.get("intent_name"):
-                supabase_intent_map[str(row["id"])] = row["intent_name"]
-        if len(batch) < page_size:
-            break
-        start += page_size
-=======
     intents_res = supabase.table("intents").select("id, intent_name").execute()
 
     supabase_intent_map = {
@@ -60,35 +41,15 @@ def load_data():
         for row in (intents_res.data or [])
         if row.get("id") is not None and row.get("intent_name")
     }
->>>>>>> Stashed changes
 
     # --------------------------------------------------
     # 2. Load training phrases from Supabase
     # --------------------------------------------------
-<<<<<<< Updated upstream
-    all_phrases = []
-    start = 0
-    while True:
-        phrases_res = (
-            supabase.table("training_phrases")
-            .select("intent_id, phrase")
-            .range(start, start + page_size - 1)
-            .execute()
-        )
-        batch = phrases_res.data or []
-        all_phrases.extend(batch)
-        if len(batch) < page_size:
-            break
-        start += page_size
-
-    for row in all_phrases:
-=======
     phrases_res = (
         supabase.table("training_phrases").select("intent_id, phrase").execute()
     )
 
     for row in phrases_res.data or []:
->>>>>>> Stashed changes
         intent_name = supabase_intent_map.get(str(row.get("intent_id")))
         phrase = row.get("phrase")
 
@@ -103,12 +64,7 @@ def load_data():
 
     print(
         f"[INFO] Supabase samples: "
-<<<<<<< Updated upstream
-        f"{sum(1 for row in data if row['source'] == 'supabase')} "
-        f"(from {len(all_phrases)} training phrases across all pages)"
-=======
         f"{sum(1 for row in data if row['source'] == 'supabase')}"
->>>>>>> Stashed changes
     )
 
     # --------------------------------------------------
@@ -333,27 +289,13 @@ def train_and_compare():
     rare = intent_counts[intent_counts < 2]
 
     if not rare.empty:
-<<<<<<< Updated upstream
-        print(
-            "\n[WARNING] These intents have fewer than 2 samples "
-            "and will be included in training but excluded from holdout metrics:"
-        )
-=======
         print("\n[ERROR] These intents have fewer than 2 samples:")
->>>>>>> Stashed changes
 
         for intent, count in rare.items():
             print(f"  {intent}: {count}")
 
-<<<<<<< Updated upstream
-    trainable_intents = intent_counts[intent_counts >= 2]
-    if trainable_intents.empty:
-        raise ValueError(
-            "At least one intent must have 2 or more samples "
-=======
         raise ValueError(
             "Every intent must have at least 2 samples "
->>>>>>> Stashed changes
             "for stratified train/test splitting."
         )
 
@@ -368,39 +310,6 @@ def train_and_compare():
     # Hold out test set
     # ---------------------------------------------------------
 
-<<<<<<< Updated upstream
-    rare_mask = y.isin(rare.index).to_numpy()
-    X_train, X_test, y_train, y_test = train_test_split(
-        X.iloc[~rare_mask],
-        y_encoded[~rare_mask],
-        test_size=0.20,
-        random_state=42,
-        stratify=y_encoded[~rare_mask],
-    )
-    if rare_mask.any():
-        X_train = pd.concat([X_train, X.iloc[rare_mask]])
-        y_train = np.concatenate([y_train, y_encoded[rare_mask]])
-
-    print(f"\n[INFO] Training samples: {len(X_train)}")
-    print(f"[INFO] Testing samples: {len(X_test)}")
-
-    # =========================================================
-    # WORD + CHARACTER TF-IDF
-    # =========================================================
-
-    word_tfidf = TfidfVectorizer(
-        lowercase=True,
-        strip_accents="unicode",
-        sublinear_tf=True,
-        analyzer="word",
-        ngram_range=(1, 2),
-        min_df=1,
-        max_df=0.98,
-        max_features=20000,
-        norm="l2",
-    )
-
-=======
     X_train, X_test, y_train, y_test = train_test_split(
         X, y_encoded, test_size=0.20, random_state=42, stratify=y_encoded
     )
@@ -424,7 +333,6 @@ def train_and_compare():
         norm="l2",
     )
 
->>>>>>> Stashed changes
     char_tfidf = TfidfVectorizer(
         analyzer="char_wb",
         ngram_range=(3, 5),
@@ -588,12 +496,6 @@ def train_and_compare():
     if best_pipeline is None:
         raise RuntimeError("No model was successfully trained.")
 
-<<<<<<< Updated upstream
-    # Keep holdout metrics for evaluation, but include every approved phrase in the saved model.
-    best_pipeline.fit(X, y_encoded)
-
-=======
->>>>>>> Stashed changes
     # joblib.dump(best_pipeline, os.path.join(MODEL_DIR, "best_model_augmented.pkl"))
     # joblib.dump(label_encoder, os.path.join(MODEL_DIR, "label_encoder_augmented.pkl"))
 
@@ -631,20 +533,12 @@ def train_and_compare():
     print(f"Weighted F1:  {best_result['weighted_f1']:.4f}")
 
     print(
-<<<<<<< Updated upstream
-        f"\n[INFO] Model saved to: {os.path.join(MODEL_DIR, 'best_model.pkl')}"
-=======
         f"\n[INFO] Model saved to: {os.path.join(MODEL_DIR, 'best_model_augmented.pkl')}"
->>>>>>> Stashed changes
     )
 
     return metrics_data
 
 
 if __name__ == "__main__":
-<<<<<<< Updated upstream
-    train_and_compare()
-=======
     load_data()
     # train_and_compare()
->>>>>>> Stashed changes
