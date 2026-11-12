@@ -931,10 +931,10 @@ async function handleRetrain() {
       const startTime = Date.now();
       const pollInterval = setInterval(async () => {
         try {
-          // Timeout guard: 90 seconds max
-          if (Date.now() - startTime > 90000) {
+          // Timeout guard: 12 minutes max for large 14k+ dataset
+          if (Date.now() - startTime > 720000) {
             clearInterval(pollInterval);
-            showToast("⚠️ Retraining is still running in background. Check again shortly.");
+            showToast("⚠️ Retraining is still running in background. Please check Server Health shortly.");
             resetRetrainBtn();
             return;
           }
