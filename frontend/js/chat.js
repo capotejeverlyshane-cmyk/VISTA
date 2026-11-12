@@ -495,6 +495,38 @@ export function addMessageActionButtons(msgElement, text, payload = null, source
       dropdown.classList.remove("show");
     };
 
+    if (payload.intent === "disambiguation") {
+      const disambigDiv = document.createElement("div");
+      disambigDiv.className = "disambig-options";
+      disambigDiv.style.cssText = "display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; margin-bottom:6px;";
+
+      const options = (payload.context === "awaiting_mtop_type")
+        ? [
+            { label: "1️⃣ New MTOP", val: "1" },
+            { label: "2️⃣ Renewal", val: "2" },
+            { label: "3️⃣ Annual Permit", val: "3" },
+            { label: "4️⃣ Dropping", val: "4" },
+            { label: "5️⃣ Substitution", val: "5" },
+            { label: "6️⃣ Transfer", val: "6" }
+          ]
+        : [
+            { label: "1️⃣ New Business Permit", val: "1" },
+            { label: "2️⃣ Renewal of Permit", val: "2" },
+            { label: "3️⃣ Retirement of Permit", val: "3" },
+            { label: "4️⃣ Transfer / Change Location", val: "4" }
+          ];
+
+      options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.className = "btn-secondary btn-sm";
+        btn.style.cssText = "font-size:12px; padding:6px 14px; border-radius:20px; cursor:pointer; background:var(--accent1, #2563eb); color:white; border:none; font-weight:500; transition:transform 0.15s ease;";
+        btn.textContent = opt.label;
+        btn.onclick = () => quickAsk(opt.val);
+        disambigDiv.appendChild(btn);
+      });
+      row.appendChild(disambigDiv);
+    }
+
     if (payload.intent === "unresolved" || payload.intent === "missing_intent") {
       const recoveryDiv = document.createElement("div");
       recoveryDiv.className = "fallback-recovery-actions";

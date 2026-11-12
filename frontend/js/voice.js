@@ -65,7 +65,16 @@ export function speakText(text) {
 
   window.speechSynthesis.cancel();
 
-  const utterance = new SpeechSynthesisUtterance(text);
+  // Strip Markdown symbols, links, and bullets so voice sounds natural
+  const cleanSpeech = (text || "")
+    .replace(/#{1,6}\s?/g, "")
+    .replace(/[*_`>~]/g, "")
+    .replace(/\[(.*?)\]\(.*?\)/g, "$1")
+    .replace(/[-•]\s*/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const utterance = new SpeechSynthesisUtterance(cleanSpeech);
   utterance.lang = mapSpeechLang(state.language);
   utterance.rate = 1;
   utterance.pitch = 1;

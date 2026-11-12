@@ -6,13 +6,30 @@ import re
 import joblib
 import numpy as np
 
+import nltk
+try:
+    nltk.data.find("tokenizers/punkt")
+except LookupError:
+    try:
+        nltk.download("punkt", quiet=True)
+    except Exception:
+        pass
+
+try:
+    nltk.data.find("tokenizers/punkt_tab")
+except LookupError:
+    try:
+        nltk.download("punkt_tab", quiet=True)
+    except Exception:
+        pass
+
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lsa import LsaSummarizer
 
 
 # ============================================================
-# TEXT SUMMARIZATION
+# TEXT SUMMARIZATION (LSA Summarizer)
 # ============================================================
 
 def summarize_text(
@@ -20,28 +37,39 @@ def summarize_text(
     sentence_count: int = 3,
 ) -> str:
     """
-    Summarize sufficiently long text using LSA.
-
-    Returns the original text if summarization is unnecessary
-    or fails.
+    Summarize detailed administrative records exceeding 400 characters using LSA.
+    Extracts the most salient sentences/bullet points into a concise overview.
+    Returns the original text if summarization is unnecessary or fails.
     """
     if not isinstance(text, str) or not text.strip():
         return text if isinstance(text, str) else ""
 
-    if sentence_count < 1:
+    if sentence_count < 1 or len(text.strip()) < 400:
         return text
 
-    if len(text.strip()) < 400:
-        return text
-
+    # Strip markdown headers, blockquotes, and emphasis for clean NLP parsing
     plain = re.sub(r"(?m)^\s{0,3}#{1,6}\s*", "", text)
     plain = re.sub(r"(?m)^\s{0,3}>\s?", "", plain)
     plain = re.sub(r"[*_`]", "", plain)
-    plain = plain.strip()
+
+    # Normalize bullet points and line breaks into well-formed sentences
+    lines = []
+    for raw_line in plain.splitlines():
+        line = re.sub(r"^[\s\-•*0-9.]+\s*", "", raw_line).strip()
+        if not line or len(line) < 10:
+            continue
+        if not line.endswith((".", "!", "?", ";", ":")):
+            line += "."
+        lines.append(line)
+
+    if len(lines) < 2:
+        return text
+
+    normalized_doc = " ".join(lines)
 
     try:
         parser = PlaintextParser.from_string(
-            plain,
+            normalized_doc,
             Tokenizer("english"),
         )
 
@@ -52,16 +80,17 @@ def summarize_text(
         )
 
         summary = " ".join(
-            str(sentence)
+            str(sentence).strip()
             for sentence in sentences
+            if str(sentence).strip()
         ).strip()
-        
-        print(f'summary:{summary}')
 
-        return summary if summary else text
+        if summary and len(summary) < len(text) * 0.85:
+            return summary
+        return text
 
     except Exception as exc:
-        print(f"[WARNING] Summarization failed: {exc}")
+        print(f"[WARNING] Summarization fallback: {exc}")
         return text
 
 
