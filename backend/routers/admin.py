@@ -11,7 +11,13 @@ from typing import List, Optional
 
 from utils.security import verify_password, create_access_token
 from supabase_client import supabase
-from services.cache import ANSWERS, add_training_phrase, refresh_answers_cache
+from services.cache import (
+    ANSWERS,
+    add_training_phrase,
+    init_cache,
+    refresh_answers_cache,
+    refresh_training_phrases,
+)
 import train
 
 router = APIRouter(prefix="/api/admin")
@@ -153,6 +159,7 @@ def add_intent(req: AddIntentRequest):
             ).execute()
 
         refresh_answers_cache()
+        refresh_training_phrases()
         return {"status": "success"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
@@ -193,6 +200,7 @@ def update_intent(req: UpdateIntentRequest):
         ).eq("id", intent_id).execute()
 
         refresh_answers_cache()
+        refresh_training_phrases()
         return {"status": "success"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
@@ -221,6 +229,7 @@ def delete_intent(req: DeleteIntentRequest):
             supabase.table("intents").delete().eq("id", intent_id).execute()
 
         refresh_answers_cache()
+        refresh_training_phrases()
         return {"status": "success"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
@@ -435,6 +444,15 @@ def trigger_training():
 
         load_models()
         return {"status": "success", "metrics": metrics}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+
+@router.post("/refresh_cache", dependencies=[Depends(verify_admin_token)])
+def refresh_cache_endpoint():
+    try:
+        init_cache()
+        return {"status": "success", "message": "All caches reloaded successfully"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
