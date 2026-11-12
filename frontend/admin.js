@@ -417,9 +417,19 @@ async function loadStats() {
     const res = await adminFetch(`${API_URL}/api/admin/stats`);
     const data = await res.json();
     animateValue("stat-total", 0, data.total_queries || 0, 1000);
-    animateValue("stat-resolved-rate", 0, data.resolved_rate !== undefined ? data.resolved_rate : 90.5, 1000, "%");
     animateValue("stat-unresolved", 0, data.unresolved_count || 0, 1000);
-    animateValue("stat-accuracy", 0, data.accuracy || 96.1, 1000, "%");
+    animateValue(
+      "stat-feedback",
+      0,
+      typeof data.feedback_count === "number" ? data.feedback_count : adminState.feedbackData.length || 0,
+      1000
+    );
+    if (document.getElementById("stat-resolved-rate")) {
+      animateValue("stat-resolved-rate", 0, data.resolved_rate !== undefined ? data.resolved_rate : 90.5, 1000, "%");
+    }
+    if (document.getElementById("stat-accuracy")) {
+      animateValue("stat-accuracy", 0, data.accuracy || 96.1, 1000, "%");
+    }
   } catch (err) {
     console.error("Failed to load stats", err);
   }
@@ -669,6 +679,10 @@ async function loadFeedback() {
     }));
     adminState.feedbackData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     renderFeedback(adminState.feedbackData);
+    const feedbackStat = document.getElementById("stat-feedback");
+    if (feedbackStat) {
+      animateValue("stat-feedback", 0, adminState.feedbackData.length, 1000);
+    }
   } catch (err) {
     console.error("Failed to load feedback", err);
     renderEmptyTable("feedback-tbody", 6, "Unable to load data. Is the server running?");

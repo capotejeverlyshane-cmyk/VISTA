@@ -573,16 +573,15 @@ def get_stats():
         )
         f_res = supabase.table("feedback").select("*", count="exact").execute()
 
+        def get_count(res):
+            if hasattr(res, "count") and res.count is not None:
+                return res.count
+            return len(res.data or [])
+
         return {
-            "total_queries": q_res.count
-            if hasattr(q_res, "count")
-            else len(q_res.data or []),
-            "unresolved_count": u_res.count
-            if hasattr(u_res, "count")
-            else len(u_res.data or []),
-            "feedback_count": f_res.count
-            if hasattr(f_res, "count")
-            else len(f_res.data or []),
+            "total_queries": get_count(q_res),
+            "unresolved_count": get_count(u_res),
+            "feedback_count": get_count(f_res),
             "knowledge_base_size": len(ANSWERS),
         }
     except Exception as e:
