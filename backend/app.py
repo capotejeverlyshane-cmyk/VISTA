@@ -51,5 +51,6 @@ def root():
     return {"status": "VISTA Backend API is running."}
 
 if __name__ == "__main__":
-    uvicorn.run("backend.app:app", host="0.0.0.0", port=8001, reload=True)
+    port = int(os.environ.get("PORT", 8001))
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=True)
 

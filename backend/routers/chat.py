@@ -261,13 +261,12 @@ async def chat(request: ChatRequest, req: Request):
     )
     ip = req.client.host if req.client else None
 
-    # if not intent or (confidence is not None and confidence < 0.8):
-    if confidence < 0.8:
+    # Functional Requirement #4: 80% threshold on calibrated confidence
+    if not intent or (confidence is not None and confidence < 0.8):
         print(f"LOW CL: {confidence}")
         log_unresolved_chat(model_input, confidence)
 
         log_chat(user_msg, intent or "unresolved", ip, False, confidence)
-        # log_chat(user_msg, intent or "unresolved", ip, False, confidence)
 
         return make_reply(fallback_reply(lang, "unresolved"), lang, "unresolved")
 
