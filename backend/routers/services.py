@@ -1,5 +1,6 @@
 import re
-from fastapi import APIRouter
+from typing import Optional
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from services.cache import ANSWERS, OFFICES,load_offices
 
@@ -63,23 +64,29 @@ def get_offices():
 
 class FeedbackRequest(BaseModel):
     question: str
-    predicted_intent: str
-    feedback: str
-    language: str
+    answer: Optional[str] = ""
+    intent: Optional[str] = ""
+    predicted_intent: Optional[str] = None
+    helpful: Optional[bool] = None
+    feedback: Optional[str] = None
+    comment: Optional[str] = None
+    language: Optional[str] = "en"
 
 
 @router.post("/feedback")
 def submit_feedback(req: FeedbackRequest):
     try:
-        print("Feedback")
-        supabase.table("feedback").insert({
-            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        resolved_intent = req.intent or req.predicted_intent or "unknown"
+        is_helpful = req.helpful if req.helpful is not None else (req.feedback in ["positive", "helpful", "true"])
+        
+        insert_payload = {
             "question": req.question,
-            "predicted_intent": req.predicted_intent,
-            "feedback_type": req.feedback,
-            "language": req.language
-        }).execute()
-
-        return {"status": "success"}
+            "answer": req.answer or "",
+            "intent": resolved_intent,
+            "helpful": is_helpful,
+            "comment": req.comment or "",
+        }
+        res = supabase.table("feedback").insert(insert_payload).execute()
+        return {"status": "success", "data": res.data}
     except Exception as e:
-        return {"status": "error", "message": str(e)}
+        raise HTTPException(status_code=500, detail=f"Failed to record feedback: {str(e)}")

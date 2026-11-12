@@ -97,7 +97,12 @@ def change_password(req: ChangePasswordRequest, token: str = Depends(oauth2_sche
         "username", username
     ).execute()
 
-    return {"status": "success", "message": "Password updated successfully"}
+    new_token = create_access_token({"sub": username})
+    return {
+        "status": "success",
+        "message": "Password updated successfully",
+        "access_token": new_token,
+    }
 
 
 # ==================== INTENT MANAGEMENT ====================
@@ -231,6 +236,85 @@ def delete_intent(req: DeleteIntentRequest):
         refresh_answers_cache()
         refresh_training_phrases()
         return {"status": "success"}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+
+@router.delete("/intents/{identifier}", dependencies=[Depends(verify_admin_token)])
+def delete_intent_by_id_or_name(identifier: str):
+    try:
+        query = supabase.table("intents").select("id, intent_name")
+        if identifier.isdigit():
+            query = query.eq("id", int(identifier))
+        else:
+            query = query.eq("intent_name", identifier)
+        res = query.execute()
+        if not res.data:
+            return {"status": "error", "message": f"Intent '{identifier}' not found"}
+
+        intent_id = res.data[0]["id"]
+        supabase.table("training_phrases").delete().eq("intent_id", intent_id).execute()
+        supabase.table("intents").delete().eq("id", intent_id).execute()
+
+        refresh_answers_cache()
+        refresh_training_phrases()
+        return {"status": "success", "message": "Topic deleted successfully"}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+
+@router.put("/intents/{identifier}", dependencies=[Depends(verify_admin_token)])
+def update_intent_by_id_or_name(identifier: str, req: dict = Body(...)):
+    try:
+        query = supabase.table("intents").select("id, intent_name")
+        if identifier.isdigit():
+            query = query.eq("id", int(identifier))
+        else:
+            query = query.eq("intent_name", identifier)
+        res = query.execute()
+        if not res.data:
+            return {"status": "error", "message": f"Intent '{identifier}' not found"}
+
+        intent_id = res.data[0]["id"]
+        current_name = res.data[0]["intent_name"]
+        new_name = req.get("intent") or req.get("new_intent") or current_name
+        department = req.get("department")
+        en_answer = req.get("en_answer", "")
+        tl_answer = req.get("tl_answer", "")
+        bis_answer = req.get("bis_answer", "")
+
+        update_fields = {
+            "intent_name": new_name,
+            "en_answer": en_answer,
+            "tl_answer": tl_answer,
+            "bis_answer": bis_answer,
+        }
+        if department:
+            update_fields["department"] = department
+
+        supabase.table("intents").update(update_fields).eq("id", intent_id).execute()
+
+        en_question = req.get("en_question")
+        if en_question and str(en_question).strip():
+            existing = (
+                supabase.table("training_phrases")
+                .select("id")
+                .eq("intent_id", intent_id)
+                .limit(1)
+                .execute()
+            )
+            if existing.data:
+                supabase.table("training_phrases").update(
+                    {"phrase": str(en_question).strip()}
+                ).eq("id", existing.data[0]["id"]).execute()
+            else:
+                supabase.table("training_phrases").insert(
+                    {"intent_id": intent_id, "language": "en", "phrase": str(en_question).strip()}
+                ).execute()
+
+        refresh_answers_cache()
+        refresh_training_phrases()
+        return {"status": "success", "message": "Topic updated successfully"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
 

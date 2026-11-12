@@ -1363,7 +1363,9 @@ async function handleChangePassword(e) {
 
     if (data.status === "success") {
       showToast("✅ Administrator password changed successfully.");
-      sessionStorage.setItem("vista_admin_token", newPwd); // update token
+      if (data.access_token) {
+        sessionStorage.setItem("vista_admin_token", data.access_token);
+      }
       closeChangePasswordModal();
       closeProfileModal();
     } else {
@@ -1383,7 +1385,7 @@ async function confirmDelete() {
   if (!intentId) return;
 
   try {
-    const res = await adminFetch(`${API_URL}/api/admin/intents/${intentId}`, { method: "DELETE" });
+    const res = await adminFetch(`${API_URL}/api/admin/intents/${encodeURIComponent(intentId)}`, { method: "DELETE" });
     const data = await res.json();
     if (data.status === "success") {
       showToast("✅ Topic deleted successfully.");
@@ -1416,7 +1418,7 @@ async function handleAddIntent(e) {
     bis_answer: document.getElementById("add-bis-answer").value,
   };
 
-  const url = mode === "edit" ? `${API_URL}/api/admin/intents/${editId}` : `${API_URL}/api/admin/add_intent`;
+  const url = mode === "edit" ? `${API_URL}/api/admin/intents/${encodeURIComponent(editId)}` : `${API_URL}/api/admin/add_intent`;
   const method = mode === "edit" ? "PUT" : "POST";
 
   try {

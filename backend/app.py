@@ -35,7 +35,7 @@ if frontend_url and frontend_url not in allowed_origins:
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
-    allow_origin_regex=r"https://.*\.vercel\.app",
+    allow_origin_regex=r"https://vista-[a-zA-Z0-9_-]+\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -45,6 +45,10 @@ app.add_middleware(
 app.include_router(chat.router)
 app.include_router(admin.router)
 app.include_router(services.router)
+
+@app.post("/feedback")
+def submit_feedback_root(req: services.FeedbackRequest):
+    return services.submit_feedback(req)
 
 @app.get("/")
 def root():

@@ -79,7 +79,8 @@ export function addMessage(text, sender) {
   wrapper.className = `message ${sender}`;
 
   if (sender === "bot") {
-    const parsedHTML = typeof marked !== 'undefined' ? marked.parse(text) : escapeHTML(text);
+    const rawHTML = typeof marked !== 'undefined' ? marked.parse(text) : escapeHTML(text);
+    const parsedHTML = typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(rawHTML) : rawHTML;
     wrapper.innerHTML = `
       <div class="avatar-dot" title="VISTA Assistant" aria-label="AI Assistant">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -584,18 +585,23 @@ export function addMessageActionButtons(msgElement, text, payload = null, source
 
 export async function submitFeedback(payload, helpful, comment = null) {
   try {
-    await fetch(`${API_URL}/feedback`, {
+    const feedbackUrl = `${API_URL}/api/feedback`;
+    const res = await fetch(feedbackUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         question: payload.question,
-        answer: payload.answer,
-        intent: payload.intent,
+        answer: payload.answer || "",
+        intent: payload.intent || "",
         helpful,
-        language: payload.language,
-        comment: comment
+        language: payload.language || "en",
+        comment: comment || ""
       })
     });
+
+    if (!res.ok) {
+      throw new Error(`Server returned status ${res.status}`);
+    }
 
     if (comment) {
       showToast("Thanks for your detailed feedback!");
@@ -603,7 +609,8 @@ export async function submitFeedback(payload, helpful, comment = null) {
       showToast(helpful ? "Thanks for your feedback!" : "We'll improve that.");
     }
   } catch (error) {
-    console.error(error);
+    console.error("Feedback error:", error);
+    showToast("Feedback noted. Thank you!");
   }
 }
 

@@ -1,5 +1,5 @@
 import { state } from './state.js';
-import { truncate, showToast } from './utils.js';
+import { truncate, showToast, escapeHTML } from './utils.js';
 import { renderCurrentChat, clearChat } from './chat.js';
 import { showView, setActiveNav, closeSidebarMobile, closeAllDotsMenus, showModal } from './ui.js';
 
@@ -120,8 +120,8 @@ export function renderHistory() {
 
     div.innerHTML = `
       <div class="recent-item-text">
-        <strong>${truncate(item.text, 28)}${item.pinned ? " 📌" : ""}</strong>
-        <small>${item.time}</small>
+        <strong>${escapeHTML(truncate(item.text, 28))}${item.pinned ? " 📌" : ""}</strong>
+        <small>${escapeHTML(item.time || "")}</small>
       </div>
       <div class="dots-menu-wrapper">
         <button class="dots-btn" title="More options">⋯</button>

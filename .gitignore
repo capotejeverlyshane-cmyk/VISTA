@@ -20,6 +20,11 @@ __pycache__/
 
 # Large binaries and installers
 *.msi
+*.rar
+*.zip
+backend/Lib/
+backend/Scripts/
+backend/pyvenv.cfg
 
 # Temp files
 ~$*

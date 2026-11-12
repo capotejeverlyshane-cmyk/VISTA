@@ -262,11 +262,11 @@ async def chat(request: ChatRequest, req: Request):
     ip = req.client.host if req.client else None
 
     # Functional Requirement #4: 80% threshold on calibrated confidence
-    if not intent or (confidence is not None and confidence < 0.8):
+    if not intent or confidence is None or confidence < 0.8:
         print(f"LOW CL: {confidence}")
         log_unresolved_chat(model_input, confidence)
 
-        log_chat(user_msg, intent or "unresolved", ip, False, confidence)
+        log_chat(user_msg, intent or "unresolved", ip, False, confidence, lang=lang)
 
         return make_reply(fallback_reply(lang, "unresolved"), lang, "unresolved")
 
@@ -275,13 +275,13 @@ async def chat(request: ChatRequest, req: Request):
         logger.warning(
             "Missing knowledge-base answer: intent=%s language=%s", intent, lang
         )
-        log_chat(user_msg, intent, ip, False, confidence)
+        log_chat(user_msg, intent, ip, False, confidence, lang=lang)
         return make_reply(fallback_reply(lang, "missing_intent"), lang, intent)
 
     response = make_reply(answer, lang, intent)
     # Extractive summarization via LsaSummarizer for detailed responses
     response["summary"] = summarize_text(answer)
-    log_chat(user_msg, intent, ip, True, confidence)
+    log_chat(user_msg, intent, ip, True, confidence, lang=lang)
     return response
 
 
@@ -301,7 +301,7 @@ def log_unresolved_chat(question, confidence):
         print(f"[ERROR] Failed to log chat: {e}")
 
 
-def log_chat(msg, intent, ip, resolved, confidence=0.0):
+def log_chat(msg, intent, ip, resolved, confidence=0.0, lang="en"):
 
     try:
         supabase.table("chat_logs").insert(
@@ -310,12 +310,13 @@ def log_chat(msg, intent, ip, resolved, confidence=0.0):
                 "user_message": msg,
                 "predicted_intent": intent,
                 "confidence": confidence,
-                # "resolved": resolved,
+                "language": lang,
             }
         ).execute()
         logger.info(
-            "Chat handled: intent=%s ip=%s resolved=%s confidence=%s",
+            "Chat handled: intent=%s lang=%s ip=%s resolved=%s confidence=%s",
             intent,
+            lang,
             ip,
             resolved,
             confidence,

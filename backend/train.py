@@ -12,6 +12,7 @@ from sklearn.metrics import accuracy_score, classification_report
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
+from sklearn.calibration import CalibratedClassifierCV
 from sklearn.neural_network import MLPClassifier
 
 from utils.preprocess import clean_text
@@ -32,24 +33,45 @@ def load_data():
     data = []
 
     # --------------------------------------------------
-    # 1. Load intents from Supabase
+    # 1. Load intents from Supabase (paginated)
     # --------------------------------------------------
-    intents_res = supabase.table("intents").select("id, intent_name").execute()
-
-    supabase_intent_map = {
-        str(row["id"]): row["intent_name"]
-        for row in (intents_res.data or [])
-        if row.get("id") is not None and row.get("intent_name")
-    }
+    supabase_intent_map = {}
+    page_size = 1000
+    start = 0
+    while True:
+        intents_res = (
+            supabase.table("intents")
+            .select("id, intent_name")
+            .range(start, start + page_size - 1)
+            .execute()
+        )
+        batch = intents_res.data or []
+        for row in batch:
+            if row.get("id") is not None and row.get("intent_name"):
+                supabase_intent_map[str(row["id"])] = row["intent_name"]
+        if len(batch) < page_size:
+            break
+        start += page_size
 
     # --------------------------------------------------
-    # 2. Load training phrases from Supabase
+    # 2. Load training phrases from Supabase (paginated)
     # --------------------------------------------------
-    phrases_res = (
-        supabase.table("training_phrases").select("intent_id, phrase").execute()
-    )
+    all_phrases = []
+    start = 0
+    while True:
+        phrases_res = (
+            supabase.table("training_phrases")
+            .select("intent_id, phrase")
+            .range(start, start + page_size - 1)
+            .execute()
+        )
+        batch = phrases_res.data or []
+        all_phrases.extend(batch)
+        if len(batch) < page_size:
+            break
+        start += page_size
 
-    for row in phrases_res.data or []:
+    for row in all_phrases:
         intent_name = supabase_intent_map.get(str(row.get("intent_id")))
         phrase = row.get("phrase")
 
@@ -402,41 +424,43 @@ def train_and_compare():
         #         ),
         #     ]
         # ),
-        # "linear_svm": Pipeline(
-        #     [
-        #         ("features", features),
-        #         (
-        #             "classifier",
-        #             LinearSVC(
-        #                 C=1.5, class_weight="balanced", max_iter=10000, random_state=42
-        #             ),
-        #         ),
-        #     ]
-        # ),
+        "linear_svm": Pipeline(
+            [
+                ("features", features),
+                (
+                    "classifier",
+                    CalibratedClassifierCV(
+                        LinearSVC(
+                            C=1.5, class_weight="balanced", max_iter=10000, random_state=42
+                        )
+                    ),
+                ),
+            ]
+        ),
         # -----------------------------------------------------
         # Neural Network - MLP
         # -----------------------------------------------------
-        # "mlp": Pipeline(
-        #     [
-        #         ("features", features),
-        #         (
-        #             "classifier",
-        #             MLPClassifier(
-        #                 hidden_layer_sizes=(128, 64),
-        #                 activation="relu",
-        #                 solver="adam",
-        #                 alpha=0.0001,
-        #                 batch_size=64,
-        #                 learning_rate_init=0.001,
-        #                 max_iter=300,
-        #                 early_stopping=True,
-        #                 validation_fraction=0.10,
-        #                 n_iter_no_change=10,
-        #                 random_state=42,
-        #             ),
-        #         ),
-        #     ]
-        # ),
+        "mlp": Pipeline(
+            [
+                ("features", features),
+                (
+                    "classifier",
+                    MLPClassifier(
+                        hidden_layer_sizes=(128, 64),
+                        activation="relu",
+                        solver="adam",
+                        alpha=0.0001,
+                        batch_size=64,
+                        learning_rate_init=0.001,
+                        max_iter=300,
+                        early_stopping=True,
+                        validation_fraction=0.10,
+                        n_iter_no_change=10,
+                        random_state=42,
+                    ),
+                ),
+            ]
+        ),
     }
 
     results = {}
