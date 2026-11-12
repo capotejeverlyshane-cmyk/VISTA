@@ -37,14 +37,14 @@ def summarize_text(
     sentence_count: int = 3,
 ) -> str:
     """
-    Summarize detailed administrative records exceeding 400 characters using LSA.
+    Summarize detailed administrative records exceeding 1000 characters using LSA.
     Extracts the most salient sentences/bullet points into a concise overview.
     Returns the original text if summarization is unnecessary or fails.
     """
     if not isinstance(text, str) or not text.strip():
         return text if isinstance(text, str) else ""
 
-    if sentence_count < 1 or len(text.strip()) < 400:
+    if sentence_count < 1 or len(text.strip()) < 1000:
         return text
 
     # Strip markdown headers, blockquotes, and emphasis for clean NLP parsing

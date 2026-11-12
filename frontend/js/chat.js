@@ -314,8 +314,18 @@ export async function sendMessage() {
 
     const botMsg = addMessage("", "bot");
     let displayReply = data.reply || "No response received.";
-    if (data.summary && data.summary !== data.reply && (data.reply || "").length >= 400) {
-      displayReply = `> 📋 **Quick Summary (3-Sentence LSA Summarizer):**\n> *${data.summary}*\n\n---\n\n${data.reply}`;
+    if (data.summary && data.summary !== data.reply && (data.reply || "").length >= 1000) {
+      // Format 3-sentence LSA summary into clear executive bullet points
+      const points = data.summary
+        .split(/(?<=[.!?])\s+/)
+        .map(s => s.trim().replace(/^[•\-\*]\s*/, ""))
+        .filter(s => s.length > 10);
+
+      const bulletList = points.length > 0
+        ? points.map(pt => `> • ${pt}`).join("\n>\n")
+        : `> • ${data.summary}`;
+
+      displayReply = `> ⚡ **Quick Summary** *(At a Glance)*\n>\n${bulletList}\n\n---\n\n### 📋 Complete Service Details (Panabo City Charter)\n\n${data.reply}`;
     }
     await typeMessage(botMsg, displayReply);
     if (state.stopTypingFlag) return;
