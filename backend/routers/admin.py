@@ -544,9 +544,9 @@ def refresh_cache_endpoint():
 
 
 class TranslateRequest(BaseModel):
-    text: Optional[str] = None
-    question: Optional[str] = None
-    answer: Optional[str] = None
+    text: Optional[str] = ""
+    question: Optional[str] = ""
+    answer: Optional[str] = ""
 
 
 def _translate_to_tl_bis(text: str):
@@ -590,22 +590,28 @@ def _translate_to_tl_bis(text: str):
 @router.post("/translate", dependencies=[Depends(verify_admin_token)])
 def translate_text(req: TranslateRequest):
     try:
-        if req.question or req.answer:
-            res_payload = {"status": "success"}
-            if req.question:
-                q_tl, q_bis = _translate_to_tl_bis(req.question)
-                res_payload["q_tl"] = q_tl
-                res_payload["q_bis"] = q_bis
-            if req.answer:
-                a_tl, a_bis = _translate_to_tl_bis(req.answer)
-                res_payload["a_tl"] = a_tl
-                res_payload["a_bis"] = a_bis
-            return res_payload
+        q_text = (req.question or "").strip()
+        a_text = (req.answer or "").strip()
+        single_text = (req.text or "").strip()
 
-        # Single text backwards compatibility
-        target_text = req.text or ""
-        tl, bis = _translate_to_tl_bis(target_text)
-        return {"status": "success", "tl": tl, "bis": bis}
+        if not q_text and not a_text and single_text:
+            q_text = single_text
+
+        res_payload = {"status": "success"}
+
+        if q_text:
+            q_tl, q_bis = _translate_to_tl_bis(q_text)
+            res_payload["q_tl"] = q_tl
+            res_payload["q_bis"] = q_bis
+            res_payload["tl"] = q_tl
+            res_payload["bis"] = q_bis
+
+        if a_text:
+            a_tl, a_bis = _translate_to_tl_bis(a_text)
+            res_payload["a_tl"] = a_tl
+            res_payload["a_bis"] = a_bis
+
+        return res_payload
     except Exception as e:
         logger.exception("Translation endpoint error")
         return {"status": "error", "message": f"Translation error: {str(e)}"}

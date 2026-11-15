@@ -1541,10 +1541,14 @@ async function handleAutoTranslate() {
     const res = await adminFetch(`${API_URL}/api/admin/translate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: enQuestion, answer: enAnswer })
+      body: JSON.stringify({
+        question: enQuestion,
+        answer: enAnswer,
+        text: enQuestion || enAnswer || ""
+      })
     });
-    const data = await res.json();
-    if (data.status === "success") {
+    const data = await res.json().catch(() => ({}));
+    if (res.ok && data.status === "success") {
       if (enQuestion) {
         document.getElementById("add-tl-question").value = data.q_tl || data.tl || "";
         document.getElementById("add-bis-question").value = data.q_bis || data.bis || "";
@@ -1555,7 +1559,14 @@ async function handleAutoTranslate() {
       }
       showToast("✨ Translation complete!");
     } else {
-      showToast("❌ " + (data.message || "Translation failed"));
+      const errMsg =
+        data.message ||
+        (typeof data.detail === "string"
+          ? data.detail
+          : data.detail?.[0]?.msg
+          ? `${data.detail[0].loc?.join('.') || 'field'}: ${data.detail[0].msg}`
+          : "Translation failed");
+      showToast("❌ " + errMsg);
     }
   } catch (err) {
     console.error(err);
