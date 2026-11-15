@@ -544,19 +544,71 @@ def refresh_cache_endpoint():
 
 
 class TranslateRequest(BaseModel):
-    text: str
+    text: Optional[str] = None
+    question: Optional[str] = None
+    answer: Optional[str] = None
+
+
+def _translate_to_tl_bis(text: str):
+    if not text or not text.strip():
+        return "", ""
+    text_clean = text.strip()
+    tl_trans, bis_trans = "", ""
+
+    # 1. Try GoogleTranslator first
+    try:
+        from deep_translator import GoogleTranslator
+        import time
+
+        tl_trans = GoogleTranslator(source="en", target="tl").translate(text_clean)
+        time.sleep(0.15)
+        bis_trans = GoogleTranslator(source="en", target="ceb").translate(text_clean)
+        if tl_trans and bis_trans:
+            return tl_trans, bis_trans
+    except Exception as ge:
+        logger.warning(f"GoogleTranslator rate-limited or failed: {ge}")
+
+    # 2. Fallback to MyMemoryTranslator if Google is rate-limited (HTTP 429)
+    try:
+        from deep_translator import MyMemoryTranslator
+        import time
+
+        if not tl_trans:
+            tl_trans = MyMemoryTranslator(source="en-US", target="tl-PH").translate(text_clean)
+            time.sleep(0.15)
+        if not bis_trans:
+            bis_trans = MyMemoryTranslator(source="en-US", target="ceb-PH").translate(text_clean)
+        if tl_trans and bis_trans:
+            return tl_trans, bis_trans
+    except Exception as me:
+        logger.warning(f"MyMemoryTranslator fallback failed: {me}")
+
+    # 3. Graceful fallback to original text if both providers are rate-limited
+    return tl_trans or text_clean, bis_trans or text_clean
 
 
 @router.post("/translate", dependencies=[Depends(verify_admin_token)])
 def translate_text(req: TranslateRequest):
     try:
-        from deep_translator import GoogleTranslator
+        if req.question or req.answer:
+            res_payload = {"status": "success"}
+            if req.question:
+                q_tl, q_bis = _translate_to_tl_bis(req.question)
+                res_payload["q_tl"] = q_tl
+                res_payload["q_bis"] = q_bis
+            if req.answer:
+                a_tl, a_bis = _translate_to_tl_bis(req.answer)
+                res_payload["a_tl"] = a_tl
+                res_payload["a_bis"] = a_bis
+            return res_payload
 
-        tl_trans = GoogleTranslator(source="en", target="tl").translate(req.text)
-        bis_trans = GoogleTranslator(source="en", target="ceb").translate(req.text)
-        return {"status": "success", "tl": tl_trans, "bis": bis_trans}
+        # Single text backwards compatibility
+        target_text = req.text or ""
+        tl, bis = _translate_to_tl_bis(target_text)
+        return {"status": "success", "tl": tl, "bis": bis}
     except Exception as e:
-        return {"status": "error", "message": str(e)}
+        logger.exception("Translation endpoint error")
+        return {"status": "error", "message": f"Translation error: {str(e)}"}
 
 
 # Feedback public endpoint can be placed here or in a separate router, let's keep it here for now or maybe in a public router.

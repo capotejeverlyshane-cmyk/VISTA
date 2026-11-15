@@ -1538,42 +1538,24 @@ async function handleAutoTranslate() {
   btn.disabled = true;
 
   try {
-    let hasError = false;
-
-    if (enQuestion) {
-      const resQ = await adminFetch(`${API_URL}/api/admin/translate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: enQuestion })
-      });
-      const dataQ = await resQ.json();
-      if (dataQ.status === "success") {
-        document.getElementById("add-tl-question").value = dataQ.tl || "";
-        document.getElementById("add-bis-question").value = dataQ.bis || "";
-      } else {
-        showToast("❌ " + dataQ.message);
-        hasError = true;
+    const res = await adminFetch(`${API_URL}/api/admin/translate`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: enQuestion, answer: enAnswer })
+    });
+    const data = await res.json();
+    if (data.status === "success") {
+      if (enQuestion) {
+        document.getElementById("add-tl-question").value = data.q_tl || data.tl || "";
+        document.getElementById("add-bis-question").value = data.q_bis || data.bis || "";
       }
-    }
-
-    if (enAnswer) {
-      const resA = await adminFetch(`${API_URL}/api/admin/translate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: enAnswer })
-      });
-      const dataA = await resA.json();
-      if (dataA.status === "success") {
-        document.getElementById("add-tl-answer").value = dataA.tl || "";
-        document.getElementById("add-bis-answer").value = dataA.bis || "";
-      } else {
-        showToast("❌ " + dataA.message);
-        hasError = true;
+      if (enAnswer) {
+        document.getElementById("add-tl-answer").value = data.a_tl || data.tl || "";
+        document.getElementById("add-bis-answer").value = data.a_bis || data.bis || "";
       }
-    }
-
-    if (!hasError) {
       showToast("✨ Translation complete!");
+    } else {
+      showToast("❌ " + (data.message || "Translation failed"));
     }
   } catch (err) {
     console.error(err);
