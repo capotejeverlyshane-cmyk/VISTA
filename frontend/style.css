@@ -1069,7 +1069,7 @@ html, body {
   flex-direction: column;
   flex: 1;
   overflow: hidden;
-  padding: 0 20px 20px;
+  padding: 16px 20px 20px;
   background: var(--bg);
   min-height: 0;
 }
@@ -2988,9 +2988,13 @@ body.light-theme .back-auth-btn:hover {
 
 /* ======================== CITIZEN CHAT WELCOME */
 .welcome-hero {
-  width: min(100%, 42rem);
+  width: min(100%, 46rem);
   margin: auto;
-  padding: clamp(16px, 3vh, 36px) 0;
+  padding: clamp(18px, 3vw, 36px);
+  border: 1px solid color-mix(in srgb, var(--accent1) 14%, var(--border));
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent3) 55%, var(--panel)), var(--panel) 85%);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent1) 8%, transparent);
   text-align: center;
 }
 

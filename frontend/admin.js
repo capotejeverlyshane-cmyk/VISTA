@@ -432,13 +432,38 @@ async function loadStats() {
 
 /* ==================== ANALYTICS ==================== */
 const topicSymbols = [
-  { match: /no match|unmatched|unknown|fallback/, color: "amber", path: "M12 3 2 21h20ZM12 9v5m0 3v.1" },
-  { match: /permit|business|license to operate/, color: "purple", path: "M3 8h18v12H3zM8 8V5h8v3M3 13h18M10 13v2h4v-2" },
-  { match: /tax|payment|receipt|assessment|fees?\b/, color: "teal", path: "M5 3h14v18l-3-2-4 2-4-2-3 2zM8 8h8M8 12h6" },
-  { match: /birth|marriage|certificate|certification|cert of|civil reg/, color: "blue", path: "M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h6" },
-  { match: /assistance|welfare|pwd|senior|aics/, color: "rose", path: "M12 20 4 12C-2 5 7 0 12 7c5-7 14-2 8 5z" }
+  { match: /no match|unmatched|unresolved|unknown|fallback/, label: "Unmatched", color: "amber", path: "M12 3 2 21h20ZM12 9v5m0 3v.1" },
+  { match: /permit|business|license to operate/, label: "Permits & business", color: "purple", path: "M3 8h18v12H3zM8 8V5h8v3M3 13h18M10 13v2h4v-2" },
+  { match: /tax|payment|receipt|assessment|fees?\b/, label: "Taxes & payments", color: "teal", path: "M5 3h14v18l-3-2-4 2-4-2-3 2zM8 8h8M8 12h6" },
+  { match: /birth|marriage|certificate|certification|cert of|civil reg/, label: "Civil records", color: "blue", path: "M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h6" },
+  { match: /assistance|welfare|pwd|senior|aics/, label: "Social assistance", color: "rose", path: "M12 20 4 12C-2 5 7 0 12 7c5-7 14-2 8 5z" }
 ];
-const generalTopicSymbol = { color: "slate", path: "M3 4h18v13H9l-6 4zM7 9h10M7 13h6" };
+const generalTopicSymbol = { label: "Other topics", color: "slate", path: "M3 4h18v13H9l-6 4zM7 9h10M7 13h6" };
+
+function renderQueryMix(topics, total, number, percent) {
+  const groups = new Map();
+  for (const { symbol, count } of topics) {
+    groups.set(symbol, (groups.get(symbol) || 0) + count);
+  }
+  const segments = [...groups].sort((a, b) => b[1] - a[1] || a[0].label.localeCompare(b[0].label));
+  let cumulative = 0;
+  const stops = segments.map(([symbol, count]) => {
+    const start = 100 * cumulative / total;
+    cumulative += count;
+    return `var(--plot-${symbol.color}) ${start}% ${100 * cumulative / total}%`;
+  });
+  document.getElementById("mixRing").style.backgroundImage = `conic-gradient(${stops.join(", ")})`;
+  document.getElementById("mixTotal").textContent = number.format(total);
+  document.getElementById("mixLegend").innerHTML = segments.map(([symbol, count]) =>
+    `<li data-tone="${symbol.color}"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="${symbol.path}"/></svg>
+      <span>${symbol.label}</span><span class="mix-value">${number.format(count)} · ${percent.format(count / total)}</span></li>`
+  ).join("");
+}
+
+function showAnalyticsCharts(visible) {
+  document.getElementById("queryMix").hidden = !visible;
+  document.getElementById("rankingTitle").hidden = !visible;
+}
 
 function renderTopicRanking(labels, counts) {
   const ranking = document.getElementById("analyticsRanking");
@@ -448,6 +473,7 @@ function renderTopicRanking(labels, counts) {
   })).filter(topic => typeof topic.intent === "string" && Number.isSafeInteger(topic.count) && topic.count > 0);
   topics.sort((a, b) => b.count - a.count || a.intent.localeCompare(b.intent));
   const top = topics.slice(0, 10);
+  showAnalyticsCharts(top.length > 0);
   if (!top.length) {
     ranking.replaceChildren();
     insight.textContent = "No queries with a recorded intent yet.";
@@ -458,6 +484,11 @@ function renderTopicRanking(labels, counts) {
   const peak = top[0].count;
   const number = new Intl.NumberFormat();
   const percent = new Intl.NumberFormat(undefined, { style: "percent", maximumFractionDigits: 1 });
+  for (const topic of topics) {
+    const words = topic.intent.toLowerCase().replace(/[_-]/g, " ");
+    topic.symbol = topicSymbols.find(item => item.match.test(words)) || generalTopicSymbol;
+  }
+  renderQueryMix(topics, total, number, percent);
   const displayName = topic => {
     // Keep distinct office-specific intents identifiable when their formatted names match.
     if (topics.some(other => other !== topic && other.name === topic.name)) {
@@ -466,8 +497,7 @@ function renderTopicRanking(labels, counts) {
     return topic.name;
   };
   ranking.innerHTML = top.map((topic, index) => {
-    const words = topic.intent.toLowerCase().replace(/[_-]/g, " ");
-    const symbol = topicSymbols.find(item => item.match.test(words)) || generalTopicSymbol;
+    const symbol = topic.symbol;
     return `<li class="topic-row" data-tone="${symbol.color}">
       <span class="topic-rank" aria-hidden="true">${index + 1}</span>
       <span class="topic-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="${symbol.path}"/></svg></span>
@@ -501,6 +531,7 @@ async function loadAnalytics() {
     renderTopicRanking(data.labels, data.data);
   } catch (err) {
     if (request !== analyticsRequest) return;
+    showAnalyticsCharts(false);
     document.getElementById("analyticsRanking").replaceChildren();
     document.getElementById("analyticsInsight").textContent = "Query analytics could not be loaded. Reopen Overview to try again.";
     console.error("Failed to load analytics", err);

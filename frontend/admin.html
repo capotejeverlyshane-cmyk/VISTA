@@ -174,11 +174,26 @@
               <div class="health-header">
                 <h2>
                   <svg aria-hidden="true" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M3 3v18h18M7 6h13M7 11h9M7 16h5"/></svg>
-                  Top 10 query topics
+                  Query analytics
                 </h2>
               </div>
               <div class="topic-chart">
-                <p class="topic-insight" id="analyticsInsight" role="status">Loading query topics…</p>
+                <div class="analytics-summary">
+                  <figure class="query-mix" id="queryMix" hidden>
+                    <figcaption>Query mix by topic group</figcaption>
+                    <div class="mix-body">
+                      <div class="mix-ring" id="mixRing" aria-hidden="true">
+                        <span><strong id="mixTotal"></strong>queries</span>
+                      </div>
+                      <ul class="mix-legend" id="mixLegend" aria-label="Query counts and shares by topic group"></ul>
+                    </div>
+                  </figure>
+                  <div class="topic-insight">
+                    <h3>Insights</h3>
+                    <p id="analyticsInsight" role="status">Loading query topics…</p>
+                  </div>
+                </div>
+                <h3 class="topic-ranking-title" id="rankingTitle" hidden>Top 10 query topics</h3>
                 <ol class="topic-ranking" id="analyticsRanking" aria-label="Topics ranked by query count"></ol>
               </div>
             </div>
