@@ -189,7 +189,7 @@
                 </div>
                 <div class="chat-header-info">
                   <h3>VISTA Assistant <span class="online-badge">● Online</span></h3>
-                  <p>Ask about permits, certificates, taxes, schedules, and more.</p>
+                  <p>Panabo City citizen services</p>
                 </div>
               </div>
               <div class="chat-header-actions">
@@ -207,12 +207,16 @@
                 <!-- Welcome Hero -->
                 <div class="welcome-hero" id="welcomeHero">
                   <h2 class="welcome-title" id="welcomeTitle">How can I help you today?</h2>
-                  <p class="welcome-subtitle">Your AI-powered LGU Citizen Assistant</p>
-                  <div class="welcome-features">
-                    <div class="welcome-chip"><span>🌐</span> Trilingual Support</div>
-                    <div class="welcome-chip"><span>⚡</span> Instant Answers</div>
-                    <div class="welcome-chip"><span>🏛️</span> Government Services</div>
+                  <p class="welcome-subtitle">Ask in English, Tagalog, or Bisaya.</p>
+                  <div class="welcome-prompts" role="group" aria-label="Suggested questions">
+                    <button type="button" onclick="quickAsk(this.textContent)">How do I get a birth certificate?</button>
+                    <button type="button" onclick="quickAsk(this.textContent)">How do I apply for a business permit?</button>
+                    <button type="button" onclick="quickAsk(this.textContent)">How do I pay real property tax?</button>
+                    <button type="button" onclick="quickAsk(this.textContent)">What do I need to renew a business permit?</button>
                   </div>
+                  <label class="welcome-language">Reply language
+                    <select class="lang-select" id="languageSelect"></select>
+                  </label>
                 </div>
               </div>
               <button class="scroll-to-bottom" id="scrollToBottomBtn" type="button" aria-label="Scroll to bottom">
@@ -220,18 +224,10 @@
               </button>
             </div>
 
-            <div class="quick-actions" id="quickActions">
-              <span class="quick-label">Quick:</span>
-              <button onclick="quickAsk('How do I get a birth certificate?')">Get Birth Certificate</button>
-              <button onclick="quickAsk('How do I apply for a new business permit?')">Apply Business Permit</button>
-              <button onclick="quickAsk('How do I pay real property tax?')">Pay Property Tax</button>
-              <button onclick="quickAsk('What are the requirements for a birth certificate?')">Check Requirements</button>
-            </div>
-
-            <div class="input-bar" style="position: relative;">
+            <div class="input-bar">
               <div class="autocomplete-dropdown" id="autocompleteDropdown"></div>
               <div class="question-field">
-                <textarea id="user-input" rows="1" placeholder="Type your question here..."
+                <textarea id="user-input" rows="1" placeholder="Ask a question…"
                   autocomplete="off" aria-label="Type your message" aria-describedby="questionCharCount"></textarea>
                 <span class="question-char-count" id="questionCharCount" aria-label="Question character count">0 / 500</span>
               </div>
@@ -242,7 +238,7 @@
                   <line x1="12" y1="19" x2="12" y2="23" />
                   <line x1="8" y1="23" x2="16" y2="23" />
                 </svg></button>
-              <button class="send-btn" onclick="sendMessage()" title="Send" aria-label="Send message"><svg width="20"
+              <button class="send-btn" type="button" title="Send" aria-label="Send message"><svg width="20"
                   height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <line x1="22" y1="2" x2="11" y2="13" />
                   <polygon points="22 2 15 22 11 13 2 9 22 2" />

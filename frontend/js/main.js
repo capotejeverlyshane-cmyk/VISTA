@@ -28,7 +28,6 @@ import { timeNow } from './utils.js';
 // Expose some functions globally for HTML inline handlers
 window.quickAsk = (q) => import('./chat.js').then(module => module.quickAsk(q));
 window.quickAskAndGo = (q) => import('./chat.js').then(module => module.quickAskAndGo(q));
-window.sendMessage = () => import('./chat.js').then(module => module.sendMessage());
 window.switchServiceTab = switchServiceTab;
 
 // Bind missing modal and auth functions used by inline HTML onclicks
@@ -86,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Bind Send Button and Enter Key
   const sendBtn = document.querySelector(".send-btn");
-  if(sendBtn) sendBtn.addEventListener("click", sendMessage);
+  if(sendBtn) sendBtn.onclick = sendMessage;
   
   const userInput = document.getElementById("user-input");
   if(userInput) userInput.addEventListener("keydown", handleKey);

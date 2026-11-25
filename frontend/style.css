@@ -508,7 +508,7 @@ html, body {
 
 .recent-item-text small {
   font-size: 11px;
-  color: var(--muted);
+  color: var(--text-2);
 }
 
 /* THREE DOTS MENU */
@@ -1336,7 +1336,7 @@ html, body {
 .meta {
   margin-top: 5px;
   font-size: 11px;
-  color: var(--muted);
+  color: var(--text-2);
   padding: 0 4px;
 }
 
@@ -1480,48 +1480,14 @@ html, body {
   background: var(--chip);
 }
 
-/* QUICK ACTIONS */
-.quick-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  background: var(--panel);
-  border-top: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
-.quick-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--muted);
-}
-
-.quick-actions button {
-  background: var(--chip);
-  color: var(--text);
-  border: 1px solid var(--border);
-  padding: 8px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 500;
-  transition: all 0.18s;
-}
-
-.quick-actions button:hover {
-  background: var(--chip-hover);
-  color: var(--accent1);
-  border-color: var(--accent1);
-}
 
 /* INPUT BAR */
 .input-bar {
+  position: relative;
   display: flex;
   align-items: center;
   gap: clamp(8px, 1.2vw, 12px);
-  margin: 0 clamp(12px, 2vw, 20px) 10px;
+  margin: 10px clamp(12px, 2vw, 20px);
   padding: 8px;
   background: var(--panel);
   border: 1px solid var(--border);
@@ -1537,14 +1503,14 @@ html, body {
 }
 
 .input-bar textarea {
-  flex: 1;
+  width: 100%;
   min-width: 0;
   min-height: 50px;
   max-height: 144px;
-  background: var(--input-bg);
-  border: 1.5px solid var(--border);
+  background: transparent;
+  border: 0;
   color: var(--text);
-  padding: 13px 16px;
+  padding: 10px 12px;
   border-radius: 14px;
   outline: none;
   font-size: var(--font-size);
@@ -1552,7 +1518,6 @@ html, body {
   line-height: 1.45;
   resize: none;
   overflow-y: auto;
-  transition: border-color 0.18s, background-color 0.18s, box-shadow 0.18s;
 }
 
 .question-field {
@@ -1562,12 +1527,10 @@ html, body {
   min-width: 0;
 }
 
-.question-field textarea { flex: none; width: 100%; }
-
 .question-char-count {
   align-self: flex-end;
   padding: 2px 4px 0;
-  color: var(--muted);
+  color: var(--text-2);
   font-size: 11px;
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
@@ -1577,14 +1540,8 @@ html, body {
 .question-char-count.at-limit { color: var(--danger); font-weight: 700; }
 
 .input-bar textarea::placeholder {
-  color: var(--muted);
+  color: var(--text-2);
   opacity: 1;
-}
-
-.input-bar textarea:focus {
-  border-color: var(--accent1);
-  background: var(--panel);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent1) 12%, transparent);
 }
 
 .input-bar textarea:disabled {
@@ -1593,11 +1550,9 @@ html, body {
 }
 
 .send-btn {
-  width: 52px;
-  height: 52px;
+  width: 46px;
+  height: 46px;
   flex-shrink: 0;
-  align-self: flex-end;
-  margin-left: auto;
   border-radius: var(--radius-md);
   border: none;
   background: linear-gradient(135deg, var(--accent1), var(--accent2));
@@ -2438,10 +2393,9 @@ body.dark-theme .login-continue-btn {
 }
 
 .voice-btn {
-  width: 52px;
-  height: 52px;
+  width: 46px;
+  height: 46px;
   flex-shrink: 0;
-  align-self: flex-end;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
   background: var(--chip);
@@ -3091,108 +3045,74 @@ body.light-theme .back-auth-btn:hover {
   }
 }
 
-/* ======================== WELCOME HERO */
+/* ======================== CITIZEN CHAT WELCOME */
 .welcome-hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 48px 24px 32px;
+  width: min(100%, 42rem);
+  margin: auto;
+  padding: clamp(16px, 3vh, 36px) 0;
   text-align: center;
-  animation: heroFadeIn 0.6s ease;
 }
 
-@keyframes heroFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.welcome-logo-ring {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, var(--accent1), var(--accent2), #a78bfa, var(--accent1));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  animation: logoSpin 6s linear infinite;
-  padding: 4px;
-}
-
-@keyframes logoSpin {
-  from { filter: hue-rotate(0deg); }
-  to { filter: hue-rotate(360deg); }
-}
-
-.welcome-logo {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent1);
-}
-
-.welcome-logo svg {
-  filter: drop-shadow(0 2px 4px rgba(109,40,217,0.3));
-}
+.welcome-hero:not(:only-child) { display: none; }
 
 .welcome-title {
-  margin: 0 0 6px;
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: -0.5px;
+  margin: 0;
+  font-size: clamp(1.4rem, 2.3vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
 }
 
 .welcome-subtitle {
-  margin: 0 0 20px;
-  font-size: 14px;
-  color: var(--muted);
-  font-weight: 500;
+  margin: 8px 0 22px;
+  color: var(--text-2);
 }
 
-.welcome-features {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.welcome-prompts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
   gap: 10px;
-  margin-bottom: 18px;
 }
 
-.welcome-chip {
+.welcome-prompts button {
   display: flex;
   align-items: center;
-  gap: 6px;
-  background: var(--panel);
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 50px;
+  padding: 12px 16px;
   border: 1px solid var(--border);
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-2);
-  transition: all 0.2s;
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
 }
 
-.welcome-chip:hover {
+.welcome-prompts button::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border: solid currentColor;
+  border-width: 1.5px 1.5px 0 0;
+  transform: rotate(45deg);
+}
+
+.welcome-prompts button:hover,
+.welcome-prompts button:focus-visible {
+  background: var(--chip-hover);
   border-color: var(--accent1);
-  color: var(--accent1);
-  background: var(--accent3);
-  transform: translateY(-2px);
 }
 
-.welcome-chip span {
-  font-size: 15px;
-}
-
-.welcome-hint {
-  margin: 0;
-  font-size: 13px;
-  color: var(--muted);
-  font-style: italic;
+.welcome-language {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--text-2);
+  font-size: 0.9rem;
 }
 
 /* ======================== CHAT FOOTER BRAND */
@@ -3220,34 +3140,6 @@ body.light-theme .back-auth-btn:hover {
   opacity: 0.4;
 }
 
-/* ======================== ENHANCED QUICK ACTIONS */
-.quick-actions button {
-  position: relative;
-  overflow: hidden;
-}
-
-.quick-actions button::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(109,40,217,0.05), rgba(124,58,237,0.08));
-  opacity: 0;
-  transition: opacity 0.2s;
-  border-radius: inherit;
-}
-
-.quick-actions button:hover::before {
-  opacity: 1;
-}
-
-@media (max-width: 860px) {
-  .welcome-hero { padding: 32px 16px 20px; }
-  .welcome-logo-ring { width: 72px; height: 72px; }
-  .welcome-logo { width: 64px; height: 64px; font-size: 28px; }
-  .welcome-title { font-size: 20px; }
-  .welcome-features { gap: 6px; }
-  .welcome-chip { padding: 6px 12px; font-size: 12px; }
-}
 
 /* ======================== AUTH MODE TOGGLE ANIMATION */
 .modern-login-form {

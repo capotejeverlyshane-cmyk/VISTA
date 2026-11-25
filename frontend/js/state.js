@@ -15,7 +15,6 @@ export const state = {
   userEmail: "",
   userPhoto: "",
   userId: "",
-  hasConversation: false,
   openMenuId: null,
   confirmationResult: null,
   recognition: null,

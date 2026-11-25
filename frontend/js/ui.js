@@ -64,29 +64,16 @@ export function applyTheme(theme) {
 export function initSettings() {
   const seniorToggle = document.getElementById("seniorModeToggle");
   const fontSel = document.getElementById("fontSizeSelect");
-  const langSel = document.getElementById("langSettingSelect");
   const darkToggle = document.getElementById("darkModeToggle");
   const voiceReplyToggle = document.getElementById("voiceReplyToggle");
 
   if(seniorToggle) seniorToggle.checked = state.seniorMode;
   if(fontSel) fontSel.value = state.fontSize;
-  if(langSel) langSel.value = state.language;
   if(darkToggle) darkToggle.checked = state.theme === "dark";
   if(voiceReplyToggle) voiceReplyToggle.checked = state.voiceReply;
 
   if(seniorToggle) seniorToggle.addEventListener("change", () => applySeniorMode(seniorToggle.checked));
   if(fontSel) fontSel.addEventListener("change", () => applyFontSize(fontSel.value));
-
-  if(langSel) {
-    langSel.addEventListener("change", () => {
-        state.language = langSel.value;
-        localStorage.setItem("vista_language", state.language);
-        const langDropdown = document.getElementById("languageSelect");
-        if (langDropdown) langDropdown.value = state.language;
-        updateNewChatLabel();
-        showToast("Language preference saved.");
-    });
-  }
 
   if(voiceReplyToggle) {
     voiceReplyToggle.addEventListener("change", () => {
@@ -115,17 +102,23 @@ export function applyFontSize(size) {
 
 /* ==================== LANGUAGE */
 export function initLanguage() {
-  const sel = document.getElementById("languageSelect");
-  if (sel) {
-    sel.value = state.language;
-    sel.addEventListener("change", () => {
-      state.language = sel.value;
+  const settings = document.getElementById("langSettingSelect");
+  const welcome = document.getElementById("languageSelect");
+  if (welcome && settings) {
+    welcome.replaceChildren(...Array.from(settings.options, option => option.cloneNode(true)));
+  }
+  const selects = [settings, welcome].filter(Boolean);
+  for (const select of selects) {
+    select.value = state.language;
+    select.addEventListener("change", () => {
+      state.language = select.value;
       localStorage.setItem("vista_language", state.language);
-      const langSettingSelect = document.getElementById("langSettingSelect");
-      if(langSettingSelect) langSettingSelect.value = state.language;
+      for (const control of selects) control.value = state.language;
       updateNewChatLabel();
+      if (select === settings) showToast("Language preference saved.");
     });
   }
+  updateNewChatLabel();
 }
 
 /* ==================== VIEW */

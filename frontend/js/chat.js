@@ -7,34 +7,13 @@ import { speakText } from './voice.js';
 
 const MAX_QUESTION_LENGTH = 500;
 
-/* ==================== QUICK ACTIONS */
-export function updateQuickActionsVisibility() {
-  const quickActions = document.getElementById("quickActions");
-  if (quickActions) quickActions.style.display = state.hasConversation ? "none" : "flex";
-  const hero = document.getElementById("welcomeHero");
-  if (hero) hero.style.display = state.hasConversation ? "none" : "block";
-}
-
 /* ==================== CHAT CORE */
 export function clearChat() {
   const chatBox = document.getElementById("chat-box");
   if (!chatBox) return;
   state.autoScrollPaused = false;
   document.getElementById("scrollToBottomBtn")?.classList.remove("visible");
-  chatBox.innerHTML = `
-    <div class="welcome-hero" id="welcomeHero">
-      <h2 class="welcome-title" id="welcomeTitle">${state.loggedIn && state.username ? `How can I help you today, ${state.username}?` : "How can I help you today?"}</h2>
-      <p class="welcome-subtitle">Your AI-powered LGU Citizen Assistant</p>
-      <div class="welcome-features">
-        <div class="welcome-chip"><span>🌐</span> Trilingual Support</div>
-        <div class="welcome-chip"><span>⚡</span> Instant Answers</div>
-        <div class="welcome-chip"><span>🏛️</span> Government Services</div>
-      </div>
-      <p class="welcome-hint">Ask me anything about permits, certificates, taxes, schedules, and more.</p>
-    </div>
-  `;
-  state.hasConversation = false;
-  updateQuickActionsVisibility();
+  chatBox.replaceChildren(document.getElementById("welcomeHero"));
 }
 
 export function startNewChat() {
@@ -67,8 +46,6 @@ export function renderCurrentChat() {
     }
   });
   
-  state.hasConversation = true;
-  updateQuickActionsVisibility();
   scrollChat();
 }
 
@@ -103,11 +80,6 @@ export function addMessage(text, sender) {
 
   chatBox.appendChild(wrapper);
   scrollChat();
-
-  if (sender === "user") {
-    state.hasConversation = true;
-    updateQuickActionsVisibility();
-  }
 
   return wrapper;
 }
