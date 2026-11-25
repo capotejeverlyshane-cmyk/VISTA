@@ -41,8 +41,6 @@ const adminState = {
   unmatchedIdToDismissOnAdd: null
 };
 
-let analyticsChartInstance = null;
-
 /* ==================== ADMIN AUTH GATE */
 async function hashPassword(password) {
   const encoder = new TextEncoder();
@@ -53,6 +51,7 @@ async function hashPassword(password) {
 }
 
 function hideAdminGate() {
+  restoreRetrainStatus();
   const gate = document.getElementById("adminLoginGate");
   gate.style.opacity = "0";
   gate.style.visibility = "hidden";
@@ -263,10 +262,6 @@ function applyTheme(theme) {
   if (label) label.textContent = theme === "dark" ? "Light Mode" : "Dark Mode";
   if (mobileBtn) mobileBtn.textContent = theme === "dark" ? "☀️" : "🌙";
 
-  // Re-render chart to update colors if initialized
-  if (analyticsChartInstance) {
-    loadAnalytics();
-  }
 }
 
 /* ==================== MOBILE SIDEBAR */
@@ -436,64 +431,78 @@ async function loadStats() {
 }
 
 /* ==================== ANALYTICS ==================== */
+const topicSymbols = [
+  { match: /no match|unmatched|unknown|fallback/, color: "amber", path: "M12 3 2 21h20ZM12 9v5m0 3v.1" },
+  { match: /permit|business|license to operate/, color: "purple", path: "M3 8h18v12H3zM8 8V5h8v3M3 13h18M10 13v2h4v-2" },
+  { match: /tax|payment|receipt|assessment|fees?\b/, color: "teal", path: "M5 3h14v18l-3-2-4 2-4-2-3 2zM8 8h8M8 12h6" },
+  { match: /birth|marriage|certificate|certification|cert of|civil reg/, color: "blue", path: "M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h6" },
+  { match: /assistance|welfare|pwd|senior|aics/, color: "rose", path: "M12 20 4 12C-2 5 7 0 12 7c5-7 14-2 8 5z" }
+];
+const generalTopicSymbol = { color: "slate", path: "M3 4h18v13H9l-6 4zM7 9h10M7 13h6" };
+
+function renderTopicRanking(labels, counts) {
+  const ranking = document.getElementById("analyticsRanking");
+  const insight = document.getElementById("analyticsInsight");
+  const topics = labels.map((intent, index) => ({
+    intent, name: formatTopicName(intent), count: counts[index]
+  })).filter(topic => typeof topic.intent === "string" && Number.isSafeInteger(topic.count) && topic.count > 0);
+  topics.sort((a, b) => b.count - a.count || a.intent.localeCompare(b.intent));
+  const top = topics.slice(0, 10);
+  if (!top.length) {
+    ranking.replaceChildren();
+    insight.textContent = "No queries with a recorded intent yet.";
+    return;
+  }
+
+  const total = topics.reduce((sum, topic) => sum + topic.count, 0);
+  const peak = top[0].count;
+  const number = new Intl.NumberFormat();
+  const percent = new Intl.NumberFormat(undefined, { style: "percent", maximumFractionDigits: 1 });
+  const displayName = topic => {
+    // Keep distinct office-specific intents identifiable when their formatted names match.
+    if (topics.some(other => other !== topic && other.name === topic.name)) {
+      return topic.intent.replace(/_/g, " ");
+    }
+    return topic.name;
+  };
+  ranking.innerHTML = top.map((topic, index) => {
+    const words = topic.intent.toLowerCase().replace(/[_-]/g, " ");
+    const symbol = topicSymbols.find(item => item.match.test(words)) || generalTopicSymbol;
+    return `<li class="topic-row" data-tone="${symbol.color}">
+      <span class="topic-rank" aria-hidden="true">${index + 1}</span>
+      <span class="topic-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="${symbol.path}"/></svg></span>
+      <span class="topic-name">${escapeHtml(displayName(topic))}</span>
+      <span class="topic-value">${number.format(topic.count)} <small>${topic.count === 1 ? "query" : "queries"}</small></span>
+      <span class="topic-track" aria-hidden="true"><span style="width:${topic.count / peak * 100}%"></span></span>
+    </li>`;
+  }).join("");
+
+  const leaders = topics.filter(topic => topic.count === peak);
+  const head = leaders.length === 1
+    ? `${displayName(top[0])} leads with ${percent.format(peak / total)} of queries with a recorded intent.`
+    : `${number.format(leaders.length)} topics tie for first with ${number.format(peak)} ${peak === 1 ? "query" : "queries"} each.`;
+  const shownCount = top.reduce((sum, topic) => sum + topic.count, 0);
+  const coverage = topics.length > top.length
+    ? `The top 10 account for ${percent.format(shownCount / total)} of ${number.format(total)} recorded queries.`
+    : `${number.format(total)} recorded ${total === 1 ? "query" : "queries"} across ${topics.length} ${topics.length === 1 ? "topic" : "topics"}.`;
+  insight.textContent = `${head} ${coverage}`;
+}
+
+let analyticsRequest = 0;
 async function loadAnalytics() {
+  const request = ++analyticsRequest;
   try {
     const res = await adminFetch(`${API_URL}/api/admin/analytics`);
     const data = await res.json();
-
-    document.getElementById("analyticsBadge").textContent = data.type;
-    document.getElementById("analyticsDesc").textContent = data.description;
-
-    const ctx = document.getElementById("analyticsChart").getContext("2d");
-
-    if (analyticsChartInstance) {
-      analyticsChartInstance.destroy();
+    if (request !== analyticsRequest) return;
+    if (!res.ok || !Array.isArray(data.labels) || !Array.isArray(data.data) || data.labels.length !== data.data.length) {
+      throw new Error("Invalid analytics response");
     }
-
-    const isDark = adminState.theme === "dark";
-    const textColor = isDark ? "#94a3b8" : "#64748b";
-    const gridColor = isDark ? "#334155" : "#e2e8f0";
-
-    const formatLabel = (label) => {
-      if (!label) return "";
-      return label.split('_')
-        .filter(word => word.length > 0)
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-    };
-    const formattedLabels = data.labels.map(formatLabel);
-
-    analyticsChartInstance = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: formattedLabels.length ? formattedLabels : ["No Data"],
-        datasets: [{
-          label: "Inquiries",
-          data: data.data.length ? data.data : [0],
-          backgroundColor: "#3b82f6",
-          borderRadius: 4,
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: { color: textColor, precision: 0, stepSize: 1 },
-            grid: { color: gridColor }
-          },
-          x: {
-            ticks: { color: textColor },
-            grid: { display: false }
-          }
-        }
-      }
-    });
+    renderTopicRanking(data.labels, data.data);
   } catch (err) {
+    if (request !== analyticsRequest) return;
+    document.getElementById("analyticsRanking").replaceChildren();
+    document.getElementById("analyticsInsight").textContent = "Query analytics could not be loaded. Reopen Overview to try again.";
     console.error("Failed to load analytics", err);
   }
 }
@@ -927,78 +936,110 @@ function switchInteractionTab(tab) {
 }
 
 /* ==================== RETRAIN */
-async function handleRetrain() {
-  const btn = document.getElementById("retrainBtn");
-  if (btn) {
-    btn.disabled = true;
-    btn.innerHTML = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg><span>Retraining...</span>`;
+let watchingRetrain = false;
+const retrainWatchKey = "vista_admin_watching_retrain";
+
+function trainingDuration(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  return minutes ? `${minutes}m ${seconds % 60}s` : `${seconds}s`;
+}
+
+function showRetrainState(state) {
+  const running = state.status === "running";
+  const done = state.status === "success";
+  const dialog = document.getElementById("retrainDialog");
+  const bar = document.getElementById("retrainProgress");
+  const percent = Number.isFinite(state.progress) ? Math.round(state.progress) : null;
+  bar.hidden = !running && !done;
+  if (percent === null) bar.removeAttribute("value");
+  else bar.value = percent;
+  document.getElementById("retrainTitle").textContent = running ? "Retraining model" : done ? "Retraining complete" : "Retraining status";
+  document.getElementById("retrainStage").textContent = state.error || state.message;
+  document.getElementById("retrainClose").textContent = running ? "Run in background" : "Close";
+
+  const details = [];
+  if (percent !== null && (running || done)) details.push(`${percent}% of stages complete`);
+  if (Number.isFinite(state.elapsed_seconds)) details.push(`${trainingDuration(state.elapsed_seconds)} elapsed`);
+  if (state.estimated_remaining_seconds > 0) {
+    details.push(`About ${trainingDuration(state.estimated_remaining_seconds)} left based on the previous run`);
   }
+  if (done && Number.isFinite(state.metrics?.best_accuracy)) {
+    details.push(`Test accuracy ${(100 * state.metrics.best_accuracy).toFixed(1)}%`);
+  }
+  document.getElementById("retrainTiming").textContent = details.join(" · ");
+  const label = running ? (percent === null ? "View retraining" : `Retraining · ${percent}%`) : "Retrain Model";
+  for (const span of document.querySelectorAll("#retrainBtn > span, #retrainQuickBtn > span")) {
+    span.textContent = label;
+  }
+  if (done) checkServerHealth();
+  if (!running && !dialog.open) showToast(done ? "Model retraining complete." : state.message);
+}
 
-  try {
-    const res = await adminFetch(`${API_URL}/api/admin/retrain`, { method: "POST" });
-    const data = await res.json().catch(() => ({}));
+async function readRetrainStatus() {
+  const res = await adminFetch(`${API_URL}/api/admin/retrain/status`, { cache: "no-store", signal: AbortSignal.timeout(15000) });
+  if (!res.ok) throw new Error("Could not read retraining status.");
+  const state = await res.json();
+  if (!["running", "success", "error", "idle"].includes(state.status)) throw new Error("Unknown retraining status.");
+  return state;
+}
 
-    if (data.status === "started" || data.status === "busy") {
-      showToast("⏳ Retraining in background... please wait.");
-
-      // Poll /api/admin/retrain/status every 2 seconds until done
-      const startTime = Date.now();
-      const pollInterval = setInterval(async () => {
-        try {
-          // Timeout guard: 12 minutes max for large 14k+ dataset
-          if (Date.now() - startTime > 720000) {
-            clearInterval(pollInterval);
-            showToast("⚠️ Retraining is still running in background. Please check Server Health shortly.");
-            resetRetrainBtn();
-            return;
-          }
-
-          const statusRes = await fetch(`${API_URL}/api/admin/retrain/status`);
-          const statusData = await statusRes.json().catch(() => ({}));
-
-          if (statusData.status === "success") {
-            clearInterval(pollInterval);
-            const acc =
-              statusData.metrics && statusData.metrics.best_accuracy
-                ? (statusData.metrics.best_accuracy * 100).toFixed(1)
-                : "100";
-            const bestModel =
-              statusData.metrics && statusData.metrics.best_model
-                ? ` (${statusData.metrics.best_model})`
-                : "";
-            showToast(`✅ Model retrained! Accuracy: ${acc}%${bestModel}`);
-            checkServerHealth();
-            resetRetrainBtn();
-          } else if (statusData.status === "error") {
-            clearInterval(pollInterval);
-            showToast(`❌ Error: ${statusData.error || statusData.message || "Training failed"}`);
-            resetRetrainBtn();
-          }
-        } catch (pollErr) {
-          console.warn("Polling error:", pollErr);
-        }
-      }, 2000);
-      return;
-    } else if (data.status === "success") {
-      showToast(`✅ Model retrained! Accuracy: ${(data.metrics.best_accuracy * 100).toFixed(1)}%`);
-      checkServerHealth();
-      resetRetrainBtn();
-    } else {
-      showToast(`❌ Error: ${data.message || data.detail || "Training failed"}`);
-      resetRetrainBtn();
+async function monitorRetrain(state) {
+  sessionStorage.setItem(retrainWatchKey, "true");
+  while (state.status === "running") {
+    showRetrainState(state);
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      state = await readRetrainStatus();
+    } catch {
+      if (!adminState.authenticated) {
+        document.getElementById("retrainDialog").close();
+        break;
+      }
+      state = { ...state, message: "Connection interrupted. Checking again…", estimated_remaining_seconds: null };
     }
-  } catch (err) {
-    console.error(err);
-    showToast("❌ Failed to connect to server.");
-    resetRetrainBtn();
+  }
+  watchingRetrain = false;
+  sessionStorage.removeItem(retrainWatchKey);
+  if (state.status === "idle") state = { status: "idle", message: "The server has no active retraining job." };
+  if (adminState.authenticated) showRetrainState(state);
+}
+
+async function restoreRetrainStatus() {
+  const previousWatch = sessionStorage.getItem(retrainWatchKey);
+  try {
+    const state = await readRetrainStatus();
+    if (watchingRetrain || (state.status !== "running" && !previousWatch)) return;
+    watchingRetrain = true;
+    monitorRetrain(state);
+  } catch {
+    if (previousWatch && !watchingRetrain && adminState.authenticated) {
+      watchingRetrain = true;
+      monitorRetrain({ status: "running", message: "Reconnecting to retraining status…" });
+    }
   }
 }
 
-function resetRetrainBtn() {
-  const btn = document.getElementById("retrainBtn");
-  if (!btn) return;
-  btn.disabled = false;
-  btn.innerHTML = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg><span>Retrain Model</span>`;
+async function handleRetrain() {
+  const dialog = document.getElementById("retrainDialog");
+  if (!dialog.open) dialog.showModal();
+  if (watchingRetrain) return;
+  watchingRetrain = true;
+  showRetrainState({ status: "running", message: "Contacting the training server…" });
+  try {
+    const res = await adminFetch(`${API_URL}/api/admin/retrain`, { method: "POST", signal: AbortSignal.timeout(20000) });
+    const data = await res.json();
+    if (!res.ok || !["started", "busy", "success"].includes(data.status)) {
+      throw new Error(data.detail || data.message || "The server could not start retraining.");
+    }
+    await monitorRetrain(data.status === "success" ? data : data.state);
+  } catch (err) {
+    watchingRetrain = false;
+    if (!adminState.authenticated) dialog.close();
+    const message = err instanceof TypeError || err.name === "TimeoutError"
+      ? "Could not confirm whether retraining started. Open Retrain Model again to reconnect."
+      : err.message;
+    showRetrainState({ status: "error", message });
+  }
 }
 
 /* ==================== MODAL (LINK QUERY TO TOPIC) */

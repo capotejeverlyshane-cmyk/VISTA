@@ -3,6 +3,7 @@ import os
 import csv
 import threading
 import logging
+from collections import Counter
 from datetime import datetime
 from io import StringIO
 from fastapi import APIRouter, Body, Depends, HTTPException, BackgroundTasks
@@ -649,16 +650,17 @@ def get_stats():
 @router.get("/analytics", dependencies=[Depends(verify_admin_token)])
 def get_analytics():
     try:
-        res = supabase.table("chat_logs").select("predicted_intent").execute()
-        intents = [
-            item.get("predicted_intent")
-            for item in (res.data or [])
-            if item.get("predicted_intent")
-        ]
-
-        from collections import Counter
-
-        counts = Counter(intents)
+        counts = Counter()
+        last_id = None
+        while True:
+            query = supabase.table("chat_logs").select("id, predicted_intent")
+            if last_id is not None:
+                query = query.gt("id", last_id)
+            page = query.order("id").limit(1000).execute().data
+            if not page:
+                break
+            counts.update(row["predicted_intent"] for row in page if row.get("predicted_intent"))
+            last_id = page[-1]["id"]
 
         labels = list(counts.keys())
         data = list(counts.values())
@@ -832,8 +834,10 @@ def get_feedback():
 logger = logging.getLogger(__name__)
 
 training_lock = threading.Lock()
+previous_training_seconds = None
 training_state = {
-    "status": "idle",  # "idle" | "running" | "success" | "error"
+    "status": "idle",
+    "progress": 0,
     "message": "",
     "metrics": None,
     "error": None,
@@ -842,56 +846,66 @@ training_state = {
 }
 
 
-def _execute_retraining():
-    global training_state
+def _update_training_progress(progress, message):
     with training_lock:
-        training_state["status"] = "running"
-        training_state["message"] = "Model retraining in progress..."
-        training_state["error"] = None
-        training_state["started_at"] = datetime.now().isoformat()
-        try:
-            metrics = train.train_and_compare()
-            from services.nlp import load_models
+        training_state.update(progress=progress, message=message)
 
-            load_models()
-            training_state["status"] = "success"
-            training_state["message"] = "Retraining completed successfully."
-            training_state["metrics"] = metrics
-            training_state["completed_at"] = datetime.now().isoformat()
-        except Exception as e:
-            logger.exception("Background retraining failed")
-            training_state["status"] = "error"
-            training_state["message"] = "Retraining failed."
-            training_state["error"] = str(e)
-            training_state["completed_at"] = datetime.now().isoformat()
+
+def _execute_retraining():
+    global previous_training_seconds
+    try:
+        metrics = train.train_and_compare(on_progress=_update_training_progress)
+        from services.nlp import load_models
+
+        load_models()
+        with training_lock:
+            finished = datetime.now().astimezone()
+            started = datetime.fromisoformat(training_state["started_at"])
+            previous_training_seconds = (finished - started).total_seconds()
+            training_state.update(
+                status="success", progress=100, metrics=metrics,
+                message="The trained model is ready to use.", completed_at=finished.isoformat(),
+            )
+    except Exception as e:
+        logger.exception("Background retraining failed")
+        with training_lock:
+            training_state.update(
+                status="error", message="Retraining failed.", error=str(e),
+                completed_at=datetime.now().astimezone().isoformat(),
+            )
 
 
 @router.post("/retrain", dependencies=[Depends(verify_admin_token)])
 def retrain(background_tasks: BackgroundTasks):
-    global training_state
-    if training_state["status"] == "running":
-        return {
-            "status": "busy",
-            "message": "Retraining is already in progress.",
-            "state": training_state,
-        }
+    with training_lock:
+        if training_state["status"] == "running":
+            return {"status": "busy", "message": "Retraining is already in progress.", "state": training_state.copy()}
 
-    training_state["status"] = "running"
-    training_state["message"] = "Model retraining initiated in the background."
-    training_state["error"] = None
-    training_state["started_at"] = datetime.now().isoformat()
+        training_state.update(
+            status="running", progress=0, message="Starting retraining",
+            started_at=datetime.now().astimezone().isoformat(),
+            completed_at=None, metrics=None, error=None,
+        )
+        snapshot = training_state.copy()
 
     background_tasks.add_task(_execute_retraining)
-    return {
-        "status": "started",
-        "message": "Model retraining initiated. Progress can be checked at /api/admin/retrain/status.",
-        "state": training_state,
-    }
+    return {"status": "started", "message": "Model retraining initiated.", "state": snapshot}
 
 
 @router.get("/retrain/status")
 def get_retrain_status():
-    return training_state
+    with training_lock:
+        snapshot = training_state.copy()
+        previous = previous_training_seconds
+    if snapshot["started_at"]:
+        started = datetime.fromisoformat(snapshot["started_at"])
+        finished = snapshot["completed_at"]
+        end = datetime.fromisoformat(finished) if finished else datetime.now().astimezone()
+        elapsed = max(0, int((end - started).total_seconds()))
+        snapshot["elapsed_seconds"] = elapsed
+        if snapshot["status"] == "running" and previous and previous > elapsed:
+            snapshot["estimated_remaining_seconds"] = round(previous - elapsed)
+    return snapshot
 
 
 @router.get("/health")

@@ -188,6 +188,24 @@ body {
 .retrain-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(124,58,237,0.3); }
 .retrain-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
+.retrain-dialog {
+  margin: auto;
+  width: min(420px, calc(100% - 32px));
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+}
+.retrain-dialog::backdrop { background: rgb(15 23 42 / 50%); }
+.retrain-dialog h2 { margin-bottom: 12px; font-size: 20px; }
+.retrain-dialog p { font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
+.retrain-dialog progress { display: block; width: 100%; height: 12px; margin: 14px 0 8px; accent-color: var(--purple); }
+.retrain-dialog progress[hidden] { display: none; }
+#retrainTiming { color: var(--text-2); }
+.retrain-dialog form { display: flex; justify-content: flex-end; margin-top: 20px; }
+
 .sidebar-links { display: flex; flex-direction: column; gap: 4px; }
 
 .sidebar-link {
@@ -308,11 +326,12 @@ body {
 .stat-value { font-size: 32px; font-weight: 800; color: var(--text); line-height: 1; }
 
 /* ======================== OVERVIEW LAYOUT */
+#overview { flex: 0 0 auto; }
+
 .overview-grid {
   display: flex;
   gap: 24px;
-  flex: 1;
-  min-height: 0;
+  align-items: flex-start;
 }
 
 .chart-card {
@@ -324,13 +343,52 @@ body {
   min-height: 0;
 }
 
-.chart-card .health-header { flex-shrink: 0; }
-.chart-container-wrapper {
-  flex: 1;
-  position: relative;
-  min-height: 0;
-  padding: 0 24px 24px 24px;
+.topic-chart { padding: 16px 20px; }
+.topic-insight {
+  padding: 10px 14px;
+  border-inline-start: 3px solid var(--primary);
+  border-radius: 4px;
+  background: var(--primary-light);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
 }
+.topic-ranking { list-style: none; }
+.topic-row {
+  --tone: #64748b;
+  display: grid;
+  grid-template-columns: 2ch 30px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 10px;
+  row-gap: 4px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.topic-row:last-child { border: 0; }
+.topic-row[data-tone="blue"] { --tone: #3b82f6; }
+.topic-row[data-tone="purple"] { --tone: #8b5cf6; }
+.topic-row[data-tone="teal"] { --tone: #0d9488; }
+.topic-row[data-tone="rose"] { --tone: #e05278; }
+.topic-row[data-tone="amber"] { --tone: #d97706; }
+.topic-rank, .topic-icon { grid-row: span 2; }
+.topic-rank { color: var(--text-2); text-align: right; font-variant-numeric: tabular-nums; }
+.topic-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  color: var(--tone);
+  background: color-mix(in srgb, var(--tone) 12%, var(--surface));
+}
+.topic-icon svg { width: 18px; height: 18px; }
+.topic-name { overflow-wrap: anywhere; line-height: 1.4; }
+.topic-value { font-weight: 700; font-variant-numeric: tabular-nums; }
+.topic-value small { font-weight: 400; color: var(--text-2); }
+.topic-track { grid-column: 3 / -1; height: 5px; background: var(--border); border-radius: 8px; }
+.topic-track span { display: block; height: 100%; border-radius: inherit; background: var(--tone); }
 
 .overview-sidebar {
   width: 340px;
@@ -345,7 +403,7 @@ body {
 
 /* Responsive Overview */
 @media (max-width: 1100px) {
-  .overview-grid { flex-direction: column; }
+  .overview-grid { flex-direction: column; align-items: stretch; }
   .overview-sidebar { width: 100%; }
 }
 
@@ -729,7 +787,6 @@ form { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
     min-height: 0;
     gap: 16px;
   }
-  .chart-card { min-height: 320px; }
   .overview-sidebar { overflow: visible; gap: 16px; }
   .modal-overlay { padding: 8px; }
   .modal-content {
@@ -769,8 +826,7 @@ form { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
   .modal-footer { flex-wrap: wrap; }
   .modal-footer .btn { flex: 1 1 auto; justify-content: center; }
   .card-header { padding: 16px; }
-  .chart-card { min-height: 300px; }
-  .chart-container-wrapper { padding: 0 14px 16px; }
+  .topic-chart { padding: 12px; }
   .table-search { padding: 8px 10px; }
   .toast { right: 12px; bottom: 12px; left: 12px; text-align: center; }
 >>>>>>> Stashed changes

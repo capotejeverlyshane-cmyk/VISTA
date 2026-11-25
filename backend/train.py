@@ -302,8 +302,17 @@ def load_data():
 
 #     print(f"\nBest model: {best_name} ({best_score:.4f})")
 #     return metrics_data
-def train_and_compare(compare_all: bool = False):
+def train_and_compare(compare_all: bool = False, on_progress=None):
+    # Loading, preparing, fitting/evaluating each model, saving, and reloading.
+    total_steps = 4 + 2 * (3 if compare_all else 1)
+
+    def report_progress(completed, message):
+        if on_progress is not None:
+            on_progress(round(100 * completed / total_steps), message)
+
+    report_progress(0, "Loading training data")
     df = load_data()
+    report_progress(1, "Preparing training and test samples")
 
     print(f"[INFO] Dataset: {len(df)} samples")
     print(f"[INFO] Intents: {df['intent'].nunique()}")
@@ -443,13 +452,15 @@ def train_and_compare(compare_all: bool = False):
     # TRAIN
     # =========================================================
 
-    for name, pipeline in models.items():
+    for index, (name, pipeline) in enumerate(models.items()):
         print(f"\n{'=' * 60}")
         print(f"[INFO] Training: {name}")
         print(f"{'=' * 60}")
 
+        report_progress(2 + 2 * index, f"Fitting {name.replace('_', ' ')}")
         pipeline.fit(X_train, y_train)
 
+        report_progress(3 + 2 * index, f"Evaluating {name.replace('_', ' ')}")
         y_pred = pipeline.predict(X_test)
 
         accuracy = accuracy_score(y_test, y_pred)
@@ -493,6 +504,7 @@ def train_and_compare(compare_all: bool = False):
     # joblib.dump(best_pipeline, os.path.join(MODEL_DIR, "best_model_augmented.pkl"))
     # joblib.dump(label_encoder, os.path.join(MODEL_DIR, "label_encoder_augmented.pkl"))
 
+    report_progress(total_steps - 2, "Saving the model and evaluation results")
     joblib.dump(best_pipeline, os.path.join(MODEL_DIR, "best_model.pkl"))
     joblib.dump(label_encoder, os.path.join(MODEL_DIR, "label_encoder.pkl"))
 
@@ -530,6 +542,7 @@ def train_and_compare(compare_all: bool = False):
         f"\n[INFO] Model saved to: {os.path.join(MODEL_DIR, 'best_model_augmented.pkl')}"
     )
 
+    report_progress(total_steps - 1, "Loading the trained model into VISTA")
     return metrics_data
 
 

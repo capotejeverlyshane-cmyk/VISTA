@@ -177,37 +177,15 @@
     <main class="main-panel">
 
       <!-- CHAT VIEW -->
-      <section class="view active" id="view-chat">
+      <section class="view active" id="view-chat" aria-label="Citizen chat">
         <div class="chat-wrapper">
           <div class="chat-container">
-            <div class="chat-header-card" style="justify-content: space-between;">
-              <div style="display: flex; align-items: center; gap: 16px;">
-                <div class="chat-bot-icon" aria-label="AI Assistant" title="AI Assistant">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/>
-                  </svg>
-                </div>
-                <div class="chat-header-info">
-                  <h3>VISTA Assistant <span class="online-badge">● Online</span></h3>
-                  <p>Panabo City citizen services</p>
-                </div>
-              </div>
-              <div class="chat-header-actions">
-                <button class="icon-btn theme-btn" id="themeToggleDesktop" title="Toggle Theme" aria-label="Toggle Theme">
-                  <svg id="themeIconSVG" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
             <div class="chat-box-wrap">
               <div id="chat-box" class="chat-box">
                 <!-- Welcome Hero -->
                 <div class="welcome-hero" id="welcomeHero">
                   <h2 class="welcome-title" id="welcomeTitle">How can I help you today?</h2>
-                  <p class="welcome-subtitle">Ask in English, Tagalog, or Bisaya.</p>
+                  <p class="welcome-subtitle">Ask about Panabo City services in English, Tagalog, or Bisaya.</p>
                   <div class="welcome-prompts" role="group" aria-label="Suggested questions">
                     <button type="button" onclick="quickAsk(this.textContent)">How do I get a birth certificate?</button>
                     <button type="button" onclick="quickAsk(this.textContent)">How do I apply for a business permit?</button>

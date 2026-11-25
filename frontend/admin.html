@@ -10,7 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="admin.css?v=2">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <!-- Admin Login Gate -->
@@ -94,7 +93,7 @@
         </a>
       </nav>
       <div class="sidebar-footer">
-        <button id="retrainBtn" class="retrain-btn">
+        <button id="retrainBtn" class="retrain-btn" aria-haspopup="dialog" aria-controls="retrainDialog">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
           <span>Retrain Model</span>
         </button>
@@ -174,18 +173,13 @@
             <div class="system-health-card chart-card">
               <div class="health-header">
                 <h2>
-                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-                  System Analytics
+                  <svg aria-hidden="true" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M3 3v18h18M7 6h13M7 11h9M7 16h5"/></svg>
+                  Top 10 query topics
                 </h2>
-                <span class="health-badge online" id="analyticsBadge">Descriptive Analytics</span>
               </div>
-              <div style="padding: 0 24px;">
-                <p id="analyticsDesc" style="color:var(--text-muted); font-size:14px; margin-top:1.5rem;"></p>
-              </div>
-              <div class="chart-container-wrapper">
-                <div style="position:relative; width:100%; height:100%;">
-                  <canvas id="analyticsChart"></canvas>
-                </div>
+              <div class="topic-chart">
+                <p class="topic-insight" id="analyticsInsight" role="status">Loading query topics…</p>
+                <ol class="topic-ranking" id="analyticsRanking" aria-label="Topics ranked by query count"></ol>
               </div>
             </div>
 
@@ -253,7 +247,7 @@
                     </div>
                     <span>Export Data</span>
                   </button>
-                  <button class="quick-action-card" onclick="document.getElementById('retrainBtn').click()">
+                  <button class="quick-action-card" id="retrainQuickBtn" aria-haspopup="dialog" aria-controls="retrainDialog" onclick="handleRetrain()">
                     <div class="qa-icon purple">
                       <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
                     </div>
@@ -760,6 +754,14 @@
       </form>
     </div>
   </div>
+
+  <dialog class="retrain-dialog" id="retrainDialog" aria-labelledby="retrainTitle" aria-describedby="retrainStage">
+    <h2 id="retrainTitle">Model retraining</h2>
+    <p id="retrainStage" role="status"></p>
+    <progress id="retrainProgress" max="100" aria-label="Training stages completed"></progress>
+    <p id="retrainTiming"></p>
+    <form method="dialog"><button class="btn secondary" id="retrainClose">Close</button></form>
+  </dialog>
 
   <!-- Toast -->
   <div id="toast" class="toast"></div>
